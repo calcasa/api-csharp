@@ -43,7 +43,7 @@ namespace Calcasa.Api.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "0.0.1";
+        public const string Version = "0.0.2";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -113,7 +113,7 @@ namespace Calcasa.Api.Client
         public Configuration()
         {
             Proxy = null;
-            UserAgent = "OpenAPI-Generator/0.0.1/csharp";
+            UserAgent = "OpenAPI-Generator/0.0.2/csharp";
             BasePath = "https://api.calcasa.nl";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -458,7 +458,7 @@ namespace Calcasa.Api.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: v0\n";
-            report += "    SDK Package Version: 0.0.1\n";
+            report += "    SDK Package Version: 0.0.2\n";
 
             return report;
         }
