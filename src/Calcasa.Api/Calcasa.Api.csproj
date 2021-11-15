@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Calcasa.Api</AssemblyName>
     <PackageId>Calcasa.Api</PackageId>
@@ -12,12 +11,13 @@
     <Description>API client for the Calcasa Public API.</Description>
     <Copyright>Copyright 2021 Calcasa B.V.</Copyright>
     <RootNamespace>Calcasa.Api</RootNamespace>
-    <Version>0.0.2</Version>
+    <Version>0.0.3</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Calcasa.Api.xml</DocumentationFile>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/calcasa/api-csharp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>Minor update</PackageReleaseNotes>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,6 +25,10 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Polly" Version="7.2.2" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
