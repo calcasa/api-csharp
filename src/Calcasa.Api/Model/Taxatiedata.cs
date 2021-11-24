@@ -46,17 +46,17 @@ namespace Calcasa.Api.Model
     {
 
         /// <summary>
-        /// De status van een taxatie (alleen van toepassing voor desktop taxaties). | Waarde | Omschrijving | | - -- | - -- | | &#x60;nietGecontroleerd&#x60; | Status is onbekend of niet van toepassing. | | &#x60;goedgekeurd&#x60; | De waardering is geaccepteerd. | | &#x60;afgekeurd&#x60; | De waardering is afgewezen. |   
+        /// De status van een taxatie (alleen van toepassing voor desktop taxaties). | Waarde | Omschrijving | | - -- | - -- | | &#x60;nietGecontroleerd&#x60; | Status is onbekend of niet van toepassing. | | &#x60;goedgekeurd&#x60; | De waardering is geaccepteerd door een taxateur. | | &#x60;afgekeurd&#x60; | De waardering is afgewezen door een taxateur. |   
         /// </summary>
-        /// <value>De status van een taxatie (alleen van toepassing voor desktop taxaties). | Waarde | Omschrijving | | - -- | - -- | | &#x60;nietGecontroleerd&#x60; | Status is onbekend of niet van toepassing. | | &#x60;goedgekeurd&#x60; | De waardering is geaccepteerd. | | &#x60;afgekeurd&#x60; | De waardering is afgewezen. |   </value>
+        /// <value>De status van een taxatie (alleen van toepassing voor desktop taxaties). | Waarde | Omschrijving | | - -- | - -- | | &#x60;nietGecontroleerd&#x60; | Status is onbekend of niet van toepassing. | | &#x60;goedgekeurd&#x60; | De waardering is geaccepteerd door een taxateur. | | &#x60;afgekeurd&#x60; | De waardering is afgewezen door een taxateur. |   </value>
         [DataMember(Name = "status", EmitDefaultValue = true)]
         public Taxatiestatus? Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Taxatiedata" /> class.
         /// </summary>
         /// <param name="taxatieorganisatie">De naam van de taxatieorganisatie..</param>
-        /// <param name="status">De status van een taxatie (alleen van toepassing voor desktop taxaties). | Waarde | Omschrijving | | - -- | - -- | | &#x60;nietGecontroleerd&#x60; | Status is onbekend of niet van toepassing. | | &#x60;goedgekeurd&#x60; | De waardering is geaccepteerd. | | &#x60;afgekeurd&#x60; | De waardering is afgewezen. |   .</param>
-        /// <param name="taxatiedatum">De datum/tijd waarop de waardering getaxeerd is..</param>
+        /// <param name="status">De status van een taxatie (alleen van toepassing voor desktop taxaties). | Waarde | Omschrijving | | - -- | - -- | | &#x60;nietGecontroleerd&#x60; | Status is onbekend of niet van toepassing. | | &#x60;goedgekeurd&#x60; | De waardering is geaccepteerd door een taxateur. | | &#x60;afgekeurd&#x60; | De waardering is afgewezen door een taxateur. |   .</param>
+        /// <param name="taxatiedatum">De datum/tijd waarop de waardering getaxeerd is, in UTC..</param>
         public Taxatiedata(string taxatieorganisatie = default(string), Taxatiestatus? status = default(Taxatiestatus?), DateTime taxatiedatum = default(DateTime))
         {
             this.Taxatieorganisatie = taxatieorganisatie;
@@ -72,9 +72,9 @@ namespace Calcasa.Api.Model
         public string Taxatieorganisatie { get; set; }
 
         /// <summary>
-        /// De datum/tijd waarop de waardering getaxeerd is.
+        /// De datum/tijd waarop de waardering getaxeerd is, in UTC.
         /// </summary>
-        /// <value>De datum/tijd waarop de waardering getaxeerd is.</value>
+        /// <value>De datum/tijd waarop de waardering getaxeerd is, in UTC.</value>
         [DataMember(Name = "taxatiedatum", EmitDefaultValue = false)]
         public DateTime Taxatiedatum { get; set; }
 

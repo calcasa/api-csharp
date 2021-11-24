@@ -39,9 +39,9 @@ using OpenAPIDateConverter = Calcasa.Api.Client.OpenAPIDateConverter;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    ///  | Waarde | Omschrijving | | - -- | - -- | | &#x60;geen&#x60; | De input was correct. | | &#x60;gecorrigeerd&#x60; | De input was gecorrigeerd. | | &#x60;onbekend&#x60; | The input is onbekend en kon niet gevonden of gecorrigeerd worden. | | &#x60;ontbreekt&#x60; | De input was leeg en is wel nodig voor een succesvolle zoekopdracht. |   
+    ///  | Waarde | Omschrijving | | - -- | - -- | | &#x60;geen&#x60; | De input was correct. | | &#x60;gecorrigeerd&#x60; | De input was gecorrigeerd. | | &#x60;onbekend&#x60; | De input is onbekend en kon niet gevonden of gecorrigeerd worden. | | &#x60;ontbreekt&#x60; | De input was leeg en is wel nodig voor een succesvolle zoekopdracht. |   
     /// </summary>
-    /// <value> | Waarde | Omschrijving | | - -- | - -- | | &#x60;geen&#x60; | De input was correct. | | &#x60;gecorrigeerd&#x60; | De input was gecorrigeerd. | | &#x60;onbekend&#x60; | The input is onbekend en kon niet gevonden of gecorrigeerd worden. | | &#x60;ontbreekt&#x60; | De input was leeg en is wel nodig voor een succesvolle zoekopdracht. |   </value>
+    /// <value> | Waarde | Omschrijving | | - -- | - -- | | &#x60;geen&#x60; | De input was correct. | | &#x60;gecorrigeerd&#x60; | De input was gecorrigeerd. | | &#x60;onbekend&#x60; | De input is onbekend en kon niet gevonden of gecorrigeerd worden. | | &#x60;ontbreekt&#x60; | De input was leeg en is wel nodig voor een succesvolle zoekopdracht. |   </value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum Notitie
     {

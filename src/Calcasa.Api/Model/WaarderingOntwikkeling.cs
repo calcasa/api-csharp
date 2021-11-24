@@ -48,17 +48,25 @@ namespace Calcasa.Api.Model
         /// Initializes a new instance of the <see cref="WaarderingOntwikkeling" /> class.
         /// </summary>
         /// <param name="id">Id van de waardering of tracking Id..</param>
-        /// <param name="objectPrijsOntwikkeling">objectPrijsOntwikkeling.</param>
-        /// <param name="buurtPrijsOntwikkeling">buurtPrijsOntwikkeling.</param>
-        /// <param name="wijkPrijsOntwikkeling">wijkPrijsOntwikkeling.</param>
-        /// <param name="gemeentePrijsOntwikkeling">gemeentePrijsOntwikkeling.</param>
-        public WaarderingOntwikkeling(Guid id = default(Guid), Collection<WaarderingOntwikkelingKwartaal> objectPrijsOntwikkeling = default(Collection<WaarderingOntwikkelingKwartaal>), Collection<WaarderingOntwikkelingKwartaal> buurtPrijsOntwikkeling = default(Collection<WaarderingOntwikkelingKwartaal>), Collection<WaarderingOntwikkelingKwartaal> wijkPrijsOntwikkeling = default(Collection<WaarderingOntwikkelingKwartaal>), Collection<WaarderingOntwikkelingKwartaal> gemeentePrijsOntwikkeling = default(Collection<WaarderingOntwikkelingKwartaal>))
+        /// <param name="objectPrijsOntwikkeling">De prijsontwikkeling van het gewaardeerde object..</param>
+        /// <param name="objectPrijsOntwikkelingPerVierkantemeter">De prijsontwikkeling van het gewaardeerde object per vierkantemeter..</param>
+        /// <param name="buurtPrijsOntwikkeling">De prijsontwikkeling van de buurt van het gewaardeerde object..</param>
+        /// <param name="buurtPrijsOntwikkelingPerVierkantemeter">De prijsontwikkeling van de buurt van het gewaardeerde object per vierkantemeter..</param>
+        /// <param name="wijkPrijsOntwikkeling">De prijsontwikkeling van de wijk van het gewaardeerde object..</param>
+        /// <param name="wijkPrijsOntwikkelingPerVierkantemeter">De prijsontwikkeling van de wijk van het gewaardeerde object per vierkantemeter..</param>
+        /// <param name="gemeentePrijsOntwikkeling">De prijsontwikkeling van de gemeente van het gewaardeerde object..</param>
+        /// <param name="gemeentePrijsOntwikkelingPerVierkantemeter">De prijsontwikkeling van de gemeente van het gewaardeerde object per vierkantemeter..</param>
+        public WaarderingOntwikkeling(Guid id = default(Guid), Collection<WaarderingOntwikkelingKwartaal> objectPrijsOntwikkeling = default(Collection<WaarderingOntwikkelingKwartaal>), Collection<WaarderingOntwikkelingKwartaal> objectPrijsOntwikkelingPerVierkantemeter = default(Collection<WaarderingOntwikkelingKwartaal>), Collection<WaarderingOntwikkelingKwartaal> buurtPrijsOntwikkeling = default(Collection<WaarderingOntwikkelingKwartaal>), Collection<WaarderingOntwikkelingKwartaal> buurtPrijsOntwikkelingPerVierkantemeter = default(Collection<WaarderingOntwikkelingKwartaal>), Collection<WaarderingOntwikkelingKwartaal> wijkPrijsOntwikkeling = default(Collection<WaarderingOntwikkelingKwartaal>), Collection<WaarderingOntwikkelingKwartaal> wijkPrijsOntwikkelingPerVierkantemeter = default(Collection<WaarderingOntwikkelingKwartaal>), Collection<WaarderingOntwikkelingKwartaal> gemeentePrijsOntwikkeling = default(Collection<WaarderingOntwikkelingKwartaal>), Collection<WaarderingOntwikkelingKwartaal> gemeentePrijsOntwikkelingPerVierkantemeter = default(Collection<WaarderingOntwikkelingKwartaal>))
         {
             this.Id = id;
             this.ObjectPrijsOntwikkeling = objectPrijsOntwikkeling;
+            this.ObjectPrijsOntwikkelingPerVierkantemeter = objectPrijsOntwikkelingPerVierkantemeter;
             this.BuurtPrijsOntwikkeling = buurtPrijsOntwikkeling;
+            this.BuurtPrijsOntwikkelingPerVierkantemeter = buurtPrijsOntwikkelingPerVierkantemeter;
             this.WijkPrijsOntwikkeling = wijkPrijsOntwikkeling;
+            this.WijkPrijsOntwikkelingPerVierkantemeter = wijkPrijsOntwikkelingPerVierkantemeter;
             this.GemeentePrijsOntwikkeling = gemeentePrijsOntwikkeling;
+            this.GemeentePrijsOntwikkelingPerVierkantemeter = gemeentePrijsOntwikkelingPerVierkantemeter;
         }
 
         /// <summary>
@@ -69,28 +77,60 @@ namespace Calcasa.Api.Model
         public Guid Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets ObjectPrijsOntwikkeling
+        /// De prijsontwikkeling van het gewaardeerde object.
         /// </summary>
+        /// <value>De prijsontwikkeling van het gewaardeerde object.</value>
         [DataMember(Name = "objectPrijsOntwikkeling", EmitDefaultValue = false)]
         public Collection<WaarderingOntwikkelingKwartaal> ObjectPrijsOntwikkeling { get; set; }
 
         /// <summary>
-        /// Gets or Sets BuurtPrijsOntwikkeling
+        /// De prijsontwikkeling van het gewaardeerde object per vierkantemeter.
         /// </summary>
+        /// <value>De prijsontwikkeling van het gewaardeerde object per vierkantemeter.</value>
+        [DataMember(Name = "objectPrijsOntwikkelingPerVierkantemeter", EmitDefaultValue = false)]
+        public Collection<WaarderingOntwikkelingKwartaal> ObjectPrijsOntwikkelingPerVierkantemeter { get; set; }
+
+        /// <summary>
+        /// De prijsontwikkeling van de buurt van het gewaardeerde object.
+        /// </summary>
+        /// <value>De prijsontwikkeling van de buurt van het gewaardeerde object.</value>
         [DataMember(Name = "buurtPrijsOntwikkeling", EmitDefaultValue = false)]
         public Collection<WaarderingOntwikkelingKwartaal> BuurtPrijsOntwikkeling { get; set; }
 
         /// <summary>
-        /// Gets or Sets WijkPrijsOntwikkeling
+        /// De prijsontwikkeling van de buurt van het gewaardeerde object per vierkantemeter.
         /// </summary>
+        /// <value>De prijsontwikkeling van de buurt van het gewaardeerde object per vierkantemeter.</value>
+        [DataMember(Name = "buurtPrijsOntwikkelingPerVierkantemeter", EmitDefaultValue = false)]
+        public Collection<WaarderingOntwikkelingKwartaal> BuurtPrijsOntwikkelingPerVierkantemeter { get; set; }
+
+        /// <summary>
+        /// De prijsontwikkeling van de wijk van het gewaardeerde object.
+        /// </summary>
+        /// <value>De prijsontwikkeling van de wijk van het gewaardeerde object.</value>
         [DataMember(Name = "wijkPrijsOntwikkeling", EmitDefaultValue = false)]
         public Collection<WaarderingOntwikkelingKwartaal> WijkPrijsOntwikkeling { get; set; }
 
         /// <summary>
-        /// Gets or Sets GemeentePrijsOntwikkeling
+        /// De prijsontwikkeling van de wijk van het gewaardeerde object per vierkantemeter.
         /// </summary>
+        /// <value>De prijsontwikkeling van de wijk van het gewaardeerde object per vierkantemeter.</value>
+        [DataMember(Name = "wijkPrijsOntwikkelingPerVierkantemeter", EmitDefaultValue = false)]
+        public Collection<WaarderingOntwikkelingKwartaal> WijkPrijsOntwikkelingPerVierkantemeter { get; set; }
+
+        /// <summary>
+        /// De prijsontwikkeling van de gemeente van het gewaardeerde object.
+        /// </summary>
+        /// <value>De prijsontwikkeling van de gemeente van het gewaardeerde object.</value>
         [DataMember(Name = "gemeentePrijsOntwikkeling", EmitDefaultValue = false)]
         public Collection<WaarderingOntwikkelingKwartaal> GemeentePrijsOntwikkeling { get; set; }
+
+        /// <summary>
+        /// De prijsontwikkeling van de gemeente van het gewaardeerde object per vierkantemeter.
+        /// </summary>
+        /// <value>De prijsontwikkeling van de gemeente van het gewaardeerde object per vierkantemeter.</value>
+        [DataMember(Name = "gemeentePrijsOntwikkelingPerVierkantemeter", EmitDefaultValue = false)]
+        public Collection<WaarderingOntwikkelingKwartaal> GemeentePrijsOntwikkelingPerVierkantemeter { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -102,9 +142,13 @@ namespace Calcasa.Api.Model
             sb.Append("class WaarderingOntwikkeling {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  ObjectPrijsOntwikkeling: ").Append(ObjectPrijsOntwikkeling).Append("\n");
+            sb.Append("  ObjectPrijsOntwikkelingPerVierkantemeter: ").Append(ObjectPrijsOntwikkelingPerVierkantemeter).Append("\n");
             sb.Append("  BuurtPrijsOntwikkeling: ").Append(BuurtPrijsOntwikkeling).Append("\n");
+            sb.Append("  BuurtPrijsOntwikkelingPerVierkantemeter: ").Append(BuurtPrijsOntwikkelingPerVierkantemeter).Append("\n");
             sb.Append("  WijkPrijsOntwikkeling: ").Append(WijkPrijsOntwikkeling).Append("\n");
+            sb.Append("  WijkPrijsOntwikkelingPerVierkantemeter: ").Append(WijkPrijsOntwikkelingPerVierkantemeter).Append("\n");
             sb.Append("  GemeentePrijsOntwikkeling: ").Append(GemeentePrijsOntwikkeling).Append("\n");
+            sb.Append("  GemeentePrijsOntwikkelingPerVierkantemeter: ").Append(GemeentePrijsOntwikkelingPerVierkantemeter).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -151,10 +195,22 @@ namespace Calcasa.Api.Model
                     this.ObjectPrijsOntwikkeling.SequenceEqual(input.ObjectPrijsOntwikkeling)
                 ) && 
                 (
+                    this.ObjectPrijsOntwikkelingPerVierkantemeter == input.ObjectPrijsOntwikkelingPerVierkantemeter ||
+                    this.ObjectPrijsOntwikkelingPerVierkantemeter != null &&
+                    input.ObjectPrijsOntwikkelingPerVierkantemeter != null &&
+                    this.ObjectPrijsOntwikkelingPerVierkantemeter.SequenceEqual(input.ObjectPrijsOntwikkelingPerVierkantemeter)
+                ) && 
+                (
                     this.BuurtPrijsOntwikkeling == input.BuurtPrijsOntwikkeling ||
                     this.BuurtPrijsOntwikkeling != null &&
                     input.BuurtPrijsOntwikkeling != null &&
                     this.BuurtPrijsOntwikkeling.SequenceEqual(input.BuurtPrijsOntwikkeling)
+                ) && 
+                (
+                    this.BuurtPrijsOntwikkelingPerVierkantemeter == input.BuurtPrijsOntwikkelingPerVierkantemeter ||
+                    this.BuurtPrijsOntwikkelingPerVierkantemeter != null &&
+                    input.BuurtPrijsOntwikkelingPerVierkantemeter != null &&
+                    this.BuurtPrijsOntwikkelingPerVierkantemeter.SequenceEqual(input.BuurtPrijsOntwikkelingPerVierkantemeter)
                 ) && 
                 (
                     this.WijkPrijsOntwikkeling == input.WijkPrijsOntwikkeling ||
@@ -163,10 +219,22 @@ namespace Calcasa.Api.Model
                     this.WijkPrijsOntwikkeling.SequenceEqual(input.WijkPrijsOntwikkeling)
                 ) && 
                 (
+                    this.WijkPrijsOntwikkelingPerVierkantemeter == input.WijkPrijsOntwikkelingPerVierkantemeter ||
+                    this.WijkPrijsOntwikkelingPerVierkantemeter != null &&
+                    input.WijkPrijsOntwikkelingPerVierkantemeter != null &&
+                    this.WijkPrijsOntwikkelingPerVierkantemeter.SequenceEqual(input.WijkPrijsOntwikkelingPerVierkantemeter)
+                ) && 
+                (
                     this.GemeentePrijsOntwikkeling == input.GemeentePrijsOntwikkeling ||
                     this.GemeentePrijsOntwikkeling != null &&
                     input.GemeentePrijsOntwikkeling != null &&
                     this.GemeentePrijsOntwikkeling.SequenceEqual(input.GemeentePrijsOntwikkeling)
+                ) && 
+                (
+                    this.GemeentePrijsOntwikkelingPerVierkantemeter == input.GemeentePrijsOntwikkelingPerVierkantemeter ||
+                    this.GemeentePrijsOntwikkelingPerVierkantemeter != null &&
+                    input.GemeentePrijsOntwikkelingPerVierkantemeter != null &&
+                    this.GemeentePrijsOntwikkelingPerVierkantemeter.SequenceEqual(input.GemeentePrijsOntwikkelingPerVierkantemeter)
                 );
         }
 
@@ -183,12 +251,20 @@ namespace Calcasa.Api.Model
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.ObjectPrijsOntwikkeling != null)
                     hashCode = hashCode * 59 + this.ObjectPrijsOntwikkeling.GetHashCode();
+                if (this.ObjectPrijsOntwikkelingPerVierkantemeter != null)
+                    hashCode = hashCode * 59 + this.ObjectPrijsOntwikkelingPerVierkantemeter.GetHashCode();
                 if (this.BuurtPrijsOntwikkeling != null)
                     hashCode = hashCode * 59 + this.BuurtPrijsOntwikkeling.GetHashCode();
+                if (this.BuurtPrijsOntwikkelingPerVierkantemeter != null)
+                    hashCode = hashCode * 59 + this.BuurtPrijsOntwikkelingPerVierkantemeter.GetHashCode();
                 if (this.WijkPrijsOntwikkeling != null)
                     hashCode = hashCode * 59 + this.WijkPrijsOntwikkeling.GetHashCode();
+                if (this.WijkPrijsOntwikkelingPerVierkantemeter != null)
+                    hashCode = hashCode * 59 + this.WijkPrijsOntwikkelingPerVierkantemeter.GetHashCode();
                 if (this.GemeentePrijsOntwikkeling != null)
                     hashCode = hashCode * 59 + this.GemeentePrijsOntwikkeling.GetHashCode();
+                if (this.GemeentePrijsOntwikkelingPerVierkantemeter != null)
+                    hashCode = hashCode * 59 + this.GemeentePrijsOntwikkelingPerVierkantemeter.GetHashCode();
                 return hashCode;
             }
         }

@@ -43,7 +43,7 @@ namespace Calcasa.Api.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "0.0.3";
+        public const string Version = "0.0.4";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -458,7 +458,7 @@ namespace Calcasa.Api.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: v0\n";
-            report += "    SDK Package Version: 0.0.3\n";
+            report += "    SDK Package Version: 0.0.4\n";
 
             return report;
         }

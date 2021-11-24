@@ -47,11 +47,11 @@ namespace Calcasa.Api.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Adres" /> class.
         /// </summary>
-        /// <param name="straat">De straatnaam zoals geschreven in de BAG..</param>
+        /// <param name="straat">De straatnaam zoals geschreven in de BAG (Basisregistratie Adressen en Gebouwen)..</param>
         /// <param name="huisnummer">Het huisnummer..</param>
         /// <param name="huisnummertoevoeging">De huisnummertoevoeging..</param>
         /// <param name="postcode">De postcode met 4 cijfers en 2 letters zonder spatie..</param>
-        /// <param name="woonplaats">De woonplaats zoals geschreven in de BAG..</param>
+        /// <param name="woonplaats">De woonplaats zoals geschreven in de BAG (Basisregistratie Adressen en Gebouwen)..</param>
         public Adres(string straat = default(string), int huisnummer = default(int), string huisnummertoevoeging = default(string), string postcode = default(string), string woonplaats = default(string))
         {
             this.Straat = straat;
@@ -62,9 +62,9 @@ namespace Calcasa.Api.Model
         }
 
         /// <summary>
-        /// De straatnaam zoals geschreven in de BAG.
+        /// De straatnaam zoals geschreven in de BAG (Basisregistratie Adressen en Gebouwen).
         /// </summary>
-        /// <value>De straatnaam zoals geschreven in de BAG.</value>
+        /// <value>De straatnaam zoals geschreven in de BAG (Basisregistratie Adressen en Gebouwen).</value>
         [DataMember(Name = "straat", EmitDefaultValue = false)]
         public string Straat { get; set; }
 
@@ -90,9 +90,9 @@ namespace Calcasa.Api.Model
         public string Postcode { get; set; }
 
         /// <summary>
-        /// De woonplaats zoals geschreven in de BAG.
+        /// De woonplaats zoals geschreven in de BAG (Basisregistratie Adressen en Gebouwen).
         /// </summary>
-        /// <value>De woonplaats zoals geschreven in de BAG.</value>
+        /// <value>De woonplaats zoals geschreven in de BAG (Basisregistratie Adressen en Gebouwen).</value>
         [DataMember(Name = "woonplaats", EmitDefaultValue = false)]
         public string Woonplaats { get; set; }
 

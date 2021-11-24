@@ -46,11 +46,11 @@ namespace Calcasa.Api.Model
     {
 
         /// <summary>
-        ///  | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Onbekend product type. Geen geldige invoer. | | &#x60;modelwaardeCalcasa&#x60; | Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag Desktop Taxatie rapport. |   
+        ///  | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Onbekend product type. Geen geldige invoer. | | &#x60;modelwaardeCalcasa&#x60; | Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport. |   
         /// </summary>
-        /// <value> | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Onbekend product type. Geen geldige invoer. | | &#x60;modelwaardeCalcasa&#x60; | Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag Desktop Taxatie rapport. |   </value>
-        [DataMember(Name = "productType", EmitDefaultValue = true)]
-        public ProductType? ProductType { get; set; }
+        /// <value> | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Onbekend product type. Geen geldige invoer. | | &#x60;modelwaardeCalcasa&#x60; | Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport. |   </value>
+        [DataMember(Name = "productType", IsRequired = true, EmitDefaultValue = true)]
+        public ProductType ProductType { get; set; }
 
         /// <summary>
         /// English: Request GoalEnglish: Request Goal | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | English: Unknown | | &#x60;aankoopNieuweWoning&#x60; | English: New Home Purchase | | &#x60;overbruggingsfinanciering&#x60; | English: Bridge Financing | | &#x60;hypotheekOversluiten&#x60; | English: Refinancing Mortgage | | &#x60;hypotheekOphogen&#x60; | English: Increasing Mortage | | &#x60;hypotheekWijziging&#x60; | English: Changing Mortgage | | &#x60;hypotheekrenteWijzigen&#x60; | English: Change Mortgage Intrest |   
@@ -74,21 +74,21 @@ namespace Calcasa.Api.Model
         /// Initializes a new instance of the <see cref="WaarderingInputParameters" /> class.
         /// </summary>
         /// <param name="geldverstrekker">geldverstrekker.</param>
-        /// <param name="productType"> | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Onbekend product type. Geen geldige invoer. | | &#x60;modelwaardeCalcasa&#x60; | Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag Desktop Taxatie rapport. |   .</param>
+        /// <param name="productType"> | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Onbekend product type. Geen geldige invoer. | | &#x60;modelwaardeCalcasa&#x60; | Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport. |    (required).</param>
         /// <param name="hypotheekwaarde">In hele euros..</param>
         /// <param name="aanvraagdoel">English: Request GoalEnglish: Request Goal | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | English: Unknown | | &#x60;aankoopNieuweWoning&#x60; | English: New Home Purchase | | &#x60;overbruggingsfinanciering&#x60; | English: Bridge Financing | | &#x60;hypotheekOversluiten&#x60; | English: Refinancing Mortgage | | &#x60;hypotheekOphogen&#x60; | English: Increasing Mortage | | &#x60;hypotheekWijziging&#x60; | English: Changing Mortgage | | &#x60;hypotheekrenteWijzigen&#x60; | English: Change Mortgage Intrest |   .</param>
-        /// <param name="klantwaarde">In hele euros..</param>
+        /// <param name="klantwaarde">In hele euros. De waarde zoals bekend bij de klant met bijbehorende KlantwaardeType..</param>
         /// <param name="klantwaardeType"> | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; |  | | &#x60;koopsom&#x60; |  | | &#x60;taxatiewaarde&#x60; |  | | &#x60;wozWaarde&#x60; |  | | &#x60;eigenWaardeinschatting&#x60; |  |   .</param>
-        /// <param name="isBestaandeWoning">isBestaandeWoning.</param>
-        /// <param name="bagNummeraanduidingId">bagNummeraanduidingId (required).</param>
-        /// <param name="isNhg">isNhg.</param>
-        /// <param name="isBestaandeNhgHypotheek">isBestaandeNhgHypotheek.</param>
-        /// <param name="benodigdeOverbrugging">In hele euros..</param>
-        public WaarderingInputParameters(string geldverstrekker = default(string), ProductType? productType = default(ProductType?), int hypotheekwaarde = default(int), Aanvraagdoel? aanvraagdoel = default(Aanvraagdoel?), int klantwaarde = default(int), KlantwaardeType? klantwaardeType = default(KlantwaardeType?), bool isBestaandeWoning = default(bool), long bagNummeraanduidingId = default(long), bool isNhg = default(bool), bool isBestaandeNhgHypotheek = default(bool), int benodigdeOverbrugging = default(int))
+        /// <param name="isBestaandeWoning">Geeft aan of het te waarderen object een bestaande koopwoning is..</param>
+        /// <param name="bagNummeraanduidingId">Het BAG (Basisregistratie Adressen en Gebouwen) nummeraanduiding id. (required).</param>
+        /// <param name="isNhg">Geeft aan of er gebruikt gemaakt wordt van de Nationale Hypotheekgarantie..</param>
+        /// <param name="isBestaandeNhgHypotheek">Geeft aan of er bij de eventuele bestaande hypotheek gebruik is gemaakt van de Nationale Hypotheekgarantie..</param>
+        /// <param name="benodigdeOverbrugging">In hele euros. Alleen van toepassing voor aanvraagdoel Overbruggingsfinanciering..</param>
+        public WaarderingInputParameters(string geldverstrekker = default(string), ProductType productType = default(ProductType), int hypotheekwaarde = default(int), Aanvraagdoel? aanvraagdoel = default(Aanvraagdoel?), int klantwaarde = default(int), KlantwaardeType? klantwaardeType = default(KlantwaardeType?), bool isBestaandeWoning = default(bool), long bagNummeraanduidingId = default(long), bool isNhg = default(bool), bool isBestaandeNhgHypotheek = default(bool), int benodigdeOverbrugging = default(int))
         {
+            this.ProductType = productType;
             this.BagNummeraanduidingId = bagNummeraanduidingId;
             this.Geldverstrekker = geldverstrekker;
-            this.ProductType = productType;
             this.Hypotheekwaarde = hypotheekwaarde;
             this.Aanvraagdoel = aanvraagdoel;
             this.Klantwaarde = klantwaarde;
@@ -113,40 +113,44 @@ namespace Calcasa.Api.Model
         public int Hypotheekwaarde { get; set; }
 
         /// <summary>
-        /// In hele euros.
+        /// In hele euros. De waarde zoals bekend bij de klant met bijbehorende KlantwaardeType.
         /// </summary>
-        /// <value>In hele euros.</value>
+        /// <value>In hele euros. De waarde zoals bekend bij de klant met bijbehorende KlantwaardeType.</value>
         [DataMember(Name = "klantwaarde", EmitDefaultValue = false)]
         public int Klantwaarde { get; set; }
 
         /// <summary>
-        /// Gets or Sets IsBestaandeWoning
+        /// Geeft aan of het te waarderen object een bestaande koopwoning is.
         /// </summary>
+        /// <value>Geeft aan of het te waarderen object een bestaande koopwoning is.</value>
         [DataMember(Name = "isBestaandeWoning", EmitDefaultValue = true)]
         public bool IsBestaandeWoning { get; set; }
 
         /// <summary>
-        /// Gets or Sets BagNummeraanduidingId
+        /// Het BAG (Basisregistratie Adressen en Gebouwen) nummeraanduiding id.
         /// </summary>
+        /// <value>Het BAG (Basisregistratie Adressen en Gebouwen) nummeraanduiding id.</value>
         [DataMember(Name = "bagNummeraanduidingId", IsRequired = true, EmitDefaultValue = false)]
         public long BagNummeraanduidingId { get; set; }
 
         /// <summary>
-        /// Gets or Sets IsNhg
+        /// Geeft aan of er gebruikt gemaakt wordt van de Nationale Hypotheekgarantie.
         /// </summary>
+        /// <value>Geeft aan of er gebruikt gemaakt wordt van de Nationale Hypotheekgarantie.</value>
         [DataMember(Name = "isNhg", EmitDefaultValue = true)]
         public bool IsNhg { get; set; }
 
         /// <summary>
-        /// Gets or Sets IsBestaandeNhgHypotheek
+        /// Geeft aan of er bij de eventuele bestaande hypotheek gebruik is gemaakt van de Nationale Hypotheekgarantie.
         /// </summary>
+        /// <value>Geeft aan of er bij de eventuele bestaande hypotheek gebruik is gemaakt van de Nationale Hypotheekgarantie.</value>
         [DataMember(Name = "isBestaandeNhgHypotheek", EmitDefaultValue = true)]
         public bool IsBestaandeNhgHypotheek { get; set; }
 
         /// <summary>
-        /// In hele euros.
+        /// In hele euros. Alleen van toepassing voor aanvraagdoel Overbruggingsfinanciering.
         /// </summary>
-        /// <value>In hele euros.</value>
+        /// <value>In hele euros. Alleen van toepassing voor aanvraagdoel Overbruggingsfinanciering.</value>
         [DataMember(Name = "benodigdeOverbrugging", EmitDefaultValue = false)]
         public int BenodigdeOverbrugging { get; set; }
 

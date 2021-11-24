@@ -46,9 +46,9 @@ namespace Calcasa.Api.Model
     {
 
         /// <summary>
-        /// Verplicht. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Onbekend product type. Geen geldige invoer. | | &#x60;modelwaardeCalcasa&#x60; | Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag Desktop Taxatie rapport. |   
+        /// Verplicht. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Onbekend product type. Geen geldige invoer. | | &#x60;modelwaardeCalcasa&#x60; | Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport. |   
         /// </summary>
-        /// <value>Verplicht. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Onbekend product type. Geen geldige invoer. | | &#x60;modelwaardeCalcasa&#x60; | Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag Desktop Taxatie rapport. |   </value>
+        /// <value>Verplicht. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Onbekend product type. Geen geldige invoer. | | &#x60;modelwaardeCalcasa&#x60; | Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport. |   </value>
         [DataMember(Name = "productType", IsRequired = true, EmitDefaultValue = true)]
         public ProductType ProductType { get; set; }
 
@@ -71,9 +71,9 @@ namespace Calcasa.Api.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="WaarderingZoekParameters" /> class.
         /// </summary>
-        /// <param name="aangemaakt">aangemaakt.</param>
-        /// <param name="geldverstrekker">geldverstrekker.</param>
-        /// <param name="productType">Verplicht. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Onbekend product type. Geen geldige invoer. | | &#x60;modelwaardeCalcasa&#x60; | Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag Desktop Taxatie rapport. |    (required).</param>
+        /// <param name="aangemaakt">De datum waarop de waardering is aangemaakt, in UTC..</param>
+        /// <param name="geldverstrekker">De naam van de geldverstrekker voor de waardering..</param>
+        /// <param name="productType">Verplicht. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Onbekend product type. Geen geldige invoer. | | &#x60;modelwaardeCalcasa&#x60; | Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport. |    (required).</param>
         /// <param name="aanvraagdoel">aanvraagdoel.</param>
         /// <param name="waarderingStatus">waarderingStatus.</param>
         /// <param name="bagNummeraanduidingId">Verplicht. (required).</param>
@@ -88,14 +88,16 @@ namespace Calcasa.Api.Model
         }
 
         /// <summary>
-        /// Gets or Sets Aangemaakt
+        /// De datum waarop de waardering is aangemaakt, in UTC.
         /// </summary>
+        /// <value>De datum waarop de waardering is aangemaakt, in UTC.</value>
         [DataMember(Name = "aangemaakt", EmitDefaultValue = true)]
         public DateTime? Aangemaakt { get; set; }
 
         /// <summary>
-        /// Gets or Sets Geldverstrekker
+        /// De naam van de geldverstrekker voor de waardering.
         /// </summary>
+        /// <value>De naam van de geldverstrekker voor de waardering.</value>
         [DataMember(Name = "geldverstrekker", EmitDefaultValue = true)]
         public string Geldverstrekker { get; set; }
 

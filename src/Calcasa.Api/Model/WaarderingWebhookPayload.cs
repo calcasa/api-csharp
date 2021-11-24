@@ -46,27 +46,27 @@ namespace Calcasa.Api.Model
     {
 
         /// <summary>
-        /// The old status. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Status onbekend. | | &#x60;initialiseren&#x60; | Deze waardering is geinitialiseerd maar moet nog bevestigd worden. | | &#x60;open&#x60; | Deze waardering is bevestigd maar moet nog uitgevoerd worden. | | &#x60;voltooid&#x60; | Deze waardering is voltooid. | | &#x60;opgewaardeerd&#x60; | Deze waardering is geupgrade naar een ander waardering type. | | &#x60;ongeldig&#x60; | Deze waardering is niet geldig, bijvoorbeeld omdat hij niet door de business rules is gekomen. | | &#x60;verlopen&#x60; | Deze waardering is verlopen omdat hij niet op tijd bevestigd is. | | &#x60;error&#x60; | Er is iets mis gegaan voor deze waardering. |   
+        /// De oude status van de waardering. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Status onbekend. | | &#x60;initialiseren&#x60; | Deze waardering is geinitialiseerd maar moet nog bevestigd worden. | | &#x60;open&#x60; | Deze waardering is bevestigd maar moet nog uitgevoerd worden. | | &#x60;voltooid&#x60; | Deze waardering is voltooid. | | &#x60;opgewaardeerd&#x60; | Deze waardering is geupgrade naar een ander waardering type. | | &#x60;ongeldig&#x60; | Deze waardering is niet geldig, bijvoorbeeld omdat hij niet door de business rules is gekomen. | | &#x60;verlopen&#x60; | Deze waardering is verlopen omdat hij niet op tijd bevestigd is. | | &#x60;error&#x60; | Er is iets mis gegaan voor deze waardering. |   
         /// </summary>
-        /// <value>The old status. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Status onbekend. | | &#x60;initialiseren&#x60; | Deze waardering is geinitialiseerd maar moet nog bevestigd worden. | | &#x60;open&#x60; | Deze waardering is bevestigd maar moet nog uitgevoerd worden. | | &#x60;voltooid&#x60; | Deze waardering is voltooid. | | &#x60;opgewaardeerd&#x60; | Deze waardering is geupgrade naar een ander waardering type. | | &#x60;ongeldig&#x60; | Deze waardering is niet geldig, bijvoorbeeld omdat hij niet door de business rules is gekomen. | | &#x60;verlopen&#x60; | Deze waardering is verlopen omdat hij niet op tijd bevestigd is. | | &#x60;error&#x60; | Er is iets mis gegaan voor deze waardering. |   </value>
+        /// <value>De oude status van de waardering. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Status onbekend. | | &#x60;initialiseren&#x60; | Deze waardering is geinitialiseerd maar moet nog bevestigd worden. | | &#x60;open&#x60; | Deze waardering is bevestigd maar moet nog uitgevoerd worden. | | &#x60;voltooid&#x60; | Deze waardering is voltooid. | | &#x60;opgewaardeerd&#x60; | Deze waardering is geupgrade naar een ander waardering type. | | &#x60;ongeldig&#x60; | Deze waardering is niet geldig, bijvoorbeeld omdat hij niet door de business rules is gekomen. | | &#x60;verlopen&#x60; | Deze waardering is verlopen omdat hij niet op tijd bevestigd is. | | &#x60;error&#x60; | Er is iets mis gegaan voor deze waardering. |   </value>
         [DataMember(Name = "oldStatus", EmitDefaultValue = true)]
         public WaarderingStatus? OldStatus { get; set; }
 
         /// <summary>
-        /// The new status. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Status onbekend. | | &#x60;initialiseren&#x60; | Deze waardering is geinitialiseerd maar moet nog bevestigd worden. | | &#x60;open&#x60; | Deze waardering is bevestigd maar moet nog uitgevoerd worden. | | &#x60;voltooid&#x60; | Deze waardering is voltooid. | | &#x60;opgewaardeerd&#x60; | Deze waardering is geupgrade naar een ander waardering type. | | &#x60;ongeldig&#x60; | Deze waardering is niet geldig, bijvoorbeeld omdat hij niet door de business rules is gekomen. | | &#x60;verlopen&#x60; | Deze waardering is verlopen omdat hij niet op tijd bevestigd is. | | &#x60;error&#x60; | Er is iets mis gegaan voor deze waardering. |   
+        /// De nieuwe status van de waardering. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Status onbekend. | | &#x60;initialiseren&#x60; | Deze waardering is geinitialiseerd maar moet nog bevestigd worden. | | &#x60;open&#x60; | Deze waardering is bevestigd maar moet nog uitgevoerd worden. | | &#x60;voltooid&#x60; | Deze waardering is voltooid. | | &#x60;opgewaardeerd&#x60; | Deze waardering is geupgrade naar een ander waardering type. | | &#x60;ongeldig&#x60; | Deze waardering is niet geldig, bijvoorbeeld omdat hij niet door de business rules is gekomen. | | &#x60;verlopen&#x60; | Deze waardering is verlopen omdat hij niet op tijd bevestigd is. | | &#x60;error&#x60; | Er is iets mis gegaan voor deze waardering. |   
         /// </summary>
-        /// <value>The new status. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Status onbekend. | | &#x60;initialiseren&#x60; | Deze waardering is geinitialiseerd maar moet nog bevestigd worden. | | &#x60;open&#x60; | Deze waardering is bevestigd maar moet nog uitgevoerd worden. | | &#x60;voltooid&#x60; | Deze waardering is voltooid. | | &#x60;opgewaardeerd&#x60; | Deze waardering is geupgrade naar een ander waardering type. | | &#x60;ongeldig&#x60; | Deze waardering is niet geldig, bijvoorbeeld omdat hij niet door de business rules is gekomen. | | &#x60;verlopen&#x60; | Deze waardering is verlopen omdat hij niet op tijd bevestigd is. | | &#x60;error&#x60; | Er is iets mis gegaan voor deze waardering. |   </value>
+        /// <value>De nieuwe status van de waardering. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Status onbekend. | | &#x60;initialiseren&#x60; | Deze waardering is geinitialiseerd maar moet nog bevestigd worden. | | &#x60;open&#x60; | Deze waardering is bevestigd maar moet nog uitgevoerd worden. | | &#x60;voltooid&#x60; | Deze waardering is voltooid. | | &#x60;opgewaardeerd&#x60; | Deze waardering is geupgrade naar een ander waardering type. | | &#x60;ongeldig&#x60; | Deze waardering is niet geldig, bijvoorbeeld omdat hij niet door de business rules is gekomen. | | &#x60;verlopen&#x60; | Deze waardering is verlopen omdat hij niet op tijd bevestigd is. | | &#x60;error&#x60; | Er is iets mis gegaan voor deze waardering. |   </value>
         [DataMember(Name = "newStatus", EmitDefaultValue = true)]
         public WaarderingStatus? NewStatus { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="WaarderingWebhookPayload" /> class.
         /// </summary>
-        /// <param name="eventId">Event Id.</param>
-        /// <param name="waarderingId">Waardering Id.</param>
-        /// <param name="oldStatus">The old status. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Status onbekend. | | &#x60;initialiseren&#x60; | Deze waardering is geinitialiseerd maar moet nog bevestigd worden. | | &#x60;open&#x60; | Deze waardering is bevestigd maar moet nog uitgevoerd worden. | | &#x60;voltooid&#x60; | Deze waardering is voltooid. | | &#x60;opgewaardeerd&#x60; | Deze waardering is geupgrade naar een ander waardering type. | | &#x60;ongeldig&#x60; | Deze waardering is niet geldig, bijvoorbeeld omdat hij niet door de business rules is gekomen. | | &#x60;verlopen&#x60; | Deze waardering is verlopen omdat hij niet op tijd bevestigd is. | | &#x60;error&#x60; | Er is iets mis gegaan voor deze waardering. |   .</param>
-        /// <param name="newStatus">The new status. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Status onbekend. | | &#x60;initialiseren&#x60; | Deze waardering is geinitialiseerd maar moet nog bevestigd worden. | | &#x60;open&#x60; | Deze waardering is bevestigd maar moet nog uitgevoerd worden. | | &#x60;voltooid&#x60; | Deze waardering is voltooid. | | &#x60;opgewaardeerd&#x60; | Deze waardering is geupgrade naar een ander waardering type. | | &#x60;ongeldig&#x60; | Deze waardering is niet geldig, bijvoorbeeld omdat hij niet door de business rules is gekomen. | | &#x60;verlopen&#x60; | Deze waardering is verlopen omdat hij niet op tijd bevestigd is. | | &#x60;error&#x60; | Er is iets mis gegaan voor deze waardering. |   .</param>
-        /// <param name="timestamp">The event timestamp..</param>
-        /// <param name="isTest">Indicates whether this is a test valuation..</param>
+        /// <param name="eventId">Uniek Id voor deze callback..</param>
+        /// <param name="waarderingId">Het Id van de waardering waarop deze callback betrekking heeft..</param>
+        /// <param name="oldStatus">De oude status van de waardering. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Status onbekend. | | &#x60;initialiseren&#x60; | Deze waardering is geinitialiseerd maar moet nog bevestigd worden. | | &#x60;open&#x60; | Deze waardering is bevestigd maar moet nog uitgevoerd worden. | | &#x60;voltooid&#x60; | Deze waardering is voltooid. | | &#x60;opgewaardeerd&#x60; | Deze waardering is geupgrade naar een ander waardering type. | | &#x60;ongeldig&#x60; | Deze waardering is niet geldig, bijvoorbeeld omdat hij niet door de business rules is gekomen. | | &#x60;verlopen&#x60; | Deze waardering is verlopen omdat hij niet op tijd bevestigd is. | | &#x60;error&#x60; | Er is iets mis gegaan voor deze waardering. |   .</param>
+        /// <param name="newStatus">De nieuwe status van de waardering. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Status onbekend. | | &#x60;initialiseren&#x60; | Deze waardering is geinitialiseerd maar moet nog bevestigd worden. | | &#x60;open&#x60; | Deze waardering is bevestigd maar moet nog uitgevoerd worden. | | &#x60;voltooid&#x60; | Deze waardering is voltooid. | | &#x60;opgewaardeerd&#x60; | Deze waardering is geupgrade naar een ander waardering type. | | &#x60;ongeldig&#x60; | Deze waardering is niet geldig, bijvoorbeeld omdat hij niet door de business rules is gekomen. | | &#x60;verlopen&#x60; | Deze waardering is verlopen omdat hij niet op tijd bevestigd is. | | &#x60;error&#x60; | Er is iets mis gegaan voor deze waardering. |   .</param>
+        /// <param name="timestamp">Het tijdstip van het event, in UTC..</param>
+        /// <param name="isTest">Geeft aan of de betreffende waardering aangevraagd is met een test token..</param>
         public WaarderingWebhookPayload(Guid eventId = default(Guid), Guid waarderingId = default(Guid), WaarderingStatus? oldStatus = default(WaarderingStatus?), WaarderingStatus? newStatus = default(WaarderingStatus?), DateTime timestamp = default(DateTime), bool isTest = default(bool))
         {
             this.EventId = eventId;
@@ -92,30 +92,30 @@ namespace Calcasa.Api.Model
             return false;
         }
         /// <summary>
-        /// Event Id
+        /// Uniek Id voor deze callback.
         /// </summary>
-        /// <value>Event Id</value>
+        /// <value>Uniek Id voor deze callback.</value>
         [DataMember(Name = "eventId", EmitDefaultValue = false)]
         public Guid EventId { get; set; }
 
         /// <summary>
-        /// Waardering Id
+        /// Het Id van de waardering waarop deze callback betrekking heeft.
         /// </summary>
-        /// <value>Waardering Id</value>
+        /// <value>Het Id van de waardering waarop deze callback betrekking heeft.</value>
         [DataMember(Name = "waarderingId", EmitDefaultValue = false)]
         public Guid WaarderingId { get; set; }
 
         /// <summary>
-        /// The event timestamp.
+        /// Het tijdstip van het event, in UTC.
         /// </summary>
-        /// <value>The event timestamp.</value>
+        /// <value>Het tijdstip van het event, in UTC.</value>
         [DataMember(Name = "timestamp", EmitDefaultValue = false)]
         public DateTime Timestamp { get; set; }
 
         /// <summary>
-        /// Indicates whether this is a test valuation.
+        /// Geeft aan of de betreffende waardering aangevraagd is met een test token.
         /// </summary>
-        /// <value>Indicates whether this is a test valuation.</value>
+        /// <value>Geeft aan of de betreffende waardering aangevraagd is met een test token.</value>
         [DataMember(Name = "isTest", EmitDefaultValue = true)]
         public bool IsTest { get; set; }
 

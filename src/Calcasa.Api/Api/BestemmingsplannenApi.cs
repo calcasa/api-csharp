@@ -46,9 +46,9 @@ namespace Calcasa.Api.Api
         /// Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <returns>Bestemmingsdata</returns>
-        Bestemmingsdata GetBestemmingById(long id);
+        Bestemmingsdata GetBestemmingById(long bagNummeraanduidingId);
 
         /// <summary>
         /// Gegevens over de bestemmingsplannen op de locatie van een adres (BAG Nummeraanduiding ID).
@@ -57,9 +57,9 @@ namespace Calcasa.Api.Api
         /// Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <returns>ApiResponse of Bestemmingsdata</returns>
-        ApiResponse<Bestemmingsdata> GetBestemmingByIdWithHttpInfo(long id);
+        ApiResponse<Bestemmingsdata> GetBestemmingByIdWithHttpInfo(long bagNummeraanduidingId);
         #endregion Synchronous Operations
     }
 
@@ -76,10 +76,10 @@ namespace Calcasa.Api.Api
         /// Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Bestemmingsdata</returns>
-        System.Threading.Tasks.Task<Bestemmingsdata> GetBestemmingByIdAsync(long id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Bestemmingsdata> GetBestemmingByIdAsync(long bagNummeraanduidingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gegevens over de bestemmingsplannen op de locatie van een adres (BAG Nummeraanduiding ID).
@@ -88,10 +88,10 @@ namespace Calcasa.Api.Api
         /// Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Bestemmingsdata)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Bestemmingsdata>> GetBestemmingByIdWithHttpInfoAsync(long id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Bestemmingsdata>> GetBestemmingByIdWithHttpInfoAsync(long bagNummeraanduidingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -309,11 +309,11 @@ namespace Calcasa.Api.Api
         /// Gegevens over de bestemmingsplannen op de locatie van een adres (BAG Nummeraanduiding ID). Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <returns>Bestemmingsdata</returns>
-        public Bestemmingsdata GetBestemmingById(long id)
+        public Bestemmingsdata GetBestemmingById(long bagNummeraanduidingId)
         {
-            Calcasa.Api.Client.ApiResponse<Bestemmingsdata> localVarResponse = GetBestemmingByIdWithHttpInfo(id);
+            Calcasa.Api.Client.ApiResponse<Bestemmingsdata> localVarResponse = GetBestemmingByIdWithHttpInfo(bagNummeraanduidingId);
             return localVarResponse.Data;
         }
 
@@ -321,9 +321,9 @@ namespace Calcasa.Api.Api
         /// Gegevens over de bestemmingsplannen op de locatie van een adres (BAG Nummeraanduiding ID). Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <returns>ApiResponse of Bestemmingsdata</returns>
-        public Calcasa.Api.Client.ApiResponse<Bestemmingsdata> GetBestemmingByIdWithHttpInfo(long id)
+        public Calcasa.Api.Client.ApiResponse<Bestemmingsdata> GetBestemmingByIdWithHttpInfo(long bagNummeraanduidingId)
         {
             Calcasa.Api.Client.RequestOptions localVarRequestOptions = new Calcasa.Api.Client.RequestOptions();
 
@@ -342,7 +342,7 @@ namespace Calcasa.Api.Api
             var localVarAccept = Calcasa.Api.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            localVarRequestOptions.PathParameters.Add("id", Calcasa.Api.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("bagNummeraanduidingId", Calcasa.Api.Client.ClientUtils.ParameterToString(bagNummeraanduidingId)); // path parameter
 
             // authentication (oauth) required
             // oauth required
@@ -352,7 +352,7 @@ namespace Calcasa.Api.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<Bestemmingsdata>("/api/v0/bestemmingsplannen/{id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<Bestemmingsdata>("/api/v0/bestemmingsplannen/{bagNummeraanduidingId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -367,12 +367,12 @@ namespace Calcasa.Api.Api
         /// Gegevens over de bestemmingsplannen op de locatie van een adres (BAG Nummeraanduiding ID). Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Bestemmingsdata</returns>
-        public async System.Threading.Tasks.Task<Bestemmingsdata> GetBestemmingByIdAsync(long id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Bestemmingsdata> GetBestemmingByIdAsync(long bagNummeraanduidingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Calcasa.Api.Client.ApiResponse<Bestemmingsdata> localVarResponse = await GetBestemmingByIdWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            Calcasa.Api.Client.ApiResponse<Bestemmingsdata> localVarResponse = await GetBestemmingByIdWithHttpInfoAsync(bagNummeraanduidingId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -380,10 +380,10 @@ namespace Calcasa.Api.Api
         /// Gegevens over de bestemmingsplannen op de locatie van een adres (BAG Nummeraanduiding ID). Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Bestemmingsdata)</returns>
-        public async System.Threading.Tasks.Task<Calcasa.Api.Client.ApiResponse<Bestemmingsdata>> GetBestemmingByIdWithHttpInfoAsync(long id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Calcasa.Api.Client.ApiResponse<Bestemmingsdata>> GetBestemmingByIdWithHttpInfoAsync(long bagNummeraanduidingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Calcasa.Api.Client.RequestOptions localVarRequestOptions = new Calcasa.Api.Client.RequestOptions();
@@ -404,7 +404,7 @@ namespace Calcasa.Api.Api
             var localVarAccept = Calcasa.Api.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            localVarRequestOptions.PathParameters.Add("id", Calcasa.Api.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("bagNummeraanduidingId", Calcasa.Api.Client.ClientUtils.ParameterToString(bagNummeraanduidingId)); // path parameter
 
             // authentication (oauth) required
             // oauth required
@@ -415,7 +415,7 @@ namespace Calcasa.Api.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Bestemmingsdata>("/api/v0/bestemmingsplannen/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<Bestemmingsdata>("/api/v0/bestemmingsplannen/{bagNummeraanduidingId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

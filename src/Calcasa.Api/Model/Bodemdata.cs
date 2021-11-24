@@ -46,17 +46,17 @@ namespace Calcasa.Api.Model
     {
 
         /// <summary>
-        ///  | Waarde | Omschrijving | | - -- | - -- | | &#x60;geenData&#x60; |  | | &#x60;onbekend&#x60; |  | | &#x60;nietVervuild&#x60; |  | | &#x60;nietErnstig&#x60; |  | | &#x60;potentieelErnstig&#x60; |  | | &#x60;ernstig&#x60; |  |   
+        /// De staat van de bodem, geeft aan of en in welke mate er sprake is van vervuiling. | Waarde | Omschrijving | | - -- | - -- | | &#x60;geenData&#x60; | Er is geen data beschikbaar over deze bodem. | | &#x60;onbekend&#x60; | De status van deze bodem is niet bekend. | | &#x60;nietVervuild&#x60; | De bodem is niet vervuild. | | &#x60;nietErnstig&#x60; | De bodem is niet ernstig vervuild. | | &#x60;potentieelErnstig&#x60; | De bodem is potentieel ernstig veruild. | | &#x60;ernstig&#x60; | De bodem is ernstig veruild. |   
         /// </summary>
-        /// <value> | Waarde | Omschrijving | | - -- | - -- | | &#x60;geenData&#x60; |  | | &#x60;onbekend&#x60; |  | | &#x60;nietVervuild&#x60; |  | | &#x60;nietErnstig&#x60; |  | | &#x60;potentieelErnstig&#x60; |  | | &#x60;ernstig&#x60; |  |   </value>
+        /// <value>De staat van de bodem, geeft aan of en in welke mate er sprake is van vervuiling. | Waarde | Omschrijving | | - -- | - -- | | &#x60;geenData&#x60; | Er is geen data beschikbaar over deze bodem. | | &#x60;onbekend&#x60; | De status van deze bodem is niet bekend. | | &#x60;nietVervuild&#x60; | De bodem is niet vervuild. | | &#x60;nietErnstig&#x60; | De bodem is niet ernstig vervuild. | | &#x60;potentieelErnstig&#x60; | De bodem is potentieel ernstig veruild. | | &#x60;ernstig&#x60; | De bodem is ernstig veruild. |   </value>
         [DataMember(Name = "status", EmitDefaultValue = true)]
         public BodemStatusType? Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Bodemdata" /> class.
         /// </summary>
-        /// <param name="status"> | Waarde | Omschrijving | | - -- | - -- | | &#x60;geenData&#x60; |  | | &#x60;onbekend&#x60; |  | | &#x60;nietVervuild&#x60; |  | | &#x60;nietErnstig&#x60; |  | | &#x60;potentieelErnstig&#x60; |  | | &#x60;ernstig&#x60; |  |   .</param>
-        /// <param name="datumLaatsteOnderzoek">datumLaatsteOnderzoek.</param>
-        /// <param name="url">url.</param>
+        /// <param name="status">De staat van de bodem, geeft aan of en in welke mate er sprake is van vervuiling. | Waarde | Omschrijving | | - -- | - -- | | &#x60;geenData&#x60; | Er is geen data beschikbaar over deze bodem. | | &#x60;onbekend&#x60; | De status van deze bodem is niet bekend. | | &#x60;nietVervuild&#x60; | De bodem is niet vervuild. | | &#x60;nietErnstig&#x60; | De bodem is niet ernstig vervuild. | | &#x60;potentieelErnstig&#x60; | De bodem is potentieel ernstig veruild. | | &#x60;ernstig&#x60; | De bodem is ernstig veruild. |   .</param>
+        /// <param name="datumLaatsteOnderzoek">De datum van het laatste bodemonderzoek..</param>
+        /// <param name="url">De url met informatie over het bodemonderzoek..</param>
         public Bodemdata(BodemStatusType? status = default(BodemStatusType?), DateTime? datumLaatsteOnderzoek = default(DateTime?), string url = default(string))
         {
             this.Status = status;
@@ -65,14 +65,16 @@ namespace Calcasa.Api.Model
         }
 
         /// <summary>
-        /// Gets or Sets DatumLaatsteOnderzoek
+        /// De datum van het laatste bodemonderzoek.
         /// </summary>
+        /// <value>De datum van het laatste bodemonderzoek.</value>
         [DataMember(Name = "datumLaatsteOnderzoek", EmitDefaultValue = true)]
         public DateTime? DatumLaatsteOnderzoek { get; set; }
 
         /// <summary>
-        /// Gets or Sets Url
+        /// De url met informatie over het bodemonderzoek.
         /// </summary>
+        /// <value>De url met informatie over het bodemonderzoek.</value>
         [DataMember(Name = "url", EmitDefaultValue = true)]
         public string Url { get; set; }
 

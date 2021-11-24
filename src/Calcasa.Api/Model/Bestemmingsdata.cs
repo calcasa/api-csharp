@@ -47,8 +47,8 @@ namespace Calcasa.Api.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Bestemmingsdata" /> class.
         /// </summary>
-        /// <param name="enkelbestemming">enkelbestemming.</param>
-        /// <param name="datumBestemmingplan">datumBestemmingplan.</param>
+        /// <param name="enkelbestemming">De enkelbestemming volgens het bestemmingsplan..</param>
+        /// <param name="datumBestemmingplan">De datum waarop dit bestemmingsplan vastgelegd is..</param>
         public Bestemmingsdata(string enkelbestemming = default(string), DateTime? datumBestemmingplan = default(DateTime?))
         {
             this.Enkelbestemming = enkelbestemming;
@@ -56,14 +56,16 @@ namespace Calcasa.Api.Model
         }
 
         /// <summary>
-        /// Gets or Sets Enkelbestemming
+        /// De enkelbestemming volgens het bestemmingsplan.
         /// </summary>
+        /// <value>De enkelbestemming volgens het bestemmingsplan.</value>
         [DataMember(Name = "enkelbestemming", EmitDefaultValue = true)]
         public string Enkelbestemming { get; set; }
 
         /// <summary>
-        /// Gets or Sets DatumBestemmingplan
+        /// De datum waarop dit bestemmingsplan vastgelegd is.
         /// </summary>
+        /// <value>De datum waarop dit bestemmingsplan vastgelegd is.</value>
         [DataMember(Name = "datumBestemmingplan", EmitDefaultValue = true)]
         public DateTime? DatumBestemmingplan { get; set; }
 

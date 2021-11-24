@@ -47,10 +47,10 @@ namespace Calcasa.Api.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CbsIndeling" /> class.
         /// </summary>
-        /// <param name="buurtId">buurtId.</param>
-        /// <param name="buurtnaam">buurtnaam.</param>
-        /// <param name="wijknaam">wijknaam.</param>
-        /// <param name="gemeentenaam">gemeentenaam.</param>
+        /// <param name="buurtId">Het buurt id zoals bekend bij het CBS (Centraal Bureau voor de Statistiek)..</param>
+        /// <param name="buurtnaam">De naam van de buurt..</param>
+        /// <param name="wijknaam">De naam van de wijk..</param>
+        /// <param name="gemeentenaam">De naam van de gemeente..</param>
         public CbsIndeling(int buurtId = default(int), string buurtnaam = default(string), string wijknaam = default(string), string gemeentenaam = default(string))
         {
             this.BuurtId = buurtId;
@@ -60,26 +60,30 @@ namespace Calcasa.Api.Model
         }
 
         /// <summary>
-        /// Gets or Sets BuurtId
+        /// Het buurt id zoals bekend bij het CBS (Centraal Bureau voor de Statistiek).
         /// </summary>
+        /// <value>Het buurt id zoals bekend bij het CBS (Centraal Bureau voor de Statistiek).</value>
         [DataMember(Name = "buurtId", EmitDefaultValue = false)]
         public int BuurtId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Buurtnaam
+        /// De naam van de buurt.
         /// </summary>
+        /// <value>De naam van de buurt.</value>
         [DataMember(Name = "buurtnaam", EmitDefaultValue = false)]
         public string Buurtnaam { get; set; }
 
         /// <summary>
-        /// Gets or Sets Wijknaam
+        /// De naam van de wijk.
         /// </summary>
+        /// <value>De naam van de wijk.</value>
         [DataMember(Name = "wijknaam", EmitDefaultValue = false)]
         public string Wijknaam { get; set; }
 
         /// <summary>
-        /// Gets or Sets Gemeentenaam
+        /// De naam van de gemeente.
         /// </summary>
+        /// <value>De naam van de gemeente.</value>
         [DataMember(Name = "gemeentenaam", EmitDefaultValue = false)]
         public string Gemeentenaam { get; set; }
 

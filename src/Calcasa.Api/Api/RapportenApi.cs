@@ -40,21 +40,21 @@ namespace Calcasa.Api.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Rapport op basis van Id.
+        /// Rapport op basis van waardering Id.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
+        /// <param name="id">De Id van een waardering.</param>
         /// <returns>FileParameter</returns>
         FileParameter GetRapport(Guid id);
 
         /// <summary>
-        /// Rapport op basis van Id.
+        /// Rapport op basis van waardering Id.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
+        /// <param name="id">De Id van een waardering.</param>
         /// <returns>ApiResponse of FileParameter</returns>
         ApiResponse<FileParameter> GetRapportWithHttpInfo(Guid id);
         #endregion Synchronous Operations
@@ -67,25 +67,25 @@ namespace Calcasa.Api.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Rapport op basis van Id.
+        /// Rapport op basis van waardering Id.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
+        /// <param name="id">De Id van een waardering.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of FileParameter</returns>
         System.Threading.Tasks.Task<FileParameter> GetRapportAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Rapport op basis van Id.
+        /// Rapport op basis van waardering Id.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
+        /// <param name="id">De Id van een waardering.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (FileParameter)</returns>
         System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetRapportWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
@@ -303,10 +303,10 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Rapport op basis van Id. 
+        /// Rapport op basis van waardering Id. 
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
+        /// <param name="id">De Id van een waardering.</param>
         /// <returns>FileParameter</returns>
         public FileParameter GetRapport(Guid id)
         {
@@ -315,10 +315,10 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Rapport op basis van Id. 
+        /// Rapport op basis van waardering Id. 
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
+        /// <param name="id">De Id van een waardering.</param>
         /// <returns>ApiResponse of FileParameter</returns>
         public Calcasa.Api.Client.ApiResponse<FileParameter> GetRapportWithHttpInfo(Guid id)
         {
@@ -361,10 +361,10 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Rapport op basis van Id. 
+        /// Rapport op basis van waardering Id. 
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
+        /// <param name="id">De Id van een waardering.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of FileParameter</returns>
         public async System.Threading.Tasks.Task<FileParameter> GetRapportAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
@@ -374,10 +374,10 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Rapport op basis van Id. 
+        /// Rapport op basis van waardering Id. 
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
+        /// <param name="id">De Id van een waardering.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (FileParameter)</returns>
         public async System.Threading.Tasks.Task<Calcasa.Api.Client.ApiResponse<FileParameter>> GetRapportWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))

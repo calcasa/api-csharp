@@ -40,24 +40,24 @@ namespace Calcasa.Api.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Adres info op met het BAG Nummeraanduiding Id.
+        /// Adres info op basis van BAG Nummeraanduiding Id.
         /// </summary>
         /// <remarks>
         /// De Notities zullen leeg blijven voor dit endpoint.  Het adres object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="bagNummeraanduidingId"></param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <returns>AdresInfo</returns>
         AdresInfo GetAdres(long bagNummeraanduidingId);
 
         /// <summary>
-        /// Adres info op met het BAG Nummeraanduiding Id.
+        /// Adres info op basis van BAG Nummeraanduiding Id.
         /// </summary>
         /// <remarks>
         /// De Notities zullen leeg blijven voor dit endpoint.  Het adres object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="bagNummeraanduidingId"></param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <returns>ApiResponse of AdresInfo</returns>
         ApiResponse<AdresInfo> GetAdresWithHttpInfo(long bagNummeraanduidingId);
         /// <summary>
@@ -67,7 +67,7 @@ namespace Calcasa.Api.Api
         /// De notities geven aan of de input al dan niet gewijzigd of onbekend is.  De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummer toevoeging.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="adres"> (optional)</param>
+        /// <param name="adres">De adres zoekopdracht. (optional)</param>
         /// <returns>AdresInfo</returns>
         AdresInfo SearchAdres(Adres adres = default(Adres));
 
@@ -78,7 +78,7 @@ namespace Calcasa.Api.Api
         /// De notities geven aan of de input al dan niet gewijzigd of onbekend is.  De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummer toevoeging.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="adres"> (optional)</param>
+        /// <param name="adres">De adres zoekopdracht. (optional)</param>
         /// <returns>ApiResponse of AdresInfo</returns>
         ApiResponse<AdresInfo> SearchAdresWithHttpInfo(Adres adres = default(Adres));
         #endregion Synchronous Operations
@@ -91,25 +91,25 @@ namespace Calcasa.Api.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Adres info op met het BAG Nummeraanduiding Id.
+        /// Adres info op basis van BAG Nummeraanduiding Id.
         /// </summary>
         /// <remarks>
         /// De Notities zullen leeg blijven voor dit endpoint.  Het adres object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="bagNummeraanduidingId"></param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AdresInfo</returns>
         System.Threading.Tasks.Task<AdresInfo> GetAdresAsync(long bagNummeraanduidingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Adres info op met het BAG Nummeraanduiding Id.
+        /// Adres info op basis van BAG Nummeraanduiding Id.
         /// </summary>
         /// <remarks>
         /// De Notities zullen leeg blijven voor dit endpoint.  Het adres object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="bagNummeraanduidingId"></param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AdresInfo)</returns>
         System.Threading.Tasks.Task<ApiResponse<AdresInfo>> GetAdresWithHttpInfoAsync(long bagNummeraanduidingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
@@ -120,7 +120,7 @@ namespace Calcasa.Api.Api
         /// De notities geven aan of de input al dan niet gewijzigd of onbekend is.  De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummer toevoeging.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="adres"> (optional)</param>
+        /// <param name="adres">De adres zoekopdracht. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AdresInfo</returns>
         System.Threading.Tasks.Task<AdresInfo> SearchAdresAsync(Adres adres = default(Adres), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
@@ -132,7 +132,7 @@ namespace Calcasa.Api.Api
         /// De notities geven aan of de input al dan niet gewijzigd of onbekend is.  De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummer toevoeging.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="adres"> (optional)</param>
+        /// <param name="adres">De adres zoekopdracht. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AdresInfo)</returns>
         System.Threading.Tasks.Task<ApiResponse<AdresInfo>> SearchAdresWithHttpInfoAsync(Adres adres = default(Adres), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
@@ -350,10 +350,10 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Adres info op met het BAG Nummeraanduiding Id. De Notities zullen leeg blijven voor dit endpoint.  Het adres object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Adres info op basis van BAG Nummeraanduiding Id. De Notities zullen leeg blijven voor dit endpoint.  Het adres object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="bagNummeraanduidingId"></param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <returns>AdresInfo</returns>
         public AdresInfo GetAdres(long bagNummeraanduidingId)
         {
@@ -362,10 +362,10 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Adres info op met het BAG Nummeraanduiding Id. De Notities zullen leeg blijven voor dit endpoint.  Het adres object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Adres info op basis van BAG Nummeraanduiding Id. De Notities zullen leeg blijven voor dit endpoint.  Het adres object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="bagNummeraanduidingId"></param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <returns>ApiResponse of AdresInfo</returns>
         public Calcasa.Api.Client.ApiResponse<AdresInfo> GetAdresWithHttpInfo(long bagNummeraanduidingId)
         {
@@ -408,10 +408,10 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Adres info op met het BAG Nummeraanduiding Id. De Notities zullen leeg blijven voor dit endpoint.  Het adres object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Adres info op basis van BAG Nummeraanduiding Id. De Notities zullen leeg blijven voor dit endpoint.  Het adres object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="bagNummeraanduidingId"></param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AdresInfo</returns>
         public async System.Threading.Tasks.Task<AdresInfo> GetAdresAsync(long bagNummeraanduidingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
@@ -421,10 +421,10 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Adres info op met het BAG Nummeraanduiding Id. De Notities zullen leeg blijven voor dit endpoint.  Het adres object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Adres info op basis van BAG Nummeraanduiding Id. De Notities zullen leeg blijven voor dit endpoint.  Het adres object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="bagNummeraanduidingId"></param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AdresInfo)</returns>
         public async System.Threading.Tasks.Task<Calcasa.Api.Client.ApiResponse<AdresInfo>> GetAdresWithHttpInfoAsync(long bagNummeraanduidingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
@@ -474,7 +474,7 @@ namespace Calcasa.Api.Api
         /// Zoek adres info op basis van het gegeven adres. De notities geven aan of de input al dan niet gewijzigd of onbekend is.  De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummer toevoeging.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="adres"> (optional)</param>
+        /// <param name="adres">De adres zoekopdracht. (optional)</param>
         /// <returns>AdresInfo</returns>
         public AdresInfo SearchAdres(Adres adres = default(Adres))
         {
@@ -486,7 +486,7 @@ namespace Calcasa.Api.Api
         /// Zoek adres info op basis van het gegeven adres. De notities geven aan of de input al dan niet gewijzigd of onbekend is.  De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummer toevoeging.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="adres"> (optional)</param>
+        /// <param name="adres">De adres zoekopdracht. (optional)</param>
         /// <returns>ApiResponse of AdresInfo</returns>
         public Calcasa.Api.Client.ApiResponse<AdresInfo> SearchAdresWithHttpInfo(Adres adres = default(Adres))
         {
@@ -533,7 +533,7 @@ namespace Calcasa.Api.Api
         /// Zoek adres info op basis van het gegeven adres. De notities geven aan of de input al dan niet gewijzigd of onbekend is.  De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummer toevoeging.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="adres"> (optional)</param>
+        /// <param name="adres">De adres zoekopdracht. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AdresInfo</returns>
         public async System.Threading.Tasks.Task<AdresInfo> SearchAdresAsync(Adres adres = default(Adres), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
@@ -546,7 +546,7 @@ namespace Calcasa.Api.Api
         /// Zoek adres info op basis van het gegeven adres. De notities geven aan of de input al dan niet gewijzigd of onbekend is.  De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummer toevoeging.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="adres"> (optional)</param>
+        /// <param name="adres">De adres zoekopdracht. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AdresInfo)</returns>
         public async System.Threading.Tasks.Task<Calcasa.Api.Client.ApiResponse<AdresInfo>> SearchAdresWithHttpInfoAsync(Adres adres = default(Adres), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))

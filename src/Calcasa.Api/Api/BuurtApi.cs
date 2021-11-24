@@ -46,9 +46,9 @@ namespace Calcasa.Api.Api
         /// Het omgevingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
+        /// <param name="buurtId">Een CBS buurt ID.</param>
         /// <returns>Omgevingsdata</returns>
-        Omgevingsdata GetBuurt(int id);
+        Omgevingsdata GetBuurt(int buurtId);
 
         /// <summary>
         /// Gegevens over een buurt en de wijk, gemeente en land waarin deze buurt gesitueerd is.
@@ -57,9 +57,9 @@ namespace Calcasa.Api.Api
         /// Het omgevingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
+        /// <param name="buurtId">Een CBS buurt ID.</param>
         /// <returns>ApiResponse of Omgevingsdata</returns>
-        ApiResponse<Omgevingsdata> GetBuurtWithHttpInfo(int id);
+        ApiResponse<Omgevingsdata> GetBuurtWithHttpInfo(int buurtId);
         #endregion Synchronous Operations
     }
 
@@ -76,10 +76,10 @@ namespace Calcasa.Api.Api
         /// Het omgevingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
+        /// <param name="buurtId">Een CBS buurt ID.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Omgevingsdata</returns>
-        System.Threading.Tasks.Task<Omgevingsdata> GetBuurtAsync(int id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Omgevingsdata> GetBuurtAsync(int buurtId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gegevens over een buurt en de wijk, gemeente en land waarin deze buurt gesitueerd is.
@@ -88,10 +88,10 @@ namespace Calcasa.Api.Api
         /// Het omgevingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
+        /// <param name="buurtId">Een CBS buurt ID.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Omgevingsdata)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Omgevingsdata>> GetBuurtWithHttpInfoAsync(int id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Omgevingsdata>> GetBuurtWithHttpInfoAsync(int buurtId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -309,11 +309,11 @@ namespace Calcasa.Api.Api
         /// Gegevens over een buurt en de wijk, gemeente en land waarin deze buurt gesitueerd is. Het omgevingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
+        /// <param name="buurtId">Een CBS buurt ID.</param>
         /// <returns>Omgevingsdata</returns>
-        public Omgevingsdata GetBuurt(int id)
+        public Omgevingsdata GetBuurt(int buurtId)
         {
-            Calcasa.Api.Client.ApiResponse<Omgevingsdata> localVarResponse = GetBuurtWithHttpInfo(id);
+            Calcasa.Api.Client.ApiResponse<Omgevingsdata> localVarResponse = GetBuurtWithHttpInfo(buurtId);
             return localVarResponse.Data;
         }
 
@@ -321,9 +321,9 @@ namespace Calcasa.Api.Api
         /// Gegevens over een buurt en de wijk, gemeente en land waarin deze buurt gesitueerd is. Het omgevingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
+        /// <param name="buurtId">Een CBS buurt ID.</param>
         /// <returns>ApiResponse of Omgevingsdata</returns>
-        public Calcasa.Api.Client.ApiResponse<Omgevingsdata> GetBuurtWithHttpInfo(int id)
+        public Calcasa.Api.Client.ApiResponse<Omgevingsdata> GetBuurtWithHttpInfo(int buurtId)
         {
             Calcasa.Api.Client.RequestOptions localVarRequestOptions = new Calcasa.Api.Client.RequestOptions();
 
@@ -342,7 +342,7 @@ namespace Calcasa.Api.Api
             var localVarAccept = Calcasa.Api.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            localVarRequestOptions.PathParameters.Add("id", Calcasa.Api.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("buurtId", Calcasa.Api.Client.ClientUtils.ParameterToString(buurtId)); // path parameter
 
             // authentication (oauth) required
             // oauth required
@@ -352,7 +352,7 @@ namespace Calcasa.Api.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<Omgevingsdata>("/api/v0/buurt/{id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<Omgevingsdata>("/api/v0/buurt/{buurtId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -367,12 +367,12 @@ namespace Calcasa.Api.Api
         /// Gegevens over een buurt en de wijk, gemeente en land waarin deze buurt gesitueerd is. Het omgevingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
+        /// <param name="buurtId">Een CBS buurt ID.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Omgevingsdata</returns>
-        public async System.Threading.Tasks.Task<Omgevingsdata> GetBuurtAsync(int id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Omgevingsdata> GetBuurtAsync(int buurtId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Calcasa.Api.Client.ApiResponse<Omgevingsdata> localVarResponse = await GetBuurtWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            Calcasa.Api.Client.ApiResponse<Omgevingsdata> localVarResponse = await GetBuurtWithHttpInfoAsync(buurtId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -380,10 +380,10 @@ namespace Calcasa.Api.Api
         /// Gegevens over een buurt en de wijk, gemeente en land waarin deze buurt gesitueerd is. Het omgevingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
+        /// <param name="buurtId">Een CBS buurt ID.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Omgevingsdata)</returns>
-        public async System.Threading.Tasks.Task<Calcasa.Api.Client.ApiResponse<Omgevingsdata>> GetBuurtWithHttpInfoAsync(int id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Calcasa.Api.Client.ApiResponse<Omgevingsdata>> GetBuurtWithHttpInfoAsync(int buurtId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Calcasa.Api.Client.RequestOptions localVarRequestOptions = new Calcasa.Api.Client.RequestOptions();
@@ -404,7 +404,7 @@ namespace Calcasa.Api.Api
             var localVarAccept = Calcasa.Api.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            localVarRequestOptions.PathParameters.Add("id", Calcasa.Api.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("buurtId", Calcasa.Api.Client.ClientUtils.ParameterToString(buurtId)); // path parameter
 
             // authentication (oauth) required
             // oauth required
@@ -415,7 +415,7 @@ namespace Calcasa.Api.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Omgevingsdata>("/api/v0/buurt/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<Omgevingsdata>("/api/v0/buurt/{buurtId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

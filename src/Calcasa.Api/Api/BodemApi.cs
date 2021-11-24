@@ -46,9 +46,10 @@ namespace Calcasa.Api.Api
         /// Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="id"></param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren. (optional)</param>
         /// <returns>Bodemdata</returns>
-        Bodemdata GetBodemById(long id);
+        Bodemdata GetBodemById(string id, long? bagNummeraanduidingId = default(long?));
 
         /// <summary>
         /// Gegevens over de bodemkwaliteit op de locatie van een adres (BAG Nummeraanduiding ID).
@@ -57,9 +58,10 @@ namespace Calcasa.Api.Api
         /// Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="id"></param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren. (optional)</param>
         /// <returns>ApiResponse of Bodemdata</returns>
-        ApiResponse<Bodemdata> GetBodemByIdWithHttpInfo(long id);
+        ApiResponse<Bodemdata> GetBodemByIdWithHttpInfo(string id, long? bagNummeraanduidingId = default(long?));
         #endregion Synchronous Operations
     }
 
@@ -76,10 +78,11 @@ namespace Calcasa.Api.Api
         /// Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="id"></param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Bodemdata</returns>
-        System.Threading.Tasks.Task<Bodemdata> GetBodemByIdAsync(long id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Bodemdata> GetBodemByIdAsync(string id, long? bagNummeraanduidingId = default(long?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gegevens over de bodemkwaliteit op de locatie van een adres (BAG Nummeraanduiding ID).
@@ -88,10 +91,11 @@ namespace Calcasa.Api.Api
         /// Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="id"></param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Bodemdata)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Bodemdata>> GetBodemByIdWithHttpInfoAsync(long id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Bodemdata>> GetBodemByIdWithHttpInfoAsync(string id, long? bagNummeraanduidingId = default(long?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -309,11 +313,12 @@ namespace Calcasa.Api.Api
         /// Gegevens over de bodemkwaliteit op de locatie van een adres (BAG Nummeraanduiding ID). Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="id"></param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren. (optional)</param>
         /// <returns>Bodemdata</returns>
-        public Bodemdata GetBodemById(long id)
+        public Bodemdata GetBodemById(string id, long? bagNummeraanduidingId = default(long?))
         {
-            Calcasa.Api.Client.ApiResponse<Bodemdata> localVarResponse = GetBodemByIdWithHttpInfo(id);
+            Calcasa.Api.Client.ApiResponse<Bodemdata> localVarResponse = GetBodemByIdWithHttpInfo(id, bagNummeraanduidingId);
             return localVarResponse.Data;
         }
 
@@ -321,10 +326,15 @@ namespace Calcasa.Api.Api
         /// Gegevens over de bodemkwaliteit op de locatie van een adres (BAG Nummeraanduiding ID). Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="id"></param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren. (optional)</param>
         /// <returns>ApiResponse of Bodemdata</returns>
-        public Calcasa.Api.Client.ApiResponse<Bodemdata> GetBodemByIdWithHttpInfo(long id)
+        public Calcasa.Api.Client.ApiResponse<Bodemdata> GetBodemByIdWithHttpInfo(string id, long? bagNummeraanduidingId = default(long?))
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new Calcasa.Api.Client.ApiException(400, "Missing required parameter 'id' when calling BodemApi->GetBodemById");
+
             Calcasa.Api.Client.RequestOptions localVarRequestOptions = new Calcasa.Api.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -343,6 +353,10 @@ namespace Calcasa.Api.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Calcasa.Api.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (bagNummeraanduidingId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Calcasa.Api.Client.ClientUtils.ParameterToMultiMap("", "bagNummeraanduidingId", bagNummeraanduidingId));
+            }
 
             // authentication (oauth) required
             // oauth required
@@ -367,12 +381,13 @@ namespace Calcasa.Api.Api
         /// Gegevens over de bodemkwaliteit op de locatie van een adres (BAG Nummeraanduiding ID). Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="id"></param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Bodemdata</returns>
-        public async System.Threading.Tasks.Task<Bodemdata> GetBodemByIdAsync(long id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Bodemdata> GetBodemByIdAsync(string id, long? bagNummeraanduidingId = default(long?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Calcasa.Api.Client.ApiResponse<Bodemdata> localVarResponse = await GetBodemByIdWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            Calcasa.Api.Client.ApiResponse<Bodemdata> localVarResponse = await GetBodemByIdWithHttpInfoAsync(id, bagNummeraanduidingId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -380,11 +395,16 @@ namespace Calcasa.Api.Api
         /// Gegevens over de bodemkwaliteit op de locatie van een adres (BAG Nummeraanduiding ID). Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="id"></param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Bodemdata)</returns>
-        public async System.Threading.Tasks.Task<Calcasa.Api.Client.ApiResponse<Bodemdata>> GetBodemByIdWithHttpInfoAsync(long id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Calcasa.Api.Client.ApiResponse<Bodemdata>> GetBodemByIdWithHttpInfoAsync(string id, long? bagNummeraanduidingId = default(long?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new Calcasa.Api.Client.ApiException(400, "Missing required parameter 'id' when calling BodemApi->GetBodemById");
+
 
             Calcasa.Api.Client.RequestOptions localVarRequestOptions = new Calcasa.Api.Client.RequestOptions();
 
@@ -405,6 +425,10 @@ namespace Calcasa.Api.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Calcasa.Api.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (bagNummeraanduidingId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Calcasa.Api.Client.ClientUtils.ParameterToMultiMap("", "bagNummeraanduidingId", bagNummeraanduidingId));
+            }
 
             // authentication (oauth) required
             // oauth required

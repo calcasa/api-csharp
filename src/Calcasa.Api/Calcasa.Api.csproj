@@ -11,7 +11,7 @@
     <Description>API client for the Calcasa Public API.</Description>
     <Copyright>Copyright 2021 Calcasa B.V.</Copyright>
     <RootNamespace>Calcasa.Api</RootNamespace>
-    <Version>0.0.3</Version>
+    <Version>0.0.4</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Calcasa.Api.xml</DocumentationFile>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/calcasa/api-csharp.git</RepositoryUrl>

@@ -62,10 +62,10 @@ namespace Calcasa.Api.Api
         /// Configureer callback URL voor een specifieke API versie voor de huidige client.
         /// </summary>
         /// <remarks>
-        /// Indien er al een callback geconfigureerd is voor de opgegeven versie zal deze overschreven worden.
+        /// Indien er al een callback geconfigureerd is voor de opgegeven versie zal deze overschreven worden. Bij het aanroepen van de callback URL zal de CallbackName achter de URL toegevoegd worden. Een lege string
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="callback"> (optional)</param>
+        /// <param name="callback">De te configureren callback. (optional)</param>
         /// <returns>Collection&lt;Callback&gt;</returns>
         Collection<Callback> UpdateCallbacks(Callback callback = default(Callback));
 
@@ -73,10 +73,10 @@ namespace Calcasa.Api.Api
         /// Configureer callback URL voor een specifieke API versie voor de huidige client.
         /// </summary>
         /// <remarks>
-        /// Indien er al een callback geconfigureerd is voor de opgegeven versie zal deze overschreven worden.
+        /// Indien er al een callback geconfigureerd is voor de opgegeven versie zal deze overschreven worden. Bij het aanroepen van de callback URL zal de CallbackName achter de URL toegevoegd worden. Een lege string
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="callback"> (optional)</param>
+        /// <param name="callback">De te configureren callback. (optional)</param>
         /// <returns>ApiResponse of Collection&lt;Callback&gt;</returns>
         ApiResponse<Collection<Callback>> UpdateCallbacksWithHttpInfo(Callback callback = default(Callback));
         #endregion Synchronous Operations
@@ -113,10 +113,10 @@ namespace Calcasa.Api.Api
         /// Configureer callback URL voor een specifieke API versie voor de huidige client.
         /// </summary>
         /// <remarks>
-        /// Indien er al een callback geconfigureerd is voor de opgegeven versie zal deze overschreven worden.
+        /// Indien er al een callback geconfigureerd is voor de opgegeven versie zal deze overschreven worden. Bij het aanroepen van de callback URL zal de CallbackName achter de URL toegevoegd worden. Een lege string
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="callback"> (optional)</param>
+        /// <param name="callback">De te configureren callback. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Collection&lt;Callback&gt;</returns>
         System.Threading.Tasks.Task<Collection<Callback>> UpdateCallbacksAsync(Callback callback = default(Callback), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
@@ -125,10 +125,10 @@ namespace Calcasa.Api.Api
         /// Configureer callback URL voor een specifieke API versie voor de huidige client.
         /// </summary>
         /// <remarks>
-        /// Indien er al een callback geconfigureerd is voor de opgegeven versie zal deze overschreven worden.
+        /// Indien er al een callback geconfigureerd is voor de opgegeven versie zal deze overschreven worden. Bij het aanroepen van de callback URL zal de CallbackName achter de URL toegevoegd worden. Een lege string
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="callback"> (optional)</param>
+        /// <param name="callback">De te configureren callback. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Collection&lt;Callback&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<Collection<Callback>>> UpdateCallbacksWithHttpInfoAsync(Callback callback = default(Callback), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
@@ -461,10 +461,10 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Configureer callback URL voor een specifieke API versie voor de huidige client. Indien er al een callback geconfigureerd is voor de opgegeven versie zal deze overschreven worden.
+        /// Configureer callback URL voor een specifieke API versie voor de huidige client. Indien er al een callback geconfigureerd is voor de opgegeven versie zal deze overschreven worden. Bij het aanroepen van de callback URL zal de CallbackName achter de URL toegevoegd worden. Een lege string
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="callback"> (optional)</param>
+        /// <param name="callback">De te configureren callback. (optional)</param>
         /// <returns>Collection&lt;Callback&gt;</returns>
         public Collection<Callback> UpdateCallbacks(Callback callback = default(Callback))
         {
@@ -473,10 +473,10 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Configureer callback URL voor een specifieke API versie voor de huidige client. Indien er al een callback geconfigureerd is voor de opgegeven versie zal deze overschreven worden.
+        /// Configureer callback URL voor een specifieke API versie voor de huidige client. Indien er al een callback geconfigureerd is voor de opgegeven versie zal deze overschreven worden. Bij het aanroepen van de callback URL zal de CallbackName achter de URL toegevoegd worden. Een lege string
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="callback"> (optional)</param>
+        /// <param name="callback">De te configureren callback. (optional)</param>
         /// <returns>ApiResponse of Collection&lt;Callback&gt;</returns>
         public Calcasa.Api.Client.ApiResponse<Collection<Callback>> UpdateCallbacksWithHttpInfo(Callback callback = default(Callback))
         {
@@ -525,10 +525,10 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Configureer callback URL voor een specifieke API versie voor de huidige client. Indien er al een callback geconfigureerd is voor de opgegeven versie zal deze overschreven worden.
+        /// Configureer callback URL voor een specifieke API versie voor de huidige client. Indien er al een callback geconfigureerd is voor de opgegeven versie zal deze overschreven worden. Bij het aanroepen van de callback URL zal de CallbackName achter de URL toegevoegd worden. Een lege string
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="callback"> (optional)</param>
+        /// <param name="callback">De te configureren callback. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Collection&lt;Callback&gt;</returns>
         public async System.Threading.Tasks.Task<Collection<Callback>> UpdateCallbacksAsync(Callback callback = default(Callback), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
@@ -538,10 +538,10 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Configureer callback URL voor een specifieke API versie voor de huidige client. Indien er al een callback geconfigureerd is voor de opgegeven versie zal deze overschreven worden.
+        /// Configureer callback URL voor een specifieke API versie voor de huidige client. Indien er al een callback geconfigureerd is voor de opgegeven versie zal deze overschreven worden. Bij het aanroepen van de callback URL zal de CallbackName achter de URL toegevoegd worden. Een lege string
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="callback"> (optional)</param>
+        /// <param name="callback">De te configureren callback. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Collection&lt;Callback&gt;)</returns>
         public async System.Threading.Tasks.Task<Calcasa.Api.Client.ApiResponse<Collection<Callback>>> UpdateCallbacksWithHttpInfoAsync(Callback callback = default(Callback), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))

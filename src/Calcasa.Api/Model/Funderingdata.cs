@@ -53,9 +53,9 @@ namespace Calcasa.Api.Model
         public FunderingHerstelType? HerstelType { get; set; }
 
         /// <summary>
-        /// De bron van de data.Bron waar de funderingsinformatie opgehaald is. | Waarde | Omschrijving | | - -- | - -- | | &#x60;calcasa&#x60; | Eigen data. | | &#x60;fundermaps&#x60; | Fundermaps data. |   
+        /// De bron van de data.Bron waar de funderingsinformatie opgehaald is. | Waarde | Omschrijving | | - -- | - -- | | &#x60;calcasa&#x60; | Calcasa data. | | &#x60;fundermaps&#x60; | Fundermaps data. |   
         /// </summary>
-        /// <value>De bron van de data.Bron waar de funderingsinformatie opgehaald is. | Waarde | Omschrijving | | - -- | - -- | | &#x60;calcasa&#x60; | Eigen data. | | &#x60;fundermaps&#x60; | Fundermaps data. |   </value>
+        /// <value>De bron van de data.Bron waar de funderingsinformatie opgehaald is. | Waarde | Omschrijving | | - -- | - -- | | &#x60;calcasa&#x60; | Calcasa data. | | &#x60;fundermaps&#x60; | Fundermaps data. |   </value>
         [DataMember(Name = "bron", EmitDefaultValue = true)]
         public FunderingDataBron? Bron { get; set; }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Calcasa.Api.Model
         /// <param name="optrekkendVochtRisico">Risico-informatie over optrekkend vocht..</param>
         /// <param name="bioInfectieRisico">Risico-informatie over bacteriële infectie..</param>
         /// <param name="herstelkosten">Indicatieve herstelkosten van de fundering..</param>
-        /// <param name="bron">De bron van de data.Bron waar de funderingsinformatie opgehaald is. | Waarde | Omschrijving | | - -- | - -- | | &#x60;calcasa&#x60; | Eigen data. | | &#x60;fundermaps&#x60; | Fundermaps data. |   .</param>
+        /// <param name="bron">De bron van de data.Bron waar de funderingsinformatie opgehaald is. | Waarde | Omschrijving | | - -- | - -- | | &#x60;calcasa&#x60; | Calcasa data. | | &#x60;fundermaps&#x60; | Fundermaps data. |   .</param>
         public Funderingdata(FunderingTypering typering = default(FunderingTypering), FunderingHerstelType? herstelType = default(FunderingHerstelType?), FunderingRisico droogstandRisico = default(FunderingRisico), FunderingRisico optrekkendVochtRisico = default(FunderingRisico), FunderingRisico bioInfectieRisico = default(FunderingRisico), double? herstelkosten = default(double?), FunderingDataBron? bron = default(FunderingDataBron?))
         {
             this.Typering = typering;

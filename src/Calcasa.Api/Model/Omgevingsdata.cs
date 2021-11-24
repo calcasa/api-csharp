@@ -47,11 +47,11 @@ namespace Calcasa.Api.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Omgevingsdata" /> class.
         /// </summary>
-        /// <param name="buurt">buurt.</param>
-        /// <param name="wijk">wijk.</param>
-        /// <param name="gemeente">gemeente.</param>
-        /// <param name="provincie">provincie.</param>
-        /// <param name="land">land.</param>
+        /// <param name="buurt">Statistieken op buurt-niveau..</param>
+        /// <param name="wijk">Statistieken op wijk-niveau..</param>
+        /// <param name="gemeente">Statistieken op gemeente-niveau..</param>
+        /// <param name="provincie">Statistieken op provincie-niveau..</param>
+        /// <param name="land">Statistieken op landelijk-niveau..</param>
         public Omgevingsdata(Gebiedsdata buurt = default(Gebiedsdata), Gebiedsdata wijk = default(Gebiedsdata), Gebiedsdata gemeente = default(Gebiedsdata), Gebiedsdata provincie = default(Gebiedsdata), Gebiedsdata land = default(Gebiedsdata))
         {
             this.Buurt = buurt;
@@ -62,32 +62,37 @@ namespace Calcasa.Api.Model
         }
 
         /// <summary>
-        /// Gets or Sets Buurt
+        /// Statistieken op buurt-niveau.
         /// </summary>
+        /// <value>Statistieken op buurt-niveau.</value>
         [DataMember(Name = "buurt", EmitDefaultValue = true)]
         public Gebiedsdata Buurt { get; set; }
 
         /// <summary>
-        /// Gets or Sets Wijk
+        /// Statistieken op wijk-niveau.
         /// </summary>
+        /// <value>Statistieken op wijk-niveau.</value>
         [DataMember(Name = "wijk", EmitDefaultValue = true)]
         public Gebiedsdata Wijk { get; set; }
 
         /// <summary>
-        /// Gets or Sets Gemeente
+        /// Statistieken op gemeente-niveau.
         /// </summary>
+        /// <value>Statistieken op gemeente-niveau.</value>
         [DataMember(Name = "gemeente", EmitDefaultValue = true)]
         public Gebiedsdata Gemeente { get; set; }
 
         /// <summary>
-        /// Gets or Sets Provincie
+        /// Statistieken op provincie-niveau.
         /// </summary>
+        /// <value>Statistieken op provincie-niveau.</value>
         [DataMember(Name = "provincie", EmitDefaultValue = true)]
         public Gebiedsdata Provincie { get; set; }
 
         /// <summary>
-        /// Gets or Sets Land
+        /// Statistieken op landelijk-niveau.
         /// </summary>
+        /// <value>Statistieken op landelijk-niveau.</value>
         [DataMember(Name = "land", EmitDefaultValue = true)]
         public Gebiedsdata Land { get; set; }
 

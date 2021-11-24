@@ -39,9 +39,9 @@ using OpenAPIDateConverter = Calcasa.Api.Client.OpenAPIDateConverter;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    ///  | Waarde | Omschrijving | | - -- | - -- | | &#x60;nietGecontroleerd&#x60; | Status is onbekend of niet van toepassing. | | &#x60;goedgekeurd&#x60; | De waardering is geaccepteerd. | | &#x60;afgekeurd&#x60; | De waardering is afgewezen. |   
+    ///  | Waarde | Omschrijving | | - -- | - -- | | &#x60;nietGecontroleerd&#x60; | Status is onbekend of niet van toepassing. | | &#x60;goedgekeurd&#x60; | De waardering is geaccepteerd door een taxateur. | | &#x60;afgekeurd&#x60; | De waardering is afgewezen door een taxateur. |   
     /// </summary>
-    /// <value> | Waarde | Omschrijving | | - -- | - -- | | &#x60;nietGecontroleerd&#x60; | Status is onbekend of niet van toepassing. | | &#x60;goedgekeurd&#x60; | De waardering is geaccepteerd. | | &#x60;afgekeurd&#x60; | De waardering is afgewezen. |   </value>
+    /// <value> | Waarde | Omschrijving | | - -- | - -- | | &#x60;nietGecontroleerd&#x60; | Status is onbekend of niet van toepassing. | | &#x60;goedgekeurd&#x60; | De waardering is geaccepteerd door een taxateur. | | &#x60;afgekeurd&#x60; | De waardering is afgewezen door een taxateur. |   </value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum Taxatiestatus
     {

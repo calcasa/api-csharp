@@ -48,7 +48,7 @@ namespace Calcasa.Api.Model
         /// Initializes a new instance of the <see cref="Callback" /> class.
         /// </summary>
         /// <param name="version">De API versie waarvoor deze callback aangeroepen wordt..</param>
-        /// <param name="url">De URL van de callback..</param>
+        /// <param name="url">De URL van de callback. Bij het aanroepen zal de CallbackName hier achter geplaatst worden. English: when making the call, the CallbackName will be appended to this Url..</param>
         public Callback(string version = default(string), string url = default(string))
         {
             this._Version = version;
@@ -63,9 +63,9 @@ namespace Calcasa.Api.Model
         public string _Version { get; set; }
 
         /// <summary>
-        /// De URL van de callback.
+        /// De URL van de callback. Bij het aanroepen zal de CallbackName hier achter geplaatst worden. English: when making the call, the CallbackName will be appended to this Url.
         /// </summary>
-        /// <value>De URL van de callback.</value>
+        /// <value>De URL van de callback. Bij het aanroepen zal de CallbackName hier achter geplaatst worden. English: when making the call, the CallbackName will be appended to this Url.</value>
         [DataMember(Name = "url", EmitDefaultValue = false)]
         public string Url { get; set; }
 

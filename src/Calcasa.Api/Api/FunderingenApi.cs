@@ -46,9 +46,9 @@ namespace Calcasa.Api.Api
         /// Het funderingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <returns>Funderingdata</returns>
-        Funderingdata GetFunderingById(long id);
+        Funderingdata GetFunderingById(long bagNummeraanduidingId);
 
         /// <summary>
         /// Gegevens over de fundering op de locatie van een adres (BAG Nummeraanduiding ID).
@@ -57,9 +57,9 @@ namespace Calcasa.Api.Api
         /// Het funderingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <returns>ApiResponse of Funderingdata</returns>
-        ApiResponse<Funderingdata> GetFunderingByIdWithHttpInfo(long id);
+        ApiResponse<Funderingdata> GetFunderingByIdWithHttpInfo(long bagNummeraanduidingId);
         #endregion Synchronous Operations
     }
 
@@ -76,10 +76,10 @@ namespace Calcasa.Api.Api
         /// Het funderingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Funderingdata</returns>
-        System.Threading.Tasks.Task<Funderingdata> GetFunderingByIdAsync(long id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Funderingdata> GetFunderingByIdAsync(long bagNummeraanduidingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gegevens over de fundering op de locatie van een adres (BAG Nummeraanduiding ID).
@@ -88,10 +88,10 @@ namespace Calcasa.Api.Api
         /// Het funderingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Funderingdata)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Funderingdata>> GetFunderingByIdWithHttpInfoAsync(long id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Funderingdata>> GetFunderingByIdWithHttpInfoAsync(long bagNummeraanduidingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -309,11 +309,11 @@ namespace Calcasa.Api.Api
         /// Gegevens over de fundering op de locatie van een adres (BAG Nummeraanduiding ID). Het funderingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <returns>Funderingdata</returns>
-        public Funderingdata GetFunderingById(long id)
+        public Funderingdata GetFunderingById(long bagNummeraanduidingId)
         {
-            Calcasa.Api.Client.ApiResponse<Funderingdata> localVarResponse = GetFunderingByIdWithHttpInfo(id);
+            Calcasa.Api.Client.ApiResponse<Funderingdata> localVarResponse = GetFunderingByIdWithHttpInfo(bagNummeraanduidingId);
             return localVarResponse.Data;
         }
 
@@ -321,9 +321,9 @@ namespace Calcasa.Api.Api
         /// Gegevens over de fundering op de locatie van een adres (BAG Nummeraanduiding ID). Het funderingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <returns>ApiResponse of Funderingdata</returns>
-        public Calcasa.Api.Client.ApiResponse<Funderingdata> GetFunderingByIdWithHttpInfo(long id)
+        public Calcasa.Api.Client.ApiResponse<Funderingdata> GetFunderingByIdWithHttpInfo(long bagNummeraanduidingId)
         {
             Calcasa.Api.Client.RequestOptions localVarRequestOptions = new Calcasa.Api.Client.RequestOptions();
 
@@ -342,7 +342,7 @@ namespace Calcasa.Api.Api
             var localVarAccept = Calcasa.Api.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            localVarRequestOptions.PathParameters.Add("id", Calcasa.Api.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("bagNummeraanduidingId", Calcasa.Api.Client.ClientUtils.ParameterToString(bagNummeraanduidingId)); // path parameter
 
             // authentication (oauth) required
             // oauth required
@@ -352,7 +352,7 @@ namespace Calcasa.Api.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<Funderingdata>("/api/v0/funderingen/{id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<Funderingdata>("/api/v0/funderingen/{bagNummeraanduidingId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -367,12 +367,12 @@ namespace Calcasa.Api.Api
         /// Gegevens over de fundering op de locatie van een adres (BAG Nummeraanduiding ID). Het funderingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Funderingdata</returns>
-        public async System.Threading.Tasks.Task<Funderingdata> GetFunderingByIdAsync(long id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Funderingdata> GetFunderingByIdAsync(long bagNummeraanduidingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Calcasa.Api.Client.ApiResponse<Funderingdata> localVarResponse = await GetFunderingByIdWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            Calcasa.Api.Client.ApiResponse<Funderingdata> localVarResponse = await GetFunderingByIdWithHttpInfoAsync(bagNummeraanduidingId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -380,10 +380,10 @@ namespace Calcasa.Api.Api
         /// Gegevens over de fundering op de locatie van een adres (BAG Nummeraanduiding ID). Het funderingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
+        /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Funderingdata)</returns>
-        public async System.Threading.Tasks.Task<Calcasa.Api.Client.ApiResponse<Funderingdata>> GetFunderingByIdWithHttpInfoAsync(long id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Calcasa.Api.Client.ApiResponse<Funderingdata>> GetFunderingByIdWithHttpInfoAsync(long bagNummeraanduidingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Calcasa.Api.Client.RequestOptions localVarRequestOptions = new Calcasa.Api.Client.RequestOptions();
@@ -404,7 +404,7 @@ namespace Calcasa.Api.Api
             var localVarAccept = Calcasa.Api.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            localVarRequestOptions.PathParameters.Add("id", Calcasa.Api.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("bagNummeraanduidingId", Calcasa.Api.Client.ClientUtils.ParameterToString(bagNummeraanduidingId)); // path parameter
 
             // authentication (oauth) required
             // oauth required
@@ -415,7 +415,7 @@ namespace Calcasa.Api.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Funderingdata>("/api/v0/funderingen/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<Funderingdata>("/api/v0/funderingen/{bagNummeraanduidingId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
