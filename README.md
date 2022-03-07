@@ -2,7 +2,27 @@
 
 The Calcasa API is used to connect to Calcasa provided services. This is the first production version of the service
 
+## Client packages
+[Nuget](https://www.nuget.org/packages/Calcasa.Api) - [Packagist](https://packagist.org/packages/calcasa/api) - [PyPI](https://pypi.org/project/calcasa.api)
+## Client implementation notes
+Clients should at all times be tolerant to the following:
+
+- Extra fields in responses
+- Empty or hidden fields in responses
+- Extra values in enumerations
+- Unexpected error responses in the form of [Problem Details](https://rfc-editor.org/rfc/rfc7807)
+
+## OpenAPI Specification
+This API is documented in **OpenAPI format version 3** you can use tools like the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) to generate API clients for for example the languages we don't provide a pre-built client for. This is documented [here](/api/v1/articles/clients/generation).
+
 ## Changelog
+
+### 2022-03-07 (v1.1.0)
+- Added `isErfpacht` to `WaarderingInputParameters`.
+- Cleaned up serialization of null values, they should no longer appear in the output.
+
+### 2021-02-04
+- Added extra clarification to the documentation pertaining to the `WaarderingInputParameters` and which fields are required for the different input parameter combinations.
 
 ### 2022-01-11 (v1.0.2)
 - Fixed `GET /api/v1/bodem/{id}` endpoint path parameter description, query parameter was never meant to be there.
@@ -26,19 +46,6 @@ The Calcasa API is used to connect to Calcasa provided services. This is the fir
 ### 2021-12-13 (v1.0.0)
 - Initial release of `v1` based on `v0.0.6`
 
-## Client packages
-[Nuget](https://www.nuget.org/packages/Calcasa.Api) - [Packagist](https://packagist.org/packages/calcasa/api) - [PyPI](https://pypi.org/project/calcasa.api)
-## Client implementation notes
-Clients should at all times be tolerant to the following:
-
-- Extra fields in responses
-- Empty or hidden fields in responses
-- Extra values in enumerations
-- Unexpected error responses in the form of [Problem Details](https://rfc-editor.org/rfc/rfc7807)
-
-## OpenAPI Specification
-This API is documented in **OpenAPI format version 3** you can use tools like the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) to generate API clients.
-
 ## Cross-Origin Resource Sharing
 This API features Cross-Origin Resource Sharing (CORS) implemented in compliance with [W3C spec](https://www.w3.org/TR/cors/).
 And that allows cross-domain communication from the browser.
@@ -47,11 +54,61 @@ All responses have a wildcard same-origin which makes them completely public and
 ## Authentication
 Authentication is done via [OAuth2](https://oauth.net/2/) and the [client credentials](https://oauth.net/2/grant-types/client-credentials/) grant type.
 
+## Previous versions changelogs
+
+### 2022-02-02
+- API version `v0` was removed from service.
+
+### 2021-12-23
+- Mark `v0` as officially deprecated. No further versions will be released. Every implementation should move to `v1`
+
+### 2021-12-10 (v0.0.6)
+- Added extra field `peildatum` to the `WaarderingInputParameters` model.
+
+### 2021-11-25 (v0.0.5)
+- Updated all reported OAuth2 scopes and reduced the superflous scope information on each endpoint.
+
+### 2021-11-23 (v0.0.4)
+- Added per square meter developments to the `WaarderingOntwikkeling` object (fields with the `PerVierkantemeter` suffix).
+
+### 2021-11-15 (v0.0.3)
+- Added callback update and read endpoints and models.
+- Updated documentation.
+
+### 2021-11-11
+- Renamed /fundering endpoint to /funderingen to be more in line with other endpoints
+- Renamed `HerstelType` to `FunderingHerstelType`.
+- Added `FunderingType` values.
+
+### 2021-11-10
+- Adjusted OpenAPI Spec generation to fix some issues with certain generators. This also means that the nullable nature of certain fields is now correctly represented. Please refer to the Generation article for more information, the config files were updated aswell.
+
+### 2021-11-09
+- Added `Status` and `Taxatiedatum` to `Taxatiedata` model.
+
+### 2021-11-08
+- Renamed `id` field in `AdresInfo` model to `bagNummeraanduidingId`.
+- Added `GET /v0/fundering/{id}` endpoint with corresponding models.
+- Changed HTTP response code for the `BusinessRulesProblemDetails` error return type of `POST /v0/waardering` from `422 Unprocessable Entity` to `406 Not Acceptable` to fix a duplicate.
+
+### 2021-10-13
+- Added `taxatie` field to `Waardering` model.
+- Added `Taxatiedata` model containing the `taxatieorganisatie` field for desktop valuations.
+
+### 2021-09-29
+- Added `aangemaakt` timestamp field to `Waardering` model.
+- Added `WaarderingZoekParameters` model to replace `WaarderingInputParameters` in the `POST /v0/waarderingen/zoeken` endpoint.
+- Split `Omgevingsdata` model into a set of separate `Gebiedsdata` models that also contain extra statistics.
+- Added `bijzonderheden` field to `VorigeVerkoop` model.
+- Renamed `ReferentieBijzonderheden` model to `VerkoopBijzonderheden`.
+
+### 2021-09-22
+- Initial release of `v0`
 
 This C# SDK is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: 1.0.2
-- SDK version: 1.0.2
+- API version: 1.1.0
+- SDK version: 1.1.0
 - Build package: org.openapitools.codegen.languages.CSharpNetCoreClientCodegen
     For more information, please visit [https://www.calcasa.nl/contact](https://www.calcasa.nl/contact)
 
@@ -149,7 +206,7 @@ namespace Example
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
             var apiInstance = new AdressenApi(httpClient, config, httpClientHandler);
-            var bagNummeraanduidingId = 789;  // long | Een BAG Nummeraanduiding ID om een adres te specificeren.
+            var bagNummeraanduidingId = 789L;  // long | Een BAG Nummeraanduiding ID om een adres te specificeren.
 
             try
             {
@@ -203,8 +260,6 @@ Class | Method | HTTP request | Description
  - [Model.Bestemmingsdata](docs/Bestemmingsdata.md)
  - [Model.BodemStatusType](docs/BodemStatusType.md)
  - [Model.Bodemdata](docs/Bodemdata.md)
- - [Model.BusinessRulesCode](docs/BusinessRulesCode.md)
- - [Model.BusinessRulesProblemDetails](docs/BusinessRulesProblemDetails.md)
  - [Model.Callback](docs/Callback.md)
  - [Model.CbsIndeling](docs/CbsIndeling.md)
  - [Model.Energielabel](docs/Energielabel.md)
@@ -219,20 +274,16 @@ Class | Method | HTTP request | Description
  - [Model.FunderingTypering](docs/FunderingTypering.md)
  - [Model.Funderingdata](docs/Funderingdata.md)
  - [Model.Gebiedsdata](docs/Gebiedsdata.md)
- - [Model.InvalidArgumentProblemDetails](docs/InvalidArgumentProblemDetails.md)
  - [Model.JsonPatchDocument](docs/JsonPatchDocument.md)
  - [Model.KlantwaardeType](docs/KlantwaardeType.md)
  - [Model.Kwartaal](docs/Kwartaal.md)
  - [Model.Modeldata](docs/Modeldata.md)
- - [Model.NotFoundProblemDetails](docs/NotFoundProblemDetails.md)
  - [Model.Notitie](docs/Notitie.md)
  - [Model.Notities](docs/Notities.md)
  - [Model.Objectdata](docs/Objectdata.md)
  - [Model.Omgevingsdata](docs/Omgevingsdata.md)
  - [Model.Operation](docs/Operation.md)
  - [Model.OperationType](docs/OperationType.md)
- - [Model.PermissionsDeniedProblemDetails](docs/PermissionsDeniedProblemDetails.md)
- - [Model.ProblemDetails](docs/ProblemDetails.md)
  - [Model.ProductType](docs/ProductType.md)
  - [Model.Rapport](docs/Rapport.md)
  - [Model.Referentieobject](docs/Referentieobject.md)
