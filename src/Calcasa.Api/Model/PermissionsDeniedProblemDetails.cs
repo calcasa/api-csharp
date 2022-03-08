@@ -39,23 +39,23 @@ using OpenAPIDateConverter = Calcasa.Api.Client.OpenAPIDateConverter;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// ValidationProblemDetails
+    /// PermissionsDeniedProblemDetails
     /// </summary>
-    [DataContract(Name = "ValidationProblemDetails")]
-    public partial class ValidationProblemDetails : Dictionary<String, Object>, IEquatable<ValidationProblemDetails>, IValidatableObject
+    [DataContract(Name = "PermissionsDeniedProblemDetails")]
+    public partial class PermissionsDeniedProblemDetails : Dictionary<String, Object>, IEquatable<PermissionsDeniedProblemDetails>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ValidationProblemDetails" /> class.
+        /// Initializes a new instance of the <see cref="PermissionsDeniedProblemDetails" /> class.
         /// </summary>
-        /// <param name="errors">errors.</param>
+        /// <param name="requiredPermission">requiredPermission.</param>
         /// <param name="type">type.</param>
         /// <param name="title">title.</param>
         /// <param name="status">status.</param>
         /// <param name="detail">detail.</param>
         /// <param name="instance">instance.</param>
-        public ValidationProblemDetails(Dictionary<string, Collection<string>> errors = default(Dictionary<string, Collection<string>>), string type = default(string), string title = default(string), int? status = default(int?), string detail = default(string), string instance = default(string)) : base()
+        public PermissionsDeniedProblemDetails(string requiredPermission = default(string), string type = default(string), string title = default(string), int? status = default(int?), string detail = default(string), string instance = default(string)) : base()
         {
-            this.Errors = errors;
+            this.RequiredPermission = requiredPermission;
             this.Type = type;
             this.Title = title;
             this.Status = status;
@@ -64,10 +64,10 @@ namespace Calcasa.Api.Model
         }
 
         /// <summary>
-        /// Gets or Sets Errors
+        /// Gets or Sets RequiredPermission
         /// </summary>
-        [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public Dictionary<string, Collection<string>> Errors { get; set; }
+        [DataMember(Name = "requiredPermission", EmitDefaultValue = true)]
+        public string RequiredPermission { get; set; }
 
         /// <summary>
         /// Gets or Sets Type
@@ -106,9 +106,9 @@ namespace Calcasa.Api.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ValidationProblemDetails {\n");
+            sb.Append("class PermissionsDeniedProblemDetails {\n");
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  Errors: ").Append(Errors).Append("\n");
+            sb.Append("  RequiredPermission: ").Append(RequiredPermission).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
@@ -134,15 +134,15 @@ namespace Calcasa.Api.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ValidationProblemDetails);
+            return this.Equals(input as PermissionsDeniedProblemDetails);
         }
 
         /// <summary>
-        /// Returns true if ValidationProblemDetails instances are equal
+        /// Returns true if PermissionsDeniedProblemDetails instances are equal
         /// </summary>
-        /// <param name="input">Instance of ValidationProblemDetails to be compared</param>
+        /// <param name="input">Instance of PermissionsDeniedProblemDetails to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ValidationProblemDetails input)
+        public bool Equals(PermissionsDeniedProblemDetails input)
         {
             if (input == null)
             {
@@ -150,10 +150,9 @@ namespace Calcasa.Api.Model
             }
             return base.Equals(input) && 
                 (
-                    this.Errors == input.Errors ||
-                    this.Errors != null &&
-                    input.Errors != null &&
-                    this.Errors.SequenceEqual(input.Errors)
+                    this.RequiredPermission == input.RequiredPermission ||
+                    (this.RequiredPermission != null &&
+                    this.RequiredPermission.Equals(input.RequiredPermission))
                 ) && base.Equals(input) && 
                 (
                     this.Type == input.Type ||
@@ -191,9 +190,9 @@ namespace Calcasa.Api.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = base.GetHashCode();
-                if (this.Errors != null)
+                if (this.RequiredPermission != null)
                 {
-                    hashCode = (hashCode * 59) + this.Errors.GetHashCode();
+                    hashCode = (hashCode * 59) + this.RequiredPermission.GetHashCode();
                 }
                 if (this.Type != null)
                 {

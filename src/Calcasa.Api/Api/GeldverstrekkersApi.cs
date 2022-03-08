@@ -36,66 +36,66 @@ namespace Calcasa.Api.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IFacturenApiSync : IApiAccessor
+    public interface IGeldverstrekkersApiSync : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Factuur op basis van een waardering Id.
+        /// Alle geldverstrekkers die te gebruiken zijn voor aanvragen.
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">De Id van een waardering.</param>
-        /// <returns>FileParameter</returns>
-        FileParameter GetFactuur(Guid id);
+        /// <param name="productType">Een parameter om de lijst te filteren op gesupporte producttypen.</param>
+        /// <returns>AdresInfo</returns>
+        AdresInfo GetGeldverstrekkers(ProductType productType);
 
         /// <summary>
-        /// Factuur op basis van een waardering Id.
+        /// Alle geldverstrekkers die te gebruiken zijn voor aanvragen.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">De Id van een waardering.</param>
-        /// <returns>ApiResponse of FileParameter</returns>
-        ApiResponse<FileParameter> GetFactuurWithHttpInfo(Guid id);
+        /// <param name="productType">Een parameter om de lijst te filteren op gesupporte producttypen.</param>
+        /// <returns>ApiResponse of AdresInfo</returns>
+        ApiResponse<AdresInfo> GetGeldverstrekkersWithHttpInfo(ProductType productType);
         #endregion Synchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IFacturenApiAsync : IApiAccessor
+    public interface IGeldverstrekkersApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Factuur op basis van een waardering Id.
+        /// Alle geldverstrekkers die te gebruiken zijn voor aanvragen.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">De Id van een waardering.</param>
+        /// <param name="productType">Een parameter om de lijst te filteren op gesupporte producttypen.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetFactuurAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of AdresInfo</returns>
+        System.Threading.Tasks.Task<AdresInfo> GetGeldverstrekkersAsync(ProductType productType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Factuur op basis van een waardering Id.
+        /// Alle geldverstrekkers die te gebruiken zijn voor aanvragen.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">De Id van een waardering.</param>
+        /// <param name="productType">Een parameter om de lijst te filteren op gesupporte producttypen.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetFactuurWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (AdresInfo)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AdresInfo>> GetGeldverstrekkersWithHttpInfoAsync(ProductType productType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IFacturenApi : IFacturenApiSync, IFacturenApiAsync
+    public interface IGeldverstrekkersApi : IGeldverstrekkersApiSync, IGeldverstrekkersApiAsync
     {
 
     }
@@ -103,29 +103,29 @@ namespace Calcasa.Api.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class FacturenApi : IDisposable, IFacturenApi
+    public partial class GeldverstrekkersApi : IDisposable, IGeldverstrekkersApi
     {
         private Calcasa.Api.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FacturenApi"/> class.
+        /// Initializes a new instance of the <see cref="GeldverstrekkersApi"/> class.
         /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
         /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
         /// <returns></returns>
-        public FacturenApi() : this((string)null)
+        public GeldverstrekkersApi() : this((string)null)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FacturenApi"/> class.
+        /// Initializes a new instance of the <see cref="GeldverstrekkersApi"/> class.
         /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
         /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
         /// <param name="basePath">The target service's base path in URL format.</param>
         /// <exception cref="ArgumentException"></exception>
         /// <returns></returns>
-        public FacturenApi(string basePath)
+        public GeldverstrekkersApi(string basePath)
         {
             this.Configuration = Calcasa.Api.Client.Configuration.MergeConfigurations(
                 Calcasa.Api.Client.GlobalConfiguration.Instance,
@@ -138,14 +138,14 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FacturenApi"/> class using Configuration object.
+        /// Initializes a new instance of the <see cref="GeldverstrekkersApi"/> class using Configuration object.
         /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
         /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
         /// <param name="configuration">An instance of Configuration.</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns></returns>
-        public FacturenApi(Calcasa.Api.Client.Configuration configuration)
+        public GeldverstrekkersApi(Calcasa.Api.Client.Configuration configuration)
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
 
@@ -160,7 +160,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FacturenApi"/> class.
+        /// Initializes a new instance of the <see cref="GeldverstrekkersApi"/> class.
         /// </summary>
         /// <param name="client">An instance of HttpClient.</param>
         /// <param name="handler">An optional instance of HttpClientHandler that is used by HttpClient.</param>
@@ -170,12 +170,12 @@ namespace Calcasa.Api.Api
         /// Some configuration settings will not be applied without passing an HttpClientHandler.
         /// The features affected are: Setting and Retrieving Cookies, Client Certificates, Proxy settings.
         /// </remarks>
-        public FacturenApi(HttpClient client, HttpClientHandler handler = null) : this(client, (string)null, handler)
+        public GeldverstrekkersApi(HttpClient client, HttpClientHandler handler = null) : this(client, (string)null, handler)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FacturenApi"/> class.
+        /// Initializes a new instance of the <see cref="GeldverstrekkersApi"/> class.
         /// </summary>
         /// <param name="client">An instance of HttpClient.</param>
         /// <param name="basePath">The target service's base path in URL format.</param>
@@ -187,7 +187,7 @@ namespace Calcasa.Api.Api
         /// Some configuration settings will not be applied without passing an HttpClientHandler.
         /// The features affected are: Setting and Retrieving Cookies, Client Certificates, Proxy settings.
         /// </remarks>
-        public FacturenApi(HttpClient client, string basePath, HttpClientHandler handler = null)
+        public GeldverstrekkersApi(HttpClient client, string basePath, HttpClientHandler handler = null)
         {
             if (client == null) throw new ArgumentNullException("client");
 
@@ -202,7 +202,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FacturenApi"/> class using Configuration object.
+        /// Initializes a new instance of the <see cref="GeldverstrekkersApi"/> class using Configuration object.
         /// </summary>
         /// <param name="client">An instance of HttpClient.</param>
         /// <param name="configuration">An instance of Configuration.</param>
@@ -213,7 +213,7 @@ namespace Calcasa.Api.Api
         /// Some configuration settings will not be applied without passing an HttpClientHandler.
         /// The features affected are: Setting and Retrieving Cookies, Client Certificates, Proxy settings.
         /// </remarks>
-        public FacturenApi(HttpClient client, Calcasa.Api.Client.Configuration configuration, HttpClientHandler handler = null)
+        public GeldverstrekkersApi(HttpClient client, Calcasa.Api.Client.Configuration configuration, HttpClientHandler handler = null)
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
             if (client == null) throw new ArgumentNullException("client");
@@ -229,14 +229,14 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FacturenApi"/> class
+        /// Initializes a new instance of the <see cref="GeldverstrekkersApi"/> class
         /// using a Configuration object and client instance.
         /// </summary>
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
         /// <exception cref="ArgumentNullException"></exception>
-        public FacturenApi(Calcasa.Api.Client.ISynchronousClient client, Calcasa.Api.Client.IAsynchronousClient asyncClient, Calcasa.Api.Client.IReadableConfiguration configuration)
+        public GeldverstrekkersApi(Calcasa.Api.Client.ISynchronousClient client, Calcasa.Api.Client.IAsynchronousClient asyncClient, Calcasa.Api.Client.IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
             if (asyncClient == null) throw new ArgumentNullException("asyncClient");
@@ -303,24 +303,24 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Factuur op basis van een waardering Id. 
+        /// Alle geldverstrekkers die te gebruiken zijn voor aanvragen. 
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">De Id van een waardering.</param>
-        /// <returns>FileParameter</returns>
-        public FileParameter GetFactuur(Guid id)
+        /// <param name="productType">Een parameter om de lijst te filteren op gesupporte producttypen.</param>
+        /// <returns>AdresInfo</returns>
+        public AdresInfo GetGeldverstrekkers(ProductType productType)
         {
-            Calcasa.Api.Client.ApiResponse<FileParameter> localVarResponse = GetFactuurWithHttpInfo(id);
+            Calcasa.Api.Client.ApiResponse<AdresInfo> localVarResponse = GetGeldverstrekkersWithHttpInfo(productType);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Factuur op basis van een waardering Id. 
+        /// Alle geldverstrekkers die te gebruiken zijn voor aanvragen. 
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">De Id van een waardering.</param>
-        /// <returns>ApiResponse of FileParameter</returns>
-        public Calcasa.Api.Client.ApiResponse<FileParameter> GetFactuurWithHttpInfo(Guid id)
+        /// <param name="productType">Een parameter om de lijst te filteren op gesupporte producttypen.</param>
+        /// <returns>ApiResponse of AdresInfo</returns>
+        public Calcasa.Api.Client.ApiResponse<AdresInfo> GetGeldverstrekkersWithHttpInfo(ProductType productType)
         {
             Calcasa.Api.Client.RequestOptions localVarRequestOptions = new Calcasa.Api.Client.RequestOptions();
 
@@ -330,7 +330,7 @@ namespace Calcasa.Api.Api
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/problem+json",
-                "application/pdf"
+                "application/json"
             };
 
             var localVarContentType = Calcasa.Api.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -339,7 +339,7 @@ namespace Calcasa.Api.Api
             var localVarAccept = Calcasa.Api.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            localVarRequestOptions.PathParameters.Add("id", Calcasa.Api.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("productType", Calcasa.Api.Client.ClientUtils.ParameterToString(productType)); // path parameter
 
             // authentication (oauth) required
             // oauth required
@@ -349,11 +349,11 @@ namespace Calcasa.Api.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<FileParameter>("/api/v1/facturen/{id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<AdresInfo>("/api/v1/geldverstrekkers/{productType}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetFactuur", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetGeldverstrekkers", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -361,26 +361,26 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Factuur op basis van een waardering Id. 
+        /// Alle geldverstrekkers die te gebruiken zijn voor aanvragen. 
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">De Id van een waardering.</param>
+        /// <param name="productType">Een parameter om de lijst te filteren op gesupporte producttypen.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetFactuurAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of AdresInfo</returns>
+        public async System.Threading.Tasks.Task<AdresInfo> GetGeldverstrekkersAsync(ProductType productType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Calcasa.Api.Client.ApiResponse<FileParameter> localVarResponse = await GetFactuurWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            Calcasa.Api.Client.ApiResponse<AdresInfo> localVarResponse = await GetGeldverstrekkersWithHttpInfoAsync(productType, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Factuur op basis van een waardering Id. 
+        /// Alle geldverstrekkers die te gebruiken zijn voor aanvragen. 
         /// </summary>
         /// <exception cref="Calcasa.Api.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">De Id van een waardering.</param>
+        /// <param name="productType">Een parameter om de lijst te filteren op gesupporte producttypen.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Calcasa.Api.Client.ApiResponse<FileParameter>> GetFactuurWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (AdresInfo)</returns>
+        public async System.Threading.Tasks.Task<Calcasa.Api.Client.ApiResponse<AdresInfo>> GetGeldverstrekkersWithHttpInfoAsync(ProductType productType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Calcasa.Api.Client.RequestOptions localVarRequestOptions = new Calcasa.Api.Client.RequestOptions();
@@ -391,7 +391,7 @@ namespace Calcasa.Api.Api
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/problem+json",
-                "application/pdf"
+                "application/json"
             };
 
 
@@ -401,7 +401,7 @@ namespace Calcasa.Api.Api
             var localVarAccept = Calcasa.Api.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            localVarRequestOptions.PathParameters.Add("id", Calcasa.Api.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("productType", Calcasa.Api.Client.ClientUtils.ParameterToString(productType)); // path parameter
 
             // authentication (oauth) required
             // oauth required
@@ -412,11 +412,11 @@ namespace Calcasa.Api.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<FileParameter>("/api/v1/facturen/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<AdresInfo>("/api/v1/geldverstrekkers/{productType}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetFactuur", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetGeldverstrekkers", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

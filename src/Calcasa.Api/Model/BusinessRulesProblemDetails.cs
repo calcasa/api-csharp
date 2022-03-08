@@ -39,35 +39,35 @@ using OpenAPIDateConverter = Calcasa.Api.Client.OpenAPIDateConverter;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// ValidationProblemDetails
+    /// BusinessRulesProblemDetails
     /// </summary>
-    [DataContract(Name = "ValidationProblemDetails")]
-    public partial class ValidationProblemDetails : Dictionary<String, Object>, IEquatable<ValidationProblemDetails>, IValidatableObject
+    [DataContract(Name = "BusinessRulesProblemDetails")]
+    public partial class BusinessRulesProblemDetails : Dictionary<String, Object>, IEquatable<BusinessRulesProblemDetails>, IValidatableObject
     {
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="ValidationProblemDetails" /> class.
+        /// Gets or Sets BusinessRulesCode
         /// </summary>
-        /// <param name="errors">errors.</param>
+        [DataMember(Name = "businessRulesCode", EmitDefaultValue = true)]
+        public BusinessRulesCode? BusinessRulesCode { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BusinessRulesProblemDetails" /> class.
+        /// </summary>
+        /// <param name="businessRulesCode">businessRulesCode.</param>
         /// <param name="type">type.</param>
         /// <param name="title">title.</param>
         /// <param name="status">status.</param>
         /// <param name="detail">detail.</param>
         /// <param name="instance">instance.</param>
-        public ValidationProblemDetails(Dictionary<string, Collection<string>> errors = default(Dictionary<string, Collection<string>>), string type = default(string), string title = default(string), int? status = default(int?), string detail = default(string), string instance = default(string)) : base()
+        public BusinessRulesProblemDetails(BusinessRulesCode? businessRulesCode = default(BusinessRulesCode?), string type = default(string), string title = default(string), int? status = default(int?), string detail = default(string), string instance = default(string)) : base()
         {
-            this.Errors = errors;
+            this.BusinessRulesCode = businessRulesCode;
             this.Type = type;
             this.Title = title;
             this.Status = status;
             this.Detail = detail;
             this.Instance = instance;
         }
-
-        /// <summary>
-        /// Gets or Sets Errors
-        /// </summary>
-        [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public Dictionary<string, Collection<string>> Errors { get; set; }
 
         /// <summary>
         /// Gets or Sets Type
@@ -106,9 +106,9 @@ namespace Calcasa.Api.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ValidationProblemDetails {\n");
+            sb.Append("class BusinessRulesProblemDetails {\n");
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  Errors: ").Append(Errors).Append("\n");
+            sb.Append("  BusinessRulesCode: ").Append(BusinessRulesCode).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
@@ -134,15 +134,15 @@ namespace Calcasa.Api.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ValidationProblemDetails);
+            return this.Equals(input as BusinessRulesProblemDetails);
         }
 
         /// <summary>
-        /// Returns true if ValidationProblemDetails instances are equal
+        /// Returns true if BusinessRulesProblemDetails instances are equal
         /// </summary>
-        /// <param name="input">Instance of ValidationProblemDetails to be compared</param>
+        /// <param name="input">Instance of BusinessRulesProblemDetails to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ValidationProblemDetails input)
+        public bool Equals(BusinessRulesProblemDetails input)
         {
             if (input == null)
             {
@@ -150,10 +150,8 @@ namespace Calcasa.Api.Model
             }
             return base.Equals(input) && 
                 (
-                    this.Errors == input.Errors ||
-                    this.Errors != null &&
-                    input.Errors != null &&
-                    this.Errors.SequenceEqual(input.Errors)
+                    this.BusinessRulesCode == input.BusinessRulesCode ||
+                    this.BusinessRulesCode.Equals(input.BusinessRulesCode)
                 ) && base.Equals(input) && 
                 (
                     this.Type == input.Type ||
@@ -191,10 +189,7 @@ namespace Calcasa.Api.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = base.GetHashCode();
-                if (this.Errors != null)
-                {
-                    hashCode = (hashCode * 59) + this.Errors.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.BusinessRulesCode.GetHashCode();
                 if (this.Type != null)
                 {
                     hashCode = (hashCode * 59) + this.Type.GetHashCode();

@@ -39,13 +39,13 @@ using OpenAPIDateConverter = Calcasa.Api.Client.OpenAPIDateConverter;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// ValidationProblemDetails
+    /// HttpValidationProblemDetails
     /// </summary>
-    [DataContract(Name = "ValidationProblemDetails")]
-    public partial class ValidationProblemDetails : Dictionary<String, Object>, IEquatable<ValidationProblemDetails>, IValidatableObject
+    [DataContract(Name = "HttpValidationProblemDetails")]
+    public partial class HttpValidationProblemDetails : Dictionary<String, Object>, IEquatable<HttpValidationProblemDetails>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ValidationProblemDetails" /> class.
+        /// Initializes a new instance of the <see cref="HttpValidationProblemDetails" /> class.
         /// </summary>
         /// <param name="errors">errors.</param>
         /// <param name="type">type.</param>
@@ -53,7 +53,7 @@ namespace Calcasa.Api.Model
         /// <param name="status">status.</param>
         /// <param name="detail">detail.</param>
         /// <param name="instance">instance.</param>
-        public ValidationProblemDetails(Dictionary<string, Collection<string>> errors = default(Dictionary<string, Collection<string>>), string type = default(string), string title = default(string), int? status = default(int?), string detail = default(string), string instance = default(string)) : base()
+        public HttpValidationProblemDetails(Dictionary<string, Collection<string>> errors = default(Dictionary<string, Collection<string>>), string type = default(string), string title = default(string), int? status = default(int?), string detail = default(string), string instance = default(string)) : base()
         {
             this.Errors = errors;
             this.Type = type;
@@ -106,7 +106,7 @@ namespace Calcasa.Api.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ValidationProblemDetails {\n");
+            sb.Append("class HttpValidationProblemDetails {\n");
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  Errors: ").Append(Errors).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
@@ -134,15 +134,15 @@ namespace Calcasa.Api.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ValidationProblemDetails);
+            return this.Equals(input as HttpValidationProblemDetails);
         }
 
         /// <summary>
-        /// Returns true if ValidationProblemDetails instances are equal
+        /// Returns true if HttpValidationProblemDetails instances are equal
         /// </summary>
-        /// <param name="input">Instance of ValidationProblemDetails to be compared</param>
+        /// <param name="input">Instance of HttpValidationProblemDetails to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ValidationProblemDetails input)
+        public bool Equals(HttpValidationProblemDetails input)
         {
             if (input == null)
             {
