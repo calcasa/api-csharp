@@ -39,34 +39,35 @@ using OpenAPIDateConverter = Calcasa.Api.Client.OpenAPIDateConverter;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// WaarderingOntwikkelingKwartaal
+    /// Geldverstrekker
     /// </summary>
-    [DataContract(Name = "WaarderingOntwikkelingKwartaal")]
-    public partial class WaarderingOntwikkelingKwartaal : IEquatable<WaarderingOntwikkelingKwartaal>, IValidatableObject
+    [DataContract(Name = "Geldverstrekker")]
+    public partial class Geldverstrekker : IEquatable<Geldverstrekker>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="WaarderingOntwikkelingKwartaal" /> class.
+        /// Initializes a new instance of the <see cref="Geldverstrekker" /> class.
         /// </summary>
-        /// <param name="kwartaal">kwartaal.</param>
-        /// <param name="waarde">In hele euros..</param>
-        public WaarderingOntwikkelingKwartaal(Kwartaal kwartaal = default(Kwartaal), int waarde = default(int))
+        /// <param name="slug">De slug voor deze geldverstrekker, dit is de waarde die gebruikt moet worden als input voor andere endpoints..</param>
+        /// <param name="name">De volledige naam van deze geldverstrekker..</param>
+        public Geldverstrekker(string slug = default(string), string name = default(string))
         {
-            this.Kwartaal = kwartaal;
-            this.Waarde = waarde;
+            this.Slug = slug;
+            this.Name = name;
         }
 
         /// <summary>
-        /// Gets or Sets Kwartaal
+        /// De slug voor deze geldverstrekker, dit is de waarde die gebruikt moet worden als input voor andere endpoints.
         /// </summary>
-        [DataMember(Name = "kwartaal", EmitDefaultValue = true)]
-        public Kwartaal Kwartaal { get; set; }
+        /// <value>De slug voor deze geldverstrekker, dit is de waarde die gebruikt moet worden als input voor andere endpoints.</value>
+        [DataMember(Name = "slug", EmitDefaultValue = false)]
+        public string Slug { get; set; }
 
         /// <summary>
-        /// In hele euros.
+        /// De volledige naam van deze geldverstrekker.
         /// </summary>
-        /// <value>In hele euros.</value>
-        [DataMember(Name = "waarde", EmitDefaultValue = false)]
-        public int Waarde { get; set; }
+        /// <value>De volledige naam van deze geldverstrekker.</value>
+        [DataMember(Name = "name", EmitDefaultValue = false)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -75,9 +76,9 @@ namespace Calcasa.Api.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class WaarderingOntwikkelingKwartaal {\n");
-            sb.Append("  Kwartaal: ").Append(Kwartaal).Append("\n");
-            sb.Append("  Waarde: ").Append(Waarde).Append("\n");
+            sb.Append("class Geldverstrekker {\n");
+            sb.Append("  Slug: ").Append(Slug).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -98,15 +99,15 @@ namespace Calcasa.Api.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as WaarderingOntwikkelingKwartaal);
+            return this.Equals(input as Geldverstrekker);
         }
 
         /// <summary>
-        /// Returns true if WaarderingOntwikkelingKwartaal instances are equal
+        /// Returns true if Geldverstrekker instances are equal
         /// </summary>
-        /// <param name="input">Instance of WaarderingOntwikkelingKwartaal to be compared</param>
+        /// <param name="input">Instance of Geldverstrekker to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(WaarderingOntwikkelingKwartaal input)
+        public bool Equals(Geldverstrekker input)
         {
             if (input == null)
             {
@@ -114,13 +115,14 @@ namespace Calcasa.Api.Model
             }
             return 
                 (
-                    this.Kwartaal == input.Kwartaal ||
-                    (this.Kwartaal != null &&
-                    this.Kwartaal.Equals(input.Kwartaal))
+                    this.Slug == input.Slug ||
+                    (this.Slug != null &&
+                    this.Slug.Equals(input.Slug))
                 ) && 
                 (
-                    this.Waarde == input.Waarde ||
-                    this.Waarde.Equals(input.Waarde)
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 );
         }
 
@@ -133,11 +135,14 @@ namespace Calcasa.Api.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Kwartaal != null)
+                if (this.Slug != null)
                 {
-                    hashCode = (hashCode * 59) + this.Kwartaal.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Slug.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Waarde.GetHashCode();
+                if (this.Name != null)
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 return hashCode;
             }
         }
