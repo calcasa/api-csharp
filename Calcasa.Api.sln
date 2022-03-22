@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calcasa.Api", "src\Calcasa.Api\Calcasa.Api.csproj", "{5A644298-CC9C-45E7-8B20-9641C1CA733E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calcasa.Api", "src\Calcasa.Api\Calcasa.Api.csproj", "{DB9A8D78-1538-4D2D-9396-FED265E4FC5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,10 +10,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5A644298-CC9C-45E7-8B20-9641C1CA733E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A644298-CC9C-45E7-8B20-9641C1CA733E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A644298-CC9C-45E7-8B20-9641C1CA733E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A644298-CC9C-45E7-8B20-9641C1CA733E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB9A8D78-1538-4D2D-9396-FED265E4FC5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB9A8D78-1538-4D2D-9396-FED265E4FC5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB9A8D78-1538-4D2D-9396-FED265E4FC5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB9A8D78-1538-4D2D-9396-FED265E4FC5F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU
