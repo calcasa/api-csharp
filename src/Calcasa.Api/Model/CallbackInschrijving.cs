@@ -38,35 +38,40 @@ using OpenAPIDateConverter = Calcasa.Api.Client.OpenAPIDateConverter;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// Factuur
+    /// CallbackInschrijving
     /// </summary>
-    [DataContract(Name = "Factuur")]
-    public partial class Factuur : IEquatable<Factuur>
+    [DataContract(Name = "CallbackInschrijving")]
+    public partial class CallbackInschrijving : IEquatable<CallbackInschrijving>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Factuur" /> class.
+        /// Initializes a new instance of the <see cref="CallbackInschrijving" /> class.
         /// </summary>
-        /// <param name="id">Het factuur Id..</param>
-        /// <param name="factuurnummer">Het factuurnummer van de factuur..</param>
-        public Factuur(Guid id = default(Guid), string factuurnummer = default(string))
+        [JsonConstructorAttribute]
+        protected CallbackInschrijving() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CallbackInschrijving" /> class.
+        /// </summary>
+        /// <param name="bagNummeraanduidingId">Verplicht.  Het BAG (Basisregistratie Adressen en Gebouwen) nummeraanduiding id. (required).</param>
+        /// <param name="geldigTot">Verplicht.  De datum tot wanneer deze inschrijving effect moet hebben. Als deze inschrijving verloopt wordt deze automatisch opgeruimt. De maximale termijn is afhankelijk van de gebruikte client. (required).</param>
+        public CallbackInschrijving(long bagNummeraanduidingId = default(long), DateTime geldigTot = default(DateTime))
         {
-            this.Id = id;
-            this.Factuurnummer = factuurnummer;
+            this.BagNummeraanduidingId = bagNummeraanduidingId;
+            this.GeldigTot = geldigTot;
         }
 
         /// <summary>
-        /// Het factuur Id.
+        /// Verplicht.  Het BAG (Basisregistratie Adressen en Gebouwen) nummeraanduiding id.
         /// </summary>
-        /// <value>Het factuur Id.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public Guid Id { get; set; }
+        /// <value>Verplicht.  Het BAG (Basisregistratie Adressen en Gebouwen) nummeraanduiding id.</value>
+        [DataMember(Name = "bagNummeraanduidingId", IsRequired = true, EmitDefaultValue = false)]
+        public long BagNummeraanduidingId { get; set; }
 
         /// <summary>
-        /// Het factuurnummer van de factuur.
+        /// Verplicht.  De datum tot wanneer deze inschrijving effect moet hebben. Als deze inschrijving verloopt wordt deze automatisch opgeruimt. De maximale termijn is afhankelijk van de gebruikte client.
         /// </summary>
-        /// <value>Het factuurnummer van de factuur.</value>
-        [DataMember(Name = "factuurnummer", EmitDefaultValue = false)]
-        public string Factuurnummer { get; set; }
+        /// <value>Verplicht.  De datum tot wanneer deze inschrijving effect moet hebben. Als deze inschrijving verloopt wordt deze automatisch opgeruimt. De maximale termijn is afhankelijk van de gebruikte client.</value>
+        [DataMember(Name = "geldigTot", IsRequired = true, EmitDefaultValue = false)]
+        public DateTime GeldigTot { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -75,9 +80,9 @@ namespace Calcasa.Api.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class Factuur {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Factuurnummer: ").Append(Factuurnummer).Append("\n");
+            sb.Append("class CallbackInschrijving {\n");
+            sb.Append("  BagNummeraanduidingId: ").Append(BagNummeraanduidingId).Append("\n");
+            sb.Append("  GeldigTot: ").Append(GeldigTot).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -98,15 +103,15 @@ namespace Calcasa.Api.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Factuur);
+            return this.Equals(input as CallbackInschrijving);
         }
 
         /// <summary>
-        /// Returns true if Factuur instances are equal
+        /// Returns true if CallbackInschrijving instances are equal
         /// </summary>
-        /// <param name="input">Instance of Factuur to be compared</param>
+        /// <param name="input">Instance of CallbackInschrijving to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Factuur input)
+        public bool Equals(CallbackInschrijving input)
         {
             if (input == null)
             {
@@ -114,14 +119,13 @@ namespace Calcasa.Api.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.BagNummeraanduidingId == input.BagNummeraanduidingId ||
+                    this.BagNummeraanduidingId.Equals(input.BagNummeraanduidingId)
                 ) && 
                 (
-                    this.Factuurnummer == input.Factuurnummer ||
-                    (this.Factuurnummer != null &&
-                    this.Factuurnummer.Equals(input.Factuurnummer))
+                    this.GeldigTot == input.GeldigTot ||
+                    (this.GeldigTot != null &&
+                    this.GeldigTot.Equals(input.GeldigTot))
                 );
         }
 
@@ -134,13 +138,10 @@ namespace Calcasa.Api.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
+                hashCode = (hashCode * 59) + this.BagNummeraanduidingId.GetHashCode();
+                if (this.GeldigTot != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
-                }
-                if (this.Factuurnummer != null)
-                {
-                    hashCode = (hashCode * 59) + this.Factuurnummer.GetHashCode();
+                    hashCode = (hashCode * 59) + this.GeldigTot.GetHashCode();
                 }
                 return hashCode;
             }
