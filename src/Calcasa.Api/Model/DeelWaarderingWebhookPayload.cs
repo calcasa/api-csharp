@@ -38,42 +38,22 @@ using OpenAPIDateConverter = Calcasa.Api.Client.OpenAPIDateConverter;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// De payload van de webhooks voor de waarderingen.
+    /// De payload van de webhooks die verstuurd worden op het moment dat een klant toestemming geeft voor het delen van een waardering.
     /// </summary>
-    [DataContract(Name = "WaarderingWebhookPayload")]
-    public partial class WaarderingWebhookPayload : IEquatable<WaarderingWebhookPayload>
+    [DataContract(Name = "DeelWaarderingWebhookPayload")]
+    public partial class DeelWaarderingWebhookPayload : IEquatable<DeelWaarderingWebhookPayload>
     {
-
         /// <summary>
-        /// Gets or Sets OldStatus
-        /// </summary>
-        [DataMember(Name = "oldStatus", EmitDefaultValue = false)]
-        public WaarderingStatus? OldStatus { get; set; }
-
-        /// <summary>
-        /// Gets or Sets NewStatus
-        /// </summary>
-        [DataMember(Name = "newStatus", EmitDefaultValue = false)]
-        public WaarderingStatus? NewStatus { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WaarderingWebhookPayload" /> class.
+        /// Initializes a new instance of the <see cref="DeelWaarderingWebhookPayload" /> class.
         /// </summary>
         /// <param name="eventId">Uniek Id voor deze callback..</param>
         /// <param name="waarderingId">Het Id van de waardering waarop deze callback betrekking heeft..</param>
-        /// <param name="oldStatus">oldStatus.</param>
-        /// <param name="newStatus">newStatus.</param>
         /// <param name="timestamp">Het tijdstip van het event, in UTC..</param>
-        /// <param name="isTest">Geeft aan of de betreffende waardering aangevraagd is met een test token..</param>
-        /// <param name="externeReferentie">Dit is de externe referentie opgegeven bij de callback inschrijving of als dit een normale API waardering is waarvoor geen callback inschrijving was dit veld null..</param>
-        public WaarderingWebhookPayload(Guid eventId = default(Guid), Guid waarderingId = default(Guid), WaarderingStatus? oldStatus = default(WaarderingStatus?), WaarderingStatus? newStatus = default(WaarderingStatus?), DateTime timestamp = default(DateTime), bool isTest = default(bool), string externeReferentie = default(string))
+        public DeelWaarderingWebhookPayload(Guid eventId = default(Guid), Guid waarderingId = default(Guid), DateTime timestamp = default(DateTime))
         {
             this.EventId = eventId;
             this.WaarderingId = waarderingId;
-            this.OldStatus = oldStatus;
-            this.NewStatus = newStatus;
             this.Timestamp = timestamp;
-            this.IsTest = isTest;
-            this.ExterneReferentie = externeReferentie;
         }
 
         /// <summary>
@@ -112,35 +92,17 @@ namespace Calcasa.Api.Model
         public DateTime Timestamp { get; set; }
 
         /// <summary>
-        /// Geeft aan of de betreffende waardering aangevraagd is met een test token.
-        /// </summary>
-        /// <value>Geeft aan of de betreffende waardering aangevraagd is met een test token.</value>
-        [DataMember(Name = "isTest", EmitDefaultValue = true)]
-        public bool IsTest { get; set; }
-
-        /// <summary>
-        /// Dit is de externe referentie opgegeven bij de callback inschrijving of als dit een normale API waardering is waarvoor geen callback inschrijving was dit veld null.
-        /// </summary>
-        /// <value>Dit is de externe referentie opgegeven bij de callback inschrijving of als dit een normale API waardering is waarvoor geen callback inschrijving was dit veld null.</value>
-        [DataMember(Name = "externeReferentie", EmitDefaultValue = true)]
-        public string ExterneReferentie { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class WaarderingWebhookPayload {\n");
+            sb.Append("class DeelWaarderingWebhookPayload {\n");
             sb.Append("  CallbackName: ").Append(CallbackName).Append("\n");
             sb.Append("  EventId: ").Append(EventId).Append("\n");
             sb.Append("  WaarderingId: ").Append(WaarderingId).Append("\n");
-            sb.Append("  OldStatus: ").Append(OldStatus).Append("\n");
-            sb.Append("  NewStatus: ").Append(NewStatus).Append("\n");
             sb.Append("  Timestamp: ").Append(Timestamp).Append("\n");
-            sb.Append("  IsTest: ").Append(IsTest).Append("\n");
-            sb.Append("  ExterneReferentie: ").Append(ExterneReferentie).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -161,15 +123,15 @@ namespace Calcasa.Api.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as WaarderingWebhookPayload);
+            return this.Equals(input as DeelWaarderingWebhookPayload);
         }
 
         /// <summary>
-        /// Returns true if WaarderingWebhookPayload instances are equal
+        /// Returns true if DeelWaarderingWebhookPayload instances are equal
         /// </summary>
-        /// <param name="input">Instance of WaarderingWebhookPayload to be compared</param>
+        /// <param name="input">Instance of DeelWaarderingWebhookPayload to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(WaarderingWebhookPayload input)
+        public bool Equals(DeelWaarderingWebhookPayload input)
         {
             if (input == null)
             {
@@ -192,26 +154,9 @@ namespace Calcasa.Api.Model
                     this.WaarderingId.Equals(input.WaarderingId))
                 ) && 
                 (
-                    this.OldStatus == input.OldStatus ||
-                    this.OldStatus.Equals(input.OldStatus)
-                ) && 
-                (
-                    this.NewStatus == input.NewStatus ||
-                    this.NewStatus.Equals(input.NewStatus)
-                ) && 
-                (
                     this.Timestamp == input.Timestamp ||
                     (this.Timestamp != null &&
                     this.Timestamp.Equals(input.Timestamp))
-                ) && 
-                (
-                    this.IsTest == input.IsTest ||
-                    this.IsTest.Equals(input.IsTest)
-                ) && 
-                (
-                    this.ExterneReferentie == input.ExterneReferentie ||
-                    (this.ExterneReferentie != null &&
-                    this.ExterneReferentie.Equals(input.ExterneReferentie))
                 );
         }
 
@@ -236,16 +181,9 @@ namespace Calcasa.Api.Model
                 {
                     hashCode = (hashCode * 59) + this.WaarderingId.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.OldStatus.GetHashCode();
-                hashCode = (hashCode * 59) + this.NewStatus.GetHashCode();
                 if (this.Timestamp != null)
                 {
                     hashCode = (hashCode * 59) + this.Timestamp.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.IsTest.GetHashCode();
-                if (this.ExterneReferentie != null)
-                {
-                    hashCode = (hashCode * 59) + this.ExterneReferentie.GetHashCode();
                 }
                 return hashCode;
             }
