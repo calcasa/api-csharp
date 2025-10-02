@@ -12,7 +12,7 @@
     <Description>API client for the Calcasa Public API.</Description>
     <Copyright>Copyright 2025 Calcasa B.V.</Copyright>
     <RootNamespace>Calcasa.Api</RootNamespace>
-    <Version>1.4.0-rc1</Version>
+    <Version>1.4.0-rc2</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Calcasa.Api.xml</DocumentationFile>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/calcasa/api-csharp.git</RepositoryUrl>
@@ -24,11 +24,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
+
     <PackageReference Include="Microsoft.Extensions.Http" Condition="'$(TargetFramework)' == 'net8.0'" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Condition="'$(TargetFramework)' == 'net8.0'" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Http" Condition="'$(TargetFramework)' == 'net9.0'" Version="9.0.6" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Condition="'$(TargetFramework)' == 'net9.0'" Version="9.0.6" />
-    <PackageReference Include="Microsoft.Extensions.Http.Polly" Condition="'$(TargetFramework)' == 'net8.0'" Version="8.0.17" />
+    <PackageReference Include="Microsoft.Extensions.Http.Polly" Condition="'$(TargetFramework)' == 'net8.0'" Version="8.0.20" />
     <PackageReference Include="Microsoft.Extensions.Http.Polly" Condition="'$(TargetFramework)' == 'net9.0'" Version="9.0.6" />
     <PackageReference Include="Microsoft.Net.Http.Headers" Condition="'$(TargetFramework)' == 'net8.0'" Version="8.0.17" />
     <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Condition="'$(TargetFramework)' == 'net8.0'" Version="8.0.17" />

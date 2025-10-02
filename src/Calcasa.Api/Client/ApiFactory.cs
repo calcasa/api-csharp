@@ -1,6 +1,6 @@
 using System;
-using Microsoft.Extensions.DependencyInjection;
 using Calcasa.Api.Api;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Calcasa.Api.Client
 {

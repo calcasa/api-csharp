@@ -28,7 +28,7 @@ namespace Calcasa.Api.Client
         internal TokenBase(TimeSpan? timeout = null)
         {
             Timeout = timeout;
-            
+
             if (Timeout != null)
                 StartTimer(Timeout.Value);
         }
@@ -58,7 +58,7 @@ namespace Calcasa.Api.Client
         /// </summary>
         public void BeginRateLimit()
         {
-            lock(_nextAvailableLock)
+            lock (_nextAvailableLock)
                 _nextAvailable = DateTime.UtcNow.AddSeconds(5);
         }
 
