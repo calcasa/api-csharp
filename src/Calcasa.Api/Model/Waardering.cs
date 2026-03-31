@@ -55,6 +55,7 @@ namespace Calcasa.Api.Model
         /// <param name="model">model</param>
         /// <param name="taxatie">taxatie</param>
         /// <param name="object">object</param>
+        /// <param name="opname">opname</param>
         /// <param name="cbsIndeling">cbsIndeling</param>
         /// <param name="fotos">fotos</param>
         /// <param name="referenties">referenties</param>
@@ -62,7 +63,7 @@ namespace Calcasa.Api.Model
         /// <param name="rapport">rapport</param>
         /// <param name="factuur">factuur</param>
         [JsonConstructor]
-        public Waardering(Guid id, DateTime aangemaakt, WaarderingStatus status, WaarderingInputParameters origineleInput, Adres adres, Option<Modeldata?> model = default, Option<Taxatiedata?> taxatie = default, Option<Objectdata?> @object = default, Option<CbsIndeling?> cbsIndeling = default, Option<Collection<Foto>?> fotos = default, Option<Collection<Referentieobject>?> referenties = default, Option<Collection<VorigeVerkoop>?> vorigeVerkopen = default, Option<Rapport?> rapport = default, Option<Factuur?> factuur = default)
+        public Waardering(Guid id, DateTime aangemaakt, WaarderingStatus status, WaarderingInputParameters origineleInput, Adres adres, Option<Modeldata?> model = default, Option<Taxatiedata?> taxatie = default, Option<Objectdata?> @object = default, Option<Opnamedata?> opname = default, Option<CbsIndeling?> cbsIndeling = default, Option<Collection<Foto>?> fotos = default, Option<Collection<Referentieobject>?> referenties = default, Option<Collection<VorigeVerkoop>?> vorigeVerkopen = default, Option<Rapport?> rapport = default, Option<Factuur?> factuur = default)
         {
             Id = id;
             Aangemaakt = aangemaakt;
@@ -72,6 +73,7 @@ namespace Calcasa.Api.Model
             ModelOption = model;
             TaxatieOption = taxatie;
             ObjectOption = @object;
+            OpnameOption = opname;
             CbsIndelingOption = cbsIndeling;
             FotosOption = fotos;
             ReferentiesOption = referenties;
@@ -153,6 +155,19 @@ namespace Calcasa.Api.Model
         /// </summary>
         [JsonPropertyName("object")]
         public Objectdata? Object { get { return this.ObjectOption; } set { this.ObjectOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of Opname
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<Opnamedata?> OpnameOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Opname
+        /// </summary>
+        [JsonPropertyName("opname")]
+        public Opnamedata? Opname { get { return this.OpnameOption; } set { this.OpnameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CbsIndeling
@@ -254,6 +269,7 @@ namespace Calcasa.Api.Model
             sb.Append("  Model: ").Append(Model).Append("\n");
             sb.Append("  Taxatie: ").Append(Taxatie).Append("\n");
             sb.Append("  Object: ").Append(Object).Append("\n");
+            sb.Append("  Opname: ").Append(Opname).Append("\n");
             sb.Append("  CbsIndeling: ").Append(CbsIndeling).Append("\n");
             sb.Append("  Fotos: ").Append(Fotos).Append("\n");
             sb.Append("  Referenties: ").Append(Referenties).Append("\n");
@@ -301,6 +317,7 @@ namespace Calcasa.Api.Model
             Option<Modeldata?> model = default;
             Option<Taxatiedata?> taxatie = default;
             Option<Objectdata?> varObject = default;
+            Option<Opnamedata?> opname = default;
             Option<CbsIndeling?> cbsIndeling = default;
             Option<Collection<Foto>?> fotos = default;
             Option<Collection<Referentieobject>?> referenties = default;
@@ -348,6 +365,9 @@ namespace Calcasa.Api.Model
                             break;
                         case "object":
                             varObject = new Option<Objectdata?>(JsonSerializer.Deserialize<Objectdata>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            break;
+                        case "opname":
+                            opname = new Option<Opnamedata?>(JsonSerializer.Deserialize<Opnamedata>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "cbsIndeling":
                             cbsIndeling = new Option<CbsIndeling?>(JsonSerializer.Deserialize<CbsIndeling>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -412,6 +432,9 @@ namespace Calcasa.Api.Model
             if (varObject.IsSet && varObject.Value == null)
                 throw new ArgumentNullException(nameof(varObject), "Property is not nullable for class Waardering.");
 
+            if (opname.IsSet && opname.Value == null)
+                throw new ArgumentNullException(nameof(opname), "Property is not nullable for class Waardering.");
+
             if (cbsIndeling.IsSet && cbsIndeling.Value == null)
                 throw new ArgumentNullException(nameof(cbsIndeling), "Property is not nullable for class Waardering.");
 
@@ -421,7 +444,7 @@ namespace Calcasa.Api.Model
             if (factuur.IsSet && factuur.Value == null)
                 throw new ArgumentNullException(nameof(factuur), "Property is not nullable for class Waardering.");
 
-            return new Waardering(id.Value!.Value!, aangemaakt.Value!.Value!, status.Value!.Value!, origineleInput.Value!, adres.Value!, model, taxatie, varObject, cbsIndeling, fotos, referenties, vorigeVerkopen, rapport, factuur);
+            return new Waardering(id.Value!.Value!, aangemaakt.Value!.Value!, status.Value!.Value!, origineleInput.Value!, adres.Value!, model, taxatie, varObject, opname, cbsIndeling, fotos, referenties, vorigeVerkopen, rapport, factuur);
         }
 
         /// <summary>
@@ -463,6 +486,9 @@ namespace Calcasa.Api.Model
             if (waardering.ObjectOption.IsSet && waardering.Object == null)
                 throw new ArgumentNullException(nameof(waardering.Object), "Property is required for class Waardering.");
 
+            if (waardering.OpnameOption.IsSet && waardering.Opname == null)
+                throw new ArgumentNullException(nameof(waardering.Opname), "Property is required for class Waardering.");
+
             if (waardering.CbsIndelingOption.IsSet && waardering.CbsIndeling == null)
                 throw new ArgumentNullException(nameof(waardering.CbsIndeling), "Property is required for class Waardering.");
 
@@ -497,6 +523,11 @@ namespace Calcasa.Api.Model
             {
                 writer.WritePropertyName("object");
                 JsonSerializer.Serialize(writer, waardering.Object, jsonSerializerOptions);
+            }
+            if (waardering.OpnameOption.IsSet)
+            {
+                writer.WritePropertyName("opname");
+                JsonSerializer.Serialize(writer, waardering.Opname, jsonSerializerOptions);
             }
             if (waardering.CbsIndelingOption.IsSet)
             {

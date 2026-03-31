@@ -148,6 +148,8 @@ namespace Calcasa.Api.Client
                 return KlantwaardeTypeValueConverter.ToJsonValue(klantwaardeType);
             if (obj is Notitie notitie)
                 return NotitieValueConverter.ToJsonValue(notitie);
+            if (obj is OnderhoudStaat onderhoudStaat)
+                return OnderhoudStaatValueConverter.ToJsonValue(onderhoudStaat);
             if (obj is ProductType productType)
                 return ProductTypeValueConverter.ToJsonValue(productType);
             if (obj is Taxatiestatus taxatiestatus)

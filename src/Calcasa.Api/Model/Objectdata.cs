@@ -54,8 +54,10 @@ namespace Calcasa.Api.Model
         /// <param name="inhoud">De inhoud in hele kubieke meters.</param>
         /// <param name="energielabel">energielabel</param>
         /// <param name="energielabelData">energielabelData</param>
+        /// <param name="bagPandId">bagPandId</param>
+        /// <param name="bagVerblijfsobjectId">bagVerblijfsobjectId</param>
         [JsonConstructor]
-        public Objectdata(Option<WoningType?> woningType = default, Option<int?> bouwjaar = default, Option<int?> oppervlak = default, Option<int?> perceeloppervlak = default, Option<int?> inhoud = default, Option<Energielabel?> energielabel = default, Option<EnergielabelData?> energielabelData = default)
+        public Objectdata(Option<WoningType?> woningType = default, Option<int?> bouwjaar = default, Option<int?> oppervlak = default, Option<int?> perceeloppervlak = default, Option<int?> inhoud = default, Option<Energielabel?> energielabel = default, Option<EnergielabelData?> energielabelData = default, Option<long?> bagPandId = default, Option<long?> bagVerblijfsobjectId = default)
         {
             WoningTypeOption = woningType;
             BouwjaarOption = bouwjaar;
@@ -64,6 +66,8 @@ namespace Calcasa.Api.Model
             InhoudOption = inhoud;
             EnergielabelOption = energielabel;
             EnergielabelDataOption = energielabelData;
+            BagPandIdOption = bagPandId;
+            BagVerblijfsobjectIdOption = bagVerblijfsobjectId;
             OnCreated();
         }
 
@@ -164,6 +168,32 @@ namespace Calcasa.Api.Model
         public EnergielabelData? EnergielabelData { get { return this.EnergielabelDataOption; } set { this.EnergielabelDataOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of BagPandId
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<long?> BagPandIdOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets BagPandId
+        /// </summary>
+        [JsonPropertyName("bagPandId")]
+        public long? BagPandId { get { return this.BagPandIdOption; } set { this.BagPandIdOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of BagVerblijfsobjectId
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<long?> BagVerblijfsobjectIdOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets BagVerblijfsobjectId
+        /// </summary>
+        [JsonPropertyName("bagVerblijfsobjectId")]
+        public long? BagVerblijfsobjectId { get { return this.BagVerblijfsobjectIdOption; } set { this.BagVerblijfsobjectIdOption = new(value); } }
+
+        /// <summary>
         /// Gets or Sets additional properties
         /// </summary>
         [JsonExtensionData]
@@ -184,6 +214,8 @@ namespace Calcasa.Api.Model
             sb.Append("  Inhoud: ").Append(Inhoud).Append("\n");
             sb.Append("  Energielabel: ").Append(Energielabel).Append("\n");
             sb.Append("  EnergielabelData: ").Append(EnergielabelData).Append("\n");
+            sb.Append("  BagPandId: ").Append(BagPandId).Append("\n");
+            sb.Append("  BagVerblijfsobjectId: ").Append(BagVerblijfsobjectId).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -219,6 +251,8 @@ namespace Calcasa.Api.Model
             Option<int?> inhoud = default;
             Option<Energielabel?> energielabel = default;
             Option<EnergielabelData?> energielabelData = default;
+            Option<long?> bagPandId = default;
+            Option<long?> bagVerblijfsobjectId = default;
 
             while (utf8JsonReader.Read())
             {
@@ -260,6 +294,12 @@ namespace Calcasa.Api.Model
                         case "energielabelData":
                             energielabelData = new Option<EnergielabelData?>(JsonSerializer.Deserialize<EnergielabelData>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
+                        case "bagPandId":
+                            bagPandId = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
+                            break;
+                        case "bagVerblijfsobjectId":
+                            bagVerblijfsobjectId = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
+                            break;
                         default:
                             break;
                     }
@@ -287,7 +327,13 @@ namespace Calcasa.Api.Model
             if (energielabelData.IsSet && energielabelData.Value == null)
                 throw new ArgumentNullException(nameof(energielabelData), "Property is not nullable for class Objectdata.");
 
-            return new Objectdata(woningType, bouwjaar, oppervlak, perceeloppervlak, inhoud, energielabel, energielabelData);
+            if (bagPandId.IsSet && bagPandId.Value == null)
+                throw new ArgumentNullException(nameof(bagPandId), "Property is not nullable for class Objectdata.");
+
+            if (bagVerblijfsobjectId.IsSet && bagVerblijfsobjectId.Value == null)
+                throw new ArgumentNullException(nameof(bagVerblijfsobjectId), "Property is not nullable for class Objectdata.");
+
+            return new Objectdata(woningType, bouwjaar, oppervlak, perceeloppervlak, inhoud, energielabel, energielabelData, bagPandId, bagVerblijfsobjectId);
         }
 
         /// <summary>
@@ -344,6 +390,11 @@ namespace Calcasa.Api.Model
                 writer.WritePropertyName("energielabelData");
                 JsonSerializer.Serialize(writer, objectdata.EnergielabelData, jsonSerializerOptions);
             }
+            if (objectdata.BagPandIdOption.IsSet)
+                writer.WriteNumber("bagPandId", objectdata.BagPandIdOption.Value!.Value);
+
+            if (objectdata.BagVerblijfsobjectIdOption.IsSet)
+                writer.WriteNumber("bagVerblijfsobjectId", objectdata.BagVerblijfsobjectIdOption.Value!.Value);
         }
     }
 

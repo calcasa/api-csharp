@@ -61,8 +61,10 @@ namespace Calcasa.Api.Model
         /// <param name="peildatum">Optioneel te gebruiken voor de producttypen &#x60;modelwaardeRisico&#x60;. Peildatum voor de aanvraag. Standaard de datum van vandaag. Supports yyyy-MM-dd or optionally yyyy-MM-ddTHH:mm:ssZ (ISO) with the time stamp assumed to be in UTC and the time is dropped before using the value.</param>
         /// <param name="isErfpacht">Potentieel verplicht voor de product typen &#x60;modelwaardeDesktopTaxatie&#x60; en &#x60;desktopTaxatie&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie.</param>
         /// <param name="klantkenmerk">Vrij veld voor het opslaan van een klantkenmerk, zoals bijvoorbeeld een dossiernummer of andere interne referentie. Dit veld komt later weer terug in het &#x60;origineleInput&#x60; veld in het &#x60;waardering&#x60; object.</param>
+        /// <param name="heeftAflossingsvrijDeel">True als de lening een aflossingsvrij deel heeft.</param>
+        /// <param name="aflossingsvrijDeel">De hoogte van het aflossingsvrije deel van het veld &#x60;hypotheekwaarde&#x60; van de lening. Alleen relevant als &#x60;heeftAflossingsvrijDeel&#x60; true is. In hele euros.</param>
         [JsonConstructor]
-        public WaarderingInputParameters(ProductType productType, long bagNummeraanduidingId, Option<string?> geldverstrekker = default, Option<int?> hypotheekwaarde = default, Option<Aanvraagdoel?> aanvraagdoel = default, Option<int?> klantwaarde = default, Option<KlantwaardeType?> klantwaardeType = default, Option<bool?> isBestaandeWoning = default, Option<bool?> isNhg = default, Option<bool?> isBestaandeNhgHypotheek = default, Option<int?> benodigdeOverbrugging = default, Option<DateOnly?> peildatum = default, Option<bool?> isErfpacht = default, Option<string?> klantkenmerk = default)
+        public WaarderingInputParameters(ProductType productType, long bagNummeraanduidingId, Option<string?> geldverstrekker = default, Option<int?> hypotheekwaarde = default, Option<Aanvraagdoel?> aanvraagdoel = default, Option<int?> klantwaarde = default, Option<KlantwaardeType?> klantwaardeType = default, Option<bool?> isBestaandeWoning = default, Option<bool?> isNhg = default, Option<bool?> isBestaandeNhgHypotheek = default, Option<int?> benodigdeOverbrugging = default, Option<DateOnly?> peildatum = default, Option<bool?> isErfpacht = default, Option<string?> klantkenmerk = default, Option<bool?> heeftAflossingsvrijDeel = default, Option<int?> aflossingsvrijDeel = default)
         {
             ProductType = productType;
             BagNummeraanduidingId = bagNummeraanduidingId;
@@ -78,6 +80,8 @@ namespace Calcasa.Api.Model
             PeildatumOption = peildatum;
             IsErfpachtOption = isErfpacht;
             KlantkenmerkOption = klantkenmerk;
+            HeeftAflossingsvrijDeelOption = heeftAflossingsvrijDeel;
+            AflossingsvrijDeelOption = aflossingsvrijDeel;
             OnCreated();
         }
 
@@ -264,6 +268,34 @@ namespace Calcasa.Api.Model
         public string? Klantkenmerk { get { return this.KlantkenmerkOption; } set { this.KlantkenmerkOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of HeeftAflossingsvrijDeel
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<bool?> HeeftAflossingsvrijDeelOption { get; private set; }
+
+        /// <summary>
+        /// True als de lening een aflossingsvrij deel heeft.
+        /// </summary>
+        /// <value>True als de lening een aflossingsvrij deel heeft.</value>
+        [JsonPropertyName("heeftAflossingsvrijDeel")]
+        public bool? HeeftAflossingsvrijDeel { get { return this.HeeftAflossingsvrijDeelOption; } set { this.HeeftAflossingsvrijDeelOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of AflossingsvrijDeel
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<int?> AflossingsvrijDeelOption { get; private set; }
+
+        /// <summary>
+        /// De hoogte van het aflossingsvrije deel van het veld &#x60;hypotheekwaarde&#x60; van de lening. Alleen relevant als &#x60;heeftAflossingsvrijDeel&#x60; true is. In hele euros.
+        /// </summary>
+        /// <value>De hoogte van het aflossingsvrije deel van het veld &#x60;hypotheekwaarde&#x60; van de lening. Alleen relevant als &#x60;heeftAflossingsvrijDeel&#x60; true is. In hele euros.</value>
+        [JsonPropertyName("aflossingsvrijDeel")]
+        public int? AflossingsvrijDeel { get { return this.AflossingsvrijDeelOption; } set { this.AflossingsvrijDeelOption = new(value); } }
+
+        /// <summary>
         /// Gets or Sets additional properties
         /// </summary>
         [JsonExtensionData]
@@ -291,6 +323,8 @@ namespace Calcasa.Api.Model
             sb.Append("  Peildatum: ").Append(Peildatum).Append("\n");
             sb.Append("  IsErfpacht: ").Append(IsErfpacht).Append("\n");
             sb.Append("  Klantkenmerk: ").Append(Klantkenmerk).Append("\n");
+            sb.Append("  HeeftAflossingsvrijDeel: ").Append(HeeftAflossingsvrijDeel).Append("\n");
+            sb.Append("  AflossingsvrijDeel: ").Append(AflossingsvrijDeel).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -338,6 +372,8 @@ namespace Calcasa.Api.Model
             Option<DateOnly?> peildatum = default;
             Option<bool?> isErfpacht = default;
             Option<string?> klantkenmerk = default;
+            Option<bool?> heeftAflossingsvrijDeel = default;
+            Option<int?> aflossingsvrijDeel = default;
 
             while (utf8JsonReader.Read())
             {
@@ -402,6 +438,12 @@ namespace Calcasa.Api.Model
                         case "klantkenmerk":
                             klantkenmerk = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
+                        case "heeftAflossingsvrijDeel":
+                            heeftAflossingsvrijDeel = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
+                            break;
+                        case "aflossingsvrijDeel":
+                            aflossingsvrijDeel = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
+                            break;
                         default:
                             break;
                     }
@@ -450,7 +492,7 @@ namespace Calcasa.Api.Model
             if (klantkenmerk.IsSet && klantkenmerk.Value == null)
                 throw new ArgumentNullException(nameof(klantkenmerk), "Property is not nullable for class WaarderingInputParameters.");
 
-            return new WaarderingInputParameters(productType.Value!.Value!, bagNummeraanduidingId.Value!.Value!, geldverstrekker, hypotheekwaarde, aanvraagdoel, klantwaarde, klantwaardeType, isBestaandeWoning, isNhg, isBestaandeNhgHypotheek, benodigdeOverbrugging, peildatum, isErfpacht, klantkenmerk);
+            return new WaarderingInputParameters(productType.Value!.Value!, bagNummeraanduidingId.Value!.Value!, geldverstrekker, hypotheekwaarde, aanvraagdoel, klantwaarde, klantwaardeType, isBestaandeWoning, isNhg, isBestaandeNhgHypotheek, benodigdeOverbrugging, peildatum, isErfpacht, klantkenmerk, heeftAflossingsvrijDeel, aflossingsvrijDeel);
         }
 
         /// <summary>
@@ -533,6 +575,18 @@ namespace Calcasa.Api.Model
 
             if (waarderingInputParameters.KlantkenmerkOption.IsSet)
                 writer.WriteString("klantkenmerk", waarderingInputParameters.Klantkenmerk);
+
+            if (waarderingInputParameters.HeeftAflossingsvrijDeelOption.IsSet)
+                if (waarderingInputParameters.HeeftAflossingsvrijDeelOption.Value != null)
+                    writer.WriteBoolean("heeftAflossingsvrijDeel", waarderingInputParameters.HeeftAflossingsvrijDeelOption.Value!.Value);
+                else
+                    writer.WriteNull("heeftAflossingsvrijDeel");
+
+            if (waarderingInputParameters.AflossingsvrijDeelOption.IsSet)
+                if (waarderingInputParameters.AflossingsvrijDeelOption.Value != null)
+                    writer.WriteNumber("aflossingsvrijDeel", waarderingInputParameters.AflossingsvrijDeelOption.Value!.Value);
+                else
+                    writer.WriteNull("aflossingsvrijDeel");
         }
     }
 

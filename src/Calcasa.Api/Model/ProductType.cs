@@ -40,9 +40,9 @@ using Calcasa.Api.Client;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// Het product type voor een waardering. Deze moeten handmatig aangezet worden voor de gebruikte credentails. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Geen geldige invoer. Onbekend product type. | | &#x60;modelwaardeCalcasa&#x60; | Niet beschikbaar op dit moment.&lt;br&gt;            Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport. | | &#x60;desktopTaxatieHerwaardering&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport voor herwaarderingen. |
+    /// Het product type voor een waardering. Deze moeten handmatig aangezet worden voor de gebruikte credentails. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Geen geldige invoer. Onbekend product type. | | &#x60;modelwaardeCalcasa&#x60; | Niet beschikbaar op dit moment.&lt;br&gt;            Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport. | | &#x60;desktopTaxatieHerwaardering&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport voor herwaarderingen. | | &#x60;desktopTaxatiePlus&#x60; | Desktop taxatie plus aanvraag met Desktop Taxatie Plus rapport. |
     /// </summary>
-    /// <value>Het product type voor een waardering. Deze moeten handmatig aangezet worden voor de gebruikte credentails. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Geen geldige invoer. Onbekend product type. | | &#x60;modelwaardeCalcasa&#x60; | Niet beschikbaar op dit moment.&lt;br&gt;            Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport. | | &#x60;desktopTaxatieHerwaardering&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport voor herwaarderingen. |</value>
+    /// <value>Het product type voor een waardering. Deze moeten handmatig aangezet worden voor de gebruikte credentails. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Geen geldige invoer. Onbekend product type. | | &#x60;modelwaardeCalcasa&#x60; | Niet beschikbaar op dit moment.&lt;br&gt;            Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport. | | &#x60;desktopTaxatieHerwaardering&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport voor herwaarderingen. | | &#x60;desktopTaxatiePlus&#x60; | Desktop taxatie plus aanvraag met Desktop Taxatie Plus rapport. |</value>
     public enum ProductType
     {
         /// <summary>
@@ -73,7 +73,12 @@ namespace Calcasa.Api.Model
         /// <summary>
         /// Enum DesktopTaxatieHerwaardering for value: desktopTaxatieHerwaardering
         /// </summary>
-        DesktopTaxatieHerwaardering
+        DesktopTaxatieHerwaardering,
+
+        /// <summary>
+        /// Enum DesktopTaxatiePlus for value: desktopTaxatiePlus
+        /// </summary>
+        DesktopTaxatiePlus
     }
 
     /// <summary>
@@ -106,6 +111,9 @@ namespace Calcasa.Api.Model
             if (value.Equals("desktopTaxatieHerwaardering"))
                 return ProductType.DesktopTaxatieHerwaardering;
 
+            if (value.Equals("desktopTaxatiePlus"))
+                return ProductType.DesktopTaxatiePlus;
+
             throw new NotImplementedException($"Could not convert value to type ProductType: '{value}'");
         }
 
@@ -133,6 +141,9 @@ namespace Calcasa.Api.Model
 
             if (value.Equals("desktopTaxatieHerwaardering"))
                 return ProductType.DesktopTaxatieHerwaardering;
+
+            if (value.Equals("desktopTaxatiePlus"))
+                return ProductType.DesktopTaxatiePlus;
 
             return null;
         }
@@ -162,6 +173,9 @@ namespace Calcasa.Api.Model
 
             if (value == ProductType.DesktopTaxatieHerwaardering)
                 return "desktopTaxatieHerwaardering";
+
+            if (value == ProductType.DesktopTaxatiePlus)
+                return "desktopTaxatiePlus";
 
             throw new NotImplementedException($"Value could not be handled: '{value}'");
         }
