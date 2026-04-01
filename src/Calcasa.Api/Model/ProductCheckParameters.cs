@@ -40,14 +40,13 @@ using Calcasa.Api.Client;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// WaarderingInputParameters
+    /// ProductCheckParameters
     /// </summary>
-    public partial class WaarderingInputParameters
+    public partial class ProductCheckParameters
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="WaarderingInputParameters" /> class.
+        /// Initializes a new instance of the <see cref="ProductCheckParameters" /> class.
         /// </summary>
-        /// <param name="productType">productType</param>
         /// <param name="bagNummeraanduidingId">Verplicht voor alle producttypen. Het BAG (Basisregistratie Adressen en Gebouwen) nummeraanduiding id.</param>
         /// <param name="geldverstrekker">Ongebruikt voor de meeste client typen op dit moment. Deze informatie komt uit de credentials. Als dit veld wel verplicht is dan is dit gecommuniceerd.</param>
         /// <param name="hypotheekwaarde">Verplicht voor de producttypen &#x60;modelwaardeDesktopTaxatie&#x60; en &#x60;desktopTaxatie&#x60;. Voor het aanvraagdoel &#x60;hypotheekOphogen&#x60; is dit de som van de huidige hypotheeksom en de ophoging. In hele euros.</param>
@@ -64,9 +63,8 @@ namespace Calcasa.Api.Model
         /// <param name="heeftAflossingsvrijDeel">True als de lening een aflossingsvrij deel heeft. Potentieel verplicht voor de product typen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie.</param>
         /// <param name="aflossingsvrijDeel">De hoogte van het aflossingsvrije deel van het veld &#x60;hypotheekwaarde&#x60; van de lening. Alleen relevant als &#x60;heeftAflossingsvrijDeel&#x60; true is. Potentieel verplicht voor de product typen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie. In hele euros.</param>
         [JsonConstructor]
-        public WaarderingInputParameters(ProductType productType, long bagNummeraanduidingId, Option<string?> geldverstrekker = default, Option<int?> hypotheekwaarde = default, Option<Aanvraagdoel?> aanvraagdoel = default, Option<int?> klantwaarde = default, Option<KlantwaardeType?> klantwaardeType = default, Option<bool?> isBestaandeWoning = default, Option<bool?> isNhg = default, Option<bool?> isBestaandeNhgHypotheek = default, Option<int?> benodigdeOverbrugging = default, Option<DateOnly?> peildatum = default, Option<bool?> isErfpacht = default, Option<string?> klantkenmerk = default, Option<bool?> heeftAflossingsvrijDeel = default, Option<int?> aflossingsvrijDeel = default)
+        public ProductCheckParameters(long bagNummeraanduidingId, Option<string?> geldverstrekker = default, Option<int?> hypotheekwaarde = default, Option<Aanvraagdoel?> aanvraagdoel = default, Option<int?> klantwaarde = default, Option<KlantwaardeType?> klantwaardeType = default, Option<bool?> isBestaandeWoning = default, Option<bool?> isNhg = default, Option<bool?> isBestaandeNhgHypotheek = default, Option<int?> benodigdeOverbrugging = default, Option<DateOnly?> peildatum = default, Option<bool?> isErfpacht = default, Option<string?> klantkenmerk = default, Option<bool?> heeftAflossingsvrijDeel = default, Option<int?> aflossingsvrijDeel = default)
         {
-            ProductType = productType;
             BagNummeraanduidingId = bagNummeraanduidingId;
             GeldverstrekkerOption = geldverstrekker;
             HypotheekwaardeOption = hypotheekwaarde;
@@ -86,12 +84,6 @@ namespace Calcasa.Api.Model
         }
 
         partial void OnCreated();
-
-        /// <summary>
-        /// Gets or Sets ProductType
-        /// </summary>
-        [JsonPropertyName("productType")]
-        public ProductType ProductType { get; set; }
 
         /// <summary>
         /// Used to track the state of Aanvraagdoel
@@ -308,8 +300,7 @@ namespace Calcasa.Api.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class WaarderingInputParameters {\n");
-            sb.Append("  ProductType: ").Append(ProductType).Append("\n");
+            sb.Append("class ProductCheckParameters {\n");
             sb.Append("  BagNummeraanduidingId: ").Append(BagNummeraanduidingId).Append("\n");
             sb.Append("  Geldverstrekker: ").Append(Geldverstrekker).Append("\n");
             sb.Append("  Hypotheekwaarde: ").Append(Hypotheekwaarde).Append("\n");
@@ -332,9 +323,9 @@ namespace Calcasa.Api.Model
     }
 
     /// <summary>
-    /// A Json converter for type <see cref="WaarderingInputParameters" />
+    /// A Json converter for type <see cref="ProductCheckParameters" />
     /// </summary>
-    public class WaarderingInputParametersJsonConverter : JsonConverter<WaarderingInputParameters>
+    public class ProductCheckParametersJsonConverter : JsonConverter<ProductCheckParameters>
     {
         /// <summary>
         /// The format to use to serialize Peildatum
@@ -342,14 +333,14 @@ namespace Calcasa.Api.Model
         public static string PeildatumFormat { get; set; } = "yyyy'-'MM'-'dd";
 
         /// <summary>
-        /// Deserializes json to <see cref="WaarderingInputParameters" />
+        /// Deserializes json to <see cref="ProductCheckParameters" />
         /// </summary>
         /// <param name="utf8JsonReader"></param>
         /// <param name="typeToConvert"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <returns></returns>
         /// <exception cref="JsonException"></exception>
-        public override WaarderingInputParameters Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
+        public override ProductCheckParameters Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
         {
             int currentDepth = utf8JsonReader.CurrentDepth;
 
@@ -358,7 +349,6 @@ namespace Calcasa.Api.Model
 
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
-            Option<ProductType?> productType = default;
             Option<long?> bagNummeraanduidingId = default;
             Option<string?> geldverstrekker = default;
             Option<int?> hypotheekwaarde = default;
@@ -390,11 +380,6 @@ namespace Calcasa.Api.Model
 
                     switch (localVarJsonPropertyName)
                     {
-                        case "productType":
-                            string? productTypeRawValue = utf8JsonReader.GetString();
-                            if (productTypeRawValue != null)
-                                productType = new Option<ProductType?>(ProductTypeValueConverter.FromStringOrDefault(productTypeRawValue));
-                            break;
                         case "bagNummeraanduidingId":
                             bagNummeraanduidingId = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
@@ -450,150 +435,141 @@ namespace Calcasa.Api.Model
                 }
             }
 
-            if (!productType.IsSet)
-                throw new ArgumentException("Property is required for class WaarderingInputParameters.", nameof(productType));
-
             if (!bagNummeraanduidingId.IsSet)
-                throw new ArgumentException("Property is required for class WaarderingInputParameters.", nameof(bagNummeraanduidingId));
-
-            if (productType.IsSet && productType.Value == null)
-                throw new ArgumentNullException(nameof(productType), "Property is not nullable for class WaarderingInputParameters.");
+                throw new ArgumentException("Property is required for class ProductCheckParameters.", nameof(bagNummeraanduidingId));
 
             if (bagNummeraanduidingId.IsSet && bagNummeraanduidingId.Value == null)
-                throw new ArgumentNullException(nameof(bagNummeraanduidingId), "Property is not nullable for class WaarderingInputParameters.");
+                throw new ArgumentNullException(nameof(bagNummeraanduidingId), "Property is not nullable for class ProductCheckParameters.");
 
             if (geldverstrekker.IsSet && geldverstrekker.Value == null)
-                throw new ArgumentNullException(nameof(geldverstrekker), "Property is not nullable for class WaarderingInputParameters.");
+                throw new ArgumentNullException(nameof(geldverstrekker), "Property is not nullable for class ProductCheckParameters.");
 
             if (hypotheekwaarde.IsSet && hypotheekwaarde.Value == null)
-                throw new ArgumentNullException(nameof(hypotheekwaarde), "Property is not nullable for class WaarderingInputParameters.");
+                throw new ArgumentNullException(nameof(hypotheekwaarde), "Property is not nullable for class ProductCheckParameters.");
 
             if (aanvraagdoel.IsSet && aanvraagdoel.Value == null)
-                throw new ArgumentNullException(nameof(aanvraagdoel), "Property is not nullable for class WaarderingInputParameters.");
+                throw new ArgumentNullException(nameof(aanvraagdoel), "Property is not nullable for class ProductCheckParameters.");
 
             if (klantwaarde.IsSet && klantwaarde.Value == null)
-                throw new ArgumentNullException(nameof(klantwaarde), "Property is not nullable for class WaarderingInputParameters.");
+                throw new ArgumentNullException(nameof(klantwaarde), "Property is not nullable for class ProductCheckParameters.");
 
             if (klantwaardeType.IsSet && klantwaardeType.Value == null)
-                throw new ArgumentNullException(nameof(klantwaardeType), "Property is not nullable for class WaarderingInputParameters.");
+                throw new ArgumentNullException(nameof(klantwaardeType), "Property is not nullable for class ProductCheckParameters.");
 
             if (isBestaandeWoning.IsSet && isBestaandeWoning.Value == null)
-                throw new ArgumentNullException(nameof(isBestaandeWoning), "Property is not nullable for class WaarderingInputParameters.");
+                throw new ArgumentNullException(nameof(isBestaandeWoning), "Property is not nullable for class ProductCheckParameters.");
 
             if (isNhg.IsSet && isNhg.Value == null)
-                throw new ArgumentNullException(nameof(isNhg), "Property is not nullable for class WaarderingInputParameters.");
+                throw new ArgumentNullException(nameof(isNhg), "Property is not nullable for class ProductCheckParameters.");
 
             if (isBestaandeNhgHypotheek.IsSet && isBestaandeNhgHypotheek.Value == null)
-                throw new ArgumentNullException(nameof(isBestaandeNhgHypotheek), "Property is not nullable for class WaarderingInputParameters.");
+                throw new ArgumentNullException(nameof(isBestaandeNhgHypotheek), "Property is not nullable for class ProductCheckParameters.");
 
             if (benodigdeOverbrugging.IsSet && benodigdeOverbrugging.Value == null)
-                throw new ArgumentNullException(nameof(benodigdeOverbrugging), "Property is not nullable for class WaarderingInputParameters.");
+                throw new ArgumentNullException(nameof(benodigdeOverbrugging), "Property is not nullable for class ProductCheckParameters.");
 
             if (klantkenmerk.IsSet && klantkenmerk.Value == null)
-                throw new ArgumentNullException(nameof(klantkenmerk), "Property is not nullable for class WaarderingInputParameters.");
+                throw new ArgumentNullException(nameof(klantkenmerk), "Property is not nullable for class ProductCheckParameters.");
 
-            return new WaarderingInputParameters(productType.Value!.Value!, bagNummeraanduidingId.Value!.Value!, geldverstrekker, hypotheekwaarde, aanvraagdoel, klantwaarde, klantwaardeType, isBestaandeWoning, isNhg, isBestaandeNhgHypotheek, benodigdeOverbrugging, peildatum, isErfpacht, klantkenmerk, heeftAflossingsvrijDeel, aflossingsvrijDeel);
+            return new ProductCheckParameters(bagNummeraanduidingId.Value!.Value!, geldverstrekker, hypotheekwaarde, aanvraagdoel, klantwaarde, klantwaardeType, isBestaandeWoning, isNhg, isBestaandeNhgHypotheek, benodigdeOverbrugging, peildatum, isErfpacht, klantkenmerk, heeftAflossingsvrijDeel, aflossingsvrijDeel);
         }
 
         /// <summary>
-        /// Serializes a <see cref="WaarderingInputParameters" />
+        /// Serializes a <see cref="ProductCheckParameters" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="waarderingInputParameters"></param>
+        /// <param name="productCheckParameters"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public override void Write(Utf8JsonWriter writer, WaarderingInputParameters waarderingInputParameters, JsonSerializerOptions jsonSerializerOptions)
+        public override void Write(Utf8JsonWriter writer, ProductCheckParameters productCheckParameters, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
 
-            WriteProperties(writer, waarderingInputParameters, jsonSerializerOptions);
+            WriteProperties(writer, productCheckParameters, jsonSerializerOptions);
             writer.WriteEndObject();
         }
 
         /// <summary>
-        /// Serializes the properties of <see cref="WaarderingInputParameters" />
+        /// Serializes the properties of <see cref="ProductCheckParameters" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="waarderingInputParameters"></param>
+        /// <param name="productCheckParameters"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void WriteProperties(Utf8JsonWriter writer, WaarderingInputParameters waarderingInputParameters, JsonSerializerOptions jsonSerializerOptions)
+        public void WriteProperties(Utf8JsonWriter writer, ProductCheckParameters productCheckParameters, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (waarderingInputParameters.GeldverstrekkerOption.IsSet && waarderingInputParameters.Geldverstrekker == null)
-                throw new ArgumentNullException(nameof(waarderingInputParameters.Geldverstrekker), "Property is required for class WaarderingInputParameters.");
+            if (productCheckParameters.GeldverstrekkerOption.IsSet && productCheckParameters.Geldverstrekker == null)
+                throw new ArgumentNullException(nameof(productCheckParameters.Geldverstrekker), "Property is required for class ProductCheckParameters.");
 
-            if (waarderingInputParameters.KlantkenmerkOption.IsSet && waarderingInputParameters.Klantkenmerk == null)
-                throw new ArgumentNullException(nameof(waarderingInputParameters.Klantkenmerk), "Property is required for class WaarderingInputParameters.");
+            if (productCheckParameters.KlantkenmerkOption.IsSet && productCheckParameters.Klantkenmerk == null)
+                throw new ArgumentNullException(nameof(productCheckParameters.Klantkenmerk), "Property is required for class ProductCheckParameters.");
 
-            var productTypeRawValue = ProductTypeValueConverter.ToJsonValue(waarderingInputParameters.ProductType);
-            writer.WriteString("productType", productTypeRawValue);
+            writer.WriteNumber("bagNummeraanduidingId", productCheckParameters.BagNummeraanduidingId);
 
-            writer.WriteNumber("bagNummeraanduidingId", waarderingInputParameters.BagNummeraanduidingId);
+            if (productCheckParameters.GeldverstrekkerOption.IsSet)
+                writer.WriteString("geldverstrekker", productCheckParameters.Geldverstrekker);
 
-            if (waarderingInputParameters.GeldverstrekkerOption.IsSet)
-                writer.WriteString("geldverstrekker", waarderingInputParameters.Geldverstrekker);
+            if (productCheckParameters.HypotheekwaardeOption.IsSet)
+                writer.WriteNumber("hypotheekwaarde", productCheckParameters.HypotheekwaardeOption.Value!.Value);
 
-            if (waarderingInputParameters.HypotheekwaardeOption.IsSet)
-                writer.WriteNumber("hypotheekwaarde", waarderingInputParameters.HypotheekwaardeOption.Value!.Value);
-
-            if (waarderingInputParameters.AanvraagdoelOption.IsSet)
+            if (productCheckParameters.AanvraagdoelOption.IsSet)
             {
-                var aanvraagdoelRawValue = AanvraagdoelValueConverter.ToJsonValue(waarderingInputParameters.Aanvraagdoel!.Value);
+                var aanvraagdoelRawValue = AanvraagdoelValueConverter.ToJsonValue(productCheckParameters.Aanvraagdoel!.Value);
                 writer.WriteString("aanvraagdoel", aanvraagdoelRawValue);
             }
-            if (waarderingInputParameters.KlantwaardeOption.IsSet)
-                writer.WriteNumber("klantwaarde", waarderingInputParameters.KlantwaardeOption.Value!.Value);
+            if (productCheckParameters.KlantwaardeOption.IsSet)
+                writer.WriteNumber("klantwaarde", productCheckParameters.KlantwaardeOption.Value!.Value);
 
-            if (waarderingInputParameters.KlantwaardeTypeOption.IsSet)
+            if (productCheckParameters.KlantwaardeTypeOption.IsSet)
             {
-                var klantwaardeTypeRawValue = KlantwaardeTypeValueConverter.ToJsonValue(waarderingInputParameters.KlantwaardeType!.Value);
+                var klantwaardeTypeRawValue = KlantwaardeTypeValueConverter.ToJsonValue(productCheckParameters.KlantwaardeType!.Value);
                 writer.WriteString("klantwaardeType", klantwaardeTypeRawValue);
             }
-            if (waarderingInputParameters.IsBestaandeWoningOption.IsSet)
-                writer.WriteBoolean("isBestaandeWoning", waarderingInputParameters.IsBestaandeWoningOption.Value!.Value);
+            if (productCheckParameters.IsBestaandeWoningOption.IsSet)
+                writer.WriteBoolean("isBestaandeWoning", productCheckParameters.IsBestaandeWoningOption.Value!.Value);
 
-            if (waarderingInputParameters.IsNhgOption.IsSet)
-                writer.WriteBoolean("isNhg", waarderingInputParameters.IsNhgOption.Value!.Value);
+            if (productCheckParameters.IsNhgOption.IsSet)
+                writer.WriteBoolean("isNhg", productCheckParameters.IsNhgOption.Value!.Value);
 
-            if (waarderingInputParameters.IsBestaandeNhgHypotheekOption.IsSet)
-                writer.WriteBoolean("isBestaandeNhgHypotheek", waarderingInputParameters.IsBestaandeNhgHypotheekOption.Value!.Value);
+            if (productCheckParameters.IsBestaandeNhgHypotheekOption.IsSet)
+                writer.WriteBoolean("isBestaandeNhgHypotheek", productCheckParameters.IsBestaandeNhgHypotheekOption.Value!.Value);
 
-            if (waarderingInputParameters.BenodigdeOverbruggingOption.IsSet)
-                writer.WriteNumber("benodigdeOverbrugging", waarderingInputParameters.BenodigdeOverbruggingOption.Value!.Value);
+            if (productCheckParameters.BenodigdeOverbruggingOption.IsSet)
+                writer.WriteNumber("benodigdeOverbrugging", productCheckParameters.BenodigdeOverbruggingOption.Value!.Value);
 
-            if (waarderingInputParameters.PeildatumOption.IsSet)
-                if (waarderingInputParameters.PeildatumOption.Value != null)
-                    writer.WriteString("peildatum", waarderingInputParameters.PeildatumOption.Value!.Value.ToString(PeildatumFormat));
+            if (productCheckParameters.PeildatumOption.IsSet)
+                if (productCheckParameters.PeildatumOption.Value != null)
+                    writer.WriteString("peildatum", productCheckParameters.PeildatumOption.Value!.Value.ToString(PeildatumFormat));
                 else
                     writer.WriteNull("peildatum");
 
-            if (waarderingInputParameters.IsErfpachtOption.IsSet)
-                if (waarderingInputParameters.IsErfpachtOption.Value != null)
-                    writer.WriteBoolean("isErfpacht", waarderingInputParameters.IsErfpachtOption.Value!.Value);
+            if (productCheckParameters.IsErfpachtOption.IsSet)
+                if (productCheckParameters.IsErfpachtOption.Value != null)
+                    writer.WriteBoolean("isErfpacht", productCheckParameters.IsErfpachtOption.Value!.Value);
                 else
                     writer.WriteNull("isErfpacht");
 
-            if (waarderingInputParameters.KlantkenmerkOption.IsSet)
-                writer.WriteString("klantkenmerk", waarderingInputParameters.Klantkenmerk);
+            if (productCheckParameters.KlantkenmerkOption.IsSet)
+                writer.WriteString("klantkenmerk", productCheckParameters.Klantkenmerk);
 
-            if (waarderingInputParameters.HeeftAflossingsvrijDeelOption.IsSet)
-                if (waarderingInputParameters.HeeftAflossingsvrijDeelOption.Value != null)
-                    writer.WriteBoolean("heeftAflossingsvrijDeel", waarderingInputParameters.HeeftAflossingsvrijDeelOption.Value!.Value);
+            if (productCheckParameters.HeeftAflossingsvrijDeelOption.IsSet)
+                if (productCheckParameters.HeeftAflossingsvrijDeelOption.Value != null)
+                    writer.WriteBoolean("heeftAflossingsvrijDeel", productCheckParameters.HeeftAflossingsvrijDeelOption.Value!.Value);
                 else
                     writer.WriteNull("heeftAflossingsvrijDeel");
 
-            if (waarderingInputParameters.AflossingsvrijDeelOption.IsSet)
-                if (waarderingInputParameters.AflossingsvrijDeelOption.Value != null)
-                    writer.WriteNumber("aflossingsvrijDeel", waarderingInputParameters.AflossingsvrijDeelOption.Value!.Value);
+            if (productCheckParameters.AflossingsvrijDeelOption.IsSet)
+                if (productCheckParameters.AflossingsvrijDeelOption.Value != null)
+                    writer.WriteNumber("aflossingsvrijDeel", productCheckParameters.AflossingsvrijDeelOption.Value!.Value);
                 else
                     writer.WriteNull("aflossingsvrijDeel");
         }
     }
 
     /// <summary>
-    /// The WaarderingInputParametersSerializationContext
+    /// The ProductCheckParametersSerializationContext
     /// </summary>
     [JsonSourceGenerationOptions(WriteIndented = true, GenerationMode = JsonSourceGenerationMode.Metadata | JsonSourceGenerationMode.Serialization)]
-    [JsonSerializable(typeof(WaarderingInputParameters))]
-    public partial class WaarderingInputParametersSerializationContext : JsonSerializerContext { }
+    [JsonSerializable(typeof(ProductCheckParameters))]
+    public partial class ProductCheckParametersSerializationContext : JsonSerializerContext { }
 }

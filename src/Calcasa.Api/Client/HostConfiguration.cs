@@ -107,6 +107,9 @@ namespace Calcasa.Api.Client
             _jsonOptions.Converters.Add(new OnderhoudStaatNullableJsonConverter());
             _jsonOptions.Converters.Add(new OpnamedataJsonConverter());
             _jsonOptions.Converters.Add(new PermissionsDeniedProblemDetailsJsonConverter());
+            _jsonOptions.Converters.Add(new ProductCheckJsonConverter());
+            _jsonOptions.Converters.Add(new ProductCheckItemJsonConverter());
+            _jsonOptions.Converters.Add(new ProductCheckParametersJsonConverter());
             _jsonOptions.Converters.Add(new ProductTypeJsonConverter());
             _jsonOptions.Converters.Add(new ProductTypeNullableJsonConverter());
             _jsonOptions.Converters.Add(new RapportJsonConverter());
@@ -174,6 +177,9 @@ namespace Calcasa.Api.Client
                 new OnderhoudStaatSerializationContext(),
                 new OpnamedataSerializationContext(),
                 new PermissionsDeniedProblemDetailsSerializationContext(),
+                new ProductCheckSerializationContext(),
+                new ProductCheckItemSerializationContext(),
+                new ProductCheckParametersSerializationContext(),
                 new ProductTypeSerializationContext(),
                 new RapportSerializationContext(),
                 new ReferentieobjectSerializationContext(),
