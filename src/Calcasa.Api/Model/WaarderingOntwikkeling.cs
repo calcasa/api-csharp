@@ -47,7 +47,7 @@ namespace Calcasa.Api.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="WaarderingOntwikkeling" /> class.
         /// </summary>
-        /// <param name="id">Id van de waardering of tracking Id.</param>
+        /// <param name="id">Id van de waardering.</param>
         /// <param name="objectPrijsOntwikkeling">De prijsontwikkeling van het gewaardeerde object.</param>
         /// <param name="objectPrijsOntwikkelingPerVierkantemeter">De prijsontwikkeling van het gewaardeerde object per vierkantemeter.</param>
         /// <param name="buurtPrijsOntwikkeling">De prijsontwikkeling van de buurt van het gewaardeerde object.</param>
@@ -81,9 +81,9 @@ namespace Calcasa.Api.Model
         public Option<Guid?> IdOption { get; private set; }
 
         /// <summary>
-        /// Id van de waardering of tracking Id.
+        /// Id van de waardering.
         /// </summary>
-        /// <value>Id van de waardering of tracking Id.</value>
+        /// <value>Id van de waardering.</value>
         [JsonPropertyName("id")]
         public Guid? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
 

@@ -146,6 +146,8 @@ namespace Calcasa.Api.Client
                 return FunderingTypeValueConverter.ToJsonValue(funderingType);
             if (obj is KlantwaardeType klantwaardeType)
                 return KlantwaardeTypeValueConverter.ToJsonValue(klantwaardeType);
+            if (obj is MTLSType mTLSType)
+                return MTLSTypeValueConverter.ToJsonValue(mTLSType);
             if (obj is Notitie notitie)
                 return NotitieValueConverter.ToJsonValue(notitie);
             if (obj is OnderhoudStaat onderhoudStaat)

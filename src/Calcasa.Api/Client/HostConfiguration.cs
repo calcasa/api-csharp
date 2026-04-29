@@ -69,6 +69,7 @@ namespace Calcasa.Api.Client
             _jsonOptions.Converters.Add(new BusinessRulesCodeNullableJsonConverter());
             _jsonOptions.Converters.Add(new BusinessRulesProblemDetailsJsonConverter());
             _jsonOptions.Converters.Add(new CallbackJsonConverter());
+            _jsonOptions.Converters.Add(new CallbackAuthenticationJsonConverter());
             _jsonOptions.Converters.Add(new CallbackInschrijvingJsonConverter());
             _jsonOptions.Converters.Add(new CbsIndelingJsonConverter());
             _jsonOptions.Converters.Add(new DeelWaarderingWebhookPayloadJsonConverter());
@@ -96,6 +97,8 @@ namespace Calcasa.Api.Client
             _jsonOptions.Converters.Add(new KlantwaardeTypeJsonConverter());
             _jsonOptions.Converters.Add(new KlantwaardeTypeNullableJsonConverter());
             _jsonOptions.Converters.Add(new KwartaalJsonConverter());
+            _jsonOptions.Converters.Add(new MTLSTypeJsonConverter());
+            _jsonOptions.Converters.Add(new MTLSTypeNullableJsonConverter());
             _jsonOptions.Converters.Add(new ModeldataJsonConverter());
             _jsonOptions.Converters.Add(new NotFoundProblemDetailsJsonConverter());
             _jsonOptions.Converters.Add(new NotitieJsonConverter());
@@ -148,6 +151,7 @@ namespace Calcasa.Api.Client
                 new BusinessRulesCodeSerializationContext(),
                 new BusinessRulesProblemDetailsSerializationContext(),
                 new CallbackSerializationContext(),
+                new CallbackAuthenticationSerializationContext(),
                 new CallbackInschrijvingSerializationContext(),
                 new CbsIndelingSerializationContext(),
                 new DeelWaarderingWebhookPayloadSerializationContext(),
@@ -168,6 +172,7 @@ namespace Calcasa.Api.Client
                 new InvalidArgumentProblemDetailsSerializationContext(),
                 new KlantwaardeTypeSerializationContext(),
                 new KwartaalSerializationContext(),
+                new MTLSTypeSerializationContext(),
                 new ModeldataSerializationContext(),
                 new NotFoundProblemDetailsSerializationContext(),
                 new NotitieSerializationContext(),
