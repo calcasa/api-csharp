@@ -91,6 +91,8 @@ namespace Calcasa.Api.Client
             _jsonOptions.Converters.Add(new FunderingTypeNullableJsonConverter());
             _jsonOptions.Converters.Add(new FunderingTyperingJsonConverter());
             _jsonOptions.Converters.Add(new FunderingdataJsonConverter());
+            _jsonOptions.Converters.Add(new FunderingsrisicoJsonConverter());
+            _jsonOptions.Converters.Add(new FunderingsrisicoNullableJsonConverter());
             _jsonOptions.Converters.Add(new GebiedsdataJsonConverter());
             _jsonOptions.Converters.Add(new GeldverstrekkerJsonConverter());
             _jsonOptions.Converters.Add(new InvalidArgumentProblemDetailsJsonConverter());
@@ -167,6 +169,7 @@ namespace Calcasa.Api.Client
                 new FunderingTypeSerializationContext(),
                 new FunderingTyperingSerializationContext(),
                 new FunderingdataSerializationContext(),
+                new FunderingsrisicoSerializationContext(),
                 new GebiedsdataSerializationContext(),
                 new GeldverstrekkerSerializationContext(),
                 new InvalidArgumentProblemDetailsSerializationContext(),
