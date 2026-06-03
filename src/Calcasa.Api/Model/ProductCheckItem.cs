@@ -49,11 +49,13 @@ namespace Calcasa.Api.Model
         /// </summary>
         /// <param name="productType">De producttypen waarvoor deze waardering geldt.</param>
         /// <param name="businessRulesCode">Indien deze waardering niet voldoet aan de eisen voor dit product type, dan is dit veld ingevuld met de reden waarom deze is afgekeurd.</param>
+        /// <param name="deeplinks">deeplinks</param>
         [JsonConstructor]
-        public ProductCheckItem(ProductType productType, Option<BusinessRulesCode?> businessRulesCode = default)
+        public ProductCheckItem(ProductType productType, Option<BusinessRulesCode?> businessRulesCode = default, Option<FrontendDeeplinks?> deeplinks = default)
         {
             ProductType = productType;
             BusinessRulesCodeOption = businessRulesCode;
+            DeeplinksOption = deeplinks;
             OnCreated();
         }
 
@@ -81,6 +83,19 @@ namespace Calcasa.Api.Model
         public BusinessRulesCode? BusinessRulesCode { get { return this.BusinessRulesCodeOption; } set { this.BusinessRulesCodeOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of Deeplinks
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<FrontendDeeplinks?> DeeplinksOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Deeplinks
+        /// </summary>
+        [JsonPropertyName("deeplinks")]
+        public FrontendDeeplinks? Deeplinks { get { return this.DeeplinksOption; } set { this.DeeplinksOption = new(value); } }
+
+        /// <summary>
         /// Gets or Sets additional properties
         /// </summary>
         [JsonExtensionData]
@@ -96,6 +111,7 @@ namespace Calcasa.Api.Model
             sb.Append("class ProductCheckItem {\n");
             sb.Append("  ProductType: ").Append(ProductType).Append("\n");
             sb.Append("  BusinessRulesCode: ").Append(BusinessRulesCode).Append("\n");
+            sb.Append("  Deeplinks: ").Append(Deeplinks).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -126,6 +142,7 @@ namespace Calcasa.Api.Model
 
             Option<ProductType?> productType = default;
             Option<BusinessRulesCode?> businessRulesCode = default;
+            Option<FrontendDeeplinks?> deeplinks = default;
 
             while (utf8JsonReader.Read())
             {
@@ -152,6 +169,9 @@ namespace Calcasa.Api.Model
                             if (businessRulesCodeRawValue != null)
                                 businessRulesCode = new Option<BusinessRulesCode?>(BusinessRulesCodeValueConverter.FromStringOrDefault(businessRulesCodeRawValue));
                             break;
+                        case "deeplinks":
+                            deeplinks = new Option<FrontendDeeplinks?>(JsonSerializer.Deserialize<FrontendDeeplinks>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
                         default:
                             break;
                     }
@@ -164,7 +184,7 @@ namespace Calcasa.Api.Model
             if (productType.IsSet && productType.Value == null)
                 throw new ArgumentNullException(nameof(productType), "Property is not nullable for class ProductCheckItem.");
 
-            return new ProductCheckItem(productType.Value!.Value!, businessRulesCode);
+            return new ProductCheckItem(productType.Value!.Value!, businessRulesCode, deeplinks);
         }
 
         /// <summary>
@@ -202,6 +222,14 @@ namespace Calcasa.Api.Model
                 }
                 else
                     writer.WriteNull("businessRulesCode");
+            if (productCheckItem.DeeplinksOption.IsSet)
+                if (productCheckItem.DeeplinksOption.Value != null)
+                {
+                    writer.WritePropertyName("deeplinks");
+                    JsonSerializer.Serialize(writer, productCheckItem.Deeplinks, jsonSerializerOptions);
+                }
+                else
+                    writer.WriteNull("deeplinks");
         }
     }
 

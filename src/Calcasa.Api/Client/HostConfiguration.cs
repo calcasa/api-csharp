@@ -78,6 +78,7 @@ namespace Calcasa.Api.Client
             _jsonOptions.Converters.Add(new EnergielabelDataJsonConverter());
             _jsonOptions.Converters.Add(new FactuurJsonConverter());
             _jsonOptions.Converters.Add(new FotoJsonConverter());
+            _jsonOptions.Converters.Add(new FrontendDeeplinksJsonConverter());
             _jsonOptions.Converters.Add(new FunderingDataBronJsonConverter());
             _jsonOptions.Converters.Add(new FunderingDataBronNullableJsonConverter());
             _jsonOptions.Converters.Add(new FunderingHerstelTypeJsonConverter());
@@ -161,6 +162,7 @@ namespace Calcasa.Api.Client
                 new EnergielabelDataSerializationContext(),
                 new FactuurSerializationContext(),
                 new FotoSerializationContext(),
+                new FrontendDeeplinksSerializationContext(),
                 new FunderingDataBronSerializationContext(),
                 new FunderingHerstelTypeSerializationContext(),
                 new FunderingRisicoSerializationContext(),
