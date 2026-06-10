@@ -48,12 +48,14 @@ namespace Calcasa.Api.Model
         /// Initializes a new instance of the <see cref="FunderingRisico" /> class.
         /// </summary>
         /// <param name="label">label</param>
+        /// <param name="risicolabel">risicolabel</param>
         /// <param name="bron">bron</param>
         /// <param name="omschrijving">De omschrijving van het risico.</param>
         [JsonConstructor]
-        public FunderingRisico(Option<FunderingRisicoLabel?> label = default, Option<FunderingSoortBron?> bron = default, Option<string?> omschrijving = default)
+        public FunderingRisico(Option<FunderingRisicoLabel?> label = default, Option<Funderingsrisico?> risicolabel = default, Option<FunderingSoortBron?> bron = default, Option<string?> omschrijving = default)
         {
             LabelOption = label;
+            RisicolabelOption = risicolabel;
             BronOption = bron;
             OmschrijvingOption = omschrijving;
             OnCreated();
@@ -72,7 +74,21 @@ namespace Calcasa.Api.Model
         /// Gets or Sets Label
         /// </summary>
         [JsonPropertyName("label")]
+        [Obsolete]
         public FunderingRisicoLabel? Label { get { return this.LabelOption; } set { this.LabelOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of Risicolabel
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<Funderingsrisico?> RisicolabelOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Risicolabel
+        /// </summary>
+        [JsonPropertyName("risicolabel")]
+        public Funderingsrisico? Risicolabel { get { return this.RisicolabelOption; } set { this.RisicolabelOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Bron
@@ -116,6 +132,7 @@ namespace Calcasa.Api.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class FunderingRisico {\n");
             sb.Append("  Label: ").Append(Label).Append("\n");
+            sb.Append("  Risicolabel: ").Append(Risicolabel).Append("\n");
             sb.Append("  Bron: ").Append(Bron).Append("\n");
             sb.Append("  Omschrijving: ").Append(Omschrijving).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
@@ -147,6 +164,7 @@ namespace Calcasa.Api.Model
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
             Option<FunderingRisicoLabel?> label = default;
+            Option<Funderingsrisico?> risicolabel = default;
             Option<FunderingSoortBron?> bron = default;
             Option<string?> omschrijving = default;
 
@@ -170,6 +188,11 @@ namespace Calcasa.Api.Model
                             if (labelRawValue != null)
                                 label = new Option<FunderingRisicoLabel?>(FunderingRisicoLabelValueConverter.FromStringOrDefault(labelRawValue));
                             break;
+                        case "risicolabel":
+                            string? risicolabelRawValue = utf8JsonReader.GetString();
+                            if (risicolabelRawValue != null)
+                                risicolabel = new Option<Funderingsrisico?>(FunderingsrisicoValueConverter.FromStringOrDefault(risicolabelRawValue));
+                            break;
                         case "bron":
                             string? bronRawValue = utf8JsonReader.GetString();
                             if (bronRawValue != null)
@@ -187,13 +210,16 @@ namespace Calcasa.Api.Model
             if (label.IsSet && label.Value == null)
                 throw new ArgumentNullException(nameof(label), "Property is not nullable for class FunderingRisico.");
 
+            if (risicolabel.IsSet && risicolabel.Value == null)
+                throw new ArgumentNullException(nameof(risicolabel), "Property is not nullable for class FunderingRisico.");
+
             if (bron.IsSet && bron.Value == null)
                 throw new ArgumentNullException(nameof(bron), "Property is not nullable for class FunderingRisico.");
 
             if (omschrijving.IsSet && omschrijving.Value == null)
                 throw new ArgumentNullException(nameof(omschrijving), "Property is not nullable for class FunderingRisico.");
 
-            return new FunderingRisico(label, bron, omschrijving);
+            return new FunderingRisico(label, risicolabel, bron, omschrijving);
         }
 
         /// <summary>
@@ -227,6 +253,11 @@ namespace Calcasa.Api.Model
             {
                 var labelRawValue = FunderingRisicoLabelValueConverter.ToJsonValue(funderingRisico.Label!.Value);
                 writer.WriteString("label", labelRawValue);
+            }
+            if (funderingRisico.RisicolabelOption.IsSet)
+            {
+                var risicolabelRawValue = FunderingsrisicoValueConverter.ToJsonValue(funderingRisico.Risicolabel!.Value);
+                writer.WriteString("risicolabel", risicolabelRawValue);
             }
             if (funderingRisico.BronOption.IsSet)
             {

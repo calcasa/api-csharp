@@ -61,6 +61,7 @@ namespace Calcasa.Api.Api
         /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetFunderingByIdApiResponse"/>&gt;</returns>
+        [Obsolete]
         Task<IGetFunderingByIdApiResponse> GetFunderingByIdAsync(long bagNummeraanduidingId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -72,6 +73,7 @@ namespace Calcasa.Api.Api
         /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetFunderingByIdApiResponse"/>?&gt;</returns>
+        [Obsolete]
         Task<IGetFunderingByIdApiResponse?> GetFunderingByIdOrDefaultAsync(long bagNummeraanduidingId, System.Threading.CancellationToken cancellationToken = default);
     }
 

@@ -76,6 +76,7 @@ namespace Calcasa.Api.Client
             _jsonOptions.Converters.Add(new EnergielabelJsonConverter());
             _jsonOptions.Converters.Add(new EnergielabelNullableJsonConverter());
             _jsonOptions.Converters.Add(new EnergielabelDataJsonConverter());
+            _jsonOptions.Converters.Add(new ExpiredValuationProblemDetailsJsonConverter());
             _jsonOptions.Converters.Add(new FactuurJsonConverter());
             _jsonOptions.Converters.Add(new FotoJsonConverter());
             _jsonOptions.Converters.Add(new FrontendDeeplinksJsonConverter());
@@ -88,6 +89,8 @@ namespace Calcasa.Api.Client
             _jsonOptions.Converters.Add(new FunderingRisicoLabelNullableJsonConverter());
             _jsonOptions.Converters.Add(new FunderingSoortBronJsonConverter());
             _jsonOptions.Converters.Add(new FunderingSoortBronNullableJsonConverter());
+            _jsonOptions.Converters.Add(new FunderingTechnischHerstelTypeJsonConverter());
+            _jsonOptions.Converters.Add(new FunderingTechnischHerstelTypeNullableJsonConverter());
             _jsonOptions.Converters.Add(new FunderingTypeJsonConverter());
             _jsonOptions.Converters.Add(new FunderingTypeNullableJsonConverter());
             _jsonOptions.Converters.Add(new FunderingTyperingJsonConverter());
@@ -160,6 +163,7 @@ namespace Calcasa.Api.Client
                 new DeelWaarderingWebhookPayloadSerializationContext(),
                 new EnergielabelSerializationContext(),
                 new EnergielabelDataSerializationContext(),
+                new ExpiredValuationProblemDetailsSerializationContext(),
                 new FactuurSerializationContext(),
                 new FotoSerializationContext(),
                 new FrontendDeeplinksSerializationContext(),
@@ -168,6 +172,7 @@ namespace Calcasa.Api.Client
                 new FunderingRisicoSerializationContext(),
                 new FunderingRisicoLabelSerializationContext(),
                 new FunderingSoortBronSerializationContext(),
+                new FunderingTechnischHerstelTypeSerializationContext(),
                 new FunderingTypeSerializationContext(),
                 new FunderingTyperingSerializationContext(),
                 new FunderingdataSerializationContext(),

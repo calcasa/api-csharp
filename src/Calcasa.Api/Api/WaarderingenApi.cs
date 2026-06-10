@@ -121,6 +121,29 @@ namespace Calcasa.Api.Api
         Task<IGetWaarderingApiResponse?> GetWaarderingOrDefaultAsync(Guid id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Waardering op basis van upper-case hex SHA-256 hash van een PDF rapport. Als er een collision is wordt de nieuwste waardering teruggegeven.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="hash">De SHA-256 hash van het bestand, in upper-case hex.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetWaarderingByReportHashApiResponse"/>&gt;</returns>
+        Task<IGetWaarderingByReportHashApiResponse> GetWaarderingByReportHashAsync(string hash, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Waardering op basis van upper-case hex SHA-256 hash van een PDF rapport. Als er een collision is wordt de nieuwste waardering teruggegeven.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <param name="hash">De SHA-256 hash van het bestand, in upper-case hex.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetWaarderingByReportHashApiResponse"/>?&gt;</returns>
+        Task<IGetWaarderingByReportHashApiResponse?> GetWaarderingByReportHashOrDefaultAsync(string hash, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Waardering ontwikkeling op basis van waardering Id.
         /// </summary>
         /// <remarks>
@@ -285,7 +308,7 @@ namespace Calcasa.Api.Api
     /// <summary>
     /// The <see cref="IGetWaarderingApiResponse"/>
     /// </summary>
-    public interface IGetWaarderingApiResponse : Calcasa.Api.Client.IApiResponse, IOk<Calcasa.Api.Model.Waardering?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, IForbidden<Calcasa.Api.Model.PermissionsDeniedProblemDetails?>, INotFound<Calcasa.Api.Model.NotFoundProblemDetails?>, IUnprocessableContent<Microsoft.AspNetCore.Mvc.ValidationProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
+    public interface IGetWaarderingApiResponse : Calcasa.Api.Client.IApiResponse, IOk<Calcasa.Api.Model.Waardering?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, IForbidden<Calcasa.Api.Model.PermissionsDeniedProblemDetails?>, INotFound<Calcasa.Api.Model.NotFoundProblemDetails?>, IGone<Calcasa.Api.Model.ExpiredValuationProblemDetails?>, IUnprocessableContent<Microsoft.AspNetCore.Mvc.ValidationProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 200 Ok
@@ -310,6 +333,60 @@ namespace Calcasa.Api.Api
         /// </summary>
         /// <returns></returns>
         bool IsNotFound { get; }
+
+        /// <summary>
+        /// Returns true if the response is 410 Gone
+        /// </summary>
+        /// <returns></returns>
+        bool IsGone { get; }
+
+        /// <summary>
+        /// Returns true if the response is 422 UnprocessableContent
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnprocessableContent { get; }
+
+        /// <summary>
+        /// Returns true if the response is the default response type
+        /// </summary>
+        /// <returns></returns>
+        bool IsDefault { get; }
+    }
+
+    /// <summary>
+    /// The <see cref="IGetWaarderingByReportHashApiResponse"/>
+    /// </summary>
+    public interface IGetWaarderingByReportHashApiResponse : Calcasa.Api.Client.IApiResponse, IOk<Calcasa.Api.Model.Waardering?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, IForbidden<Calcasa.Api.Model.PermissionsDeniedProblemDetails?>, INotFound<Calcasa.Api.Model.NotFoundProblemDetails?>, IGone<Calcasa.Api.Model.ExpiredValuationProblemDetails?>, IUnprocessableContent<Microsoft.AspNetCore.Mvc.ValidationProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
+    {
+        /// <summary>
+        /// Returns true if the response is 200 Ok
+        /// </summary>
+        /// <returns></returns>
+        bool IsOk { get; }
+
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 404 NotFound
+        /// </summary>
+        /// <returns></returns>
+        bool IsNotFound { get; }
+
+        /// <summary>
+        /// Returns true if the response is 410 Gone
+        /// </summary>
+        /// <returns></returns>
+        bool IsGone { get; }
 
         /// <summary>
         /// Returns true if the response is 422 UnprocessableContent
@@ -519,6 +596,26 @@ namespace Calcasa.Api.Api
         internal void ExecuteOnErrorGetWaardering(Exception exception)
         {
             OnErrorGetWaardering?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnGetWaarderingByReportHash;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorGetWaarderingByReportHash;
+
+        internal void ExecuteOnGetWaarderingByReportHash(WaarderingenApi.GetWaarderingByReportHashApiResponse apiResponse)
+        {
+            OnGetWaarderingByReportHash?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorGetWaarderingByReportHash(Exception exception)
+        {
+            OnErrorGetWaarderingByReportHash?.Invoke(this, new ExceptionEventArgs(exception));
         }
 
         /// <summary>
@@ -1947,6 +2044,45 @@ namespace Calcasa.Api.Api
             }
 
             /// <summary>
+            /// Returns true if the response is 410 Gone
+            /// </summary>
+            /// <returns></returns>
+            public bool IsGone => 410 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 410 Gone
+            /// </summary>
+            /// <returns></returns>
+            public Calcasa.Api.Model.ExpiredValuationProblemDetails? Gone()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsGone
+                    ? System.Text.Json.JsonSerializer.Deserialize<Calcasa.Api.Model.ExpiredValuationProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 410 Gone and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryGone([NotNullWhen(true)] out Calcasa.Api.Model.ExpiredValuationProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Gone();
+                }
+                catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)410);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
             /// Returns true if the response is 422 UnprocessableContent
             /// </summary>
             /// <returns></returns>
@@ -1989,7 +2125,498 @@ namespace Calcasa.Api.Api
             /// Returns true if the response is the default response type
             /// </summary>
             /// <returns></returns>
-            public bool IsDefault => !IsOk && !IsUnauthorized && !IsForbidden && !IsNotFound && !IsUnprocessableContent;
+            public bool IsDefault => !IsOk && !IsUnauthorized && !IsForbidden && !IsNotFound && !IsGone && !IsUnprocessableContent;
+
+            /// <summary>
+            /// Deserializes the response if the response is 0 Default
+            /// </summary>
+            /// <returns></returns>
+            public Microsoft.AspNetCore.Mvc.ProblemDetails? Default()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsDefault
+                    ? System.Text.Json.JsonSerializer.Deserialize<Microsoft.AspNetCore.Mvc.ProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 0 Default and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryDefault([NotNullWhen(true)] out Microsoft.AspNetCore.Mvc.ProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Default();
+                }
+                catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)0);
+                }
+
+                return result != null;
+            }
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
+        }
+
+        partial void FormatGetWaarderingByReportHash(ref string hash);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="hash"></param>
+        /// <returns></returns>
+        private void ValidateGetWaarderingByReportHash(string hash)
+        {
+            if (hash == null)
+                throw new ArgumentNullException(nameof(hash));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="hash"></param>
+        private void AfterGetWaarderingByReportHashDefaultImplementation(IGetWaarderingByReportHashApiResponse apiResponseLocalVar, string hash)
+        {
+            bool suppressDefaultLog = false;
+            AfterGetWaarderingByReportHash(ref suppressDefaultLog, apiResponseLocalVar, hash);
+            if (!suppressDefaultLog)
+                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="hash"></param>
+        partial void AfterGetWaarderingByReportHash(ref bool suppressDefaultLog, IGetWaarderingByReportHashApiResponse apiResponseLocalVar, string hash);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="hash"></param>
+        private void OnErrorGetWaarderingByReportHashDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string hash)
+        {
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorGetWaarderingByReportHash(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, hash);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="hash"></param>
+        partial void OnErrorGetWaarderingByReportHash(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string hash);
+
+        /// <summary>
+        /// Waardering op basis van upper-case hex SHA-256 hash van een PDF rapport. Als er een collision is wordt de nieuwste waardering teruggegeven. 
+        /// </summary>
+        /// <param name="hash">De SHA-256 hash van het bestand, in upper-case hex.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetWaarderingByReportHashApiResponse"/>&gt;</returns>
+        public async Task<IGetWaarderingByReportHashApiResponse?> GetWaarderingByReportHashOrDefaultAsync(string hash, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await GetWaarderingByReportHashAsync(hash, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Waardering op basis van upper-case hex SHA-256 hash van een PDF rapport. Als er een collision is wordt de nieuwste waardering teruggegeven. 
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="hash">De SHA-256 hash van het bestand, in upper-case hex.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetWaarderingByReportHashApiResponse"/>&gt;</returns>
+        public async Task<IGetWaarderingByReportHashApiResponse> GetWaarderingByReportHashAsync(string hash, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidateGetWaarderingByReportHash(hash);
+
+                FormatGetWaarderingByReportHash(ref hash);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/waarderingen/by-hash/{hash}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath, "/waarderingen/by-hash/{hash}");
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bhash%7D", Uri.EscapeDataString(hash.ToString()));
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    OAuthToken oauthTokenLocalVar1 = (OAuthToken)await OauthTokenProvider.GetAsync(cancellation: cancellationToken).ConfigureAwait(false);
+
+                    tokenBaseLocalVars.Add(oauthTokenLocalVar1);
+
+                    oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json",
+                        "application/problem+json"
+                    };
+
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
+
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Get;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        ILogger<GetWaarderingByReportHashApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetWaarderingByReportHashApiResponse>();
+                        GetWaarderingByReportHashApiResponse apiResponseLocalVar;
+
+                        switch ((int)httpResponseMessageLocalVar.StatusCode)
+                        {
+                            default:
+                                {
+                                    string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                    apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/waarderingen/by-hash/{hash}", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                    break;
+                                }
+                        }
+
+                        AfterGetWaarderingByReportHashDefaultImplementation(apiResponseLocalVar, hash);
+
+                        Events.ExecuteOnGetWaarderingByReportHash(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode)429)
+                            foreach (TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                OnErrorGetWaarderingByReportHashDefaultImplementation(e, "/waarderingen/by-hash/{hash}", uriBuilderLocalVar.Path, hash);
+                Events.ExecuteOnErrorGetWaarderingByReportHash(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="GetWaarderingByReportHashApiResponse"/>
+        /// </summary>
+        public partial class GetWaarderingByReportHashApiResponse : Calcasa.Api.Client.ApiResponse, IGetWaarderingByReportHashApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<GetWaarderingByReportHashApiResponse> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="GetWaarderingByReportHashApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetWaarderingByReportHashApiResponse(ILogger<GetWaarderingByReportHashApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="GetWaarderingByReportHashApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetWaarderingByReportHashApiResponse(ILogger<GetWaarderingByReportHashApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public bool IsOk => 200 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public Calcasa.Api.Model.Waardering? Ok()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsOk
+                    ? System.Text.Json.JsonSerializer.Deserialize<Calcasa.Api.Model.Waardering>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryOk([NotNullWhen(true)] out Calcasa.Api.Model.Waardering? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Ok();
+                }
+                catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public Calcasa.Api.Model.UnauthorizedProblemDetails? Unauthorized()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsUnauthorized
+                    ? System.Text.Json.JsonSerializer.Deserialize<Calcasa.Api.Model.UnauthorizedProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnauthorized([NotNullWhen(true)] out Calcasa.Api.Model.UnauthorizedProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Unauthorized();
+                }
+                catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)401);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public Calcasa.Api.Model.PermissionsDeniedProblemDetails? Forbidden()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsForbidden
+                    ? System.Text.Json.JsonSerializer.Deserialize<Calcasa.Api.Model.PermissionsDeniedProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryForbidden([NotNullWhen(true)] out Calcasa.Api.Model.PermissionsDeniedProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Forbidden();
+                }
+                catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)403);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public bool IsNotFound => 404 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public Calcasa.Api.Model.NotFoundProblemDetails? NotFound()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsNotFound
+                    ? System.Text.Json.JsonSerializer.Deserialize<Calcasa.Api.Model.NotFoundProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryNotFound([NotNullWhen(true)] out Calcasa.Api.Model.NotFoundProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = NotFound();
+                }
+                catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)404);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 410 Gone
+            /// </summary>
+            /// <returns></returns>
+            public bool IsGone => 410 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 410 Gone
+            /// </summary>
+            /// <returns></returns>
+            public Calcasa.Api.Model.ExpiredValuationProblemDetails? Gone()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsGone
+                    ? System.Text.Json.JsonSerializer.Deserialize<Calcasa.Api.Model.ExpiredValuationProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 410 Gone and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryGone([NotNullWhen(true)] out Calcasa.Api.Model.ExpiredValuationProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Gone();
+                }
+                catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)410);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 422 UnprocessableContent
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnprocessableContent => 422 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 422 UnprocessableContent
+            /// </summary>
+            /// <returns></returns>
+            public Microsoft.AspNetCore.Mvc.ValidationProblemDetails? UnprocessableContent()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsUnprocessableContent
+                    ? System.Text.Json.JsonSerializer.Deserialize<Microsoft.AspNetCore.Mvc.ValidationProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 422 UnprocessableContent and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnprocessableContent([NotNullWhen(true)] out Microsoft.AspNetCore.Mvc.ValidationProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = UnprocessableContent();
+                }
+                catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)422);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is the default response type
+            /// </summary>
+            /// <returns></returns>
+            public bool IsDefault => !IsOk && !IsUnauthorized && !IsForbidden && !IsNotFound && !IsGone && !IsUnprocessableContent;
 
             /// <summary>
             /// Deserializes the response if the response is 0 Default

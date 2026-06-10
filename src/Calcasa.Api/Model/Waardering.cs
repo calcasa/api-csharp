@@ -62,8 +62,9 @@ namespace Calcasa.Api.Model
         /// <param name="vorigeVerkopen">vorigeVerkopen</param>
         /// <param name="rapport">rapport</param>
         /// <param name="factuur">factuur</param>
+        /// <param name="fundering">fundering</param>
         [JsonConstructor]
-        public Waardering(Guid id, DateTime aangemaakt, WaarderingStatus status, WaarderingInputParameters origineleInput, Adres adres, Option<Modeldata?> model = default, Option<Taxatiedata?> taxatie = default, Option<Objectdata?> @object = default, Option<Opnamedata?> opname = default, Option<CbsIndeling?> cbsIndeling = default, Option<Collection<Foto>?> fotos = default, Option<Collection<Referentieobject>?> referenties = default, Option<Collection<VorigeVerkoop>?> vorigeVerkopen = default, Option<Rapport?> rapport = default, Option<Factuur?> factuur = default)
+        public Waardering(Guid id, DateTime aangemaakt, WaarderingStatus status, WaarderingInputParameters origineleInput, Adres adres, Option<Modeldata?> model = default, Option<Taxatiedata?> taxatie = default, Option<Objectdata?> @object = default, Option<Opnamedata?> opname = default, Option<CbsIndeling?> cbsIndeling = default, Option<Collection<Foto>?> fotos = default, Option<Collection<Referentieobject>?> referenties = default, Option<Collection<VorigeVerkoop>?> vorigeVerkopen = default, Option<Rapport?> rapport = default, Option<Factuur?> factuur = default, Option<Funderingdata?> fundering = default)
         {
             Id = id;
             Aangemaakt = aangemaakt;
@@ -80,6 +81,7 @@ namespace Calcasa.Api.Model
             VorigeVerkopenOption = vorigeVerkopen;
             RapportOption = rapport;
             FactuurOption = factuur;
+            FunderingOption = fundering;
             OnCreated();
         }
 
@@ -248,6 +250,19 @@ namespace Calcasa.Api.Model
         public Factuur? Factuur { get { return this.FactuurOption; } set { this.FactuurOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of Fundering
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<Funderingdata?> FunderingOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Fundering
+        /// </summary>
+        [JsonPropertyName("fundering")]
+        public Funderingdata? Fundering { get { return this.FunderingOption; } set { this.FunderingOption = new(value); } }
+
+        /// <summary>
         /// Gets or Sets additional properties
         /// </summary>
         [JsonExtensionData]
@@ -276,6 +291,7 @@ namespace Calcasa.Api.Model
             sb.Append("  VorigeVerkopen: ").Append(VorigeVerkopen).Append("\n");
             sb.Append("  Rapport: ").Append(Rapport).Append("\n");
             sb.Append("  Factuur: ").Append(Factuur).Append("\n");
+            sb.Append("  Fundering: ").Append(Fundering).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -324,6 +340,7 @@ namespace Calcasa.Api.Model
             Option<Collection<VorigeVerkoop>?> vorigeVerkopen = default;
             Option<Rapport?> rapport = default;
             Option<Factuur?> factuur = default;
+            Option<Funderingdata?> fundering = default;
 
             while (utf8JsonReader.Read())
             {
@@ -387,6 +404,9 @@ namespace Calcasa.Api.Model
                         case "factuur":
                             factuur = new Option<Factuur?>(JsonSerializer.Deserialize<Factuur>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
+                        case "fundering":
+                            fundering = new Option<Funderingdata?>(JsonSerializer.Deserialize<Funderingdata>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            break;
                         default:
                             break;
                     }
@@ -444,7 +464,10 @@ namespace Calcasa.Api.Model
             if (factuur.IsSet && factuur.Value == null)
                 throw new ArgumentNullException(nameof(factuur), "Property is not nullable for class Waardering.");
 
-            return new Waardering(id.Value!.Value!, aangemaakt.Value!.Value!, status.Value!.Value!, origineleInput.Value!, adres.Value!, model, taxatie, varObject, opname, cbsIndeling, fotos, referenties, vorigeVerkopen, rapport, factuur);
+            if (fundering.IsSet && fundering.Value == null)
+                throw new ArgumentNullException(nameof(fundering), "Property is not nullable for class Waardering.");
+
+            return new Waardering(id.Value!.Value!, aangemaakt.Value!.Value!, status.Value!.Value!, origineleInput.Value!, adres.Value!, model, taxatie, varObject, opname, cbsIndeling, fotos, referenties, vorigeVerkopen, rapport, factuur, fundering);
         }
 
         /// <summary>
@@ -497,6 +520,9 @@ namespace Calcasa.Api.Model
 
             if (waardering.FactuurOption.IsSet && waardering.Factuur == null)
                 throw new ArgumentNullException(nameof(waardering.Factuur), "Property is required for class Waardering.");
+
+            if (waardering.FunderingOption.IsSet && waardering.Fundering == null)
+                throw new ArgumentNullException(nameof(waardering.Fundering), "Property is required for class Waardering.");
 
             writer.WriteString("id", waardering.Id);
 
@@ -567,6 +593,11 @@ namespace Calcasa.Api.Model
             {
                 writer.WritePropertyName("factuur");
                 JsonSerializer.Serialize(writer, waardering.Factuur, jsonSerializerOptions);
+            }
+            if (waardering.FunderingOption.IsSet)
+            {
+                writer.WritePropertyName("fundering");
+                JsonSerializer.Serialize(writer, waardering.Fundering, jsonSerializerOptions);
             }
         }
     }

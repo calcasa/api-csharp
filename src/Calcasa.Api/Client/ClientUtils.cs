@@ -142,6 +142,8 @@ namespace Calcasa.Api.Client
                 return FunderingRisicoLabelValueConverter.ToJsonValue(funderingRisicoLabel);
             if (obj is FunderingSoortBron funderingSoortBron)
                 return FunderingSoortBronValueConverter.ToJsonValue(funderingSoortBron);
+            if (obj is FunderingTechnischHerstelType funderingTechnischHerstelType)
+                return FunderingTechnischHerstelTypeValueConverter.ToJsonValue(funderingTechnischHerstelType);
             if (obj is FunderingType funderingType)
                 return FunderingTypeValueConverter.ToJsonValue(funderingType);
             if (obj is Funderingsrisico funderingsrisico)

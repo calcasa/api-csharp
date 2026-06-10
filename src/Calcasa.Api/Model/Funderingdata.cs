@@ -49,6 +49,7 @@ namespace Calcasa.Api.Model
         /// </summary>
         /// <param name="typering">typering</param>
         /// <param name="herstelType">herstelType</param>
+        /// <param name="technischHerstelType">technischHerstelType</param>
         /// <param name="droogstandRisico">droogstandRisico</param>
         /// <param name="optrekkendVochtRisico">optrekkendVochtRisico</param>
         /// <param name="bioInfectieRisico">bioInfectieRisico</param>
@@ -56,10 +57,11 @@ namespace Calcasa.Api.Model
         /// <param name="bron">bron</param>
         /// <param name="risicolabel">risicolabel</param>
         [JsonConstructor]
-        public Funderingdata(Option<FunderingTypering?> typering = default, Option<FunderingHerstelType?> herstelType = default, Option<FunderingRisico?> droogstandRisico = default, Option<FunderingRisico?> optrekkendVochtRisico = default, Option<FunderingRisico?> bioInfectieRisico = default, Option<double?> herstelkosten = default, Option<FunderingDataBron?> bron = default, Option<Funderingsrisico?> risicolabel = default)
+        public Funderingdata(Option<FunderingTypering?> typering = default, Option<FunderingHerstelType?> herstelType = default, Option<FunderingTechnischHerstelType?> technischHerstelType = default, Option<FunderingRisico?> droogstandRisico = default, Option<FunderingRisico?> optrekkendVochtRisico = default, Option<FunderingRisico?> bioInfectieRisico = default, Option<double?> herstelkosten = default, Option<FunderingDataBron?> bron = default, Option<Funderingsrisico?> risicolabel = default)
         {
             TyperingOption = typering;
             HerstelTypeOption = herstelType;
+            TechnischHerstelTypeOption = technischHerstelType;
             DroogstandRisicoOption = droogstandRisico;
             OptrekkendVochtRisicoOption = optrekkendVochtRisico;
             BioInfectieRisicoOption = bioInfectieRisico;
@@ -82,7 +84,21 @@ namespace Calcasa.Api.Model
         /// Gets or Sets HerstelType
         /// </summary>
         [JsonPropertyName("herstelType")]
+        [Obsolete]
         public FunderingHerstelType? HerstelType { get { return this.HerstelTypeOption; } set { this.HerstelTypeOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of TechnischHerstelType
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<FunderingTechnischHerstelType?> TechnischHerstelTypeOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets TechnischHerstelType
+        /// </summary>
+        [JsonPropertyName("technischHerstelType")]
+        public FunderingTechnischHerstelType? TechnischHerstelType { get { return this.TechnischHerstelTypeOption; } set { this.TechnischHerstelTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Bron
@@ -192,6 +208,7 @@ namespace Calcasa.Api.Model
             sb.Append("class Funderingdata {\n");
             sb.Append("  Typering: ").Append(Typering).Append("\n");
             sb.Append("  HerstelType: ").Append(HerstelType).Append("\n");
+            sb.Append("  TechnischHerstelType: ").Append(TechnischHerstelType).Append("\n");
             sb.Append("  DroogstandRisico: ").Append(DroogstandRisico).Append("\n");
             sb.Append("  OptrekkendVochtRisico: ").Append(OptrekkendVochtRisico).Append("\n");
             sb.Append("  BioInfectieRisico: ").Append(BioInfectieRisico).Append("\n");
@@ -228,6 +245,7 @@ namespace Calcasa.Api.Model
 
             Option<FunderingTypering?> typering = default;
             Option<FunderingHerstelType?> herstelType = default;
+            Option<FunderingTechnischHerstelType?> technischHerstelType = default;
             Option<FunderingRisico?> droogstandRisico = default;
             Option<FunderingRisico?> optrekkendVochtRisico = default;
             Option<FunderingRisico?> bioInfectieRisico = default;
@@ -257,6 +275,11 @@ namespace Calcasa.Api.Model
                             string? herstelTypeRawValue = utf8JsonReader.GetString();
                             if (herstelTypeRawValue != null)
                                 herstelType = new Option<FunderingHerstelType?>(FunderingHerstelTypeValueConverter.FromStringOrDefault(herstelTypeRawValue));
+                            break;
+                        case "technischHerstelType":
+                            string? technischHerstelTypeRawValue = utf8JsonReader.GetString();
+                            if (technischHerstelTypeRawValue != null)
+                                technischHerstelType = new Option<FunderingTechnischHerstelType?>(FunderingTechnischHerstelTypeValueConverter.FromStringOrDefault(technischHerstelTypeRawValue));
                             break;
                         case "droogstandRisico":
                             droogstandRisico = new Option<FunderingRisico?>(JsonSerializer.Deserialize<FunderingRisico>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -292,6 +315,9 @@ namespace Calcasa.Api.Model
             if (herstelType.IsSet && herstelType.Value == null)
                 throw new ArgumentNullException(nameof(herstelType), "Property is not nullable for class Funderingdata.");
 
+            if (technischHerstelType.IsSet && technischHerstelType.Value == null)
+                throw new ArgumentNullException(nameof(technischHerstelType), "Property is not nullable for class Funderingdata.");
+
             if (droogstandRisico.IsSet && droogstandRisico.Value == null)
                 throw new ArgumentNullException(nameof(droogstandRisico), "Property is not nullable for class Funderingdata.");
 
@@ -307,7 +333,7 @@ namespace Calcasa.Api.Model
             if (risicolabel.IsSet && risicolabel.Value == null)
                 throw new ArgumentNullException(nameof(risicolabel), "Property is not nullable for class Funderingdata.");
 
-            return new Funderingdata(typering, herstelType, droogstandRisico, optrekkendVochtRisico, bioInfectieRisico, herstelkosten, bron, risicolabel);
+            return new Funderingdata(typering, herstelType, technischHerstelType, droogstandRisico, optrekkendVochtRisico, bioInfectieRisico, herstelkosten, bron, risicolabel);
         }
 
         /// <summary>
@@ -355,6 +381,11 @@ namespace Calcasa.Api.Model
             {
                 var herstelTypeRawValue = FunderingHerstelTypeValueConverter.ToJsonValue(funderingdata.HerstelType!.Value);
                 writer.WriteString("herstelType", herstelTypeRawValue);
+            }
+            if (funderingdata.TechnischHerstelTypeOption.IsSet)
+            {
+                var technischHerstelTypeRawValue = FunderingTechnischHerstelTypeValueConverter.ToJsonValue(funderingdata.TechnischHerstelType!.Value);
+                writer.WriteString("technischHerstelType", technischHerstelTypeRawValue);
             }
             if (funderingdata.DroogstandRisicoOption.IsSet)
             {
