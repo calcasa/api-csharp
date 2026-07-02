@@ -40,9 +40,8 @@ using Calcasa.Api.Client;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; |  | | &#x60;koopsom&#x60; |  | | &#x60;taxatiewaarde&#x60; |  | | &#x60;wozWaarde&#x60; |  | | &#x60;eigenWaardeinschatting&#x60; |  |
+    /// Defines KlantwaardeType
     /// </summary>
-    /// <value>| Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; |  | | &#x60;koopsom&#x60; |  | | &#x60;taxatiewaarde&#x60; |  | | &#x60;wozWaarde&#x60; |  | | &#x60;eigenWaardeinschatting&#x60; |  |</value>
     public enum KlantwaardeType
     {
         /// <summary>

@@ -58,12 +58,16 @@ namespace Calcasa.Api.Model
         /// <param name="isBestaandeNhgHypotheek">Verplicht te gebruiken voor de combinatie van de producttypen &#x60;modelwaardeDesktopTaxatie&#x60; en &#x60;desktopTaxatie&#x60;, als er gebruikt gemaakt wordt van de Nationale Hypotheekgarantie (&#x60;isNhg&#x60;) en het aanvraagdoel niet &#x60;aankoopNieuweWoning&#x60; is. Geeft aan of er bij de eventuele bestaande hypotheek gebruik is gemaakt van de Nationale Hypotheekgarantie.</param>
         /// <param name="benodigdeOverbrugging">Verplicht voor de combinatie van de producttypen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; en het aanvraagdoel &#x60;overbruggingsfinanciering&#x60;. In hele euros.</param>
         /// <param name="peildatum">Optioneel te gebruiken voor de producttypen &#x60;modelwaardeRisico&#x60;. Peildatum voor de aanvraag. Standaard de datum van vandaag. Supports yyyy-MM-dd or optionally yyyy-MM-ddTHH:mm:ssZ (ISO) with the time stamp assumed to be in UTC and the time is dropped before using the value.</param>
-        /// <param name="isErfpacht">Potentieel verplicht voor de product typen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie.</param>
+        /// <param name="isErfpacht">Potentieel verplicht voor de producttypen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie.</param>
         /// <param name="klantkenmerk">Vrij veld voor het opslaan van een klantkenmerk, zoals bijvoorbeeld een dossiernummer of andere interne referentie. Dit veld komt later weer terug in het &#x60;origineleInput&#x60; veld in het &#x60;waardering&#x60; object.</param>
-        /// <param name="heeftAflossingsvrijDeel">True als de lening een aflossingsvrij deel heeft. Potentieel verplicht voor de product typen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie.</param>
-        /// <param name="aflossingsvrijDeel">De hoogte van het aflossingsvrije deel van het veld &#x60;hypotheekwaarde&#x60; van de lening. Alleen relevant als &#x60;heeftAflossingsvrijDeel&#x60; true is. Potentieel verplicht voor de product typen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie. In hele euros.</param>
+        /// <param name="heeftAflossingsvrijDeel">True als de lening een aflossingsvrij deel heeft. Potentieel verplicht voor de producttypen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie.</param>
+        /// <param name="aflossingsvrijDeel">De hoogte van het aflossingsvrije deel van het veld &#x60;hypotheekwaarde&#x60; van de lening. Alleen relevant als &#x60;heeftAflossingsvrijDeel&#x60; true is. Potentieel verplicht voor de producttypen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie. In hele euros.</param>
+        /// <param name="verdieping">Dit is de verdieping waarop de woning gelegen is (bel-etage), voor een eengezinswoning is dit de begane grond (&#x3D;0). In de toekomst verplicht voor de producttypen &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60;.</param>
+        /// <param name="woonadresInBuitenland">Geeft aan of het woonadres van de aanvrager in het buitenland ligt. In de toekomst verplicht voor de producttypen &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60;.</param>
+        /// <param name="woonadresBagNummeraanduidingId">Het BAG Id van het woonadres van de aanvrager. Alleen als woonadresInBuitenland false is. In de toekomst verplicht voor de producttypen &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60;.</param>
+        /// <param name="opdrachtgever">De volledige naam van de opdrachtgever. In de toekomst verplicht voor de producttypen &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60;.</param>
         [JsonConstructor]
-        public ProductCheckParameters(long bagNummeraanduidingId, Option<string?> geldverstrekker = default, Option<int?> hypotheekwaarde = default, Option<Aanvraagdoel?> aanvraagdoel = default, Option<int?> klantwaarde = default, Option<KlantwaardeType?> klantwaardeType = default, Option<bool?> isBestaandeWoning = default, Option<bool?> isNhg = default, Option<bool?> isBestaandeNhgHypotheek = default, Option<int?> benodigdeOverbrugging = default, Option<DateOnly?> peildatum = default, Option<bool?> isErfpacht = default, Option<string?> klantkenmerk = default, Option<bool?> heeftAflossingsvrijDeel = default, Option<int?> aflossingsvrijDeel = default)
+        public ProductCheckParameters(long bagNummeraanduidingId, Option<string?> geldverstrekker = default, Option<int?> hypotheekwaarde = default, Option<Aanvraagdoel?> aanvraagdoel = default, Option<int?> klantwaarde = default, Option<KlantwaardeType?> klantwaardeType = default, Option<bool?> isBestaandeWoning = default, Option<bool?> isNhg = default, Option<bool?> isBestaandeNhgHypotheek = default, Option<int?> benodigdeOverbrugging = default, Option<DateOnly?> peildatum = default, Option<bool?> isErfpacht = default, Option<string?> klantkenmerk = default, Option<bool?> heeftAflossingsvrijDeel = default, Option<int?> aflossingsvrijDeel = default, Option<int?> verdieping = default, Option<bool?> woonadresInBuitenland = default, Option<long?> woonadresBagNummeraanduidingId = default, Option<string?> opdrachtgever = default)
         {
             BagNummeraanduidingId = bagNummeraanduidingId;
             GeldverstrekkerOption = geldverstrekker;
@@ -80,6 +84,10 @@ namespace Calcasa.Api.Model
             KlantkenmerkOption = klantkenmerk;
             HeeftAflossingsvrijDeelOption = heeftAflossingsvrijDeel;
             AflossingsvrijDeelOption = aflossingsvrijDeel;
+            VerdiepingOption = verdieping;
+            WoonadresInBuitenlandOption = woonadresInBuitenland;
+            WoonadresBagNummeraanduidingIdOption = woonadresBagNummeraanduidingId;
+            OpdrachtgeverOption = opdrachtgever;
             OnCreated();
         }
 
@@ -239,9 +247,9 @@ namespace Calcasa.Api.Model
         public Option<bool?> IsErfpachtOption { get; private set; }
 
         /// <summary>
-        /// Potentieel verplicht voor de product typen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie.
+        /// Potentieel verplicht voor de producttypen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie.
         /// </summary>
-        /// <value>Potentieel verplicht voor de product typen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie.</value>
+        /// <value>Potentieel verplicht voor de producttypen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie.</value>
         [JsonPropertyName("isErfpacht")]
         public bool? IsErfpacht { get { return this.IsErfpachtOption; } set { this.IsErfpachtOption = new(value); } }
 
@@ -267,9 +275,9 @@ namespace Calcasa.Api.Model
         public Option<bool?> HeeftAflossingsvrijDeelOption { get; private set; }
 
         /// <summary>
-        /// True als de lening een aflossingsvrij deel heeft. Potentieel verplicht voor de product typen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie.
+        /// True als de lening een aflossingsvrij deel heeft. Potentieel verplicht voor de producttypen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie.
         /// </summary>
-        /// <value>True als de lening een aflossingsvrij deel heeft. Potentieel verplicht voor de product typen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie.</value>
+        /// <value>True als de lening een aflossingsvrij deel heeft. Potentieel verplicht voor de producttypen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie.</value>
         [JsonPropertyName("heeftAflossingsvrijDeel")]
         public bool? HeeftAflossingsvrijDeel { get { return this.HeeftAflossingsvrijDeelOption; } set { this.HeeftAflossingsvrijDeelOption = new(value); } }
 
@@ -281,11 +289,67 @@ namespace Calcasa.Api.Model
         public Option<int?> AflossingsvrijDeelOption { get; private set; }
 
         /// <summary>
-        /// De hoogte van het aflossingsvrije deel van het veld &#x60;hypotheekwaarde&#x60; van de lening. Alleen relevant als &#x60;heeftAflossingsvrijDeel&#x60; true is. Potentieel verplicht voor de product typen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie. In hele euros.
+        /// De hoogte van het aflossingsvrije deel van het veld &#x60;hypotheekwaarde&#x60; van de lening. Alleen relevant als &#x60;heeftAflossingsvrijDeel&#x60; true is. Potentieel verplicht voor de producttypen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie. In hele euros.
         /// </summary>
-        /// <value>De hoogte van het aflossingsvrije deel van het veld &#x60;hypotheekwaarde&#x60; van de lening. Alleen relevant als &#x60;heeftAflossingsvrijDeel&#x60; true is. Potentieel verplicht voor de product typen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie. In hele euros.</value>
+        /// <value>De hoogte van het aflossingsvrije deel van het veld &#x60;hypotheekwaarde&#x60; van de lening. Alleen relevant als &#x60;heeftAflossingsvrijDeel&#x60; true is. Potentieel verplicht voor de producttypen &#x60;modelwaardeDesktopTaxatie&#x60;, &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60; afhankelijk van de geldverstrekker- en accountconfiguratie. In hele euros.</value>
         [JsonPropertyName("aflossingsvrijDeel")]
         public int? AflossingsvrijDeel { get { return this.AflossingsvrijDeelOption; } set { this.AflossingsvrijDeelOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of Verdieping
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<int?> VerdiepingOption { get; private set; }
+
+        /// <summary>
+        /// Dit is de verdieping waarop de woning gelegen is (bel-etage), voor een eengezinswoning is dit de begane grond (&#x3D;0). In de toekomst verplicht voor de producttypen &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60;.
+        /// </summary>
+        /// <value>Dit is de verdieping waarop de woning gelegen is (bel-etage), voor een eengezinswoning is dit de begane grond (&#x3D;0). In de toekomst verplicht voor de producttypen &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60;.</value>
+        [JsonPropertyName("verdieping")]
+        public int? Verdieping { get { return this.VerdiepingOption; } set { this.VerdiepingOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of WoonadresInBuitenland
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<bool?> WoonadresInBuitenlandOption { get; private set; }
+
+        /// <summary>
+        /// Geeft aan of het woonadres van de aanvrager in het buitenland ligt. In de toekomst verplicht voor de producttypen &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60;.
+        /// </summary>
+        /// <value>Geeft aan of het woonadres van de aanvrager in het buitenland ligt. In de toekomst verplicht voor de producttypen &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60;.</value>
+        [JsonPropertyName("woonadresInBuitenland")]
+        public bool? WoonadresInBuitenland { get { return this.WoonadresInBuitenlandOption; } set { this.WoonadresInBuitenlandOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of WoonadresBagNummeraanduidingId
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<long?> WoonadresBagNummeraanduidingIdOption { get; private set; }
+
+        /// <summary>
+        /// Het BAG Id van het woonadres van de aanvrager. Alleen als woonadresInBuitenland false is. In de toekomst verplicht voor de producttypen &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60;.
+        /// </summary>
+        /// <value>Het BAG Id van het woonadres van de aanvrager. Alleen als woonadresInBuitenland false is. In de toekomst verplicht voor de producttypen &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60;.</value>
+        [JsonPropertyName("woonadresBagNummeraanduidingId")]
+        public long? WoonadresBagNummeraanduidingId { get { return this.WoonadresBagNummeraanduidingIdOption; } set { this.WoonadresBagNummeraanduidingIdOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of Opdrachtgever
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> OpdrachtgeverOption { get; private set; }
+
+        /// <summary>
+        /// De volledige naam van de opdrachtgever. In de toekomst verplicht voor de producttypen &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60;.
+        /// </summary>
+        /// <value>De volledige naam van de opdrachtgever. In de toekomst verplicht voor de producttypen &#x60;desktopTaxatie&#x60; en &#x60;desktopTaxatiePlus&#x60;.</value>
+        [JsonPropertyName("opdrachtgever")]
+        public string? Opdrachtgever { get { return this.OpdrachtgeverOption; } set { this.OpdrachtgeverOption = new(value); } }
 
         /// <summary>
         /// Gets or Sets additional properties
@@ -316,6 +380,10 @@ namespace Calcasa.Api.Model
             sb.Append("  Klantkenmerk: ").Append(Klantkenmerk).Append("\n");
             sb.Append("  HeeftAflossingsvrijDeel: ").Append(HeeftAflossingsvrijDeel).Append("\n");
             sb.Append("  AflossingsvrijDeel: ").Append(AflossingsvrijDeel).Append("\n");
+            sb.Append("  Verdieping: ").Append(Verdieping).Append("\n");
+            sb.Append("  WoonadresInBuitenland: ").Append(WoonadresInBuitenland).Append("\n");
+            sb.Append("  WoonadresBagNummeraanduidingId: ").Append(WoonadresBagNummeraanduidingId).Append("\n");
+            sb.Append("  Opdrachtgever: ").Append(Opdrachtgever).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -364,6 +432,10 @@ namespace Calcasa.Api.Model
             Option<string?> klantkenmerk = default;
             Option<bool?> heeftAflossingsvrijDeel = default;
             Option<int?> aflossingsvrijDeel = default;
+            Option<int?> verdieping = default;
+            Option<bool?> woonadresInBuitenland = default;
+            Option<long?> woonadresBagNummeraanduidingId = default;
+            Option<string?> opdrachtgever = default;
 
             while (utf8JsonReader.Read())
             {
@@ -429,6 +501,18 @@ namespace Calcasa.Api.Model
                         case "aflossingsvrijDeel":
                             aflossingsvrijDeel = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
+                        case "verdieping":
+                            verdieping = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
+                            break;
+                        case "woonadresInBuitenland":
+                            woonadresInBuitenland = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
+                            break;
+                        case "woonadresBagNummeraanduidingId":
+                            woonadresBagNummeraanduidingId = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
+                            break;
+                        case "opdrachtgever":
+                            opdrachtgever = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
@@ -471,7 +555,7 @@ namespace Calcasa.Api.Model
             if (klantkenmerk.IsSet && klantkenmerk.Value == null)
                 throw new ArgumentNullException(nameof(klantkenmerk), "Property is not nullable for class ProductCheckParameters.");
 
-            return new ProductCheckParameters(bagNummeraanduidingId.Value!.Value!, geldverstrekker, hypotheekwaarde, aanvraagdoel, klantwaarde, klantwaardeType, isBestaandeWoning, isNhg, isBestaandeNhgHypotheek, benodigdeOverbrugging, peildatum, isErfpacht, klantkenmerk, heeftAflossingsvrijDeel, aflossingsvrijDeel);
+            return new ProductCheckParameters(bagNummeraanduidingId.Value!.Value!, geldverstrekker, hypotheekwaarde, aanvraagdoel, klantwaarde, klantwaardeType, isBestaandeWoning, isNhg, isBestaandeNhgHypotheek, benodigdeOverbrugging, peildatum, isErfpacht, klantkenmerk, heeftAflossingsvrijDeel, aflossingsvrijDeel, verdieping, woonadresInBuitenland, woonadresBagNummeraanduidingId, opdrachtgever);
         }
 
         /// <summary>
@@ -563,6 +647,30 @@ namespace Calcasa.Api.Model
                     writer.WriteNumber("aflossingsvrijDeel", productCheckParameters.AflossingsvrijDeelOption.Value!.Value);
                 else
                     writer.WriteNull("aflossingsvrijDeel");
+
+            if (productCheckParameters.VerdiepingOption.IsSet)
+                if (productCheckParameters.VerdiepingOption.Value != null)
+                    writer.WriteNumber("verdieping", productCheckParameters.VerdiepingOption.Value!.Value);
+                else
+                    writer.WriteNull("verdieping");
+
+            if (productCheckParameters.WoonadresInBuitenlandOption.IsSet)
+                if (productCheckParameters.WoonadresInBuitenlandOption.Value != null)
+                    writer.WriteBoolean("woonadresInBuitenland", productCheckParameters.WoonadresInBuitenlandOption.Value!.Value);
+                else
+                    writer.WriteNull("woonadresInBuitenland");
+
+            if (productCheckParameters.WoonadresBagNummeraanduidingIdOption.IsSet)
+                if (productCheckParameters.WoonadresBagNummeraanduidingIdOption.Value != null)
+                    writer.WriteNumber("woonadresBagNummeraanduidingId", productCheckParameters.WoonadresBagNummeraanduidingIdOption.Value!.Value);
+                else
+                    writer.WriteNull("woonadresBagNummeraanduidingId");
+
+            if (productCheckParameters.OpdrachtgeverOption.IsSet)
+                if (productCheckParameters.OpdrachtgeverOption.Value != null)
+                    writer.WriteString("opdrachtgever", productCheckParameters.Opdrachtgever);
+                else
+                    writer.WriteNull("opdrachtgever");
         }
     }
 

@@ -148,6 +148,8 @@ namespace Calcasa.Api.Client
                 return FunderingTypeValueConverter.ToJsonValue(funderingType);
             if (obj is Funderingsrisico funderingsrisico)
                 return FunderingsrisicoValueConverter.ToJsonValue(funderingsrisico);
+            if (obj is InboundFileSetState inboundFileSetState)
+                return InboundFileSetStateValueConverter.ToJsonValue(inboundFileSetState);
             if (obj is KlantwaardeType klantwaardeType)
                 return KlantwaardeTypeValueConverter.ToJsonValue(klantwaardeType);
             if (obj is MTLSType mTLSType)
@@ -156,6 +158,8 @@ namespace Calcasa.Api.Client
                 return NotitieValueConverter.ToJsonValue(notitie);
             if (obj is OnderhoudStaat onderhoudStaat)
                 return OnderhoudStaatValueConverter.ToJsonValue(onderhoudStaat);
+            if (obj is OutboundFileSetState outboundFileSetState)
+                return OutboundFileSetStateValueConverter.ToJsonValue(outboundFileSetState);
             if (obj is ProductType productType)
                 return ProductTypeValueConverter.ToJsonValue(productType);
             if (obj is Taxatiestatus taxatiestatus)

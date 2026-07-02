@@ -78,6 +78,14 @@ namespace Calcasa.Api.Client
             _jsonOptions.Converters.Add(new EnergielabelDataJsonConverter());
             _jsonOptions.Converters.Add(new ExpiredValuationProblemDetailsJsonConverter());
             _jsonOptions.Converters.Add(new FactuurJsonConverter());
+            _jsonOptions.Converters.Add(new FileErrorJsonConverter());
+            _jsonOptions.Converters.Add(new FileSetsFileInfoJsonConverter());
+            _jsonOptions.Converters.Add(new FileSetsFileSetJsonConverter());
+            _jsonOptions.Converters.Add(new FileSetsInboundFileSetJsonConverter());
+            _jsonOptions.Converters.Add(new FileSetsInboundFileSetWebhookPayloadJsonConverter());
+            _jsonOptions.Converters.Add(new FileSetsOutboundFileSetJsonConverter());
+            _jsonOptions.Converters.Add(new FileSetsOutboundFileSetWebhookPayloadJsonConverter());
+            _jsonOptions.Converters.Add(new FileWarningJsonConverter());
             _jsonOptions.Converters.Add(new FotoJsonConverter());
             _jsonOptions.Converters.Add(new FrontendDeeplinksJsonConverter());
             _jsonOptions.Converters.Add(new FunderingDataBronJsonConverter());
@@ -99,6 +107,10 @@ namespace Calcasa.Api.Client
             _jsonOptions.Converters.Add(new FunderingsrisicoNullableJsonConverter());
             _jsonOptions.Converters.Add(new GebiedsdataJsonConverter());
             _jsonOptions.Converters.Add(new GeldverstrekkerJsonConverter());
+            _jsonOptions.Converters.Add(new InboundFileSetAlreadyCompletedProblemDetailsJsonConverter());
+            _jsonOptions.Converters.Add(new InboundFileSetAlreadyExistsProblemDetailsJsonConverter());
+            _jsonOptions.Converters.Add(new InboundFileSetStateJsonConverter());
+            _jsonOptions.Converters.Add(new InboundFileSetStateNullableJsonConverter());
             _jsonOptions.Converters.Add(new InvalidArgumentProblemDetailsJsonConverter());
             _jsonOptions.Converters.Add(new KlantwaardeTypeJsonConverter());
             _jsonOptions.Converters.Add(new KlantwaardeTypeNullableJsonConverter());
@@ -115,6 +127,8 @@ namespace Calcasa.Api.Client
             _jsonOptions.Converters.Add(new OnderhoudStaatJsonConverter());
             _jsonOptions.Converters.Add(new OnderhoudStaatNullableJsonConverter());
             _jsonOptions.Converters.Add(new OpnamedataJsonConverter());
+            _jsonOptions.Converters.Add(new OutboundFileSetStateJsonConverter());
+            _jsonOptions.Converters.Add(new OutboundFileSetStateNullableJsonConverter());
             _jsonOptions.Converters.Add(new PermissionsDeniedProblemDetailsJsonConverter());
             _jsonOptions.Converters.Add(new ProductCheckJsonConverter());
             _jsonOptions.Converters.Add(new ProductCheckItemJsonConverter());
@@ -165,6 +179,14 @@ namespace Calcasa.Api.Client
                 new EnergielabelDataSerializationContext(),
                 new ExpiredValuationProblemDetailsSerializationContext(),
                 new FactuurSerializationContext(),
+                new FileErrorSerializationContext(),
+                new FileSetsFileInfoSerializationContext(),
+                new FileSetsFileSetSerializationContext(),
+                new FileSetsInboundFileSetSerializationContext(),
+                new FileSetsInboundFileSetWebhookPayloadSerializationContext(),
+                new FileSetsOutboundFileSetSerializationContext(),
+                new FileSetsOutboundFileSetWebhookPayloadSerializationContext(),
+                new FileWarningSerializationContext(),
                 new FotoSerializationContext(),
                 new FrontendDeeplinksSerializationContext(),
                 new FunderingDataBronSerializationContext(),
@@ -179,6 +201,9 @@ namespace Calcasa.Api.Client
                 new FunderingsrisicoSerializationContext(),
                 new GebiedsdataSerializationContext(),
                 new GeldverstrekkerSerializationContext(),
+                new InboundFileSetAlreadyCompletedProblemDetailsSerializationContext(),
+                new InboundFileSetAlreadyExistsProblemDetailsSerializationContext(),
+                new InboundFileSetStateSerializationContext(),
                 new InvalidArgumentProblemDetailsSerializationContext(),
                 new KlantwaardeTypeSerializationContext(),
                 new KwartaalSerializationContext(),
@@ -191,6 +216,7 @@ namespace Calcasa.Api.Client
                 new OmgevingsdataSerializationContext(),
                 new OnderhoudStaatSerializationContext(),
                 new OpnamedataSerializationContext(),
+                new OutboundFileSetStateSerializationContext(),
                 new PermissionsDeniedProblemDetailsSerializationContext(),
                 new ProductCheckSerializationContext(),
                 new ProductCheckItemSerializationContext(),
@@ -225,6 +251,7 @@ namespace Calcasa.Api.Client
             _services.AddSingleton<CallbacksApiEvents>();
             _services.AddSingleton<ConfiguratieApiEvents>();
             _services.AddSingleton<FacturenApiEvents>();
+            _services.AddSingleton<FileSetsApiEvents>();
             _services.AddSingleton<FotosApiEvents>();
             _services.AddSingleton<FunderingenApiEvents>();
             _services.AddSingleton<GeldverstrekkersApiEvents>();
@@ -254,6 +281,7 @@ namespace Calcasa.Api.Client
             builders.Add(_services.AddHttpClient<ICallbacksApi, CallbacksApi>(client));
             builders.Add(_services.AddHttpClient<IConfiguratieApi, ConfiguratieApi>(client));
             builders.Add(_services.AddHttpClient<IFacturenApi, FacturenApi>(client));
+            builders.Add(_services.AddHttpClient<IFileSetsApi, FileSetsApi>(client));
             builders.Add(_services.AddHttpClient<IFotosApi, FotosApi>(client));
             builders.Add(_services.AddHttpClient<IFunderingenApi, FunderingenApi>(client));
             builders.Add(_services.AddHttpClient<IGeldverstrekkersApi, GeldverstrekkersApi>(client));

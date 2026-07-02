@@ -40,9 +40,8 @@ using Calcasa.Api.Client;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// Bron waar de funderingsinformatie opgehaald is. | Waarde | Omschrijving | | - -- | - -- | | &#x60;calcasa&#x60; | Calcasa data. | | &#x60;fundermaps&#x60; | Fundermaps data. |
+    /// Defines FunderingDataBron
     /// </summary>
-    /// <value>Bron waar de funderingsinformatie opgehaald is. | Waarde | Omschrijving | | - -- | - -- | | &#x60;calcasa&#x60; | Calcasa data. | | &#x60;fundermaps&#x60; | Fundermaps data. |</value>
     public enum FunderingDataBron
     {
         /// <summary>
