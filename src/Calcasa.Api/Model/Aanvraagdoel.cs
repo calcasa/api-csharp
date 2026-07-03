@@ -40,9 +40,9 @@ using Calcasa.Api.Client;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// English: Request Goal. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | English: Unknown. | | &#x60;aankoopNieuweWoning&#x60; | English: New Home Purchase. | | &#x60;overbruggingsfinanciering&#x60; | English: Bridge Financing. | | &#x60;hypotheekOversluiten&#x60; | English: Refinancing Mortgage. | | &#x60;hypotheekOphogen&#x60; | English: Increasing Mortage. | | &#x60;hypotheekWijziging&#x60; | English: Changing Mortgage. | | &#x60;hypotheekrenteWijzigen&#x60; | English: Change Mortgage Intrest. |
+    /// English: Request Goal. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | English: Unknown. | | &#x60;aankoopNieuweWoning&#x60; | English: New Home Purchase. | | &#x60;overbruggingsfinanciering&#x60; | English: Bridge Financing. | | &#x60;hypotheekOversluiten&#x60; | English: Refinancing Mortgage. | | &#x60;hypotheekOphogen&#x60; | English: Increasing Mortgage. | | &#x60;hypotheekWijziging&#x60; | English: Changing Mortgage. | | &#x60;hypotheekrenteWijzigen&#x60; | English: Change Mortgage Interest. |
     /// </summary>
-    /// <value>English: Request Goal. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | English: Unknown. | | &#x60;aankoopNieuweWoning&#x60; | English: New Home Purchase. | | &#x60;overbruggingsfinanciering&#x60; | English: Bridge Financing. | | &#x60;hypotheekOversluiten&#x60; | English: Refinancing Mortgage. | | &#x60;hypotheekOphogen&#x60; | English: Increasing Mortage. | | &#x60;hypotheekWijziging&#x60; | English: Changing Mortgage. | | &#x60;hypotheekrenteWijzigen&#x60; | English: Change Mortgage Intrest. |</value>
+    /// <value>English: Request Goal. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | English: Unknown. | | &#x60;aankoopNieuweWoning&#x60; | English: New Home Purchase. | | &#x60;overbruggingsfinanciering&#x60; | English: Bridge Financing. | | &#x60;hypotheekOversluiten&#x60; | English: Refinancing Mortgage. | | &#x60;hypotheekOphogen&#x60; | English: Increasing Mortgage. | | &#x60;hypotheekWijziging&#x60; | English: Changing Mortgage. | | &#x60;hypotheekrenteWijzigen&#x60; | English: Change Mortgage Interest. |</value>
     public enum Aanvraagdoel
     {
         /// <summary>

@@ -50,16 +50,16 @@ namespace Calcasa.Api.Model
         /// <param name="callbackName">callbackName</param>
         /// <param name="eventId">Uniek Id voor deze callback.</param>
         /// <param name="timestamp">Het tijdstip van het event, in UTC.</param>
-        /// <param name="fileSetId">The Id of the file set to which this callback pertains.</param>
+        /// <param name="outboundFileSetId">The ID of the file set to which this callback pertains.</param>
         /// <param name="oldStatus">oldStatus</param>
         /// <param name="newStatus">newStatus</param>
         [JsonConstructor]
-        public OutboundFileSetWebhookPayload(string callbackName, Guid eventId, DateTime timestamp, Option<Guid?> fileSetId = default, Option<OutboundFileSetState?> oldStatus = default, Option<OutboundFileSetState?> newStatus = default)
+        public OutboundFileSetWebhookPayload(string callbackName, Guid eventId, DateTime timestamp, Option<Guid?> outboundFileSetId = default, Option<OutboundFileSetState?> oldStatus = default, Option<OutboundFileSetState?> newStatus = default)
         {
             CallbackName = callbackName;
             EventId = eventId;
             Timestamp = timestamp;
-            FileSetIdOption = fileSetId;
+            OutboundFileSetIdOption = outboundFileSetId;
             OldStatusOption = oldStatus;
             NewStatusOption = newStatus;
             OnCreated();
@@ -115,18 +115,18 @@ namespace Calcasa.Api.Model
         public DateTime Timestamp { get; set; }
 
         /// <summary>
-        /// Used to track the state of FileSetId
+        /// Used to track the state of OutboundFileSetId
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<Guid?> FileSetIdOption { get; private set; }
+        public Option<Guid?> OutboundFileSetIdOption { get; private set; }
 
         /// <summary>
-        /// The Id of the file set to which this callback pertains.
+        /// The ID of the file set to which this callback pertains.
         /// </summary>
-        /// <value>The Id of the file set to which this callback pertains.</value>
-        [JsonPropertyName("fileSetId")]
-        public Guid? FileSetId { get { return this.FileSetIdOption; } set { this.FileSetIdOption = new(value); } }
+        /// <value>The ID of the file set to which this callback pertains.</value>
+        [JsonPropertyName("outboundFileSetId")]
+        public Guid? OutboundFileSetId { get { return this.OutboundFileSetIdOption; } set { this.OutboundFileSetIdOption = new(value); } }
 
         /// <summary>
         /// Gets or Sets additional properties
@@ -145,7 +145,7 @@ namespace Calcasa.Api.Model
             sb.Append("  CallbackName: ").Append(CallbackName).Append("\n");
             sb.Append("  EventId: ").Append(EventId).Append("\n");
             sb.Append("  Timestamp: ").Append(Timestamp).Append("\n");
-            sb.Append("  FileSetId: ").Append(FileSetId).Append("\n");
+            sb.Append("  OutboundFileSetId: ").Append(OutboundFileSetId).Append("\n");
             sb.Append("  OldStatus: ").Append(OldStatus).Append("\n");
             sb.Append("  NewStatus: ").Append(NewStatus).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
@@ -184,7 +184,7 @@ namespace Calcasa.Api.Model
             Option<string?> callbackName = default;
             Option<Guid?> eventId = default;
             Option<DateTime?> timestamp = default;
-            Option<Guid?> fileSetId = default;
+            Option<Guid?> outboundFileSetId = default;
             Option<OutboundFileSetState?> oldStatus = default;
             Option<OutboundFileSetState?> newStatus = default;
 
@@ -212,8 +212,8 @@ namespace Calcasa.Api.Model
                         case "timestamp":
                             timestamp = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
-                        case "fileSetId":
-                            fileSetId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
+                        case "outboundFileSetId":
+                            outboundFileSetId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
                         case "oldStatus":
                             string? oldStatusRawValue = utf8JsonReader.GetString();
@@ -249,8 +249,8 @@ namespace Calcasa.Api.Model
             if (timestamp.IsSet && timestamp.Value == null)
                 throw new ArgumentNullException(nameof(timestamp), "Property is not nullable for class OutboundFileSetWebhookPayload.");
 
-            if (fileSetId.IsSet && fileSetId.Value == null)
-                throw new ArgumentNullException(nameof(fileSetId), "Property is not nullable for class OutboundFileSetWebhookPayload.");
+            if (outboundFileSetId.IsSet && outboundFileSetId.Value == null)
+                throw new ArgumentNullException(nameof(outboundFileSetId), "Property is not nullable for class OutboundFileSetWebhookPayload.");
 
             if (oldStatus.IsSet && oldStatus.Value == null)
                 throw new ArgumentNullException(nameof(oldStatus), "Property is not nullable for class OutboundFileSetWebhookPayload.");
@@ -258,7 +258,7 @@ namespace Calcasa.Api.Model
             if (newStatus.IsSet && newStatus.Value == null)
                 throw new ArgumentNullException(nameof(newStatus), "Property is not nullable for class OutboundFileSetWebhookPayload.");
 
-            return new OutboundFileSetWebhookPayload(callbackName.Value!, eventId.Value!.Value!, timestamp.Value!.Value!, fileSetId, oldStatus, newStatus);
+            return new OutboundFileSetWebhookPayload(callbackName.Value!, eventId.Value!.Value!, timestamp.Value!.Value!, outboundFileSetId, oldStatus, newStatus);
         }
 
         /// <summary>
@@ -294,8 +294,8 @@ namespace Calcasa.Api.Model
 
             writer.WriteString("timestamp", outboundFileSetWebhookPayload.Timestamp.ToString(TimestampFormat));
 
-            if (outboundFileSetWebhookPayload.FileSetIdOption.IsSet)
-                writer.WriteString("fileSetId", outboundFileSetWebhookPayload.FileSetIdOption.Value!.Value);
+            if (outboundFileSetWebhookPayload.OutboundFileSetIdOption.IsSet)
+                writer.WriteString("outboundFileSetId", outboundFileSetWebhookPayload.OutboundFileSetIdOption.Value!.Value);
 
             if (outboundFileSetWebhookPayload.OldStatusOption.IsSet)
             {

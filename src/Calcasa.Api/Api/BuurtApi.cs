@@ -55,7 +55,7 @@ namespace Calcasa.Api.Api
         /// Gegevens over een buurt en de wijk, gemeente en land waarin deze buurt gesitueerd is.
         /// </summary>
         /// <remarks>
-        /// Het omgevingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Het omgevingsdataobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="buurtCode">Een CBS buurt code.</param>
@@ -67,7 +67,7 @@ namespace Calcasa.Api.Api
         /// Gegevens over een buurt en de wijk, gemeente en land waarin deze buurt gesitueerd is.
         /// </summary>
         /// <remarks>
-        /// Het omgevingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Het omgevingsdataobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <param name="buurtCode">Een CBS buurt code.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -244,7 +244,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorGetBuurt(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string buurtCode);
 
         /// <summary>
-        /// Gegevens over een buurt en de wijk, gemeente en land waarin deze buurt gesitueerd is. Het omgevingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Gegevens over een buurt en de wijk, gemeente en land waarin deze buurt gesitueerd is. Het omgevingsdataobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <param name="buurtCode">Een CBS buurt code.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -262,7 +262,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Gegevens over een buurt en de wijk, gemeente en land waarin deze buurt gesitueerd is. Het omgevingdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Gegevens over een buurt en de wijk, gemeente en land waarin deze buurt gesitueerd is. Het omgevingsdataobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="buurtCode">Een CBS buurt code.</param>

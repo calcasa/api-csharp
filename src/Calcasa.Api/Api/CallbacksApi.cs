@@ -55,7 +55,7 @@ namespace Calcasa.Api.Api
         /// Voeg een callback inschrijving toe (of werk bij) voor de huidige client voor een adres.
         /// </summary>
         /// <remarks>
-        /// De callback objecten zullen gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie. Als er al een inschrijving bestaat voor dit adres dan wordt deze overschreven. De inschrijvingen worden vanzelf opgeruimt als ze verlopen.
+        /// De callbackobjecten zullen gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie. Als er al een inschrijving bestaat voor dit adres dan wordt deze overschreven. De inschrijvingen worden vanzelf opgeruimd als ze verlopen.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="callbackInschrijving">De te configureren callback inschrijving.</param>
@@ -67,7 +67,7 @@ namespace Calcasa.Api.Api
         /// Voeg een callback inschrijving toe (of werk bij) voor de huidige client voor een adres.
         /// </summary>
         /// <remarks>
-        /// De callback objecten zullen gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie. Als er al een inschrijving bestaat voor dit adres dan wordt deze overschreven. De inschrijvingen worden vanzelf opgeruimt als ze verlopen.
+        /// De callbackobjecten zullen gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie. Als er al een inschrijving bestaat voor dit adres dan wordt deze overschreven. De inschrijvingen worden vanzelf opgeruimd als ze verlopen.
         /// </remarks>
         /// <param name="callbackInschrijving">De te configureren callback inschrijving.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -103,7 +103,7 @@ namespace Calcasa.Api.Api
         /// Haal de callback inschrijving op voor deze client, dit adres en eventueel opgegeven geldverstrekker.
         /// </summary>
         /// <remarks>
-        /// Het callback object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Het callbackobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="bagNummeraanduidingId">Het BAG Nummeraanduiding ID waar de callback inschrijving voor geldt.</param>
@@ -116,7 +116,7 @@ namespace Calcasa.Api.Api
         /// Haal de callback inschrijving op voor deze client, dit adres en eventueel opgegeven geldverstrekker.
         /// </summary>
         /// <remarks>
-        /// Het callback object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Het callbackobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <param name="bagNummeraanduidingId">Het BAG Nummeraanduiding ID waar de callback inschrijving voor geldt.</param>
         /// <param name="geldverstrekker">De naam van de geldverstrekker waar de callback inschrijving voor geldt. (optional)</param>
@@ -128,7 +128,7 @@ namespace Calcasa.Api.Api
         /// Haal de callback inschrijvingen binnen voor deze client.
         /// </summary>
         /// <remarks>
-        /// De callback objecten zullen gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// De callbackobjecten zullen gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -139,7 +139,7 @@ namespace Calcasa.Api.Api
         /// Haal de callback inschrijvingen binnen voor deze client.
         /// </summary>
         /// <remarks>
-        /// De callback objecten zullen gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// De callbackobjecten zullen gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetNotificationSubscriptionsApiResponse"/>?&gt;</returns>
@@ -477,7 +477,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorAddOrUpdateCallbackSubscription(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, CallbackInschrijving callbackInschrijving);
 
         /// <summary>
-        /// Voeg een callback inschrijving toe (of werk bij) voor de huidige client voor een adres. De callback objecten zullen gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie. Als er al een inschrijving bestaat voor dit adres dan wordt deze overschreven. De inschrijvingen worden vanzelf opgeruimt als ze verlopen.
+        /// Voeg een callback inschrijving toe (of werk bij) voor de huidige client voor een adres. De callbackobjecten zullen gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie. Als er al een inschrijving bestaat voor dit adres dan wordt deze overschreven. De inschrijvingen worden vanzelf opgeruimd als ze verlopen.
         /// </summary>
         /// <param name="callbackInschrijving">De te configureren callback inschrijving.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -495,7 +495,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Voeg een callback inschrijving toe (of werk bij) voor de huidige client voor een adres. De callback objecten zullen gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie. Als er al een inschrijving bestaat voor dit adres dan wordt deze overschreven. De inschrijvingen worden vanzelf opgeruimt als ze verlopen.
+        /// Voeg een callback inschrijving toe (of werk bij) voor de huidige client voor een adres. De callbackobjecten zullen gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie. Als er al een inschrijving bestaat voor dit adres dan wordt deze overschreven. De inschrijvingen worden vanzelf opgeruimd als ze verlopen.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="callbackInschrijving">De te configureren callback inschrijving.</param>
@@ -1298,7 +1298,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorGetNotificationSubscription(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, long bagNummeraanduidingId, Option<string> geldverstrekker);
 
         /// <summary>
-        /// Haal de callback inschrijving op voor deze client, dit adres en eventueel opgegeven geldverstrekker. Het callback object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Haal de callback inschrijving op voor deze client, dit adres en eventueel opgegeven geldverstrekker. Het callbackobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <param name="bagNummeraanduidingId">Het BAG Nummeraanduiding ID waar de callback inschrijving voor geldt.</param>
         /// <param name="geldverstrekker">De naam van de geldverstrekker waar de callback inschrijving voor geldt. (optional)</param>
@@ -1317,7 +1317,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Haal de callback inschrijving op voor deze client, dit adres en eventueel opgegeven geldverstrekker. Het callback object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Haal de callback inschrijving op voor deze client, dit adres en eventueel opgegeven geldverstrekker. Het callbackobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="bagNummeraanduidingId">Het BAG Nummeraanduiding ID waar de callback inschrijving voor geldt.</param>
@@ -1703,7 +1703,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorGetNotificationSubscriptions(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar);
 
         /// <summary>
-        /// Haal de callback inschrijvingen binnen voor deze client. De callback objecten zullen gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Haal de callback inschrijvingen binnen voor deze client. De callbackobjecten zullen gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetNotificationSubscriptionsApiResponse"/>&gt;</returns>
@@ -1720,7 +1720,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Haal de callback inschrijvingen binnen voor deze client. De callback objecten zullen gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Haal de callback inschrijvingen binnen voor deze client. De callbackobjecten zullen gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>

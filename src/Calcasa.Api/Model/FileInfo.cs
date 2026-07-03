@@ -49,15 +49,15 @@ namespace Calcasa.Api.Model
         /// </summary>
         /// <param name="index">The index of the file within the file set. Zero-based.</param>
         /// <param name="name">The name of the file, including its extension. This needs to be unique within the file set.</param>
-        /// <param name="sha256hash">The SHA256 hash of the file contents, represented as an uppercase hexadecimal string. For the outbound file sets this is the expected hash, for inbound file sets this is the actual hash of the file contents.</param>
+        /// <param name="contentHash">The SHA256 hash of the file contents, represented as an uppercase hexadecimal string. For the outbound file sets this is the expected hash, for inbound file sets this is the actual hash of the file contents.</param>
         /// <param name="size">The file size in bytes. For the outbound file sets this is the expected size, for inbound file sets this is the actual size of the file contents.</param>
         /// <param name="contentType">The content type of the file, which indicates the media type of the file contents. This is used to determine how to handle and process the file. For example, \&quot;application/pdf\&quot; for PDF files, \&quot;image/jpeg\&quot; for JPEG images, etc. Refer to [IANA Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml) for possible values.</param>
         [JsonConstructor]
-        public FileInfo(int index, string name, string sha256hash, long size, string contentType)
+        public FileInfo(int index, string name, string contentHash, long size, string contentType)
         {
             Index = index;
             Name = name;
-            Sha256hash = sha256hash;
+            ContentHash = contentHash;
             Size = size;
             ContentType = contentType;
             OnCreated();
@@ -85,8 +85,8 @@ namespace Calcasa.Api.Model
         /// </summary>
         /// <value>The SHA256 hash of the file contents, represented as an uppercase hexadecimal string. For the outbound file sets this is the expected hash, for inbound file sets this is the actual hash of the file contents.</value>
         /* <example>E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855</example> */
-        [JsonPropertyName("sha256hash")]
-        public string Sha256hash { get; set; }
+        [JsonPropertyName("contentHash")]
+        public string ContentHash { get; set; }
 
         /// <summary>
         /// The file size in bytes. For the outbound file sets this is the expected size, for inbound file sets this is the actual size of the file contents.
@@ -118,7 +118,7 @@ namespace Calcasa.Api.Model
             sb.Append("class FileInfo {\n");
             sb.Append("  Index: ").Append(Index).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Sha256hash: ").Append(Sha256hash).Append("\n");
+            sb.Append("  ContentHash: ").Append(ContentHash).Append("\n");
             sb.Append("  Size: ").Append(Size).Append("\n");
             sb.Append("  ContentType: ").Append(ContentType).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
@@ -151,7 +151,7 @@ namespace Calcasa.Api.Model
 
             Option<int?> index = default;
             Option<string?> name = default;
-            Option<string?> sha256hash = default;
+            Option<string?> contentHash = default;
             Option<long?> size = default;
             Option<string?> contentType = default;
 
@@ -176,8 +176,8 @@ namespace Calcasa.Api.Model
                         case "name":
                             name = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
-                        case "sha256hash":
-                            sha256hash = new Option<string?>(utf8JsonReader.GetString()!);
+                        case "contentHash":
+                            contentHash = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "size":
                             size = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
@@ -197,8 +197,8 @@ namespace Calcasa.Api.Model
             if (!name.IsSet)
                 throw new ArgumentException("Property is required for class FileInfo.", nameof(name));
 
-            if (!sha256hash.IsSet)
-                throw new ArgumentException("Property is required for class FileInfo.", nameof(sha256hash));
+            if (!contentHash.IsSet)
+                throw new ArgumentException("Property is required for class FileInfo.", nameof(contentHash));
 
             if (!size.IsSet)
                 throw new ArgumentException("Property is required for class FileInfo.", nameof(size));
@@ -212,8 +212,8 @@ namespace Calcasa.Api.Model
             if (name.IsSet && name.Value == null)
                 throw new ArgumentNullException(nameof(name), "Property is not nullable for class FileInfo.");
 
-            if (sha256hash.IsSet && sha256hash.Value == null)
-                throw new ArgumentNullException(nameof(sha256hash), "Property is not nullable for class FileInfo.");
+            if (contentHash.IsSet && contentHash.Value == null)
+                throw new ArgumentNullException(nameof(contentHash), "Property is not nullable for class FileInfo.");
 
             if (size.IsSet && size.Value == null)
                 throw new ArgumentNullException(nameof(size), "Property is not nullable for class FileInfo.");
@@ -221,7 +221,7 @@ namespace Calcasa.Api.Model
             if (contentType.IsSet && contentType.Value == null)
                 throw new ArgumentNullException(nameof(contentType), "Property is not nullable for class FileInfo.");
 
-            return new FileInfo(index.Value!.Value!, name.Value!, sha256hash.Value!, size.Value!.Value!, contentType.Value!);
+            return new FileInfo(index.Value!.Value!, name.Value!, contentHash.Value!, size.Value!.Value!, contentType.Value!);
         }
 
         /// <summary>
@@ -251,8 +251,8 @@ namespace Calcasa.Api.Model
             if (fileInfo.Name == null)
                 throw new ArgumentNullException(nameof(fileInfo.Name), "Property is required for class FileInfo.");
 
-            if (fileInfo.Sha256hash == null)
-                throw new ArgumentNullException(nameof(fileInfo.Sha256hash), "Property is required for class FileInfo.");
+            if (fileInfo.ContentHash == null)
+                throw new ArgumentNullException(nameof(fileInfo.ContentHash), "Property is required for class FileInfo.");
 
             if (fileInfo.ContentType == null)
                 throw new ArgumentNullException(nameof(fileInfo.ContentType), "Property is required for class FileInfo.");
@@ -261,7 +261,7 @@ namespace Calcasa.Api.Model
 
             writer.WriteString("name", fileInfo.Name);
 
-            writer.WriteString("sha256hash", fileInfo.Sha256hash);
+            writer.WriteString("contentHash", fileInfo.ContentHash);
 
             writer.WriteNumber("size", fileInfo.Size);
 

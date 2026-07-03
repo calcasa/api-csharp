@@ -52,10 +52,10 @@ namespace Calcasa.Api.Api
         FileSetsApiEvents Events { get; }
 
         /// <summary>
-        /// 
+        /// Confirm an inbound file set after it has been fully uploaded.
         /// </summary>
         /// <remarks>
-        /// Confirm inbound file set after it&#39;s has been fully uploaded. This will start the verification of the fileset, when the status is updated the callback will be triggered with the new status. When validation fails, a new file set will need to be created. If the file set is not confirmed within 24 hours, it will expire and all it&#39;s uploaded ocntents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the status is updated, the callback will be triggered with the new status. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="inboundFileSetId"></param>
@@ -64,10 +64,10 @@ namespace Calcasa.Api.Api
         Task<IConfirmInboundFileSetByIdApiResponse> ConfirmInboundFileSetByIdAsync(Guid inboundFileSetId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// 
+        /// Confirm an inbound file set after it has been fully uploaded.
         /// </summary>
         /// <remarks>
-        /// Confirm inbound file set after it&#39;s has been fully uploaded. This will start the verification of the fileset, when the status is updated the callback will be triggered with the new status. When validation fails, a new file set will need to be created. If the file set is not confirmed within 24 hours, it will expire and all it&#39;s uploaded ocntents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the status is updated, the callback will be triggered with the new status. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
         /// </remarks>
         /// <param name="inboundFileSetId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -75,10 +75,10 @@ namespace Calcasa.Api.Api
         Task<IConfirmInboundFileSetByIdApiResponse?> ConfirmInboundFileSetByIdOrDefaultAsync(Guid inboundFileSetId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// 
+        /// Create a new inbound file set.
         /// </summary>
         /// <remarks>
-        /// Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, a InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all it&#39;s uploaded ocntents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, an InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="inboundFileSet"></param>
@@ -87,10 +87,10 @@ namespace Calcasa.Api.Api
         Task<ICreateInboundFileSetApiResponse> CreateInboundFileSetAsync(InboundFileSet inboundFileSet, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// 
+        /// Create a new inbound file set.
         /// </summary>
         /// <remarks>
-        /// Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, a InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all it&#39;s uploaded ocntents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, an InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
         /// </remarks>
         /// <param name="inboundFileSet"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -98,10 +98,10 @@ namespace Calcasa.Api.Api
         Task<ICreateInboundFileSetApiResponse?> CreateInboundFileSetOrDefaultAsync(InboundFileSet inboundFileSet, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Delete outbound file set after it&#39;s has been correctly received. If a outbound file set is not downloaded and deleted after 48 hours, it will expire and all its contents will be deleted automatically.
+        /// Delete an outbound file set after it has been correctly received. If an outbound file set is not downloaded and deleted within 48 hours, it will expire and all its contents will be deleted automatically.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Delete an outbound file set after it has been correctly received. If an outbound file set is not downloaded and deleted within 48 hours, it will expire and all its contents will be deleted automatically.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="outboundFileSetId"></param>
@@ -110,10 +110,10 @@ namespace Calcasa.Api.Api
         Task<IDeleteOutboundFileSetByIdApiResponse> DeleteOutboundFileSetByIdAsync(Guid outboundFileSetId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Delete outbound file set after it&#39;s has been correctly received. If a outbound file set is not downloaded and deleted after 48 hours, it will expire and all its contents will be deleted automatically.
+        /// Delete an outbound file set after it has been correctly received. If an outbound file set is not downloaded and deleted within 48 hours, it will expire and all its contents will be deleted automatically.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Delete an outbound file set after it has been correctly received. If an outbound file set is not downloaded and deleted within 48 hours, it will expire and all its contents will be deleted automatically.
         /// </remarks>
         /// <param name="outboundFileSetId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -165,31 +165,33 @@ namespace Calcasa.Api.Api
         Task<IGetInboundFileSetsApiResponse?> GetInboundFileSetsOrDefaultAsync(System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Get a specific outbound file content by its index within a file set.  Used the Http Range header to request a specific byte range of the file.  If the Range header is not provided, the entire file will be returned.
+        /// Get a specific outbound file content by its index within a file set.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get a specific outbound file content by its index within a file set. Use the Http Range header to request a specific byte range of the file and Accept-Encoding to specify the compression. If the Range header is not provided, the entire file will be returned.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="outboundFileSetId"></param>
         /// <param name="fileIndex"></param>
         /// <param name="range"> (optional)</param>
+        /// <param name="acceptEncoding"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetOutboundFileByIndexApiResponse"/>&gt;</returns>
-        Task<IGetOutboundFileByIndexApiResponse> GetOutboundFileByIndexAsync(Guid outboundFileSetId, int fileIndex, Option<string> range = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetOutboundFileByIndexApiResponse> GetOutboundFileByIndexAsync(Guid outboundFileSetId, int fileIndex, Option<string> range = default, Option<string> acceptEncoding = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Get a specific outbound file content by its index within a file set.  Used the Http Range header to request a specific byte range of the file.  If the Range header is not provided, the entire file will be returned.
+        /// Get a specific outbound file content by its index within a file set.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get a specific outbound file content by its index within a file set. Use the Http Range header to request a specific byte range of the file and Accept-Encoding to specify the compression. If the Range header is not provided, the entire file will be returned.
         /// </remarks>
         /// <param name="outboundFileSetId"></param>
         /// <param name="fileIndex"></param>
         /// <param name="range"> (optional)</param>
+        /// <param name="acceptEncoding"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetOutboundFileByIndexApiResponse"/>?&gt;</returns>
-        Task<IGetOutboundFileByIndexApiResponse?> GetOutboundFileByIndexOrDefaultAsync(Guid outboundFileSetId, int fileIndex, Option<string> range = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetOutboundFileByIndexApiResponse?> GetOutboundFileByIndexOrDefaultAsync(Guid outboundFileSetId, int fileIndex, Option<string> range = default, Option<string> acceptEncoding = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get a specific outbound file set by its ID.
@@ -236,31 +238,33 @@ namespace Calcasa.Api.Api
         Task<IGetOutboundFileSetsApiResponse?> GetOutboundFileSetsOrDefaultAsync(System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Upload a specific file chunk for an inbound file set. All chunks must be uploaded in order, if the file is small enough, it can be uploaded in a single request. Total size must not exceed reported file size in the file set.
+        /// Upload a specific file chunk for an inbound file set.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Upload a specific file chunk for an inbound file set. All chunks must be uploaded in order, if the file is small enough, it can be uploaded in a single request. Total size must not exceed reported file size in the file set.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="inboundFileSetId"></param>
         /// <param name="fileIndex"></param>
         /// <param name="body"></param>
+        /// <param name="contentEncoding"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPutFileChunkApiResponse"/>&gt;</returns>
-        Task<IPutFileChunkApiResponse> PutFileChunkAsync(Guid inboundFileSetId, int fileIndex, System.IO.Stream body, System.Threading.CancellationToken cancellationToken = default);
+        Task<IPutFileChunkApiResponse> PutFileChunkAsync(Guid inboundFileSetId, int fileIndex, System.IO.Stream body, Option<string> contentEncoding = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Upload a specific file chunk for an inbound file set. All chunks must be uploaded in order, if the file is small enough, it can be uploaded in a single request. Total size must not exceed reported file size in the file set.
+        /// Upload a specific file chunk for an inbound file set.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Upload a specific file chunk for an inbound file set. All chunks must be uploaded in order, if the file is small enough, it can be uploaded in a single request. Total size must not exceed reported file size in the file set.
         /// </remarks>
         /// <param name="inboundFileSetId"></param>
         /// <param name="fileIndex"></param>
         /// <param name="body"></param>
+        /// <param name="contentEncoding"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPutFileChunkApiResponse"/>?&gt;</returns>
-        Task<IPutFileChunkApiResponse?> PutFileChunkOrDefaultAsync(Guid inboundFileSetId, int fileIndex, System.IO.Stream body, System.Threading.CancellationToken cancellationToken = default);
+        Task<IPutFileChunkApiResponse?> PutFileChunkOrDefaultAsync(Guid inboundFileSetId, int fileIndex, System.IO.Stream body, Option<string> contentEncoding = default, System.Threading.CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -821,7 +825,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorConfirmInboundFileSetById(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid inboundFileSetId);
 
         /// <summary>
-        ///  Confirm inbound file set after it&#39;s has been fully uploaded. This will start the verification of the fileset, when the status is updated the callback will be triggered with the new status. When validation fails, a new file set will need to be created. If the file set is not confirmed within 24 hours, it will expire and all it&#39;s uploaded ocntents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Confirm an inbound file set after it has been fully uploaded. Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the status is updated, the callback will be triggered with the new status. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
         /// </summary>
         /// <param name="inboundFileSetId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -839,7 +843,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        ///  Confirm inbound file set after it&#39;s has been fully uploaded. This will start the verification of the fileset, when the status is updated the callback will be triggered with the new status. When validation fails, a new file set will need to be created. If the file set is not confirmed within 24 hours, it will expire and all it&#39;s uploaded ocntents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Confirm an inbound file set after it has been fully uploaded. Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the status is updated, the callback will be triggered with the new status. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="inboundFileSetId"></param>
@@ -1232,7 +1236,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorCreateInboundFileSet(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, InboundFileSet inboundFileSet);
 
         /// <summary>
-        ///  Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, a InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all it&#39;s uploaded ocntents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Create a new inbound file set. Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, an InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
         /// </summary>
         /// <param name="inboundFileSet"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1250,7 +1254,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        ///  Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, a InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all it&#39;s uploaded ocntents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Create a new inbound file set. Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, an InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="inboundFileSet"></param>
@@ -1646,7 +1650,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorDeleteOutboundFileSetById(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid outboundFileSetId);
 
         /// <summary>
-        /// Delete outbound file set after it&#39;s has been correctly received. If a outbound file set is not downloaded and deleted after 48 hours, it will expire and all its contents will be deleted automatically. 
+        /// Delete an outbound file set after it has been correctly received. If an outbound file set is not downloaded and deleted within 48 hours, it will expire and all its contents will be deleted automatically. Delete an outbound file set after it has been correctly received. If an outbound file set is not downloaded and deleted within 48 hours, it will expire and all its contents will be deleted automatically.
         /// </summary>
         /// <param name="outboundFileSetId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1664,7 +1668,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Delete outbound file set after it&#39;s has been correctly received. If a outbound file set is not downloaded and deleted after 48 hours, it will expire and all its contents will be deleted automatically. 
+        /// Delete an outbound file set after it has been correctly received. If an outbound file set is not downloaded and deleted within 48 hours, it will expire and all its contents will be deleted automatically. Delete an outbound file set after it has been correctly received. If an outbound file set is not downloaded and deleted within 48 hours, it will expire and all its contents will be deleted automatically.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="outboundFileSetId"></param>
@@ -2596,17 +2600,21 @@ namespace Calcasa.Api.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatGetOutboundFileByIndex(ref Guid outboundFileSetId, ref int fileIndex, ref Option<string> range);
+        partial void FormatGetOutboundFileByIndex(ref Guid outboundFileSetId, ref int fileIndex, ref Option<string> range, ref Option<string> acceptEncoding);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="range"></param>
+        /// <param name="acceptEncoding"></param>
         /// <returns></returns>
-        private void ValidateGetOutboundFileByIndex(Option<string> range)
+        private void ValidateGetOutboundFileByIndex(Option<string> range, Option<string> acceptEncoding)
         {
             if (range.IsSet && range.Value == null)
                 throw new ArgumentNullException(nameof(range));
+
+            if (acceptEncoding.IsSet && acceptEncoding.Value == null)
+                throw new ArgumentNullException(nameof(acceptEncoding));
         }
 
         /// <summary>
@@ -2616,10 +2624,11 @@ namespace Calcasa.Api.Api
         /// <param name="outboundFileSetId"></param>
         /// <param name="fileIndex"></param>
         /// <param name="range"></param>
-        private void AfterGetOutboundFileByIndexDefaultImplementation(IGetOutboundFileByIndexApiResponse apiResponseLocalVar, Guid outboundFileSetId, int fileIndex, Option<string> range)
+        /// <param name="acceptEncoding"></param>
+        private void AfterGetOutboundFileByIndexDefaultImplementation(IGetOutboundFileByIndexApiResponse apiResponseLocalVar, Guid outboundFileSetId, int fileIndex, Option<string> range, Option<string> acceptEncoding)
         {
             bool suppressDefaultLog = false;
-            AfterGetOutboundFileByIndex(ref suppressDefaultLog, apiResponseLocalVar, outboundFileSetId, fileIndex, range);
+            AfterGetOutboundFileByIndex(ref suppressDefaultLog, apiResponseLocalVar, outboundFileSetId, fileIndex, range, acceptEncoding);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -2632,7 +2641,8 @@ namespace Calcasa.Api.Api
         /// <param name="outboundFileSetId"></param>
         /// <param name="fileIndex"></param>
         /// <param name="range"></param>
-        partial void AfterGetOutboundFileByIndex(ref bool suppressDefaultLog, IGetOutboundFileByIndexApiResponse apiResponseLocalVar, Guid outboundFileSetId, int fileIndex, Option<string> range);
+        /// <param name="acceptEncoding"></param>
+        partial void AfterGetOutboundFileByIndex(ref bool suppressDefaultLog, IGetOutboundFileByIndexApiResponse apiResponseLocalVar, Guid outboundFileSetId, int fileIndex, Option<string> range, Option<string> acceptEncoding);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -2643,10 +2653,11 @@ namespace Calcasa.Api.Api
         /// <param name="outboundFileSetId"></param>
         /// <param name="fileIndex"></param>
         /// <param name="range"></param>
-        private void OnErrorGetOutboundFileByIndexDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid outboundFileSetId, int fileIndex, Option<string> range)
+        /// <param name="acceptEncoding"></param>
+        private void OnErrorGetOutboundFileByIndexDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid outboundFileSetId, int fileIndex, Option<string> range, Option<string> acceptEncoding)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorGetOutboundFileByIndex(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, outboundFileSetId, fileIndex, range);
+            OnErrorGetOutboundFileByIndex(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, outboundFileSetId, fileIndex, range, acceptEncoding);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -2661,21 +2672,23 @@ namespace Calcasa.Api.Api
         /// <param name="outboundFileSetId"></param>
         /// <param name="fileIndex"></param>
         /// <param name="range"></param>
-        partial void OnErrorGetOutboundFileByIndex(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid outboundFileSetId, int fileIndex, Option<string> range);
+        /// <param name="acceptEncoding"></param>
+        partial void OnErrorGetOutboundFileByIndex(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid outboundFileSetId, int fileIndex, Option<string> range, Option<string> acceptEncoding);
 
         /// <summary>
-        /// Get a specific outbound file content by its index within a file set.  Used the Http Range header to request a specific byte range of the file.  If the Range header is not provided, the entire file will be returned. 
+        /// Get a specific outbound file content by its index within a file set. Get a specific outbound file content by its index within a file set. Use the Http Range header to request a specific byte range of the file and Accept-Encoding to specify the compression. If the Range header is not provided, the entire file will be returned.
         /// </summary>
         /// <param name="outboundFileSetId"></param>
         /// <param name="fileIndex"></param>
         /// <param name="range"> (optional)</param>
+        /// <param name="acceptEncoding"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetOutboundFileByIndexApiResponse"/>&gt;</returns>
-        public async Task<IGetOutboundFileByIndexApiResponse?> GetOutboundFileByIndexOrDefaultAsync(Guid outboundFileSetId, int fileIndex, Option<string> range = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetOutboundFileByIndexApiResponse?> GetOutboundFileByIndexOrDefaultAsync(Guid outboundFileSetId, int fileIndex, Option<string> range = default, Option<string> acceptEncoding = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await GetOutboundFileByIndexAsync(outboundFileSetId, fileIndex, range, cancellationToken).ConfigureAwait(false);
+                return await GetOutboundFileByIndexAsync(outboundFileSetId, fileIndex, range, acceptEncoding, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -2684,23 +2697,24 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Get a specific outbound file content by its index within a file set.  Used the Http Range header to request a specific byte range of the file.  If the Range header is not provided, the entire file will be returned. 
+        /// Get a specific outbound file content by its index within a file set. Get a specific outbound file content by its index within a file set. Use the Http Range header to request a specific byte range of the file and Accept-Encoding to specify the compression. If the Range header is not provided, the entire file will be returned.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="outboundFileSetId"></param>
         /// <param name="fileIndex"></param>
         /// <param name="range"> (optional)</param>
+        /// <param name="acceptEncoding"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetOutboundFileByIndexApiResponse"/>&gt;</returns>
-        public async Task<IGetOutboundFileByIndexApiResponse> GetOutboundFileByIndexAsync(Guid outboundFileSetId, int fileIndex, Option<string> range = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetOutboundFileByIndexApiResponse> GetOutboundFileByIndexAsync(Guid outboundFileSetId, int fileIndex, Option<string> range = default, Option<string> acceptEncoding = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateGetOutboundFileByIndex(range);
+                ValidateGetOutboundFileByIndex(range, acceptEncoding);
 
-                FormatGetOutboundFileByIndex(ref outboundFileSetId, ref fileIndex, ref range);
+                FormatGetOutboundFileByIndex(ref outboundFileSetId, ref fileIndex, ref range, ref acceptEncoding);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -2715,6 +2729,9 @@ namespace Calcasa.Api.Api
 
                     if (range.IsSet)
                         httpRequestMessageLocalVar.Headers.Add("range", ClientUtils.ParameterToString(range.Value));
+
+                    if (acceptEncoding.IsSet)
+                        httpRequestMessageLocalVar.Headers.Add("accept-encoding", ClientUtils.ParameterToString(acceptEncoding.Value));
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -2763,7 +2780,7 @@ namespace Calcasa.Api.Api
                                 }
                         }
 
-                        AfterGetOutboundFileByIndexDefaultImplementation(apiResponseLocalVar, outboundFileSetId, fileIndex, range);
+                        AfterGetOutboundFileByIndexDefaultImplementation(apiResponseLocalVar, outboundFileSetId, fileIndex, range, acceptEncoding);
 
                         Events.ExecuteOnGetOutboundFileByIndex(apiResponseLocalVar);
 
@@ -2777,7 +2794,7 @@ namespace Calcasa.Api.Api
             }
             catch (Exception e)
             {
-                OnErrorGetOutboundFileByIndexDefaultImplementation(e, "/file-sets/outbound/{outboundFileSetId}/{fileIndex}", uriBuilderLocalVar.Path, outboundFileSetId, fileIndex, range);
+                OnErrorGetOutboundFileByIndexDefaultImplementation(e, "/file-sets/outbound/{outboundFileSetId}/{fileIndex}", uriBuilderLocalVar.Path, outboundFileSetId, fileIndex, range, acceptEncoding);
                 Events.ExecuteOnErrorGetOutboundFileByIndex(e);
                 throw;
             }
@@ -3666,17 +3683,21 @@ namespace Calcasa.Api.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatPutFileChunk(ref Guid inboundFileSetId, ref int fileIndex, ref System.IO.Stream body);
+        partial void FormatPutFileChunk(ref Guid inboundFileSetId, ref int fileIndex, ref System.IO.Stream body, ref Option<string> contentEncoding);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="body"></param>
+        /// <param name="contentEncoding"></param>
         /// <returns></returns>
-        private void ValidatePutFileChunk(System.IO.Stream body)
+        private void ValidatePutFileChunk(System.IO.Stream body, Option<string> contentEncoding)
         {
             if (body == null)
                 throw new ArgumentNullException(nameof(body));
+
+            if (contentEncoding.IsSet && contentEncoding.Value == null)
+                throw new ArgumentNullException(nameof(contentEncoding));
         }
 
         /// <summary>
@@ -3686,10 +3707,11 @@ namespace Calcasa.Api.Api
         /// <param name="inboundFileSetId"></param>
         /// <param name="fileIndex"></param>
         /// <param name="body"></param>
-        private void AfterPutFileChunkDefaultImplementation(IPutFileChunkApiResponse apiResponseLocalVar, Guid inboundFileSetId, int fileIndex, System.IO.Stream body)
+        /// <param name="contentEncoding"></param>
+        private void AfterPutFileChunkDefaultImplementation(IPutFileChunkApiResponse apiResponseLocalVar, Guid inboundFileSetId, int fileIndex, System.IO.Stream body, Option<string> contentEncoding)
         {
             bool suppressDefaultLog = false;
-            AfterPutFileChunk(ref suppressDefaultLog, apiResponseLocalVar, inboundFileSetId, fileIndex, body);
+            AfterPutFileChunk(ref suppressDefaultLog, apiResponseLocalVar, inboundFileSetId, fileIndex, body, contentEncoding);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -3702,7 +3724,8 @@ namespace Calcasa.Api.Api
         /// <param name="inboundFileSetId"></param>
         /// <param name="fileIndex"></param>
         /// <param name="body"></param>
-        partial void AfterPutFileChunk(ref bool suppressDefaultLog, IPutFileChunkApiResponse apiResponseLocalVar, Guid inboundFileSetId, int fileIndex, System.IO.Stream body);
+        /// <param name="contentEncoding"></param>
+        partial void AfterPutFileChunk(ref bool suppressDefaultLog, IPutFileChunkApiResponse apiResponseLocalVar, Guid inboundFileSetId, int fileIndex, System.IO.Stream body, Option<string> contentEncoding);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -3713,10 +3736,11 @@ namespace Calcasa.Api.Api
         /// <param name="inboundFileSetId"></param>
         /// <param name="fileIndex"></param>
         /// <param name="body"></param>
-        private void OnErrorPutFileChunkDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid inboundFileSetId, int fileIndex, System.IO.Stream body)
+        /// <param name="contentEncoding"></param>
+        private void OnErrorPutFileChunkDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid inboundFileSetId, int fileIndex, System.IO.Stream body, Option<string> contentEncoding)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorPutFileChunk(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, inboundFileSetId, fileIndex, body);
+            OnErrorPutFileChunk(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, inboundFileSetId, fileIndex, body, contentEncoding);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -3731,21 +3755,23 @@ namespace Calcasa.Api.Api
         /// <param name="inboundFileSetId"></param>
         /// <param name="fileIndex"></param>
         /// <param name="body"></param>
-        partial void OnErrorPutFileChunk(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid inboundFileSetId, int fileIndex, System.IO.Stream body);
+        /// <param name="contentEncoding"></param>
+        partial void OnErrorPutFileChunk(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid inboundFileSetId, int fileIndex, System.IO.Stream body, Option<string> contentEncoding);
 
         /// <summary>
-        /// Upload a specific file chunk for an inbound file set. All chunks must be uploaded in order, if the file is small enough, it can be uploaded in a single request. Total size must not exceed reported file size in the file set. 
+        /// Upload a specific file chunk for an inbound file set. Upload a specific file chunk for an inbound file set. All chunks must be uploaded in order, if the file is small enough, it can be uploaded in a single request. Total size must not exceed reported file size in the file set.
         /// </summary>
         /// <param name="inboundFileSetId"></param>
         /// <param name="fileIndex"></param>
         /// <param name="body"></param>
+        /// <param name="contentEncoding"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPutFileChunkApiResponse"/>&gt;</returns>
-        public async Task<IPutFileChunkApiResponse?> PutFileChunkOrDefaultAsync(Guid inboundFileSetId, int fileIndex, System.IO.Stream body, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IPutFileChunkApiResponse?> PutFileChunkOrDefaultAsync(Guid inboundFileSetId, int fileIndex, System.IO.Stream body, Option<string> contentEncoding = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await PutFileChunkAsync(inboundFileSetId, fileIndex, body, cancellationToken).ConfigureAwait(false);
+                return await PutFileChunkAsync(inboundFileSetId, fileIndex, body, contentEncoding, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -3754,23 +3780,24 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Upload a specific file chunk for an inbound file set. All chunks must be uploaded in order, if the file is small enough, it can be uploaded in a single request. Total size must not exceed reported file size in the file set. 
+        /// Upload a specific file chunk for an inbound file set. Upload a specific file chunk for an inbound file set. All chunks must be uploaded in order, if the file is small enough, it can be uploaded in a single request. Total size must not exceed reported file size in the file set.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="inboundFileSetId"></param>
         /// <param name="fileIndex"></param>
         /// <param name="body"></param>
+        /// <param name="contentEncoding"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPutFileChunkApiResponse"/>&gt;</returns>
-        public async Task<IPutFileChunkApiResponse> PutFileChunkAsync(Guid inboundFileSetId, int fileIndex, System.IO.Stream body, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IPutFileChunkApiResponse> PutFileChunkAsync(Guid inboundFileSetId, int fileIndex, System.IO.Stream body, Option<string> contentEncoding = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidatePutFileChunk(body);
+                ValidatePutFileChunk(body, contentEncoding);
 
-                FormatPutFileChunk(ref inboundFileSetId, ref fileIndex, ref body);
+                FormatPutFileChunk(ref inboundFileSetId, ref fileIndex, ref body, ref contentEncoding);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -3782,6 +3809,9 @@ namespace Calcasa.Api.Api
                         : string.Concat(HttpClient.BaseAddress.AbsolutePath, "/file-sets/inbound/{inboundFileSetId}/{fileIndex}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinboundFileSetId%7D", Uri.EscapeDataString(inboundFileSetId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BfileIndex%7D", Uri.EscapeDataString(fileIndex.ToString()));
+
+                    if (contentEncoding.IsSet)
+                        httpRequestMessageLocalVar.Headers.Add("content-encoding", ClientUtils.ParameterToString(contentEncoding.Value));
 
                     httpRequestMessageLocalVar.Content = (body as object) is System.IO.Stream stream
                         ? httpRequestMessageLocalVar.Content = new StreamContent(stream)
@@ -3825,7 +3855,7 @@ namespace Calcasa.Api.Api
                                 }
                         }
 
-                        AfterPutFileChunkDefaultImplementation(apiResponseLocalVar, inboundFileSetId, fileIndex, body);
+                        AfterPutFileChunkDefaultImplementation(apiResponseLocalVar, inboundFileSetId, fileIndex, body, contentEncoding);
 
                         Events.ExecuteOnPutFileChunk(apiResponseLocalVar);
 
@@ -3839,7 +3869,7 @@ namespace Calcasa.Api.Api
             }
             catch (Exception e)
             {
-                OnErrorPutFileChunkDefaultImplementation(e, "/file-sets/inbound/{inboundFileSetId}/{fileIndex}", uriBuilderLocalVar.Path, inboundFileSetId, fileIndex, body);
+                OnErrorPutFileChunkDefaultImplementation(e, "/file-sets/inbound/{inboundFileSetId}/{fileIndex}", uriBuilderLocalVar.Path, inboundFileSetId, fileIndex, body, contentEncoding);
                 Events.ExecuteOnErrorPutFileChunk(e);
                 throw;
             }

@@ -55,7 +55,7 @@ namespace Calcasa.Api.Api
         /// Adres info op basis van BAG Nummeraanduiding Id.
         /// </summary>
         /// <remarks>
-        /// De Notities zullen leeg blijven voor dit endpoint. Het adres object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// De Notities zullen leeg blijven voor dit endpoint. Het adresobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
@@ -67,7 +67,7 @@ namespace Calcasa.Api.Api
         /// Adres info op basis van BAG Nummeraanduiding Id.
         /// </summary>
         /// <remarks>
-        /// De Notities zullen leeg blijven voor dit endpoint. Het adres object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// De Notities zullen leeg blijven voor dit endpoint. Het adresobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -75,24 +75,24 @@ namespace Calcasa.Api.Api
         Task<IGetAdresApiResponse?> GetAdresOrDefaultAsync(long bagNummeraanduidingId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Zoek adres info op basis van het gegeven adres.
+        /// Zoek adresinformatie op basis van het opgegeven adres.
         /// </summary>
         /// <remarks>
-        /// De notities geven aan of de input al dan niet gewijzigd of onbekend is. De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummer toevoeging.
+        /// De notities geven aan of de input al dan niet gewijzigd of onbekend is. De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummertoevoeging.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="adres">Het adres object dat gebruikt wordt om te zoeken naar adres informatie.</param>
+        /// <param name="adres">Het adresobject dat gebruikt wordt om naar adresinformatie te zoeken.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ISearchAdresApiResponse"/>&gt;</returns>
         Task<ISearchAdresApiResponse> SearchAdresAsync(Adres adres, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Zoek adres info op basis van het gegeven adres.
+        /// Zoek adresinformatie op basis van het opgegeven adres.
         /// </summary>
         /// <remarks>
-        /// De notities geven aan of de input al dan niet gewijzigd of onbekend is. De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummer toevoeging.
+        /// De notities geven aan of de input al dan niet gewijzigd of onbekend is. De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummertoevoeging.
         /// </remarks>
-        /// <param name="adres">Het adres object dat gebruikt wordt om te zoeken naar adres informatie.</param>
+        /// <param name="adres">Het adresobject dat gebruikt wordt om naar adresinformatie te zoeken.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ISearchAdresApiResponse"/>?&gt;</returns>
         Task<ISearchAdresApiResponse?> SearchAdresOrDefaultAsync(Adres adres, System.Threading.CancellationToken cancellationToken = default);
@@ -312,7 +312,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorGetAdres(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, long bagNummeraanduidingId);
 
         /// <summary>
-        /// Adres info op basis van BAG Nummeraanduiding Id. De Notities zullen leeg blijven voor dit endpoint. Het adres object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Adres info op basis van BAG Nummeraanduiding Id. De Notities zullen leeg blijven voor dit endpoint. Het adresobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -330,7 +330,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Adres info op basis van BAG Nummeraanduiding Id. De Notities zullen leeg blijven voor dit endpoint. Het adres object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Adres info op basis van BAG Nummeraanduiding Id. De Notities zullen leeg blijven voor dit endpoint. Het adresobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
@@ -723,9 +723,9 @@ namespace Calcasa.Api.Api
         partial void OnErrorSearchAdres(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Adres adres);
 
         /// <summary>
-        /// Zoek adres info op basis van het gegeven adres. De notities geven aan of de input al dan niet gewijzigd of onbekend is. De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummer toevoeging.
+        /// Zoek adresinformatie op basis van het opgegeven adres. De notities geven aan of de input al dan niet gewijzigd of onbekend is. De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummertoevoeging.
         /// </summary>
-        /// <param name="adres">Het adres object dat gebruikt wordt om te zoeken naar adres informatie.</param>
+        /// <param name="adres">Het adresobject dat gebruikt wordt om naar adresinformatie te zoeken.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ISearchAdresApiResponse"/>&gt;</returns>
         public async Task<ISearchAdresApiResponse?> SearchAdresOrDefaultAsync(Adres adres, System.Threading.CancellationToken cancellationToken = default)
@@ -741,10 +741,10 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Zoek adres info op basis van het gegeven adres. De notities geven aan of de input al dan niet gewijzigd of onbekend is. De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummer toevoeging.
+        /// Zoek adresinformatie op basis van het opgegeven adres. De notities geven aan of de input al dan niet gewijzigd of onbekend is. De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummertoevoeging.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="adres">Het adres object dat gebruikt wordt om te zoeken naar adres informatie.</param>
+        /// <param name="adres">Het adresobject dat gebruikt wordt om naar adresinformatie te zoeken.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ISearchAdresApiResponse"/>&gt;</returns>
         public async Task<ISearchAdresApiResponse> SearchAdresAsync(Adres adres, System.Threading.CancellationToken cancellationToken = default)

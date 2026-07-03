@@ -51,10 +51,10 @@ namespace Calcasa.Api.Model
         /// <param name="files">The files associated with the file set.</param>
         /// <param name="createdOn">createdOn</param>
         /// <param name="modifiedOn">modifiedOn</param>
-        /// <param name="type">The type of the file set. This value should be constant for a given type of file set and should be agreed upon with Calcasa before use. It is used to ensure that the correct processing logic is applied to the file set based on its intended purpose.</param>
-        /// <param name="revision">A revision number for the file set that is incremented for every retry or redelivery.</param>
-        /// <param name="expiresAfter">If specified the file set will expire after this date and time. If no appropiate action is taken before this date and time, the file set and all its contents will be deleted.</param>
-        /// <param name="period">The period of the inbound file set. This is a string that represents the time period for which the file set is relevant. It is used to categorize and identify the time frame of the data contained in the file set. The first day of the period is used when the period is a year, quarter or month. For example use the first of April for Q2. The period is represented in the format YYYY-MM-DD, where YYYY is the year, MM is the month, and DD is the day. If the period is not applicable, it can be set to null, only do this after consulting with Calcasa.</param>
+        /// <param name="type">The type of the file set. This value should be constant for a given type of file set and should be agreed upon with Calcasa before use. It is used to ensure that the correct processing logic is applied to the file set based on its intended purpose.  The tuple type, revision and period should always be unique.</param>
+        /// <param name="revision">A revision number for the file set that is incremented for every retry or redelivery. The tuple type, revision and period should always be unique.</param>
+        /// <param name="expiresAfter">If specified, the file set will expire after this date and time. If no appropriate action is taken before this date and time, the file set and all its contents will be deleted.</param>
+        /// <param name="period">The period of the inbound file set. This is a string that represents the time period for which the file set is relevant. It is used to categorize and identify the time frame of the data contained in the file set. The first day of the period is used when the period is a year, quarter or month. For example use the first of April for Q2. The period is represented in the format YYYY-MM-DD, where YYYY is the year, MM is the month, and DD is the day. If the period is not applicable, it can be set to null, only do this after consulting with Calcasa. The tuple type, revision and period should always be unique.</param>
         [JsonConstructor]
         public FileSet(Guid id, Collection<FileInfo> files, DateTime createdOn, DateTime modifiedOn, string type, int revision, Option<DateTime?> expiresAfter = default, Option<DateOnly?> period = default)
         {
@@ -100,16 +100,16 @@ namespace Calcasa.Api.Model
         public DateTime ModifiedOn { get; }
 
         /// <summary>
-        /// The type of the file set. This value should be constant for a given type of file set and should be agreed upon with Calcasa before use. It is used to ensure that the correct processing logic is applied to the file set based on its intended purpose.
+        /// The type of the file set. This value should be constant for a given type of file set and should be agreed upon with Calcasa before use. It is used to ensure that the correct processing logic is applied to the file set based on its intended purpose.  The tuple type, revision and period should always be unique.
         /// </summary>
-        /// <value>The type of the file set. This value should be constant for a given type of file set and should be agreed upon with Calcasa before use. It is used to ensure that the correct processing logic is applied to the file set based on its intended purpose.</value>
+        /// <value>The type of the file set. This value should be constant for a given type of file set and should be agreed upon with Calcasa before use. It is used to ensure that the correct processing logic is applied to the file set based on its intended purpose.  The tuple type, revision and period should always be unique.</value>
         [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// A revision number for the file set that is incremented for every retry or redelivery.
+        /// A revision number for the file set that is incremented for every retry or redelivery. The tuple type, revision and period should always be unique.
         /// </summary>
-        /// <value>A revision number for the file set that is incremented for every retry or redelivery.</value>
+        /// <value>A revision number for the file set that is incremented for every retry or redelivery. The tuple type, revision and period should always be unique.</value>
         [JsonPropertyName("revision")]
         public int Revision { get; set; }
 
@@ -121,9 +121,9 @@ namespace Calcasa.Api.Model
         public Option<DateTime?> ExpiresAfterOption { get; }
 
         /// <summary>
-        /// If specified the file set will expire after this date and time. If no appropiate action is taken before this date and time, the file set and all its contents will be deleted.
+        /// If specified, the file set will expire after this date and time. If no appropriate action is taken before this date and time, the file set and all its contents will be deleted.
         /// </summary>
-        /// <value>If specified the file set will expire after this date and time. If no appropiate action is taken before this date and time, the file set and all its contents will be deleted.</value>
+        /// <value>If specified, the file set will expire after this date and time. If no appropriate action is taken before this date and time, the file set and all its contents will be deleted.</value>
         /* <example>2021-04-28T12:34:45Z</example> */
         [JsonPropertyName("expiresAfter")]
         public DateTime? ExpiresAfter { get { return this.ExpiresAfterOption; } }
@@ -136,9 +136,9 @@ namespace Calcasa.Api.Model
         public Option<DateOnly?> PeriodOption { get; private set; }
 
         /// <summary>
-        /// The period of the inbound file set. This is a string that represents the time period for which the file set is relevant. It is used to categorize and identify the time frame of the data contained in the file set. The first day of the period is used when the period is a year, quarter or month. For example use the first of April for Q2. The period is represented in the format YYYY-MM-DD, where YYYY is the year, MM is the month, and DD is the day. If the period is not applicable, it can be set to null, only do this after consulting with Calcasa.
+        /// The period of the inbound file set. This is a string that represents the time period for which the file set is relevant. It is used to categorize and identify the time frame of the data contained in the file set. The first day of the period is used when the period is a year, quarter or month. For example use the first of April for Q2. The period is represented in the format YYYY-MM-DD, where YYYY is the year, MM is the month, and DD is the day. If the period is not applicable, it can be set to null, only do this after consulting with Calcasa. The tuple type, revision and period should always be unique.
         /// </summary>
-        /// <value>The period of the inbound file set. This is a string that represents the time period for which the file set is relevant. It is used to categorize and identify the time frame of the data contained in the file set. The first day of the period is used when the period is a year, quarter or month. For example use the first of April for Q2. The period is represented in the format YYYY-MM-DD, where YYYY is the year, MM is the month, and DD is the day. If the period is not applicable, it can be set to null, only do this after consulting with Calcasa.</value>
+        /// <value>The period of the inbound file set. This is a string that represents the time period for which the file set is relevant. It is used to categorize and identify the time frame of the data contained in the file set. The first day of the period is used when the period is a year, quarter or month. For example use the first of April for Q2. The period is represented in the format YYYY-MM-DD, where YYYY is the year, MM is the month, and DD is the day. If the period is not applicable, it can be set to null, only do this after consulting with Calcasa. The tuple type, revision and period should always be unique.</value>
         /* <example>Wed Apr 28 00:00:00 UTC 2021</example> */
         [JsonPropertyName("period")]
         public DateOnly? Period { get { return this.PeriodOption; } set { this.PeriodOption = new(value); } }

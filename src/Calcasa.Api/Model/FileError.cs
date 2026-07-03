@@ -49,18 +49,18 @@ namespace Calcasa.Api.Model
         /// </summary>
         /// <param name="index">index</param>
         /// <param name="name">name</param>
-        /// <param name="expectedSha256hash">The expected SHA256 hash of the file contents, represented as an uppercase hexadecimal string.</param>
+        /// <param name="expectedContentHash">The expected SHA256 hash of the file contents, represented as an uppercase hexadecimal string.</param>
         /// <param name="expectedFileSize">The expected file size in bytes.</param>
-        /// <param name="actualSha256hash">The actual SHA256 hash of the file contents, represented as an uppercase hexadecimal string.</param>
+        /// <param name="actualContentHash">The actual SHA256 hash of the file contents, represented as an uppercase hexadecimal string.</param>
         /// <param name="actualFileSize">The actual file size in bytes.</param>
         [JsonConstructor]
-        public FileError(int index, string name, string expectedSha256hash, long expectedFileSize, string actualSha256hash, long actualFileSize)
+        public FileError(int index, string name, string expectedContentHash, long expectedFileSize, string actualContentHash, long actualFileSize)
         {
             Index = index;
             Name = name;
-            ExpectedSha256hash = expectedSha256hash;
+            ExpectedContentHash = expectedContentHash;
             ExpectedFileSize = expectedFileSize;
-            ActualSha256hash = actualSha256hash;
+            ActualContentHash = actualContentHash;
             ActualFileSize = actualFileSize;
             OnCreated();
         }
@@ -85,8 +85,8 @@ namespace Calcasa.Api.Model
         /// </summary>
         /// <value>The expected SHA256 hash of the file contents, represented as an uppercase hexadecimal string.</value>
         /* <example>E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855</example> */
-        [JsonPropertyName("expectedSha256hash")]
-        public string ExpectedSha256hash { get; set; }
+        [JsonPropertyName("expectedContentHash")]
+        public string ExpectedContentHash { get; set; }
 
         /// <summary>
         /// The expected file size in bytes.
@@ -100,8 +100,8 @@ namespace Calcasa.Api.Model
         /// </summary>
         /// <value>The actual SHA256 hash of the file contents, represented as an uppercase hexadecimal string.</value>
         /* <example>E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855</example> */
-        [JsonPropertyName("actualSha256hash")]
-        public string ActualSha256hash { get; set; }
+        [JsonPropertyName("actualContentHash")]
+        public string ActualContentHash { get; set; }
 
         /// <summary>
         /// The actual file size in bytes.
@@ -126,9 +126,9 @@ namespace Calcasa.Api.Model
             sb.Append("class FileError {\n");
             sb.Append("  Index: ").Append(Index).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  ExpectedSha256hash: ").Append(ExpectedSha256hash).Append("\n");
+            sb.Append("  ExpectedContentHash: ").Append(ExpectedContentHash).Append("\n");
             sb.Append("  ExpectedFileSize: ").Append(ExpectedFileSize).Append("\n");
-            sb.Append("  ActualSha256hash: ").Append(ActualSha256hash).Append("\n");
+            sb.Append("  ActualContentHash: ").Append(ActualContentHash).Append("\n");
             sb.Append("  ActualFileSize: ").Append(ActualFileSize).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
@@ -160,9 +160,9 @@ namespace Calcasa.Api.Model
 
             Option<int?> index = default;
             Option<string?> name = default;
-            Option<string?> expectedSha256hash = default;
+            Option<string?> expectedContentHash = default;
             Option<long?> expectedFileSize = default;
-            Option<string?> actualSha256hash = default;
+            Option<string?> actualContentHash = default;
             Option<long?> actualFileSize = default;
 
             while (utf8JsonReader.Read())
@@ -186,14 +186,14 @@ namespace Calcasa.Api.Model
                         case "name":
                             name = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
-                        case "expectedSha256hash":
-                            expectedSha256hash = new Option<string?>(utf8JsonReader.GetString()!);
+                        case "expectedContentHash":
+                            expectedContentHash = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "expectedFileSize":
                             expectedFileSize = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
-                        case "actualSha256hash":
-                            actualSha256hash = new Option<string?>(utf8JsonReader.GetString()!);
+                        case "actualContentHash":
+                            actualContentHash = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "actualFileSize":
                             actualFileSize = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
@@ -210,14 +210,14 @@ namespace Calcasa.Api.Model
             if (!name.IsSet)
                 throw new ArgumentException("Property is required for class FileError.", nameof(name));
 
-            if (!expectedSha256hash.IsSet)
-                throw new ArgumentException("Property is required for class FileError.", nameof(expectedSha256hash));
+            if (!expectedContentHash.IsSet)
+                throw new ArgumentException("Property is required for class FileError.", nameof(expectedContentHash));
 
             if (!expectedFileSize.IsSet)
                 throw new ArgumentException("Property is required for class FileError.", nameof(expectedFileSize));
 
-            if (!actualSha256hash.IsSet)
-                throw new ArgumentException("Property is required for class FileError.", nameof(actualSha256hash));
+            if (!actualContentHash.IsSet)
+                throw new ArgumentException("Property is required for class FileError.", nameof(actualContentHash));
 
             if (!actualFileSize.IsSet)
                 throw new ArgumentException("Property is required for class FileError.", nameof(actualFileSize));
@@ -228,19 +228,19 @@ namespace Calcasa.Api.Model
             if (name.IsSet && name.Value == null)
                 throw new ArgumentNullException(nameof(name), "Property is not nullable for class FileError.");
 
-            if (expectedSha256hash.IsSet && expectedSha256hash.Value == null)
-                throw new ArgumentNullException(nameof(expectedSha256hash), "Property is not nullable for class FileError.");
+            if (expectedContentHash.IsSet && expectedContentHash.Value == null)
+                throw new ArgumentNullException(nameof(expectedContentHash), "Property is not nullable for class FileError.");
 
             if (expectedFileSize.IsSet && expectedFileSize.Value == null)
                 throw new ArgumentNullException(nameof(expectedFileSize), "Property is not nullable for class FileError.");
 
-            if (actualSha256hash.IsSet && actualSha256hash.Value == null)
-                throw new ArgumentNullException(nameof(actualSha256hash), "Property is not nullable for class FileError.");
+            if (actualContentHash.IsSet && actualContentHash.Value == null)
+                throw new ArgumentNullException(nameof(actualContentHash), "Property is not nullable for class FileError.");
 
             if (actualFileSize.IsSet && actualFileSize.Value == null)
                 throw new ArgumentNullException(nameof(actualFileSize), "Property is not nullable for class FileError.");
 
-            return new FileError(index.Value!.Value!, name.Value!, expectedSha256hash.Value!, expectedFileSize.Value!.Value!, actualSha256hash.Value!, actualFileSize.Value!.Value!);
+            return new FileError(index.Value!.Value!, name.Value!, expectedContentHash.Value!, expectedFileSize.Value!.Value!, actualContentHash.Value!, actualFileSize.Value!.Value!);
         }
 
         /// <summary>
@@ -270,21 +270,21 @@ namespace Calcasa.Api.Model
             if (fileError.Name == null)
                 throw new ArgumentNullException(nameof(fileError.Name), "Property is required for class FileError.");
 
-            if (fileError.ExpectedSha256hash == null)
-                throw new ArgumentNullException(nameof(fileError.ExpectedSha256hash), "Property is required for class FileError.");
+            if (fileError.ExpectedContentHash == null)
+                throw new ArgumentNullException(nameof(fileError.ExpectedContentHash), "Property is required for class FileError.");
 
-            if (fileError.ActualSha256hash == null)
-                throw new ArgumentNullException(nameof(fileError.ActualSha256hash), "Property is required for class FileError.");
+            if (fileError.ActualContentHash == null)
+                throw new ArgumentNullException(nameof(fileError.ActualContentHash), "Property is required for class FileError.");
 
             writer.WriteNumber("index", fileError.Index);
 
             writer.WriteString("name", fileError.Name);
 
-            writer.WriteString("expectedSha256hash", fileError.ExpectedSha256hash);
+            writer.WriteString("expectedContentHash", fileError.ExpectedContentHash);
 
             writer.WriteNumber("expectedFileSize", fileError.ExpectedFileSize);
 
-            writer.WriteString("actualSha256hash", fileError.ActualSha256hash);
+            writer.WriteString("actualContentHash", fileError.ActualContentHash);
 
             writer.WriteNumber("actualFileSize", fileError.ActualFileSize);
         }

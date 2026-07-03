@@ -58,7 +58,7 @@ namespace Calcasa.Api.Api
         /// 
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="productType">Een parameter om de lijst te filteren op gesupporte producttypen.</param>
+        /// <param name="productType">Een parameter om de lijst te filteren op ondersteunde producttypen.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetGeldverstrekkersApiResponse"/>&gt;</returns>
         Task<IGetGeldverstrekkersApiResponse> GetGeldverstrekkersAsync(ProductType productType, System.Threading.CancellationToken cancellationToken = default);
@@ -69,7 +69,7 @@ namespace Calcasa.Api.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <param name="productType">Een parameter om de lijst te filteren op gesupporte producttypen.</param>
+        /// <param name="productType">Een parameter om de lijst te filteren op ondersteunde producttypen.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetGeldverstrekkersApiResponse"/>?&gt;</returns>
         Task<IGetGeldverstrekkersApiResponse?> GetGeldverstrekkersOrDefaultAsync(ProductType productType, System.Threading.CancellationToken cancellationToken = default);
@@ -229,7 +229,7 @@ namespace Calcasa.Api.Api
         /// <summary>
         /// Alle geldverstrekkers die te gebruiken zijn voor aanvragen. 
         /// </summary>
-        /// <param name="productType">Een parameter om de lijst te filteren op gesupporte producttypen.</param>
+        /// <param name="productType">Een parameter om de lijst te filteren op ondersteunde producttypen.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetGeldverstrekkersApiResponse"/>&gt;</returns>
         public async Task<IGetGeldverstrekkersApiResponse?> GetGeldverstrekkersOrDefaultAsync(ProductType productType, System.Threading.CancellationToken cancellationToken = default)
@@ -248,7 +248,7 @@ namespace Calcasa.Api.Api
         /// Alle geldverstrekkers die te gebruiken zijn voor aanvragen. 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="productType">Een parameter om de lijst te filteren op gesupporte producttypen.</param>
+        /// <param name="productType">Een parameter om de lijst te filteren op ondersteunde producttypen.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetGeldverstrekkersApiResponse"/>&gt;</returns>
         public async Task<IGetGeldverstrekkersApiResponse> GetGeldverstrekkersAsync(ProductType productType, System.Threading.CancellationToken cancellationToken = default)

@@ -40,9 +40,9 @@ using Calcasa.Api.Client;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// | Waarde | Omschrijving | | - -- | - -- | | &#x60;geenData&#x60; | Er is geen data beschikbaar over deze bodem. | | &#x60;onbekend&#x60; | De status van deze bodem is niet bekend. | | &#x60;nietVervuild&#x60; | De bodem is niet vervuild. | | &#x60;nietErnstig&#x60; | De bodem is niet ernstig vervuild. | | &#x60;potentieelErnstig&#x60; | De bodem is potentieel ernstig veruild. | | &#x60;ernstig&#x60; | De bodem is ernstig veruild. |
+    /// | Waarde | Omschrijving | | - -- | - -- | | &#x60;geenData&#x60; | Er is geen data beschikbaar over deze bodem. | | &#x60;onbekend&#x60; | De status van deze bodem is niet bekend. | | &#x60;nietVervuild&#x60; | De bodem is niet vervuild. | | &#x60;nietErnstig&#x60; | De bodem is niet ernstig vervuild. | | &#x60;potentieelErnstig&#x60; | De bodem is potentieel ernstig vervuild. | | &#x60;ernstig&#x60; | De bodem is ernstig vervuild. |
     /// </summary>
-    /// <value>| Waarde | Omschrijving | | - -- | - -- | | &#x60;geenData&#x60; | Er is geen data beschikbaar over deze bodem. | | &#x60;onbekend&#x60; | De status van deze bodem is niet bekend. | | &#x60;nietVervuild&#x60; | De bodem is niet vervuild. | | &#x60;nietErnstig&#x60; | De bodem is niet ernstig vervuild. | | &#x60;potentieelErnstig&#x60; | De bodem is potentieel ernstig veruild. | | &#x60;ernstig&#x60; | De bodem is ernstig veruild. |</value>
+    /// <value>| Waarde | Omschrijving | | - -- | - -- | | &#x60;geenData&#x60; | Er is geen data beschikbaar over deze bodem. | | &#x60;onbekend&#x60; | De status van deze bodem is niet bekend. | | &#x60;nietVervuild&#x60; | De bodem is niet vervuild. | | &#x60;nietErnstig&#x60; | De bodem is niet ernstig vervuild. | | &#x60;potentieelErnstig&#x60; | De bodem is potentieel ernstig vervuild. | | &#x60;ernstig&#x60; | De bodem is ernstig vervuild. |</value>
     public enum BodemStatusType
     {
         /// <summary>

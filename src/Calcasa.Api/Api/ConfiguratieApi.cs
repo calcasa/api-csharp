@@ -55,7 +55,7 @@ namespace Calcasa.Api.Api
         /// Haal de geconfigureerde callback authenticatie op voor de huidige client.
         /// </summary>
         /// <remarks>
-        /// Het callback authentication object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Het callback-authenticatieobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -66,7 +66,7 @@ namespace Calcasa.Api.Api
         /// Haal de geconfigureerde callback authenticatie op voor de huidige client.
         /// </summary>
         /// <remarks>
-        /// Het callback authentication object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Het callback-authenticatieobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetCallbackAuthenticationApiResponse"/>?&gt;</returns>
@@ -76,7 +76,7 @@ namespace Calcasa.Api.Api
         /// Haal de geconfigureerde callback URL&#39;s op voor de huidige client.
         /// </summary>
         /// <remarks>
-        /// Het callback object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Het callbackobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -87,7 +87,7 @@ namespace Calcasa.Api.Api
         /// Haal de geconfigureerde callback URL&#39;s op voor de huidige client.
         /// </summary>
         /// <remarks>
-        /// Het callback object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Het callbackobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetCallbacksApiResponse"/>?&gt;</returns>
@@ -139,7 +139,7 @@ namespace Calcasa.Api.Api
         /// Update de geconfigureerde callback authenticatie voor de huidige client.
         /// </summary>
         /// <remarks>
-        /// Update callback authentication object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Het callback-authenticatieobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="callbackAuthentication"></param>
@@ -151,7 +151,7 @@ namespace Calcasa.Api.Api
         /// Update de geconfigureerde callback authenticatie voor de huidige client.
         /// </summary>
         /// <remarks>
-        /// Update callback authentication object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Het callback-authenticatieobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <param name="callbackAuthentication"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -590,7 +590,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorGetCallbackAuthentication(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar);
 
         /// <summary>
-        /// Haal de geconfigureerde callback authenticatie op voor de huidige client. Het callback authentication object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Haal de geconfigureerde callback authenticatie op voor de huidige client. Het callback-authenticatieobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetCallbackAuthenticationApiResponse"/>&gt;</returns>
@@ -607,7 +607,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Haal de geconfigureerde callback authenticatie op voor de huidige client. Het callback authentication object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Haal de geconfigureerde callback authenticatie op voor de huidige client. Het callback-authenticatieobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -940,7 +940,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorGetCallbacks(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar);
 
         /// <summary>
-        /// Haal de geconfigureerde callback URL&#39;s op voor de huidige client. Het callback object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Haal de geconfigureerde callback URL&#39;s op voor de huidige client. Het callbackobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetCallbacksApiResponse"/>&gt;</returns>
@@ -957,7 +957,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Haal de geconfigureerde callback URL&#39;s op voor de huidige client. Het callback object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Haal de geconfigureerde callback URL&#39;s op voor de huidige client. Het callbackobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -2023,7 +2023,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorPostCallbackAuthentication(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, CallbackAuthentication callbackAuthentication);
 
         /// <summary>
-        /// Update de geconfigureerde callback authenticatie voor de huidige client. Update callback authentication object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Update de geconfigureerde callback authenticatie voor de huidige client. Het callback-authenticatieobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <param name="callbackAuthentication"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -2041,7 +2041,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Update de geconfigureerde callback authenticatie voor de huidige client. Update callback authentication object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Update de geconfigureerde callback authenticatie voor de huidige client. Het callback-authenticatieobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="callbackAuthentication"></param>

@@ -55,7 +55,7 @@ namespace Calcasa.Api.Api
         /// Gegevens over de bodemkwaliteit op de locatie van een adres (BAG Nummeraanduiding ID).
         /// </summary>
         /// <remarks>
-        /// Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Het bodemdataobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
@@ -67,7 +67,7 @@ namespace Calcasa.Api.Api
         /// Gegevens over de bodemkwaliteit op de locatie van een adres (BAG Nummeraanduiding ID).
         /// </summary>
         /// <remarks>
-        /// Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Het bodemdataobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -233,7 +233,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorGetBodemById(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, long bagNummeraanduidingId);
 
         /// <summary>
-        /// Gegevens over de bodemkwaliteit op de locatie van een adres (BAG Nummeraanduiding ID). Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Gegevens over de bodemkwaliteit op de locatie van een adres (BAG Nummeraanduiding ID). Het bodemdataobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -251,7 +251,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Gegevens over de bodemkwaliteit op de locatie van een adres (BAG Nummeraanduiding ID). Het bodemdata object zal gefilterd terug komen afhankelijk van het client_id wat gebruikt is voor de authenticatie.
+        /// Gegevens over de bodemkwaliteit op de locatie van een adres (BAG Nummeraanduiding ID). Het bodemdataobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>

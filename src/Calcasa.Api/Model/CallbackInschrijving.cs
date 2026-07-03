@@ -48,8 +48,8 @@ namespace Calcasa.Api.Model
         /// Initializes a new instance of the <see cref="CallbackInschrijving" /> class.
         /// </summary>
         /// <param name="bagNummeraanduidingId">Verplicht. Het BAG (Basisregistratie Adressen en Gebouwen) nummeraanduiding id.</param>
-        /// <param name="geldigTot">Verplicht. De datum tot wanneer deze inschrijving effect moet hebben. Als deze inschrijving verloopt wordt deze automatisch opgeruimt. De maximale termijn is afhankelijk van de gebruikte client.</param>
-        /// <param name="externeReferentie">Een vrij veld dat terug komt met de callback payload om callbacks aan de juiste callback inschrijving te koppelen.</param>
+        /// <param name="geldigTot">Verplicht. De datum tot wanneer deze inschrijving effect moet hebben. Als deze inschrijving verloopt, wordt deze automatisch opgeruimd. De maximale termijn is afhankelijk van de gebruikte client.</param>
+        /// <param name="externeReferentie">Een vrij veld dat terugkomt met de callback payload om callbacks aan de juiste callbackinschrijving te koppelen.</param>
         /// <param name="geldverstrekker">Optioneel veld om alleen op aanvragen voor een bepaalde geldverstrekker in te schrijven.</param>
         [JsonConstructor]
         public CallbackInschrijving(long bagNummeraanduidingId, DateTime geldigTot, Option<string?> externeReferentie = default, Option<string?> geldverstrekker = default)
@@ -71,9 +71,9 @@ namespace Calcasa.Api.Model
         public long BagNummeraanduidingId { get; set; }
 
         /// <summary>
-        /// Verplicht. De datum tot wanneer deze inschrijving effect moet hebben. Als deze inschrijving verloopt wordt deze automatisch opgeruimt. De maximale termijn is afhankelijk van de gebruikte client.
+        /// Verplicht. De datum tot wanneer deze inschrijving effect moet hebben. Als deze inschrijving verloopt, wordt deze automatisch opgeruimd. De maximale termijn is afhankelijk van de gebruikte client.
         /// </summary>
-        /// <value>Verplicht. De datum tot wanneer deze inschrijving effect moet hebben. Als deze inschrijving verloopt wordt deze automatisch opgeruimt. De maximale termijn is afhankelijk van de gebruikte client.</value>
+        /// <value>Verplicht. De datum tot wanneer deze inschrijving effect moet hebben. Als deze inschrijving verloopt, wordt deze automatisch opgeruimd. De maximale termijn is afhankelijk van de gebruikte client.</value>
         /* <example>2021-04-28T12:34:45Z</example> */
         [JsonPropertyName("geldigTot")]
         public DateTime GeldigTot { get; set; }
@@ -86,9 +86,9 @@ namespace Calcasa.Api.Model
         public Option<string?> ExterneReferentieOption { get; private set; }
 
         /// <summary>
-        /// Een vrij veld dat terug komt met de callback payload om callbacks aan de juiste callback inschrijving te koppelen.
+        /// Een vrij veld dat terugkomt met de callback payload om callbacks aan de juiste callbackinschrijving te koppelen.
         /// </summary>
-        /// <value>Een vrij veld dat terug komt met de callback payload om callbacks aan de juiste callback inschrijving te koppelen.</value>
+        /// <value>Een vrij veld dat terugkomt met de callback payload om callbacks aan de juiste callbackinschrijving te koppelen.</value>
         [JsonPropertyName("externeReferentie")]
         public string? ExterneReferentie { get { return this.ExterneReferentieOption; } set { this.ExterneReferentieOption = new(value); } }
 
