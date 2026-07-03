@@ -40,24 +40,26 @@ using Calcasa.Api.Client;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// FileSetsFileInfo
+    /// FileInfo
     /// </summary>
-    public partial class FileSetsFileInfo
+    public partial class FileInfo
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileSetsFileInfo" /> class.
+        /// Initializes a new instance of the <see cref="FileInfo" /> class.
         /// </summary>
         /// <param name="index">The index of the file within the file set. Zero-based.</param>
         /// <param name="name">The name of the file, including its extension. This needs to be unique within the file set.</param>
         /// <param name="sha256hash">The SHA256 hash of the file contents, represented as an uppercase hexadecimal string. For the outbound file sets this is the expected hash, for inbound file sets this is the actual hash of the file contents.</param>
-        /// <param name="fileSize">The file size in bytes. For the outbound file sets this is the expected size, for inbound file sets this is the actual size of the file contents.</param>
+        /// <param name="size">The file size in bytes. For the outbound file sets this is the expected size, for inbound file sets this is the actual size of the file contents.</param>
+        /// <param name="contentType">The content type of the file, which indicates the media type of the file contents. This is used to determine how to handle and process the file. For example, \&quot;application/pdf\&quot; for PDF files, \&quot;image/jpeg\&quot; for JPEG images, etc. Refer to [IANA Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml) for possible values.</param>
         [JsonConstructor]
-        public FileSetsFileInfo(int index, string name, string sha256hash, int fileSize)
+        public FileInfo(int index, string name, string sha256hash, long size, string contentType)
         {
             Index = index;
             Name = name;
             Sha256hash = sha256hash;
-            FileSize = fileSize;
+            Size = size;
+            ContentType = contentType;
             OnCreated();
         }
 
@@ -90,8 +92,15 @@ namespace Calcasa.Api.Model
         /// The file size in bytes. For the outbound file sets this is the expected size, for inbound file sets this is the actual size of the file contents.
         /// </summary>
         /// <value>The file size in bytes. For the outbound file sets this is the expected size, for inbound file sets this is the actual size of the file contents.</value>
-        [JsonPropertyName("fileSize")]
-        public int FileSize { get; set; }
+        [JsonPropertyName("size")]
+        public long Size { get; set; }
+
+        /// <summary>
+        /// The content type of the file, which indicates the media type of the file contents. This is used to determine how to handle and process the file. For example, \&quot;application/pdf\&quot; for PDF files, \&quot;image/jpeg\&quot; for JPEG images, etc. Refer to [IANA Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml) for possible values.
+        /// </summary>
+        /// <value>The content type of the file, which indicates the media type of the file contents. This is used to determine how to handle and process the file. For example, \&quot;application/pdf\&quot; for PDF files, \&quot;image/jpeg\&quot; for JPEG images, etc. Refer to [IANA Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml) for possible values.</value>
+        [JsonPropertyName("contentType")]
+        public string ContentType { get; set; }
 
         /// <summary>
         /// Gets or Sets additional properties
@@ -106,11 +115,12 @@ namespace Calcasa.Api.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class FileSetsFileInfo {\n");
+            sb.Append("class FileInfo {\n");
             sb.Append("  Index: ").Append(Index).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Sha256hash: ").Append(Sha256hash).Append("\n");
-            sb.Append("  FileSize: ").Append(FileSize).Append("\n");
+            sb.Append("  Size: ").Append(Size).Append("\n");
+            sb.Append("  ContentType: ").Append(ContentType).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -118,19 +128,19 @@ namespace Calcasa.Api.Model
     }
 
     /// <summary>
-    /// A Json converter for type <see cref="FileSetsFileInfo" />
+    /// A Json converter for type <see cref="FileInfo" />
     /// </summary>
-    public class FileSetsFileInfoJsonConverter : JsonConverter<FileSetsFileInfo>
+    public class FileInfoJsonConverter : JsonConverter<FileInfo>
     {
         /// <summary>
-        /// Deserializes json to <see cref="FileSetsFileInfo" />
+        /// Deserializes json to <see cref="FileInfo" />
         /// </summary>
         /// <param name="utf8JsonReader"></param>
         /// <param name="typeToConvert"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <returns></returns>
         /// <exception cref="JsonException"></exception>
-        public override FileSetsFileInfo Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
+        public override FileInfo Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
         {
             int currentDepth = utf8JsonReader.CurrentDepth;
 
@@ -142,7 +152,8 @@ namespace Calcasa.Api.Model
             Option<int?> index = default;
             Option<string?> name = default;
             Option<string?> sha256hash = default;
-            Option<int?> fileSize = default;
+            Option<long?> size = default;
+            Option<string?> contentType = default;
 
             while (utf8JsonReader.Read())
             {
@@ -168,8 +179,11 @@ namespace Calcasa.Api.Model
                         case "sha256hash":
                             sha256hash = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
-                        case "fileSize":
-                            fileSize = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
+                        case "size":
+                            size = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
+                            break;
+                        case "contentType":
+                            contentType = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         default:
                             break;
@@ -178,76 +192,87 @@ namespace Calcasa.Api.Model
             }
 
             if (!index.IsSet)
-                throw new ArgumentException("Property is required for class FileSetsFileInfo.", nameof(index));
+                throw new ArgumentException("Property is required for class FileInfo.", nameof(index));
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class FileSetsFileInfo.", nameof(name));
+                throw new ArgumentException("Property is required for class FileInfo.", nameof(name));
 
             if (!sha256hash.IsSet)
-                throw new ArgumentException("Property is required for class FileSetsFileInfo.", nameof(sha256hash));
+                throw new ArgumentException("Property is required for class FileInfo.", nameof(sha256hash));
 
-            if (!fileSize.IsSet)
-                throw new ArgumentException("Property is required for class FileSetsFileInfo.", nameof(fileSize));
+            if (!size.IsSet)
+                throw new ArgumentException("Property is required for class FileInfo.", nameof(size));
+
+            if (!contentType.IsSet)
+                throw new ArgumentException("Property is required for class FileInfo.", nameof(contentType));
 
             if (index.IsSet && index.Value == null)
-                throw new ArgumentNullException(nameof(index), "Property is not nullable for class FileSetsFileInfo.");
+                throw new ArgumentNullException(nameof(index), "Property is not nullable for class FileInfo.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class FileSetsFileInfo.");
+                throw new ArgumentNullException(nameof(name), "Property is not nullable for class FileInfo.");
 
             if (sha256hash.IsSet && sha256hash.Value == null)
-                throw new ArgumentNullException(nameof(sha256hash), "Property is not nullable for class FileSetsFileInfo.");
+                throw new ArgumentNullException(nameof(sha256hash), "Property is not nullable for class FileInfo.");
 
-            if (fileSize.IsSet && fileSize.Value == null)
-                throw new ArgumentNullException(nameof(fileSize), "Property is not nullable for class FileSetsFileInfo.");
+            if (size.IsSet && size.Value == null)
+                throw new ArgumentNullException(nameof(size), "Property is not nullable for class FileInfo.");
 
-            return new FileSetsFileInfo(index.Value!.Value!, name.Value!, sha256hash.Value!, fileSize.Value!.Value!);
+            if (contentType.IsSet && contentType.Value == null)
+                throw new ArgumentNullException(nameof(contentType), "Property is not nullable for class FileInfo.");
+
+            return new FileInfo(index.Value!.Value!, name.Value!, sha256hash.Value!, size.Value!.Value!, contentType.Value!);
         }
 
         /// <summary>
-        /// Serializes a <see cref="FileSetsFileInfo" />
+        /// Serializes a <see cref="FileInfo" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="fileSetsFileInfo"></param>
+        /// <param name="fileInfo"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public override void Write(Utf8JsonWriter writer, FileSetsFileInfo fileSetsFileInfo, JsonSerializerOptions jsonSerializerOptions)
+        public override void Write(Utf8JsonWriter writer, FileInfo fileInfo, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
 
-            WriteProperties(writer, fileSetsFileInfo, jsonSerializerOptions);
+            WriteProperties(writer, fileInfo, jsonSerializerOptions);
             writer.WriteEndObject();
         }
 
         /// <summary>
-        /// Serializes the properties of <see cref="FileSetsFileInfo" />
+        /// Serializes the properties of <see cref="FileInfo" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="fileSetsFileInfo"></param>
+        /// <param name="fileInfo"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void WriteProperties(Utf8JsonWriter writer, FileSetsFileInfo fileSetsFileInfo, JsonSerializerOptions jsonSerializerOptions)
+        public void WriteProperties(Utf8JsonWriter writer, FileInfo fileInfo, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (fileSetsFileInfo.Name == null)
-                throw new ArgumentNullException(nameof(fileSetsFileInfo.Name), "Property is required for class FileSetsFileInfo.");
+            if (fileInfo.Name == null)
+                throw new ArgumentNullException(nameof(fileInfo.Name), "Property is required for class FileInfo.");
 
-            if (fileSetsFileInfo.Sha256hash == null)
-                throw new ArgumentNullException(nameof(fileSetsFileInfo.Sha256hash), "Property is required for class FileSetsFileInfo.");
+            if (fileInfo.Sha256hash == null)
+                throw new ArgumentNullException(nameof(fileInfo.Sha256hash), "Property is required for class FileInfo.");
 
-            writer.WriteNumber("index", fileSetsFileInfo.Index);
+            if (fileInfo.ContentType == null)
+                throw new ArgumentNullException(nameof(fileInfo.ContentType), "Property is required for class FileInfo.");
 
-            writer.WriteString("name", fileSetsFileInfo.Name);
+            writer.WriteNumber("index", fileInfo.Index);
 
-            writer.WriteString("sha256hash", fileSetsFileInfo.Sha256hash);
+            writer.WriteString("name", fileInfo.Name);
 
-            writer.WriteNumber("fileSize", fileSetsFileInfo.FileSize);
+            writer.WriteString("sha256hash", fileInfo.Sha256hash);
+
+            writer.WriteNumber("size", fileInfo.Size);
+
+            writer.WriteString("contentType", fileInfo.ContentType);
         }
     }
 
     /// <summary>
-    /// The FileSetsFileInfoSerializationContext
+    /// The FileInfoSerializationContext
     /// </summary>
     [JsonSourceGenerationOptions(WriteIndented = true, GenerationMode = JsonSourceGenerationMode.Metadata | JsonSourceGenerationMode.Serialization)]
-    [JsonSerializable(typeof(FileSetsFileInfo))]
-    public partial class FileSetsFileInfoSerializationContext : JsonSerializerContext { }
+    [JsonSerializable(typeof(FileInfo))]
+    public partial class FileInfoSerializationContext : JsonSerializerContext { }
 }

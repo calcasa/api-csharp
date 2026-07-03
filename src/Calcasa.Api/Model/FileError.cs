@@ -54,7 +54,7 @@ namespace Calcasa.Api.Model
         /// <param name="actualSha256hash">The actual SHA256 hash of the file contents, represented as an uppercase hexadecimal string.</param>
         /// <param name="actualFileSize">The actual file size in bytes.</param>
         [JsonConstructor]
-        public FileError(int index, string name, string expectedSha256hash, int expectedFileSize, string actualSha256hash, int actualFileSize)
+        public FileError(int index, string name, string expectedSha256hash, long expectedFileSize, string actualSha256hash, long actualFileSize)
         {
             Index = index;
             Name = name;
@@ -93,7 +93,7 @@ namespace Calcasa.Api.Model
         /// </summary>
         /// <value>The expected file size in bytes.</value>
         [JsonPropertyName("expectedFileSize")]
-        public int ExpectedFileSize { get; set; }
+        public long ExpectedFileSize { get; set; }
 
         /// <summary>
         /// The actual SHA256 hash of the file contents, represented as an uppercase hexadecimal string.
@@ -108,7 +108,7 @@ namespace Calcasa.Api.Model
         /// </summary>
         /// <value>The actual file size in bytes.</value>
         [JsonPropertyName("actualFileSize")]
-        public int ActualFileSize { get; set; }
+        public long ActualFileSize { get; set; }
 
         /// <summary>
         /// Gets or Sets additional properties
@@ -161,9 +161,9 @@ namespace Calcasa.Api.Model
             Option<int?> index = default;
             Option<string?> name = default;
             Option<string?> expectedSha256hash = default;
-            Option<int?> expectedFileSize = default;
+            Option<long?> expectedFileSize = default;
             Option<string?> actualSha256hash = default;
-            Option<int?> actualFileSize = default;
+            Option<long?> actualFileSize = default;
 
             while (utf8JsonReader.Read())
             {
@@ -190,13 +190,13 @@ namespace Calcasa.Api.Model
                             expectedSha256hash = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "expectedFileSize":
-                            expectedFileSize = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
+                            expectedFileSize = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
                         case "actualSha256hash":
                             actualSha256hash = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "actualFileSize":
-                            actualFileSize = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
+                            actualFileSize = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
                         default:
                             break;

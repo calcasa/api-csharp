@@ -40,11 +40,16 @@ using Calcasa.Api.Client;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// Outbound file set states.  | Value | Description | | - -- | - -- | | &#x60;ready&#x60; | File set is ready and is waiting for the files to be downloaded. | | &#x60;deleted&#x60; | File set has been downloaded and has been deleted. | | &#x60;expired&#x60; | File set has expired and all its contents have been deleted. |
+    /// Outbound file set states.  | Value | Description | | - -- | - -- | | &#x60;preparing&#x60; | File set is being prepared for download. | | &#x60;ready&#x60; | File set is ready and is waiting for the files to be downloaded. | | &#x60;deleted&#x60; | File set has been downloaded and has been deleted. | | &#x60;expired&#x60; | File set has expired and all its contents have been deleted. |
     /// </summary>
-    /// <value>Outbound file set states.  | Value | Description | | - -- | - -- | | &#x60;ready&#x60; | File set is ready and is waiting for the files to be downloaded. | | &#x60;deleted&#x60; | File set has been downloaded and has been deleted. | | &#x60;expired&#x60; | File set has expired and all its contents have been deleted. |</value>
+    /// <value>Outbound file set states.  | Value | Description | | - -- | - -- | | &#x60;preparing&#x60; | File set is being prepared for download. | | &#x60;ready&#x60; | File set is ready and is waiting for the files to be downloaded. | | &#x60;deleted&#x60; | File set has been downloaded and has been deleted. | | &#x60;expired&#x60; | File set has expired and all its contents have been deleted. |</value>
     public enum OutboundFileSetState
     {
+        /// <summary>
+        /// Enum Preparing for value: preparing
+        /// </summary>
+        Preparing,
+
         /// <summary>
         /// Enum Ready for value: ready
         /// </summary>
@@ -73,6 +78,9 @@ namespace Calcasa.Api.Model
         /// <returns></returns>
         public static OutboundFileSetState FromString(string value)
         {
+            if (value.Equals("preparing"))
+                return OutboundFileSetState.Preparing;
+
             if (value.Equals("ready"))
                 return OutboundFileSetState.Ready;
 
@@ -92,6 +100,9 @@ namespace Calcasa.Api.Model
         /// <returns></returns>
         public static OutboundFileSetState? FromStringOrDefault(string value)
         {
+            if (value.Equals("preparing"))
+                return OutboundFileSetState.Preparing;
+
             if (value.Equals("ready"))
                 return OutboundFileSetState.Ready;
 
@@ -112,6 +123,9 @@ namespace Calcasa.Api.Model
         /// <exception cref="NotImplementedException"></exception>
         public static string ToJsonValue(OutboundFileSetState value)
         {
+            if (value == OutboundFileSetState.Preparing)
+                return "preparing";
+
             if (value == OutboundFileSetState.Ready)
                 return "ready";
 

@@ -40,12 +40,12 @@ using Calcasa.Api.Client;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// The payload for the webhooks for the inbound file sets.
+    /// The payload for the webhooks for the outbound file sets.
     /// </summary>
-    public partial class FileSetsInboundFileSetWebhookPayload
+    public partial class OutboundFileSetWebhookPayload
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileSetsInboundFileSetWebhookPayload" /> class.
+        /// Initializes a new instance of the <see cref="OutboundFileSetWebhookPayload" /> class.
         /// </summary>
         /// <param name="callbackName">callbackName</param>
         /// <param name="eventId">Uniek Id voor deze callback.</param>
@@ -54,7 +54,7 @@ namespace Calcasa.Api.Model
         /// <param name="oldStatus">oldStatus</param>
         /// <param name="newStatus">newStatus</param>
         [JsonConstructor]
-        public FileSetsInboundFileSetWebhookPayload(string callbackName, Guid eventId, DateTime timestamp, Option<Guid?> fileSetId = default, Option<InboundFileSetState?> oldStatus = default, Option<InboundFileSetState?> newStatus = default)
+        public OutboundFileSetWebhookPayload(string callbackName, Guid eventId, DateTime timestamp, Option<Guid?> fileSetId = default, Option<OutboundFileSetState?> oldStatus = default, Option<OutboundFileSetState?> newStatus = default)
         {
             CallbackName = callbackName;
             EventId = eventId;
@@ -72,26 +72,26 @@ namespace Calcasa.Api.Model
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<InboundFileSetState?> OldStatusOption { get; private set; }
+        public Option<OutboundFileSetState?> OldStatusOption { get; private set; }
 
         /// <summary>
         /// Gets or Sets OldStatus
         /// </summary>
         [JsonPropertyName("oldStatus")]
-        public InboundFileSetState? OldStatus { get { return this.OldStatusOption; } set { this.OldStatusOption = new(value); } }
+        public OutboundFileSetState? OldStatus { get { return this.OldStatusOption; } set { this.OldStatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of NewStatus
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<InboundFileSetState?> NewStatusOption { get; private set; }
+        public Option<OutboundFileSetState?> NewStatusOption { get; private set; }
 
         /// <summary>
         /// Gets or Sets NewStatus
         /// </summary>
         [JsonPropertyName("newStatus")]
-        public InboundFileSetState? NewStatus { get { return this.NewStatusOption; } set { this.NewStatusOption = new(value); } }
+        public OutboundFileSetState? NewStatus { get { return this.NewStatusOption; } set { this.NewStatusOption = new(value); } }
 
         /// <summary>
         /// Gets or Sets CallbackName
@@ -141,7 +141,7 @@ namespace Calcasa.Api.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class FileSetsInboundFileSetWebhookPayload {\n");
+            sb.Append("class OutboundFileSetWebhookPayload {\n");
             sb.Append("  CallbackName: ").Append(CallbackName).Append("\n");
             sb.Append("  EventId: ").Append(EventId).Append("\n");
             sb.Append("  Timestamp: ").Append(Timestamp).Append("\n");
@@ -155,9 +155,9 @@ namespace Calcasa.Api.Model
     }
 
     /// <summary>
-    /// A Json converter for type <see cref="FileSetsInboundFileSetWebhookPayload" />
+    /// A Json converter for type <see cref="OutboundFileSetWebhookPayload" />
     /// </summary>
-    public class FileSetsInboundFileSetWebhookPayloadJsonConverter : JsonConverter<FileSetsInboundFileSetWebhookPayload>
+    public class OutboundFileSetWebhookPayloadJsonConverter : JsonConverter<OutboundFileSetWebhookPayload>
     {
         /// <summary>
         /// The format to use to serialize Timestamp
@@ -165,14 +165,14 @@ namespace Calcasa.Api.Model
         public static string TimestampFormat { get; set; } = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZ";
 
         /// <summary>
-        /// Deserializes json to <see cref="FileSetsInboundFileSetWebhookPayload" />
+        /// Deserializes json to <see cref="OutboundFileSetWebhookPayload" />
         /// </summary>
         /// <param name="utf8JsonReader"></param>
         /// <param name="typeToConvert"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <returns></returns>
         /// <exception cref="JsonException"></exception>
-        public override FileSetsInboundFileSetWebhookPayload Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
+        public override OutboundFileSetWebhookPayload Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
         {
             int currentDepth = utf8JsonReader.CurrentDepth;
 
@@ -185,8 +185,8 @@ namespace Calcasa.Api.Model
             Option<Guid?> eventId = default;
             Option<DateTime?> timestamp = default;
             Option<Guid?> fileSetId = default;
-            Option<InboundFileSetState?> oldStatus = default;
-            Option<InboundFileSetState?> newStatus = default;
+            Option<OutboundFileSetState?> oldStatus = default;
+            Option<OutboundFileSetState?> newStatus = default;
 
             while (utf8JsonReader.Read())
             {
@@ -218,12 +218,12 @@ namespace Calcasa.Api.Model
                         case "oldStatus":
                             string? oldStatusRawValue = utf8JsonReader.GetString();
                             if (oldStatusRawValue != null)
-                                oldStatus = new Option<InboundFileSetState?>(InboundFileSetStateValueConverter.FromStringOrDefault(oldStatusRawValue));
+                                oldStatus = new Option<OutboundFileSetState?>(OutboundFileSetStateValueConverter.FromStringOrDefault(oldStatusRawValue));
                             break;
                         case "newStatus":
                             string? newStatusRawValue = utf8JsonReader.GetString();
                             if (newStatusRawValue != null)
-                                newStatus = new Option<InboundFileSetState?>(InboundFileSetStateValueConverter.FromStringOrDefault(newStatusRawValue));
+                                newStatus = new Option<OutboundFileSetState?>(OutboundFileSetStateValueConverter.FromStringOrDefault(newStatusRawValue));
                             break;
                         default:
                             break;
@@ -232,88 +232,88 @@ namespace Calcasa.Api.Model
             }
 
             if (!callbackName.IsSet)
-                throw new ArgumentException("Property is required for class FileSetsInboundFileSetWebhookPayload.", nameof(callbackName));
+                throw new ArgumentException("Property is required for class OutboundFileSetWebhookPayload.", nameof(callbackName));
 
             if (!eventId.IsSet)
-                throw new ArgumentException("Property is required for class FileSetsInboundFileSetWebhookPayload.", nameof(eventId));
+                throw new ArgumentException("Property is required for class OutboundFileSetWebhookPayload.", nameof(eventId));
 
             if (!timestamp.IsSet)
-                throw new ArgumentException("Property is required for class FileSetsInboundFileSetWebhookPayload.", nameof(timestamp));
+                throw new ArgumentException("Property is required for class OutboundFileSetWebhookPayload.", nameof(timestamp));
 
             if (callbackName.IsSet && callbackName.Value == null)
-                throw new ArgumentNullException(nameof(callbackName), "Property is not nullable for class FileSetsInboundFileSetWebhookPayload.");
+                throw new ArgumentNullException(nameof(callbackName), "Property is not nullable for class OutboundFileSetWebhookPayload.");
 
             if (eventId.IsSet && eventId.Value == null)
-                throw new ArgumentNullException(nameof(eventId), "Property is not nullable for class FileSetsInboundFileSetWebhookPayload.");
+                throw new ArgumentNullException(nameof(eventId), "Property is not nullable for class OutboundFileSetWebhookPayload.");
 
             if (timestamp.IsSet && timestamp.Value == null)
-                throw new ArgumentNullException(nameof(timestamp), "Property is not nullable for class FileSetsInboundFileSetWebhookPayload.");
+                throw new ArgumentNullException(nameof(timestamp), "Property is not nullable for class OutboundFileSetWebhookPayload.");
 
             if (fileSetId.IsSet && fileSetId.Value == null)
-                throw new ArgumentNullException(nameof(fileSetId), "Property is not nullable for class FileSetsInboundFileSetWebhookPayload.");
+                throw new ArgumentNullException(nameof(fileSetId), "Property is not nullable for class OutboundFileSetWebhookPayload.");
 
             if (oldStatus.IsSet && oldStatus.Value == null)
-                throw new ArgumentNullException(nameof(oldStatus), "Property is not nullable for class FileSetsInboundFileSetWebhookPayload.");
+                throw new ArgumentNullException(nameof(oldStatus), "Property is not nullable for class OutboundFileSetWebhookPayload.");
 
             if (newStatus.IsSet && newStatus.Value == null)
-                throw new ArgumentNullException(nameof(newStatus), "Property is not nullable for class FileSetsInboundFileSetWebhookPayload.");
+                throw new ArgumentNullException(nameof(newStatus), "Property is not nullable for class OutboundFileSetWebhookPayload.");
 
-            return new FileSetsInboundFileSetWebhookPayload(callbackName.Value!, eventId.Value!.Value!, timestamp.Value!.Value!, fileSetId, oldStatus, newStatus);
+            return new OutboundFileSetWebhookPayload(callbackName.Value!, eventId.Value!.Value!, timestamp.Value!.Value!, fileSetId, oldStatus, newStatus);
         }
 
         /// <summary>
-        /// Serializes a <see cref="FileSetsInboundFileSetWebhookPayload" />
+        /// Serializes a <see cref="OutboundFileSetWebhookPayload" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="fileSetsInboundFileSetWebhookPayload"></param>
+        /// <param name="outboundFileSetWebhookPayload"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public override void Write(Utf8JsonWriter writer, FileSetsInboundFileSetWebhookPayload fileSetsInboundFileSetWebhookPayload, JsonSerializerOptions jsonSerializerOptions)
+        public override void Write(Utf8JsonWriter writer, OutboundFileSetWebhookPayload outboundFileSetWebhookPayload, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
 
-            WriteProperties(writer, fileSetsInboundFileSetWebhookPayload, jsonSerializerOptions);
+            WriteProperties(writer, outboundFileSetWebhookPayload, jsonSerializerOptions);
             writer.WriteEndObject();
         }
 
         /// <summary>
-        /// Serializes the properties of <see cref="FileSetsInboundFileSetWebhookPayload" />
+        /// Serializes the properties of <see cref="OutboundFileSetWebhookPayload" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="fileSetsInboundFileSetWebhookPayload"></param>
+        /// <param name="outboundFileSetWebhookPayload"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void WriteProperties(Utf8JsonWriter writer, FileSetsInboundFileSetWebhookPayload fileSetsInboundFileSetWebhookPayload, JsonSerializerOptions jsonSerializerOptions)
+        public void WriteProperties(Utf8JsonWriter writer, OutboundFileSetWebhookPayload outboundFileSetWebhookPayload, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (fileSetsInboundFileSetWebhookPayload.CallbackName == null)
-                throw new ArgumentNullException(nameof(fileSetsInboundFileSetWebhookPayload.CallbackName), "Property is required for class FileSetsInboundFileSetWebhookPayload.");
+            if (outboundFileSetWebhookPayload.CallbackName == null)
+                throw new ArgumentNullException(nameof(outboundFileSetWebhookPayload.CallbackName), "Property is required for class OutboundFileSetWebhookPayload.");
 
-            writer.WriteString("callbackName", fileSetsInboundFileSetWebhookPayload.CallbackName);
+            writer.WriteString("callbackName", outboundFileSetWebhookPayload.CallbackName);
 
-            writer.WriteString("eventId", fileSetsInboundFileSetWebhookPayload.EventId);
+            writer.WriteString("eventId", outboundFileSetWebhookPayload.EventId);
 
-            writer.WriteString("timestamp", fileSetsInboundFileSetWebhookPayload.Timestamp.ToString(TimestampFormat));
+            writer.WriteString("timestamp", outboundFileSetWebhookPayload.Timestamp.ToString(TimestampFormat));
 
-            if (fileSetsInboundFileSetWebhookPayload.FileSetIdOption.IsSet)
-                writer.WriteString("fileSetId", fileSetsInboundFileSetWebhookPayload.FileSetIdOption.Value!.Value);
+            if (outboundFileSetWebhookPayload.FileSetIdOption.IsSet)
+                writer.WriteString("fileSetId", outboundFileSetWebhookPayload.FileSetIdOption.Value!.Value);
 
-            if (fileSetsInboundFileSetWebhookPayload.OldStatusOption.IsSet)
+            if (outboundFileSetWebhookPayload.OldStatusOption.IsSet)
             {
-                var oldStatusRawValue = InboundFileSetStateValueConverter.ToJsonValue(fileSetsInboundFileSetWebhookPayload.OldStatus!.Value);
+                var oldStatusRawValue = OutboundFileSetStateValueConverter.ToJsonValue(outboundFileSetWebhookPayload.OldStatus!.Value);
                 writer.WriteString("oldStatus", oldStatusRawValue);
             }
-            if (fileSetsInboundFileSetWebhookPayload.NewStatusOption.IsSet)
+            if (outboundFileSetWebhookPayload.NewStatusOption.IsSet)
             {
-                var newStatusRawValue = InboundFileSetStateValueConverter.ToJsonValue(fileSetsInboundFileSetWebhookPayload.NewStatus!.Value);
+                var newStatusRawValue = OutboundFileSetStateValueConverter.ToJsonValue(outboundFileSetWebhookPayload.NewStatus!.Value);
                 writer.WriteString("newStatus", newStatusRawValue);
             }
         }
     }
 
     /// <summary>
-    /// The FileSetsInboundFileSetWebhookPayloadSerializationContext
+    /// The OutboundFileSetWebhookPayloadSerializationContext
     /// </summary>
     [JsonSourceGenerationOptions(WriteIndented = true, GenerationMode = JsonSourceGenerationMode.Metadata | JsonSourceGenerationMode.Serialization)]
-    [JsonSerializable(typeof(FileSetsInboundFileSetWebhookPayload))]
-    public partial class FileSetsInboundFileSetWebhookPayloadSerializationContext : JsonSerializerContext { }
+    [JsonSerializable(typeof(OutboundFileSetWebhookPayload))]
+    public partial class OutboundFileSetWebhookPayloadSerializationContext : JsonSerializerContext { }
 }

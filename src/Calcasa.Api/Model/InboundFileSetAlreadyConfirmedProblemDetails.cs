@@ -40,12 +40,12 @@ using Calcasa.Api.Client;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// InboundFileSetAlreadyCompletedProblemDetails
+    /// InboundFileSetAlreadyConfirmedProblemDetails
     /// </summary>
-    public partial class InboundFileSetAlreadyCompletedProblemDetails
+    public partial class InboundFileSetAlreadyConfirmedProblemDetails
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InboundFileSetAlreadyCompletedProblemDetails" /> class.
+        /// Initializes a new instance of the <see cref="InboundFileSetAlreadyConfirmedProblemDetails" /> class.
         /// </summary>
         /// <param name="type">A URI reference [RFC3986] that identifies the problem type.</param>
         /// <param name="title">A short, human-readable summary of the problem type.</param>
@@ -53,7 +53,7 @@ namespace Calcasa.Api.Model
         /// <param name="detail">A human-readable explanation specific to this occurrence of the problem.</param>
         /// <param name="instance">A URI reference that identifies the specific occurrence of the problem.</param>
         [JsonConstructor]
-        public InboundFileSetAlreadyCompletedProblemDetails(Option<string?> type = default, Option<string?> title = default, Option<int?> status = default, Option<string?> detail = default, Option<string?> instance = default)
+        public InboundFileSetAlreadyConfirmedProblemDetails(Option<string?> type = default, Option<string?> title = default, Option<int?> status = default, Option<string?> detail = default, Option<string?> instance = default)
         {
             TypeOption = type;
             TitleOption = title;
@@ -148,7 +148,7 @@ namespace Calcasa.Api.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class InboundFileSetAlreadyCompletedProblemDetails {\n");
+            sb.Append("class InboundFileSetAlreadyConfirmedProblemDetails {\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
@@ -161,19 +161,19 @@ namespace Calcasa.Api.Model
     }
 
     /// <summary>
-    /// A Json converter for type <see cref="InboundFileSetAlreadyCompletedProblemDetails" />
+    /// A Json converter for type <see cref="InboundFileSetAlreadyConfirmedProblemDetails" />
     /// </summary>
-    public class InboundFileSetAlreadyCompletedProblemDetailsJsonConverter : JsonConverter<InboundFileSetAlreadyCompletedProblemDetails>
+    public class InboundFileSetAlreadyConfirmedProblemDetailsJsonConverter : JsonConverter<InboundFileSetAlreadyConfirmedProblemDetails>
     {
         /// <summary>
-        /// Deserializes json to <see cref="InboundFileSetAlreadyCompletedProblemDetails" />
+        /// Deserializes json to <see cref="InboundFileSetAlreadyConfirmedProblemDetails" />
         /// </summary>
         /// <param name="utf8JsonReader"></param>
         /// <param name="typeToConvert"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <returns></returns>
         /// <exception cref="JsonException"></exception>
-        public override InboundFileSetAlreadyCompletedProblemDetails Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
+        public override InboundFileSetAlreadyConfirmedProblemDetails Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
         {
             int currentDepth = utf8JsonReader.CurrentDepth;
 
@@ -224,69 +224,69 @@ namespace Calcasa.Api.Model
                 }
             }
 
-            return new InboundFileSetAlreadyCompletedProblemDetails(type, title, status, detail, instance);
+            return new InboundFileSetAlreadyConfirmedProblemDetails(type, title, status, detail, instance);
         }
 
         /// <summary>
-        /// Serializes a <see cref="InboundFileSetAlreadyCompletedProblemDetails" />
+        /// Serializes a <see cref="InboundFileSetAlreadyConfirmedProblemDetails" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="inboundFileSetAlreadyCompletedProblemDetails"></param>
+        /// <param name="inboundFileSetAlreadyConfirmedProblemDetails"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public override void Write(Utf8JsonWriter writer, InboundFileSetAlreadyCompletedProblemDetails inboundFileSetAlreadyCompletedProblemDetails, JsonSerializerOptions jsonSerializerOptions)
+        public override void Write(Utf8JsonWriter writer, InboundFileSetAlreadyConfirmedProblemDetails inboundFileSetAlreadyConfirmedProblemDetails, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
 
-            WriteProperties(writer, inboundFileSetAlreadyCompletedProblemDetails, jsonSerializerOptions);
+            WriteProperties(writer, inboundFileSetAlreadyConfirmedProblemDetails, jsonSerializerOptions);
             writer.WriteEndObject();
         }
 
         /// <summary>
-        /// Serializes the properties of <see cref="InboundFileSetAlreadyCompletedProblemDetails" />
+        /// Serializes the properties of <see cref="InboundFileSetAlreadyConfirmedProblemDetails" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="inboundFileSetAlreadyCompletedProblemDetails"></param>
+        /// <param name="inboundFileSetAlreadyConfirmedProblemDetails"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void WriteProperties(Utf8JsonWriter writer, InboundFileSetAlreadyCompletedProblemDetails inboundFileSetAlreadyCompletedProblemDetails, JsonSerializerOptions jsonSerializerOptions)
+        public void WriteProperties(Utf8JsonWriter writer, InboundFileSetAlreadyConfirmedProblemDetails inboundFileSetAlreadyConfirmedProblemDetails, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (inboundFileSetAlreadyCompletedProblemDetails.TypeOption.IsSet)
-                if (inboundFileSetAlreadyCompletedProblemDetails.TypeOption.Value != null)
-                    writer.WriteString("type", inboundFileSetAlreadyCompletedProblemDetails.Type);
+            if (inboundFileSetAlreadyConfirmedProblemDetails.TypeOption.IsSet)
+                if (inboundFileSetAlreadyConfirmedProblemDetails.TypeOption.Value != null)
+                    writer.WriteString("type", inboundFileSetAlreadyConfirmedProblemDetails.Type);
                 else
                     writer.WriteNull("type");
 
-            if (inboundFileSetAlreadyCompletedProblemDetails.TitleOption.IsSet)
-                if (inboundFileSetAlreadyCompletedProblemDetails.TitleOption.Value != null)
-                    writer.WriteString("title", inboundFileSetAlreadyCompletedProblemDetails.Title);
+            if (inboundFileSetAlreadyConfirmedProblemDetails.TitleOption.IsSet)
+                if (inboundFileSetAlreadyConfirmedProblemDetails.TitleOption.Value != null)
+                    writer.WriteString("title", inboundFileSetAlreadyConfirmedProblemDetails.Title);
                 else
                     writer.WriteNull("title");
 
-            if (inboundFileSetAlreadyCompletedProblemDetails.StatusOption.IsSet)
-                if (inboundFileSetAlreadyCompletedProblemDetails.StatusOption.Value != null)
-                    writer.WriteNumber("status", inboundFileSetAlreadyCompletedProblemDetails.StatusOption.Value!.Value);
+            if (inboundFileSetAlreadyConfirmedProblemDetails.StatusOption.IsSet)
+                if (inboundFileSetAlreadyConfirmedProblemDetails.StatusOption.Value != null)
+                    writer.WriteNumber("status", inboundFileSetAlreadyConfirmedProblemDetails.StatusOption.Value!.Value);
                 else
                     writer.WriteNull("status");
 
-            if (inboundFileSetAlreadyCompletedProblemDetails.DetailOption.IsSet)
-                if (inboundFileSetAlreadyCompletedProblemDetails.DetailOption.Value != null)
-                    writer.WriteString("detail", inboundFileSetAlreadyCompletedProblemDetails.Detail);
+            if (inboundFileSetAlreadyConfirmedProblemDetails.DetailOption.IsSet)
+                if (inboundFileSetAlreadyConfirmedProblemDetails.DetailOption.Value != null)
+                    writer.WriteString("detail", inboundFileSetAlreadyConfirmedProblemDetails.Detail);
                 else
                     writer.WriteNull("detail");
 
-            if (inboundFileSetAlreadyCompletedProblemDetails.InstanceOption.IsSet)
-                if (inboundFileSetAlreadyCompletedProblemDetails.InstanceOption.Value != null)
-                    writer.WriteString("instance", inboundFileSetAlreadyCompletedProblemDetails.Instance);
+            if (inboundFileSetAlreadyConfirmedProblemDetails.InstanceOption.IsSet)
+                if (inboundFileSetAlreadyConfirmedProblemDetails.InstanceOption.Value != null)
+                    writer.WriteString("instance", inboundFileSetAlreadyConfirmedProblemDetails.Instance);
                 else
                     writer.WriteNull("instance");
         }
     }
 
     /// <summary>
-    /// The InboundFileSetAlreadyCompletedProblemDetailsSerializationContext
+    /// The InboundFileSetAlreadyConfirmedProblemDetailsSerializationContext
     /// </summary>
     [JsonSourceGenerationOptions(WriteIndented = true, GenerationMode = JsonSourceGenerationMode.Metadata | JsonSourceGenerationMode.Serialization)]
-    [JsonSerializable(typeof(InboundFileSetAlreadyCompletedProblemDetails))]
-    public partial class InboundFileSetAlreadyCompletedProblemDetailsSerializationContext : JsonSerializerContext { }
+    [JsonSerializable(typeof(InboundFileSetAlreadyConfirmedProblemDetails))]
+    public partial class InboundFileSetAlreadyConfirmedProblemDetailsSerializationContext : JsonSerializerContext { }
 }

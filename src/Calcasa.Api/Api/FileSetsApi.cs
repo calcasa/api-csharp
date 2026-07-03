@@ -81,10 +81,10 @@ namespace Calcasa.Api.Api
         /// Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, a InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all it&#39;s uploaded ocntents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fileSetsInboundFileSet"></param>
+        /// <param name="inboundFileSet"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ICreateInboundFileSetApiResponse"/>&gt;</returns>
-        Task<ICreateInboundFileSetApiResponse> CreateInboundFileSetAsync(FileSetsInboundFileSet fileSetsInboundFileSet, System.Threading.CancellationToken cancellationToken = default);
+        Task<ICreateInboundFileSetApiResponse> CreateInboundFileSetAsync(InboundFileSet inboundFileSet, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -92,10 +92,10 @@ namespace Calcasa.Api.Api
         /// <remarks>
         /// Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, a InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all it&#39;s uploaded ocntents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
         /// </remarks>
-        /// <param name="fileSetsInboundFileSet"></param>
+        /// <param name="inboundFileSet"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ICreateInboundFileSetApiResponse"/>?&gt;</returns>
-        Task<ICreateInboundFileSetApiResponse?> CreateInboundFileSetOrDefaultAsync(FileSetsInboundFileSet fileSetsInboundFileSet, System.Threading.CancellationToken cancellationToken = default);
+        Task<ICreateInboundFileSetApiResponse?> CreateInboundFileSetOrDefaultAsync(InboundFileSet inboundFileSet, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Delete outbound file set after it&#39;s has been correctly received. If a outbound file set is not downloaded and deleted after 48 hours, it will expire and all its contents will be deleted automatically.
@@ -266,7 +266,7 @@ namespace Calcasa.Api.Api
     /// <summary>
     /// The <see cref="IConfirmInboundFileSetByIdApiResponse"/>
     /// </summary>
-    public interface IConfirmInboundFileSetByIdApiResponse : Calcasa.Api.Client.IApiResponse, IOk<Calcasa.Api.Model.FileSetsInboundFileSet?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, INotFound<Calcasa.Api.Model.NotFoundProblemDetails?>, IConflict<Calcasa.Api.Model.InboundFileSetAlreadyCompletedProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
+    public interface IConfirmInboundFileSetByIdApiResponse : Calcasa.Api.Client.IApiResponse, IOk<Calcasa.Api.Model.InboundFileSet?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, INotFound<Calcasa.Api.Model.NotFoundProblemDetails?>, IConflict<Calcasa.Api.Model.InboundFileSetAlreadyConfirmedProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 200 Ok
@@ -302,7 +302,7 @@ namespace Calcasa.Api.Api
     /// <summary>
     /// The <see cref="ICreateInboundFileSetApiResponse"/>
     /// </summary>
-    public interface ICreateInboundFileSetApiResponse : Calcasa.Api.Client.IApiResponse, IOk<Calcasa.Api.Model.FileSetsInboundFileSet?>, IBadRequest<Calcasa.Api.Model.InvalidArgumentProblemDetails?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, IConflict<Calcasa.Api.Model.InboundFileSetAlreadyExistsProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
+    public interface ICreateInboundFileSetApiResponse : Calcasa.Api.Client.IApiResponse, IOk<Calcasa.Api.Model.InboundFileSet?>, IBadRequest<Calcasa.Api.Model.InvalidArgumentProblemDetails?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, IConflict<Calcasa.Api.Model.InboundFileSetAlreadyExistsProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 200 Ok
@@ -368,7 +368,7 @@ namespace Calcasa.Api.Api
     /// <summary>
     /// The <see cref="IGetInboundFileSetByIdApiResponse"/>
     /// </summary>
-    public interface IGetInboundFileSetByIdApiResponse : Calcasa.Api.Client.IApiResponse, IOk<Calcasa.Api.Model.FileSetsInboundFileSet?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, INotFound<Calcasa.Api.Model.NotFoundProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
+    public interface IGetInboundFileSetByIdApiResponse : Calcasa.Api.Client.IApiResponse, IOk<Calcasa.Api.Model.InboundFileSet?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, INotFound<Calcasa.Api.Model.NotFoundProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 200 Ok
@@ -398,7 +398,7 @@ namespace Calcasa.Api.Api
     /// <summary>
     /// The <see cref="IGetInboundFileSetsApiResponse"/>
     /// </summary>
-    public interface IGetInboundFileSetsApiResponse : Calcasa.Api.Client.IApiResponse, IOk<Collection<FileSetsInboundFileSet>?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
+    public interface IGetInboundFileSetsApiResponse : Calcasa.Api.Client.IApiResponse, IOk<Collection<InboundFileSet>?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 200 Ok
@@ -452,7 +452,7 @@ namespace Calcasa.Api.Api
     /// <summary>
     /// The <see cref="IGetOutboundFileSetByIdApiResponse"/>
     /// </summary>
-    public interface IGetOutboundFileSetByIdApiResponse : Calcasa.Api.Client.IApiResponse, IOk<Calcasa.Api.Model.FileSetsOutboundFileSet?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, INotFound<Calcasa.Api.Model.NotFoundProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
+    public interface IGetOutboundFileSetByIdApiResponse : Calcasa.Api.Client.IApiResponse, IOk<Calcasa.Api.Model.OutboundFileSet?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, INotFound<Calcasa.Api.Model.NotFoundProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 200 Ok
@@ -482,7 +482,7 @@ namespace Calcasa.Api.Api
     /// <summary>
     /// The <see cref="IGetOutboundFileSetsApiResponse"/>
     /// </summary>
-    public interface IGetOutboundFileSetsApiResponse : Calcasa.Api.Client.IApiResponse, IOk<Collection<FileSetsOutboundFileSet>?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
+    public interface IGetOutboundFileSetsApiResponse : Calcasa.Api.Client.IApiResponse, IOk<Collection<OutboundFileSet>?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 200 Ok
@@ -976,11 +976,11 @@ namespace Calcasa.Api.Api
             /// Deserializes the response if the response is 200 Ok
             /// </summary>
             /// <returns></returns>
-            public Calcasa.Api.Model.FileSetsInboundFileSet? Ok()
+            public Calcasa.Api.Model.InboundFileSet? Ok()
             {
                 // This logic may be modified with the AsModel.mustache template
                 return IsOk
-                    ? System.Text.Json.JsonSerializer.Deserialize<Calcasa.Api.Model.FileSetsInboundFileSet>(RawContent, _jsonSerializerOptions)
+                    ? System.Text.Json.JsonSerializer.Deserialize<Calcasa.Api.Model.InboundFileSet>(RawContent, _jsonSerializerOptions)
                     : null;
             }
 
@@ -989,7 +989,7 @@ namespace Calcasa.Api.Api
             /// </summary>
             /// <param name="result"></param>
             /// <returns></returns>
-            public bool TryOk([NotNullWhen(true)] out Calcasa.Api.Model.FileSetsInboundFileSet? result)
+            public bool TryOk([NotNullWhen(true)] out Calcasa.Api.Model.InboundFileSet? result)
             {
                 result = null;
 
@@ -1093,11 +1093,11 @@ namespace Calcasa.Api.Api
             /// Deserializes the response if the response is 409 Conflict
             /// </summary>
             /// <returns></returns>
-            public Calcasa.Api.Model.InboundFileSetAlreadyCompletedProblemDetails? Conflict()
+            public Calcasa.Api.Model.InboundFileSetAlreadyConfirmedProblemDetails? Conflict()
             {
                 // This logic may be modified with the AsModel.mustache template
                 return IsConflict
-                    ? System.Text.Json.JsonSerializer.Deserialize<Calcasa.Api.Model.InboundFileSetAlreadyCompletedProblemDetails>(RawContent, _jsonSerializerOptions)
+                    ? System.Text.Json.JsonSerializer.Deserialize<Calcasa.Api.Model.InboundFileSetAlreadyConfirmedProblemDetails>(RawContent, _jsonSerializerOptions)
                     : null;
             }
 
@@ -1106,7 +1106,7 @@ namespace Calcasa.Api.Api
             /// </summary>
             /// <param name="result"></param>
             /// <returns></returns>
-            public bool TryConflict([NotNullWhen(true)] out Calcasa.Api.Model.InboundFileSetAlreadyCompletedProblemDetails? result)
+            public bool TryConflict([NotNullWhen(true)] out Calcasa.Api.Model.InboundFileSetAlreadyConfirmedProblemDetails? result)
             {
                 result = null;
 
@@ -1172,28 +1172,28 @@ namespace Calcasa.Api.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatCreateInboundFileSet(FileSetsInboundFileSet fileSetsInboundFileSet);
+        partial void FormatCreateInboundFileSet(InboundFileSet inboundFileSet);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
-        /// <param name="fileSetsInboundFileSet"></param>
+        /// <param name="inboundFileSet"></param>
         /// <returns></returns>
-        private void ValidateCreateInboundFileSet(FileSetsInboundFileSet fileSetsInboundFileSet)
+        private void ValidateCreateInboundFileSet(InboundFileSet inboundFileSet)
         {
-            if (fileSetsInboundFileSet == null)
-                throw new ArgumentNullException(nameof(fileSetsInboundFileSet));
+            if (inboundFileSet == null)
+                throw new ArgumentNullException(nameof(inboundFileSet));
         }
 
         /// <summary>
         /// Processes the server response
         /// </summary>
         /// <param name="apiResponseLocalVar"></param>
-        /// <param name="fileSetsInboundFileSet"></param>
-        private void AfterCreateInboundFileSetDefaultImplementation(ICreateInboundFileSetApiResponse apiResponseLocalVar, FileSetsInboundFileSet fileSetsInboundFileSet)
+        /// <param name="inboundFileSet"></param>
+        private void AfterCreateInboundFileSetDefaultImplementation(ICreateInboundFileSetApiResponse apiResponseLocalVar, InboundFileSet inboundFileSet)
         {
             bool suppressDefaultLog = false;
-            AfterCreateInboundFileSet(ref suppressDefaultLog, apiResponseLocalVar, fileSetsInboundFileSet);
+            AfterCreateInboundFileSet(ref suppressDefaultLog, apiResponseLocalVar, inboundFileSet);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -1203,8 +1203,8 @@ namespace Calcasa.Api.Api
         /// </summary>
         /// <param name="suppressDefaultLog"></param>
         /// <param name="apiResponseLocalVar"></param>
-        /// <param name="fileSetsInboundFileSet"></param>
-        partial void AfterCreateInboundFileSet(ref bool suppressDefaultLog, ICreateInboundFileSetApiResponse apiResponseLocalVar, FileSetsInboundFileSet fileSetsInboundFileSet);
+        /// <param name="inboundFileSet"></param>
+        partial void AfterCreateInboundFileSet(ref bool suppressDefaultLog, ICreateInboundFileSetApiResponse apiResponseLocalVar, InboundFileSet inboundFileSet);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -1212,11 +1212,11 @@ namespace Calcasa.Api.Api
         /// <param name="exceptionLocalVar"></param>
         /// <param name="pathFormatLocalVar"></param>
         /// <param name="pathLocalVar"></param>
-        /// <param name="fileSetsInboundFileSet"></param>
-        private void OnErrorCreateInboundFileSetDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, FileSetsInboundFileSet fileSetsInboundFileSet)
+        /// <param name="inboundFileSet"></param>
+        private void OnErrorCreateInboundFileSetDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, InboundFileSet inboundFileSet)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorCreateInboundFileSet(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, fileSetsInboundFileSet);
+            OnErrorCreateInboundFileSet(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, inboundFileSet);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -1228,20 +1228,20 @@ namespace Calcasa.Api.Api
         /// <param name="exceptionLocalVar"></param>
         /// <param name="pathFormatLocalVar"></param>
         /// <param name="pathLocalVar"></param>
-        /// <param name="fileSetsInboundFileSet"></param>
-        partial void OnErrorCreateInboundFileSet(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, FileSetsInboundFileSet fileSetsInboundFileSet);
+        /// <param name="inboundFileSet"></param>
+        partial void OnErrorCreateInboundFileSet(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, InboundFileSet inboundFileSet);
 
         /// <summary>
         ///  Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, a InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all it&#39;s uploaded ocntents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
         /// </summary>
-        /// <param name="fileSetsInboundFileSet"></param>
+        /// <param name="inboundFileSet"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ICreateInboundFileSetApiResponse"/>&gt;</returns>
-        public async Task<ICreateInboundFileSetApiResponse?> CreateInboundFileSetOrDefaultAsync(FileSetsInboundFileSet fileSetsInboundFileSet, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<ICreateInboundFileSetApiResponse?> CreateInboundFileSetOrDefaultAsync(InboundFileSet inboundFileSet, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await CreateInboundFileSetAsync(fileSetsInboundFileSet, cancellationToken).ConfigureAwait(false);
+                return await CreateInboundFileSetAsync(inboundFileSet, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -1253,18 +1253,18 @@ namespace Calcasa.Api.Api
         ///  Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, a InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all it&#39;s uploaded ocntents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fileSetsInboundFileSet"></param>
+        /// <param name="inboundFileSet"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ICreateInboundFileSetApiResponse"/>&gt;</returns>
-        public async Task<ICreateInboundFileSetApiResponse> CreateInboundFileSetAsync(FileSetsInboundFileSet fileSetsInboundFileSet, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<ICreateInboundFileSetApiResponse> CreateInboundFileSetAsync(InboundFileSet inboundFileSet, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateCreateInboundFileSet(fileSetsInboundFileSet);
+                ValidateCreateInboundFileSet(inboundFileSet);
 
-                FormatCreateInboundFileSet(fileSetsInboundFileSet);
+                FormatCreateInboundFileSet(inboundFileSet);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -1275,9 +1275,9 @@ namespace Calcasa.Api.Api
                         ? "/file-sets/inbound"
                         : string.Concat(HttpClient.BaseAddress.AbsolutePath, "/file-sets/inbound");
 
-                    httpRequestMessageLocalVar.Content = (fileSetsInboundFileSet as object) is System.IO.Stream stream
+                    httpRequestMessageLocalVar.Content = (inboundFileSet as object) is System.IO.Stream stream
                         ? httpRequestMessageLocalVar.Content = new StreamContent(stream)
-                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(fileSetsInboundFileSet, _jsonSerializerOptions));
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(inboundFileSet, _jsonSerializerOptions));
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -1327,7 +1327,7 @@ namespace Calcasa.Api.Api
                                 }
                         }
 
-                        AfterCreateInboundFileSetDefaultImplementation(apiResponseLocalVar, fileSetsInboundFileSet);
+                        AfterCreateInboundFileSetDefaultImplementation(apiResponseLocalVar, inboundFileSet);
 
                         Events.ExecuteOnCreateInboundFileSet(apiResponseLocalVar);
 
@@ -1341,7 +1341,7 @@ namespace Calcasa.Api.Api
             }
             catch (Exception e)
             {
-                OnErrorCreateInboundFileSetDefaultImplementation(e, "/file-sets/inbound", uriBuilderLocalVar.Path, fileSetsInboundFileSet);
+                OnErrorCreateInboundFileSetDefaultImplementation(e, "/file-sets/inbound", uriBuilderLocalVar.Path, inboundFileSet);
                 Events.ExecuteOnErrorCreateInboundFileSet(e);
                 throw;
             }
@@ -1401,11 +1401,11 @@ namespace Calcasa.Api.Api
             /// Deserializes the response if the response is 200 Ok
             /// </summary>
             /// <returns></returns>
-            public Calcasa.Api.Model.FileSetsInboundFileSet? Ok()
+            public Calcasa.Api.Model.InboundFileSet? Ok()
             {
                 // This logic may be modified with the AsModel.mustache template
                 return IsOk
-                    ? System.Text.Json.JsonSerializer.Deserialize<Calcasa.Api.Model.FileSetsInboundFileSet>(RawContent, _jsonSerializerOptions)
+                    ? System.Text.Json.JsonSerializer.Deserialize<Calcasa.Api.Model.InboundFileSet>(RawContent, _jsonSerializerOptions)
                     : null;
             }
 
@@ -1414,7 +1414,7 @@ namespace Calcasa.Api.Api
             /// </summary>
             /// <param name="result"></param>
             /// <returns></returns>
-            public bool TryOk([NotNullWhen(true)] out Calcasa.Api.Model.FileSetsInboundFileSet? result)
+            public bool TryOk([NotNullWhen(true)] out Calcasa.Api.Model.InboundFileSet? result)
             {
                 result = null;
 
@@ -2128,11 +2128,11 @@ namespace Calcasa.Api.Api
             /// Deserializes the response if the response is 200 Ok
             /// </summary>
             /// <returns></returns>
-            public Calcasa.Api.Model.FileSetsInboundFileSet? Ok()
+            public Calcasa.Api.Model.InboundFileSet? Ok()
             {
                 // This logic may be modified with the AsModel.mustache template
                 return IsOk
-                    ? System.Text.Json.JsonSerializer.Deserialize<Calcasa.Api.Model.FileSetsInboundFileSet>(RawContent, _jsonSerializerOptions)
+                    ? System.Text.Json.JsonSerializer.Deserialize<Calcasa.Api.Model.InboundFileSet>(RawContent, _jsonSerializerOptions)
                     : null;
             }
 
@@ -2141,7 +2141,7 @@ namespace Calcasa.Api.Api
             /// </summary>
             /// <param name="result"></param>
             /// <returns></returns>
-            public bool TryOk([NotNullWhen(true)] out Calcasa.Api.Model.FileSetsInboundFileSet? result)
+            public bool TryOk([NotNullWhen(true)] out Calcasa.Api.Model.InboundFileSet? result)
             {
                 result = null;
 
@@ -2478,11 +2478,11 @@ namespace Calcasa.Api.Api
             /// Deserializes the response if the response is 200 Ok
             /// </summary>
             /// <returns></returns>
-            public Collection<FileSetsInboundFileSet>? Ok()
+            public Collection<InboundFileSet>? Ok()
             {
                 // This logic may be modified with the AsModel.mustache template
                 return IsOk
-                    ? System.Text.Json.JsonSerializer.Deserialize<Collection<FileSetsInboundFileSet>>(RawContent, _jsonSerializerOptions)
+                    ? System.Text.Json.JsonSerializer.Deserialize<Collection<InboundFileSet>>(RawContent, _jsonSerializerOptions)
                     : null;
             }
 
@@ -2491,7 +2491,7 @@ namespace Calcasa.Api.Api
             /// </summary>
             /// <param name="result"></param>
             /// <returns></returns>
-            public bool TryOk([NotNullWhen(true)] out Collection<FileSetsInboundFileSet>? result)
+            public bool TryOk([NotNullWhen(true)] out Collection<InboundFileSet>? result)
             {
                 result = null;
 
@@ -3198,11 +3198,11 @@ namespace Calcasa.Api.Api
             /// Deserializes the response if the response is 200 Ok
             /// </summary>
             /// <returns></returns>
-            public Calcasa.Api.Model.FileSetsOutboundFileSet? Ok()
+            public Calcasa.Api.Model.OutboundFileSet? Ok()
             {
                 // This logic may be modified with the AsModel.mustache template
                 return IsOk
-                    ? System.Text.Json.JsonSerializer.Deserialize<Calcasa.Api.Model.FileSetsOutboundFileSet>(RawContent, _jsonSerializerOptions)
+                    ? System.Text.Json.JsonSerializer.Deserialize<Calcasa.Api.Model.OutboundFileSet>(RawContent, _jsonSerializerOptions)
                     : null;
             }
 
@@ -3211,7 +3211,7 @@ namespace Calcasa.Api.Api
             /// </summary>
             /// <param name="result"></param>
             /// <returns></returns>
-            public bool TryOk([NotNullWhen(true)] out Calcasa.Api.Model.FileSetsOutboundFileSet? result)
+            public bool TryOk([NotNullWhen(true)] out Calcasa.Api.Model.OutboundFileSet? result)
             {
                 result = null;
 
@@ -3548,11 +3548,11 @@ namespace Calcasa.Api.Api
             /// Deserializes the response if the response is 200 Ok
             /// </summary>
             /// <returns></returns>
-            public Collection<FileSetsOutboundFileSet>? Ok()
+            public Collection<OutboundFileSet>? Ok()
             {
                 // This logic may be modified with the AsModel.mustache template
                 return IsOk
-                    ? System.Text.Json.JsonSerializer.Deserialize<Collection<FileSetsOutboundFileSet>>(RawContent, _jsonSerializerOptions)
+                    ? System.Text.Json.JsonSerializer.Deserialize<Collection<OutboundFileSet>>(RawContent, _jsonSerializerOptions)
                     : null;
             }
 
@@ -3561,7 +3561,7 @@ namespace Calcasa.Api.Api
             /// </summary>
             /// <param name="result"></param>
             /// <returns></returns>
-            public bool TryOk([NotNullWhen(true)] out Collection<FileSetsOutboundFileSet>? result)
+            public bool TryOk([NotNullWhen(true)] out Collection<OutboundFileSet>? result)
             {
                 result = null;
 
