@@ -24,44 +24,41 @@
 
 #nullable enable
 
-
 namespace Calcasa.Api.Client
 {
     /// <summary>
-    /// A wrapper for operation parameters which are not required
+    /// Represents a file to be uploaded as part of a multipart/form-data request.
     /// </summary>
-    public struct Option<TType>
+    public sealed class FileParameter
     {
         /// <summary>
-        /// The value to send to the server
+        /// The file content stream.
         /// </summary>
-        public TType Value { get; }
+        public global::System.IO.Stream Content { get; }
 
         /// <summary>
-        /// When true the value will be sent to the server
+        /// The filename sent in the Content-Disposition header.
+        /// When null the parameter name from the spec is used as a fallback.
         /// </summary>
-        internal bool IsSet { get; }
+        public string? FileName { get; }
 
         /// <summary>
-        /// A wrapper for operation parameters which are not required
+        /// The MIME type sent in the Content-Type header of the part.
+        /// Defaults to <c>application/octet-stream</c>.
         /// </summary>
-        /// <param name="value"></param>
-        public Option(TType value)
+        public string ContentType { get; }
+
+        /// <summary>
+        /// Creates a new <see cref="FileParameter"/>.
+        /// </summary>
+        /// <param name="content">The file content stream.</param>
+        /// <param name="fileName">Optional filename for the Content-Disposition header.</param>
+        /// <param name="contentType">Optional MIME type for the Content-Type header of the part. Defaults to <c>application/octet-stream</c>.</param>
+        public FileParameter(global::System.IO.Stream content, string? fileName = null, string contentType = "application/octet-stream")
         {
-            IsSet = true;
-            Value = value;
+            Content = content;
+            FileName = fileName;
+            ContentType = contentType;
         }
-
-        /// <summary>
-        /// Implicitly converts this option to the contained type
-        /// </summary>
-        /// <param name="option"></param>
-        public static implicit operator TType(Option<TType> option) => option.Value;
-
-        /// <summary>
-        /// Implicitly converts the provided value to an Option
-        /// </summary>
-        /// <param name="value"></param>
-        public static implicit operator Option<TType>(TType value) => new Option<TType>(value);
     }
 }

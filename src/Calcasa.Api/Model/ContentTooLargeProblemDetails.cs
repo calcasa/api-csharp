@@ -40,23 +40,23 @@ using Calcasa.Api.Client;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// PermissionsDeniedProblemDetails
+    /// ContentTooLargeProblemDetails
     /// </summary>
-    public partial class PermissionsDeniedProblemDetails
+    public partial class ContentTooLargeProblemDetails
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PermissionsDeniedProblemDetails" /> class.
+        /// Initializes a new instance of the <see cref="ContentTooLargeProblemDetails" /> class.
         /// </summary>
-        /// <param name="requiredPermission">requiredPermission</param>
+        /// <param name="maxContentLength">If known the remaining content length in bytes that can be sent to the server. If not known, this property will be null.</param>
         /// <param name="type">A URI reference [RFC3986] that identifies the problem type.</param>
         /// <param name="title">A short, human-readable summary of the problem type.</param>
         /// <param name="status">The HTTP status code for this occurrence of the problem.</param>
         /// <param name="detail">A human-readable explanation specific to this occurrence of the problem.</param>
         /// <param name="instance">A URI reference that identifies the specific occurrence of the problem.</param>
         [JsonConstructor]
-        public PermissionsDeniedProblemDetails(Option<string?> requiredPermission = default, Option<string?> type = default, Option<string?> title = default, Option<int?> status = default, Option<string?> detail = default, Option<string?> instance = default)
+        public ContentTooLargeProblemDetails(Option<long?> maxContentLength = default, Option<string?> type = default, Option<string?> title = default, Option<int?> status = default, Option<string?> detail = default, Option<string?> instance = default)
         {
-            RequiredPermissionOption = requiredPermission;
+            MaxContentLengthOption = maxContentLength;
             TypeOption = type;
             TitleOption = title;
             StatusOption = status;
@@ -68,18 +68,18 @@ namespace Calcasa.Api.Model
         partial void OnCreated();
 
         /// <summary>
-        /// Used to track the state of RequiredPermission
+        /// Used to track the state of MaxContentLength
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> RequiredPermissionOption { get; private set; }
+        public Option<long?> MaxContentLengthOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets RequiredPermission
+        /// If known the remaining content length in bytes that can be sent to the server. If not known, this property will be null.
         /// </summary>
-        /* <example>entity:read</example> */
-        [JsonPropertyName("requiredPermission")]
-        public string? RequiredPermission { get { return this.RequiredPermissionOption.Value; } set { this.RequiredPermissionOption = new(value); } }
+        /// <value>If known the remaining content length in bytes that can be sent to the server. If not known, this property will be null.</value>
+        [JsonPropertyName("maxContentLength")]
+        public long? MaxContentLength { get { return this.MaxContentLengthOption.Value; } set { this.MaxContentLengthOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Type
@@ -164,8 +164,8 @@ namespace Calcasa.Api.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class PermissionsDeniedProblemDetails {\n");
-            sb.Append("  RequiredPermission: ").Append(RequiredPermission).Append("\n");
+            sb.Append("class ContentTooLargeProblemDetails {\n");
+            sb.Append("  MaxContentLength: ").Append(MaxContentLength).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
@@ -178,19 +178,19 @@ namespace Calcasa.Api.Model
     }
 
     /// <summary>
-    /// A Json converter for type <see cref="PermissionsDeniedProblemDetails" />
+    /// A Json converter for type <see cref="ContentTooLargeProblemDetails" />
     /// </summary>
-    public class PermissionsDeniedProblemDetailsJsonConverter : JsonConverter<PermissionsDeniedProblemDetails>
+    public class ContentTooLargeProblemDetailsJsonConverter : JsonConverter<ContentTooLargeProblemDetails>
     {
         /// <summary>
-        /// Deserializes json to <see cref="PermissionsDeniedProblemDetails" />
+        /// Deserializes json to <see cref="ContentTooLargeProblemDetails" />
         /// </summary>
         /// <param name="utf8JsonReader"></param>
         /// <param name="typeToConvert"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <returns></returns>
         /// <exception cref="JsonException"></exception>
-        public override PermissionsDeniedProblemDetails Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
+        public override ContentTooLargeProblemDetails Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
         {
             int currentDepth = utf8JsonReader.CurrentDepth;
 
@@ -199,7 +199,7 @@ namespace Calcasa.Api.Model
 
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
-            Option<string?> requiredPermission = default;
+            Option<long?> maxContentLength = default;
             Option<string?> type = default;
             Option<string?> title = default;
             Option<int?> status = default;
@@ -221,8 +221,8 @@ namespace Calcasa.Api.Model
 
                     switch (localVarJsonPropertyName)
                     {
-                        case "requiredPermission":
-                            requiredPermission = new Option<string?>(utf8JsonReader.GetString()!);
+                        case "maxContentLength":
+                            maxContentLength = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
                         case "type":
                             type = new Option<string?>(utf8JsonReader.GetString());
@@ -245,78 +245,75 @@ namespace Calcasa.Api.Model
                 }
             }
 
-            if (requiredPermission.IsSet && requiredPermission.Value == null)
-                throw new ArgumentNullException(nameof(requiredPermission), "Property is not nullable for class PermissionsDeniedProblemDetails.");
-
-            return new PermissionsDeniedProblemDetails(requiredPermission, type, title, status, detail, instance);
+            return new ContentTooLargeProblemDetails(maxContentLength, type, title, status, detail, instance);
         }
 
         /// <summary>
-        /// Serializes a <see cref="PermissionsDeniedProblemDetails" />
+        /// Serializes a <see cref="ContentTooLargeProblemDetails" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="permissionsDeniedProblemDetails"></param>
+        /// <param name="contentTooLargeProblemDetails"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public override void Write(Utf8JsonWriter writer, PermissionsDeniedProblemDetails permissionsDeniedProblemDetails, JsonSerializerOptions jsonSerializerOptions)
+        public override void Write(Utf8JsonWriter writer, ContentTooLargeProblemDetails contentTooLargeProblemDetails, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
 
-            WriteProperties(writer, permissionsDeniedProblemDetails, jsonSerializerOptions);
+            WriteProperties(writer, contentTooLargeProblemDetails, jsonSerializerOptions);
             writer.WriteEndObject();
         }
 
         /// <summary>
-        /// Serializes the properties of <see cref="PermissionsDeniedProblemDetails" />
+        /// Serializes the properties of <see cref="ContentTooLargeProblemDetails" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="permissionsDeniedProblemDetails"></param>
+        /// <param name="contentTooLargeProblemDetails"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void WriteProperties(Utf8JsonWriter writer, PermissionsDeniedProblemDetails permissionsDeniedProblemDetails, JsonSerializerOptions jsonSerializerOptions)
+        public void WriteProperties(Utf8JsonWriter writer, ContentTooLargeProblemDetails contentTooLargeProblemDetails, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (permissionsDeniedProblemDetails.RequiredPermissionOption.IsSet && permissionsDeniedProblemDetails.RequiredPermission == null)
-                throw new ArgumentNullException(nameof(permissionsDeniedProblemDetails.RequiredPermission), "Property is required for class PermissionsDeniedProblemDetails.");
+            if (contentTooLargeProblemDetails.MaxContentLengthOption.IsSet)
+                if (contentTooLargeProblemDetails.MaxContentLengthOption.Value != null)
+                    writer.WriteNumber("maxContentLength", contentTooLargeProblemDetails.MaxContentLengthOption.Value!.Value);
+                else
+                    writer.WriteNull("maxContentLength");
 
-            if (permissionsDeniedProblemDetails.RequiredPermissionOption.IsSet)
-                writer.WriteString("requiredPermission", permissionsDeniedProblemDetails.RequiredPermission);
-
-            if (permissionsDeniedProblemDetails.TypeOption.IsSet)
-                if (permissionsDeniedProblemDetails.TypeOption.Value != null)
-                    writer.WriteString("type", permissionsDeniedProblemDetails.Type);
+            if (contentTooLargeProblemDetails.TypeOption.IsSet)
+                if (contentTooLargeProblemDetails.TypeOption.Value != null)
+                    writer.WriteString("type", contentTooLargeProblemDetails.Type);
                 else
                     writer.WriteNull("type");
 
-            if (permissionsDeniedProblemDetails.TitleOption.IsSet)
-                if (permissionsDeniedProblemDetails.TitleOption.Value != null)
-                    writer.WriteString("title", permissionsDeniedProblemDetails.Title);
+            if (contentTooLargeProblemDetails.TitleOption.IsSet)
+                if (contentTooLargeProblemDetails.TitleOption.Value != null)
+                    writer.WriteString("title", contentTooLargeProblemDetails.Title);
                 else
                     writer.WriteNull("title");
 
-            if (permissionsDeniedProblemDetails.StatusOption.IsSet)
-                if (permissionsDeniedProblemDetails.StatusOption.Value != null)
-                    writer.WriteNumber("status", permissionsDeniedProblemDetails.StatusOption.Value!.Value);
+            if (contentTooLargeProblemDetails.StatusOption.IsSet)
+                if (contentTooLargeProblemDetails.StatusOption.Value != null)
+                    writer.WriteNumber("status", contentTooLargeProblemDetails.StatusOption.Value!.Value);
                 else
                     writer.WriteNull("status");
 
-            if (permissionsDeniedProblemDetails.DetailOption.IsSet)
-                if (permissionsDeniedProblemDetails.DetailOption.Value != null)
-                    writer.WriteString("detail", permissionsDeniedProblemDetails.Detail);
+            if (contentTooLargeProblemDetails.DetailOption.IsSet)
+                if (contentTooLargeProblemDetails.DetailOption.Value != null)
+                    writer.WriteString("detail", contentTooLargeProblemDetails.Detail);
                 else
                     writer.WriteNull("detail");
 
-            if (permissionsDeniedProblemDetails.InstanceOption.IsSet)
-                if (permissionsDeniedProblemDetails.InstanceOption.Value != null)
-                    writer.WriteString("instance", permissionsDeniedProblemDetails.Instance);
+            if (contentTooLargeProblemDetails.InstanceOption.IsSet)
+                if (contentTooLargeProblemDetails.InstanceOption.Value != null)
+                    writer.WriteString("instance", contentTooLargeProblemDetails.Instance);
                 else
                     writer.WriteNull("instance");
         }
     }
 
     /// <summary>
-    /// The PermissionsDeniedProblemDetailsSerializationContext
+    /// The ContentTooLargeProblemDetailsSerializationContext
     /// </summary>
     [JsonSourceGenerationOptions(WriteIndented = true, GenerationMode = JsonSourceGenerationMode.Metadata | JsonSourceGenerationMode.Serialization)]
-    [JsonSerializable(typeof(PermissionsDeniedProblemDetails))]
-    public partial class PermissionsDeniedProblemDetailsSerializationContext : JsonSerializerContext { }
+    [JsonSerializable(typeof(ContentTooLargeProblemDetails))]
+    public partial class ContentTooLargeProblemDetailsSerializationContext : JsonSerializerContext { }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Calcasa B.V.
+ * Copyright 2026 Calcasa B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,6 +40,7 @@ namespace Calcasa.Api.Client
         public static string[] Formats { get; } = {
             "yyyy'-'MM'-'dd",
             "yyyyMMdd"
+
         };
 
         /// <summary>

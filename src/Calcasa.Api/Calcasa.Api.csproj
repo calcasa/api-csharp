@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo> <!-- setting GenerateAssemblyInfo to false causes this bug https://github.com/dotnet/project-system/issues/3934 -->
-    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
     <AssemblyName>Calcasa.Api</AssemblyName>
     <PackageId>Calcasa.Api</PackageId>
     <OutputType>Library</OutputType>
@@ -10,9 +10,9 @@
     <Company>Calcasa</Company>
     <AssemblyTitle>Calcasa API Client</AssemblyTitle>
     <Description>API client for the Calcasa Public API.</Description>
-    <Copyright>Copyright 2025 Calcasa B.V.</Copyright>
+    <Copyright>Copyright 2026 Calcasa B.V.</Copyright>
     <RootNamespace>Calcasa.Api</RootNamespace>
-    <Version>1.6.0-beta3</Version>
+    <Version>1.6.0-beta4</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Calcasa.Api.xml</DocumentationFile>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/calcasa/api-csharp.git</RepositoryUrl>
@@ -23,20 +23,24 @@
   </PropertyGroup>
 
   <ItemGroup>
-
     <PackageReference Include="Microsoft.Extensions.Http" Condition="'$(TargetFramework)' == 'net8.0'" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Condition="'$(TargetFramework)' == 'net8.0'" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Http" Condition="'$(TargetFramework)' == 'net9.0'" Version="9.0.6" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Condition="'$(TargetFramework)' == 'net9.0'" Version="9.0.6" />
+    <PackageReference Include="Microsoft.Extensions.Http" Condition="'$(TargetFramework)' == 'net10.0'" Version="10.0.9" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Condition="'$(TargetFramework)' == 'net10.0'" Version="10.0.9" />
     <PackageReference Include="Microsoft.Extensions.Http.Polly" Condition="'$(TargetFramework)' == 'net8.0'" Version="8.0.20" />
     <PackageReference Include="Microsoft.Extensions.Http.Polly" Condition="'$(TargetFramework)' == 'net9.0'" Version="9.0.6" />
+    <PackageReference Include="Microsoft.Extensions.Http.Polly" Condition="'$(TargetFramework)' == 'net10.0'" Version="10.0.9" />
     <PackageReference Include="Microsoft.Net.Http.Headers" Condition="'$(TargetFramework)' == 'net8.0'" Version="8.0.17" />
     <PackageReference Include="Microsoft.Net.Http.Headers" Condition="'$(TargetFramework)' == 'net9.0'" Version="9.0.6" />
+    <PackageReference Include="Microsoft.Net.Http.Headers" Condition="'$(TargetFramework)' == 'net10.0'" Version="10.0.9" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.11" />
     <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Condition="'$(TargetFramework)' == 'net8.0'" Version="8.0.17" />
     <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Condition="'$(TargetFramework)' == 'net9.0'" Version="9.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Condition="'$(TargetFramework)' == 'net10.0'" Version="10.0.9" />
   </ItemGroup>
 </Project>

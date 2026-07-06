@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Calcasa B.V.
+ * Copyright 2026 Calcasa B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -72,6 +72,8 @@ namespace Calcasa.Api.Client
             _jsonOptions.Converters.Add(new CallbackAuthenticationJsonConverter());
             _jsonOptions.Converters.Add(new CallbackInschrijvingJsonConverter());
             _jsonOptions.Converters.Add(new CbsIndelingJsonConverter());
+            _jsonOptions.Converters.Add(new ContentTooLargeProblemDetailsJsonConverter());
+            _jsonOptions.Converters.Add(new CreateInboundFileSetRequestJsonConverter());
             _jsonOptions.Converters.Add(new DeelWaarderingWebhookPayloadJsonConverter());
             _jsonOptions.Converters.Add(new EnergielabelJsonConverter());
             _jsonOptions.Converters.Add(new EnergielabelNullableJsonConverter());
@@ -81,6 +83,7 @@ namespace Calcasa.Api.Client
             _jsonOptions.Converters.Add(new FileErrorJsonConverter());
             _jsonOptions.Converters.Add(new FileInfoJsonConverter());
             _jsonOptions.Converters.Add(new FileSetJsonConverter());
+            _jsonOptions.Converters.Add(new FileSetLimitsJsonConverter());
             _jsonOptions.Converters.Add(new FileWarningJsonConverter());
             _jsonOptions.Converters.Add(new FotoJsonConverter());
             _jsonOptions.Converters.Add(new FrontendDeeplinksJsonConverter());
@@ -113,6 +116,7 @@ namespace Calcasa.Api.Client
             _jsonOptions.Converters.Add(new KlantwaardeTypeJsonConverter());
             _jsonOptions.Converters.Add(new KlantwaardeTypeNullableJsonConverter());
             _jsonOptions.Converters.Add(new KwartaalJsonConverter());
+            _jsonOptions.Converters.Add(new LengthRequiredProblemDetailsJsonConverter());
             _jsonOptions.Converters.Add(new MTLSTypeJsonConverter());
             _jsonOptions.Converters.Add(new MTLSTypeNullableJsonConverter());
             _jsonOptions.Converters.Add(new ModeldataJsonConverter());
@@ -174,6 +178,8 @@ namespace Calcasa.Api.Client
                 new CallbackAuthenticationSerializationContext(),
                 new CallbackInschrijvingSerializationContext(),
                 new CbsIndelingSerializationContext(),
+                new ContentTooLargeProblemDetailsSerializationContext(),
+                new CreateInboundFileSetRequestSerializationContext(),
                 new DeelWaarderingWebhookPayloadSerializationContext(),
                 new EnergielabelSerializationContext(),
                 new EnergielabelDataSerializationContext(),
@@ -182,6 +188,7 @@ namespace Calcasa.Api.Client
                 new FileErrorSerializationContext(),
                 new FileInfoSerializationContext(),
                 new FileSetSerializationContext(),
+                new FileSetLimitsSerializationContext(),
                 new FileWarningSerializationContext(),
                 new FotoSerializationContext(),
                 new FrontendDeeplinksSerializationContext(),
@@ -205,6 +212,7 @@ namespace Calcasa.Api.Client
                 new InvalidArgumentProblemDetailsSerializationContext(),
                 new KlantwaardeTypeSerializationContext(),
                 new KwartaalSerializationContext(),
+                new LengthRequiredProblemDetailsSerializationContext(),
                 new MTLSTypeSerializationContext(),
                 new ModeldataSerializationContext(),
                 new NotFoundProblemDetailsSerializationContext(),
@@ -262,31 +270,58 @@ namespace Calcasa.Api.Client
         /// <summary>
         /// Configures the HttpClients.
         /// </summary>
+        /// <param name="builder"></param>
+        /// <returns></returns>
+        public HostConfiguration AddApiHttpClients(Action<IHttpClientBuilder>? builder = null)
+        {
+            return AddApiHttpClients((Action<IServiceProvider, HttpClient>?)null, builder);
+        }
+
+        /// <summary>
+        /// Configures the HttpClients.
+        /// </summary>
         /// <param name="client"></param>
         /// <param name="builder"></param>
         /// <returns></returns>
-        public HostConfiguration AddApiHttpClients
-        (
-            Action<HttpClient>? client = null, Action<IHttpClientBuilder>? builder = null)
+        public HostConfiguration AddApiHttpClients(
+            Action<HttpClient>? client,
+            Action<IHttpClientBuilder>? builder = null)
+        {
+            var wrapped = client != null ? new Action<IServiceProvider, HttpClient>((_, httpClient) =>
+            {
+                client(httpClient);
+            }) : null;
+            return AddApiHttpClients(wrapped, builder);
+        }
+
+        /// <summary>
+        /// Configures the HttpClients.
+        /// </summary>
+        /// <param name="client"></param>
+        /// <param name="builder"></param>
+        /// <returns></returns>
+        public HostConfiguration AddApiHttpClients(
+            Action<IServiceProvider, HttpClient>? client,
+            Action<IHttpClientBuilder>? builder = null)
         {
             if (client == null)
-                client = c => c.BaseAddress = new Uri(ClientUtils.BASE_ADDRESS);
+                client = (_, c) => c.BaseAddress = new Uri(ClientUtils.BASE_ADDRESS);
 
             List<IHttpClientBuilder> builders = new List<IHttpClientBuilder>();
 
-            builders.Add(_services.AddHttpClient<IAdressenApi, AdressenApi>(client));
-            builders.Add(_services.AddHttpClient<IBestemmingsplannenApi, BestemmingsplannenApi>(client));
-            builders.Add(_services.AddHttpClient<IBodemApi, BodemApi>(client));
-            builders.Add(_services.AddHttpClient<IBuurtApi, BuurtApi>(client));
-            builders.Add(_services.AddHttpClient<ICallbacksApi, CallbacksApi>(client));
-            builders.Add(_services.AddHttpClient<IConfiguratieApi, ConfiguratieApi>(client));
-            builders.Add(_services.AddHttpClient<IFacturenApi, FacturenApi>(client));
-            builders.Add(_services.AddHttpClient<IFileSetsApi, FileSetsApi>(client));
-            builders.Add(_services.AddHttpClient<IFotosApi, FotosApi>(client));
-            builders.Add(_services.AddHttpClient<IFunderingenApi, FunderingenApi>(client));
-            builders.Add(_services.AddHttpClient<IGeldverstrekkersApi, GeldverstrekkersApi>(client));
-            builders.Add(_services.AddHttpClient<IRapportenApi, RapportenApi>(client));
-            builders.Add(_services.AddHttpClient<IWaarderingenApi, WaarderingenApi>(client));
+            builders.Add(_services.AddHttpClient<IAdressenApi, AdressenApi>("Calcasa.Api.Api.IAdressenApi", client));
+            builders.Add(_services.AddHttpClient<IBestemmingsplannenApi, BestemmingsplannenApi>("Calcasa.Api.Api.IBestemmingsplannenApi", client));
+            builders.Add(_services.AddHttpClient<IBodemApi, BodemApi>("Calcasa.Api.Api.IBodemApi", client));
+            builders.Add(_services.AddHttpClient<IBuurtApi, BuurtApi>("Calcasa.Api.Api.IBuurtApi", client));
+            builders.Add(_services.AddHttpClient<ICallbacksApi, CallbacksApi>("Calcasa.Api.Api.ICallbacksApi", client));
+            builders.Add(_services.AddHttpClient<IConfiguratieApi, ConfiguratieApi>("Calcasa.Api.Api.IConfiguratieApi", client));
+            builders.Add(_services.AddHttpClient<IFacturenApi, FacturenApi>("Calcasa.Api.Api.IFacturenApi", client));
+            builders.Add(_services.AddHttpClient<IFileSetsApi, FileSetsApi>("Calcasa.Api.Api.IFileSetsApi", client));
+            builders.Add(_services.AddHttpClient<IFotosApi, FotosApi>("Calcasa.Api.Api.IFotosApi", client));
+            builders.Add(_services.AddHttpClient<IFunderingenApi, FunderingenApi>("Calcasa.Api.Api.IFunderingenApi", client));
+            builders.Add(_services.AddHttpClient<IGeldverstrekkersApi, GeldverstrekkersApi>("Calcasa.Api.Api.IGeldverstrekkersApi", client));
+            builders.Add(_services.AddHttpClient<IRapportenApi, RapportenApi>("Calcasa.Api.Api.IRapportenApi", client));
+            builders.Add(_services.AddHttpClient<IWaarderingenApi, WaarderingenApi>("Calcasa.Api.Api.IWaarderingenApi", client));
 
             if (builder != null)
                 foreach (IHttpClientBuilder instance in builders)

@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Calcasa B.V.
+ * Copyright 2026 Calcasa B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -293,7 +293,7 @@ namespace Calcasa.Api.Client
         public static IEnumerable<MediaTypeWithQualityHeaderValue> SelectHeaderAcceptArray(string[] accepts)
         {
             if (accepts.Length == 0)
-                return null;
+                return [];
 
             if (accepts.Contains("application/json", StringComparer.OrdinalIgnoreCase))
                 return [MediaTypeWithQualityHeaderValue.Parse("application/json")];
@@ -360,6 +360,35 @@ namespace Calcasa.Api.Client
 
             throw new JsonException("The specified discriminator was not found.");
         }
+
+        /// <summary>
+        /// Determines if the provided header is a content header
+        /// </summary>
+        /// <param name="header">The header to check</param>
+        /// <returns>True if a content header; False otherwise</returns>
+        public static bool IsContentHeader(string header)
+        {
+            return ContentHeaders.Contains(header.ToLowerInvariant());
+        }
+
+        /// <summary>
+        /// The collection of content headers as per
+        /// https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpcontent.headers
+        /// </summary>
+        private static readonly string[] ContentHeaders = new String[]
+        {
+            "allow",
+            "content-encoding",
+            "content-disposition",
+            "content-language",
+            "content-length",
+            "content-location",
+            "content-md5",
+            "content-range",
+            "content-type",
+            "expires",
+            "last-modified"
+        };
 
         /// <summary>
         /// The base path of the API
