@@ -291,7 +291,7 @@ namespace Calcasa.Api.Api
     /// <summary>
     /// The <see cref="IConfirmInboundFileSetByIdApiResponse"/>
     /// </summary>
-    public interface IConfirmInboundFileSetByIdApiResponse : Calcasa.Api.Client.IApiResponse, IOk<Calcasa.Api.Model.InboundFileSet?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, INotFound<Calcasa.Api.Model.NotFoundProblemDetails?>, IConflict<Calcasa.Api.Model.InboundFileSetAlreadyConfirmedProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
+    public interface IConfirmInboundFileSetByIdApiResponse : Calcasa.Api.Client.IApiResponse, IOk<Calcasa.Api.Model.InboundFileSet?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, INotFound<Calcasa.Api.Model.NotFoundProblemDetails?>, IUnprocessableContent<Calcasa.Api.Model.InboundFileSetInvalidStateProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 200 Ok
@@ -312,10 +312,10 @@ namespace Calcasa.Api.Api
         bool IsNotFound { get; }
 
         /// <summary>
-        /// Returns true if the response is 409 Conflict
+        /// Returns true if the response is 422 UnprocessableContent
         /// </summary>
         /// <returns></returns>
-        bool IsConflict { get; }
+        bool IsUnprocessableContent { get; }
 
         /// <summary>
         /// Returns true if the response is the default response type
@@ -1165,39 +1165,39 @@ namespace Calcasa.Api.Api
             }
 
             /// <summary>
-            /// Returns true if the response is 409 Conflict
+            /// Returns true if the response is 422 UnprocessableContent
             /// </summary>
             /// <returns></returns>
-            public bool IsConflict => 409 == (int)StatusCode;
+            public bool IsUnprocessableContent => 422 == (int)StatusCode;
 
             /// <summary>
-            /// Deserializes the response if the response is 409 Conflict
+            /// Deserializes the response if the response is 422 UnprocessableContent
             /// </summary>
             /// <returns></returns>
-            public Calcasa.Api.Model.InboundFileSetAlreadyConfirmedProblemDetails? Conflict()
+            public Calcasa.Api.Model.InboundFileSetInvalidStateProblemDetails? UnprocessableContent()
             {
                 // This logic may be modified with the AsModel.mustache template
-                return IsConflict
-                    ? System.Text.Json.JsonSerializer.Deserialize<Calcasa.Api.Model.InboundFileSetAlreadyConfirmedProblemDetails>(RawContent, _jsonSerializerOptions)
+                return IsUnprocessableContent
+                    ? System.Text.Json.JsonSerializer.Deserialize<Calcasa.Api.Model.InboundFileSetInvalidStateProblemDetails>(RawContent, _jsonSerializerOptions)
                     : null;
             }
 
             /// <summary>
-            /// Returns true if the response is 409 Conflict and the deserialized response is not null
+            /// Returns true if the response is 422 UnprocessableContent and the deserialized response is not null
             /// </summary>
             /// <param name="result"></param>
             /// <returns></returns>
-            public bool TryConflict([NotNullWhen(true)] out Calcasa.Api.Model.InboundFileSetAlreadyConfirmedProblemDetails? result)
+            public bool TryUnprocessableContent([NotNullWhen(true)] out Calcasa.Api.Model.InboundFileSetInvalidStateProblemDetails? result)
             {
                 result = null;
 
                 try
                 {
-                    result = Conflict();
+                    result = UnprocessableContent();
                 }
                 catch (Exception e)
                 {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)409);
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)422);
                 }
 
                 return result != null;
@@ -1207,7 +1207,7 @@ namespace Calcasa.Api.Api
             /// Returns true if the response is the default response type
             /// </summary>
             /// <returns></returns>
-            public bool IsDefault => !IsOk && !IsUnauthorized && !IsNotFound && !IsConflict;
+            public bool IsDefault => !IsOk && !IsUnauthorized && !IsNotFound && !IsUnprocessableContent;
 
             /// <summary>
             /// Deserializes the response if the response is 0 Default
@@ -4243,6 +4243,15 @@ namespace Calcasa.Api.Api
                     tokenBaseLocalVars.Add(oauthTokenLocalVar1);
 
                     oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] contentTypes = new string[] {
+                        "application/octet-stream"
+                    };
+
+                    string? contentTypeLocalVar = ClientUtils.SelectHeaderContentType(contentTypes);
+
+                    if (contentTypeLocalVar != null && httpRequestMessageLocalVar.Content != null)
+                        httpRequestMessageLocalVar.Content.Headers.ContentType = new MediaTypeHeaderValue(contentTypeLocalVar);
 
                     string[] acceptLocalVars = new string[] {
                         "application/problem+json"

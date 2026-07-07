@@ -107,8 +107,8 @@ namespace Calcasa.Api.Client
             _jsonOptions.Converters.Add(new GebiedsdataJsonConverter());
             _jsonOptions.Converters.Add(new GeldverstrekkerJsonConverter());
             _jsonOptions.Converters.Add(new InboundFileSetJsonConverter());
-            _jsonOptions.Converters.Add(new InboundFileSetAlreadyConfirmedProblemDetailsJsonConverter());
             _jsonOptions.Converters.Add(new InboundFileSetAlreadyExistsProblemDetailsJsonConverter());
+            _jsonOptions.Converters.Add(new InboundFileSetInvalidStateProblemDetailsJsonConverter());
             _jsonOptions.Converters.Add(new InboundFileSetStateJsonConverter());
             _jsonOptions.Converters.Add(new InboundFileSetStateNullableJsonConverter());
             _jsonOptions.Converters.Add(new InboundFileSetWebhookPayloadJsonConverter());
@@ -205,8 +205,8 @@ namespace Calcasa.Api.Client
                 new GebiedsdataSerializationContext(),
                 new GeldverstrekkerSerializationContext(),
                 new InboundFileSetSerializationContext(),
-                new InboundFileSetAlreadyConfirmedProblemDetailsSerializationContext(),
                 new InboundFileSetAlreadyExistsProblemDetailsSerializationContext(),
+                new InboundFileSetInvalidStateProblemDetailsSerializationContext(),
                 new InboundFileSetStateSerializationContext(),
                 new InboundFileSetWebhookPayloadSerializationContext(),
                 new InvalidArgumentProblemDetailsSerializationContext(),
