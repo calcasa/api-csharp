@@ -40,12 +40,12 @@ using Calcasa.Api.Client;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// FileError
+    /// FileContentError
     /// </summary>
-    public partial class FileError
+    public partial class FileContentError
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileError" /> class.
+        /// Initializes a new instance of the <see cref="FileContentError" /> class.
         /// </summary>
         /// <param name="index">index</param>
         /// <param name="name">name</param>
@@ -54,7 +54,7 @@ namespace Calcasa.Api.Model
         /// <param name="actualContentHash">The actual SHA256 hash of the file contents, represented as an uppercase hexadecimal string.</param>
         /// <param name="actualFileSize">The actual file size in bytes.</param>
         [JsonConstructor]
-        public FileError(int index, string name, string expectedContentHash, long expectedFileSize, string actualContentHash, long actualFileSize)
+        public FileContentError(int index, string name, string expectedContentHash, long expectedFileSize, string actualContentHash, long actualFileSize)
         {
             Index = index;
             Name = name;
@@ -123,7 +123,7 @@ namespace Calcasa.Api.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class FileError {\n");
+            sb.Append("class FileContentError {\n");
             sb.Append("  Index: ").Append(Index).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ExpectedContentHash: ").Append(ExpectedContentHash).Append("\n");
@@ -137,19 +137,19 @@ namespace Calcasa.Api.Model
     }
 
     /// <summary>
-    /// A Json converter for type <see cref="FileError" />
+    /// A Json converter for type <see cref="FileContentError" />
     /// </summary>
-    public class FileErrorJsonConverter : JsonConverter<FileError>
+    public class FileContentErrorJsonConverter : JsonConverter<FileContentError>
     {
         /// <summary>
-        /// Deserializes json to <see cref="FileError" />
+        /// Deserializes json to <see cref="FileContentError" />
         /// </summary>
         /// <param name="utf8JsonReader"></param>
         /// <param name="typeToConvert"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <returns></returns>
         /// <exception cref="JsonException"></exception>
-        public override FileError Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
+        public override FileContentError Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
         {
             int currentDepth = utf8JsonReader.CurrentDepth;
 
@@ -205,95 +205,95 @@ namespace Calcasa.Api.Model
             }
 
             if (!index.IsSet)
-                throw new ArgumentException("Property is required for class FileError.", nameof(index));
+                throw new ArgumentException("Property is required for class FileContentError.", nameof(index));
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class FileError.", nameof(name));
+                throw new ArgumentException("Property is required for class FileContentError.", nameof(name));
 
             if (!expectedContentHash.IsSet)
-                throw new ArgumentException("Property is required for class FileError.", nameof(expectedContentHash));
+                throw new ArgumentException("Property is required for class FileContentError.", nameof(expectedContentHash));
 
             if (!expectedFileSize.IsSet)
-                throw new ArgumentException("Property is required for class FileError.", nameof(expectedFileSize));
+                throw new ArgumentException("Property is required for class FileContentError.", nameof(expectedFileSize));
 
             if (!actualContentHash.IsSet)
-                throw new ArgumentException("Property is required for class FileError.", nameof(actualContentHash));
+                throw new ArgumentException("Property is required for class FileContentError.", nameof(actualContentHash));
 
             if (!actualFileSize.IsSet)
-                throw new ArgumentException("Property is required for class FileError.", nameof(actualFileSize));
+                throw new ArgumentException("Property is required for class FileContentError.", nameof(actualFileSize));
 
             if (index.IsSet && index.Value == null)
-                throw new ArgumentNullException(nameof(index), "Property is not nullable for class FileError.");
+                throw new ArgumentNullException(nameof(index), "Property is not nullable for class FileContentError.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class FileError.");
+                throw new ArgumentNullException(nameof(name), "Property is not nullable for class FileContentError.");
 
             if (expectedContentHash.IsSet && expectedContentHash.Value == null)
-                throw new ArgumentNullException(nameof(expectedContentHash), "Property is not nullable for class FileError.");
+                throw new ArgumentNullException(nameof(expectedContentHash), "Property is not nullable for class FileContentError.");
 
             if (expectedFileSize.IsSet && expectedFileSize.Value == null)
-                throw new ArgumentNullException(nameof(expectedFileSize), "Property is not nullable for class FileError.");
+                throw new ArgumentNullException(nameof(expectedFileSize), "Property is not nullable for class FileContentError.");
 
             if (actualContentHash.IsSet && actualContentHash.Value == null)
-                throw new ArgumentNullException(nameof(actualContentHash), "Property is not nullable for class FileError.");
+                throw new ArgumentNullException(nameof(actualContentHash), "Property is not nullable for class FileContentError.");
 
             if (actualFileSize.IsSet && actualFileSize.Value == null)
-                throw new ArgumentNullException(nameof(actualFileSize), "Property is not nullable for class FileError.");
+                throw new ArgumentNullException(nameof(actualFileSize), "Property is not nullable for class FileContentError.");
 
-            return new FileError(index.Value!.Value!, name.Value!, expectedContentHash.Value!, expectedFileSize.Value!.Value!, actualContentHash.Value!, actualFileSize.Value!.Value!);
+            return new FileContentError(index.Value!.Value!, name.Value!, expectedContentHash.Value!, expectedFileSize.Value!.Value!, actualContentHash.Value!, actualFileSize.Value!.Value!);
         }
 
         /// <summary>
-        /// Serializes a <see cref="FileError" />
+        /// Serializes a <see cref="FileContentError" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="fileError"></param>
+        /// <param name="fileContentError"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public override void Write(Utf8JsonWriter writer, FileError fileError, JsonSerializerOptions jsonSerializerOptions)
+        public override void Write(Utf8JsonWriter writer, FileContentError fileContentError, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
 
-            WriteProperties(writer, fileError, jsonSerializerOptions);
+            WriteProperties(writer, fileContentError, jsonSerializerOptions);
             writer.WriteEndObject();
         }
 
         /// <summary>
-        /// Serializes the properties of <see cref="FileError" />
+        /// Serializes the properties of <see cref="FileContentError" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="fileError"></param>
+        /// <param name="fileContentError"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void WriteProperties(Utf8JsonWriter writer, FileError fileError, JsonSerializerOptions jsonSerializerOptions)
+        public void WriteProperties(Utf8JsonWriter writer, FileContentError fileContentError, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (fileError.Name == null)
-                throw new ArgumentNullException(nameof(fileError.Name), "Property is required for class FileError.");
+            if (fileContentError.Name == null)
+                throw new ArgumentNullException(nameof(fileContentError.Name), "Property is required for class FileContentError.");
 
-            if (fileError.ExpectedContentHash == null)
-                throw new ArgumentNullException(nameof(fileError.ExpectedContentHash), "Property is required for class FileError.");
+            if (fileContentError.ExpectedContentHash == null)
+                throw new ArgumentNullException(nameof(fileContentError.ExpectedContentHash), "Property is required for class FileContentError.");
 
-            if (fileError.ActualContentHash == null)
-                throw new ArgumentNullException(nameof(fileError.ActualContentHash), "Property is required for class FileError.");
+            if (fileContentError.ActualContentHash == null)
+                throw new ArgumentNullException(nameof(fileContentError.ActualContentHash), "Property is required for class FileContentError.");
 
-            writer.WriteNumber("index", fileError.Index);
+            writer.WriteNumber("index", fileContentError.Index);
 
-            writer.WriteString("name", fileError.Name);
+            writer.WriteString("name", fileContentError.Name);
 
-            writer.WriteString("expectedContentHash", fileError.ExpectedContentHash);
+            writer.WriteString("expectedContentHash", fileContentError.ExpectedContentHash);
 
-            writer.WriteNumber("expectedFileSize", fileError.ExpectedFileSize);
+            writer.WriteNumber("expectedFileSize", fileContentError.ExpectedFileSize);
 
-            writer.WriteString("actualContentHash", fileError.ActualContentHash);
+            writer.WriteString("actualContentHash", fileContentError.ActualContentHash);
 
-            writer.WriteNumber("actualFileSize", fileError.ActualFileSize);
+            writer.WriteNumber("actualFileSize", fileContentError.ActualFileSize);
         }
     }
 
     /// <summary>
-    /// The FileErrorSerializationContext
+    /// The FileContentErrorSerializationContext
     /// </summary>
     [JsonSourceGenerationOptions(WriteIndented = true, GenerationMode = JsonSourceGenerationMode.Metadata | JsonSourceGenerationMode.Serialization)]
-    [JsonSerializable(typeof(FileError))]
-    public partial class FileErrorSerializationContext : JsonSerializerContext { }
+    [JsonSerializable(typeof(FileContentError))]
+    public partial class FileContentErrorSerializationContext : JsonSerializerContext { }
 }

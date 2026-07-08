@@ -40,19 +40,19 @@ using Calcasa.Api.Client;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// FileWarning
+    /// FileNotice
     /// </summary>
-    public partial class FileWarning
+    public partial class FileNotice
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileWarning" /> class.
+        /// Initializes a new instance of the <see cref="FileNotice" /> class.
         /// </summary>
         /// <param name="index">index</param>
         /// <param name="name">name</param>
         /// <param name="type">The type of the warning. Short mostly stable strings that can be used to identify the warning type.</param>
         /// <param name="description">A description of the warning to be presented to the user.</param>
         [JsonConstructor]
-        public FileWarning(int index, string name, string type, string description)
+        public FileNotice(int index, string name, string type, string description)
         {
             Index = index;
             Name = name;
@@ -103,7 +103,7 @@ namespace Calcasa.Api.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class FileWarning {\n");
+            sb.Append("class FileNotice {\n");
             sb.Append("  Index: ").Append(Index).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
@@ -115,19 +115,19 @@ namespace Calcasa.Api.Model
     }
 
     /// <summary>
-    /// A Json converter for type <see cref="FileWarning" />
+    /// A Json converter for type <see cref="FileNotice" />
     /// </summary>
-    public class FileWarningJsonConverter : JsonConverter<FileWarning>
+    public class FileNoticeJsonConverter : JsonConverter<FileNotice>
     {
         /// <summary>
-        /// Deserializes json to <see cref="FileWarning" />
+        /// Deserializes json to <see cref="FileNotice" />
         /// </summary>
         /// <param name="utf8JsonReader"></param>
         /// <param name="typeToConvert"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <returns></returns>
         /// <exception cref="JsonException"></exception>
-        public override FileWarning Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
+        public override FileNotice Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
         {
             int currentDepth = utf8JsonReader.CurrentDepth;
 
@@ -175,79 +175,79 @@ namespace Calcasa.Api.Model
             }
 
             if (!index.IsSet)
-                throw new ArgumentException("Property is required for class FileWarning.", nameof(index));
+                throw new ArgumentException("Property is required for class FileNotice.", nameof(index));
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class FileWarning.", nameof(name));
+                throw new ArgumentException("Property is required for class FileNotice.", nameof(name));
 
             if (!type.IsSet)
-                throw new ArgumentException("Property is required for class FileWarning.", nameof(type));
+                throw new ArgumentException("Property is required for class FileNotice.", nameof(type));
 
             if (!description.IsSet)
-                throw new ArgumentException("Property is required for class FileWarning.", nameof(description));
+                throw new ArgumentException("Property is required for class FileNotice.", nameof(description));
 
             if (index.IsSet && index.Value == null)
-                throw new ArgumentNullException(nameof(index), "Property is not nullable for class FileWarning.");
+                throw new ArgumentNullException(nameof(index), "Property is not nullable for class FileNotice.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class FileWarning.");
+                throw new ArgumentNullException(nameof(name), "Property is not nullable for class FileNotice.");
 
             if (type.IsSet && type.Value == null)
-                throw new ArgumentNullException(nameof(type), "Property is not nullable for class FileWarning.");
+                throw new ArgumentNullException(nameof(type), "Property is not nullable for class FileNotice.");
 
             if (description.IsSet && description.Value == null)
-                throw new ArgumentNullException(nameof(description), "Property is not nullable for class FileWarning.");
+                throw new ArgumentNullException(nameof(description), "Property is not nullable for class FileNotice.");
 
-            return new FileWarning(index.Value!.Value!, name.Value!, type.Value!, description.Value!);
+            return new FileNotice(index.Value!.Value!, name.Value!, type.Value!, description.Value!);
         }
 
         /// <summary>
-        /// Serializes a <see cref="FileWarning" />
+        /// Serializes a <see cref="FileNotice" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="fileWarning"></param>
+        /// <param name="fileNotice"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public override void Write(Utf8JsonWriter writer, FileWarning fileWarning, JsonSerializerOptions jsonSerializerOptions)
+        public override void Write(Utf8JsonWriter writer, FileNotice fileNotice, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
 
-            WriteProperties(writer, fileWarning, jsonSerializerOptions);
+            WriteProperties(writer, fileNotice, jsonSerializerOptions);
             writer.WriteEndObject();
         }
 
         /// <summary>
-        /// Serializes the properties of <see cref="FileWarning" />
+        /// Serializes the properties of <see cref="FileNotice" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="fileWarning"></param>
+        /// <param name="fileNotice"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void WriteProperties(Utf8JsonWriter writer, FileWarning fileWarning, JsonSerializerOptions jsonSerializerOptions)
+        public void WriteProperties(Utf8JsonWriter writer, FileNotice fileNotice, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (fileWarning.Name == null)
-                throw new ArgumentNullException(nameof(fileWarning.Name), "Property is required for class FileWarning.");
+            if (fileNotice.Name == null)
+                throw new ArgumentNullException(nameof(fileNotice.Name), "Property is required for class FileNotice.");
 
-            if (fileWarning.Type == null)
-                throw new ArgumentNullException(nameof(fileWarning.Type), "Property is required for class FileWarning.");
+            if (fileNotice.Type == null)
+                throw new ArgumentNullException(nameof(fileNotice.Type), "Property is required for class FileNotice.");
 
-            if (fileWarning.Description == null)
-                throw new ArgumentNullException(nameof(fileWarning.Description), "Property is required for class FileWarning.");
+            if (fileNotice.Description == null)
+                throw new ArgumentNullException(nameof(fileNotice.Description), "Property is required for class FileNotice.");
 
-            writer.WriteNumber("index", fileWarning.Index);
+            writer.WriteNumber("index", fileNotice.Index);
 
-            writer.WriteString("name", fileWarning.Name);
+            writer.WriteString("name", fileNotice.Name);
 
-            writer.WriteString("type", fileWarning.Type);
+            writer.WriteString("type", fileNotice.Type);
 
-            writer.WriteString("description", fileWarning.Description);
+            writer.WriteString("description", fileNotice.Description);
         }
     }
 
     /// <summary>
-    /// The FileWarningSerializationContext
+    /// The FileNoticeSerializationContext
     /// </summary>
     [JsonSourceGenerationOptions(WriteIndented = true, GenerationMode = JsonSourceGenerationMode.Metadata | JsonSourceGenerationMode.Serialization)]
-    [JsonSerializable(typeof(FileWarning))]
-    public partial class FileWarningSerializationContext : JsonSerializerContext { }
+    [JsonSerializable(typeof(FileNotice))]
+    public partial class FileNoticeSerializationContext : JsonSerializerContext { }
 }

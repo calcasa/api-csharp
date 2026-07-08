@@ -82,11 +82,11 @@ namespace Calcasa.Api.Client
             _jsonOptions.Converters.Add(new EnergielabelDataJsonConverter());
             _jsonOptions.Converters.Add(new ExpiredValuationProblemDetailsJsonConverter());
             _jsonOptions.Converters.Add(new FactuurJsonConverter());
-            _jsonOptions.Converters.Add(new FileErrorJsonConverter());
+            _jsonOptions.Converters.Add(new FileContentErrorJsonConverter());
             _jsonOptions.Converters.Add(new FileInfoJsonConverter());
+            _jsonOptions.Converters.Add(new FileNoticeJsonConverter());
             _jsonOptions.Converters.Add(new FileSetJsonConverter());
             _jsonOptions.Converters.Add(new FileSetLimitsJsonConverter());
-            _jsonOptions.Converters.Add(new FileWarningJsonConverter());
             _jsonOptions.Converters.Add(new FotoJsonConverter());
             _jsonOptions.Converters.Add(new FrontendDeeplinksJsonConverter());
             _jsonOptions.Converters.Add(new FunderingDataBronJsonConverter());
@@ -133,6 +133,7 @@ namespace Calcasa.Api.Client
             _jsonOptions.Converters.Add(new OnderhoudStaatNullableJsonConverter());
             _jsonOptions.Converters.Add(new OpnamedataJsonConverter());
             _jsonOptions.Converters.Add(new OutboundFileSetJsonConverter());
+            _jsonOptions.Converters.Add(new OutboundFileSetInvalidStateProblemDetailsJsonConverter());
             _jsonOptions.Converters.Add(new OutboundFileSetStateJsonConverter());
             _jsonOptions.Converters.Add(new OutboundFileSetStateNullableJsonConverter());
             _jsonOptions.Converters.Add(new OutboundFileSetWebhookPayloadJsonConverter());
@@ -189,11 +190,11 @@ namespace Calcasa.Api.Client
                 new EnergielabelDataSerializationContext(),
                 new ExpiredValuationProblemDetailsSerializationContext(),
                 new FactuurSerializationContext(),
-                new FileErrorSerializationContext(),
+                new FileContentErrorSerializationContext(),
                 new FileInfoSerializationContext(),
+                new FileNoticeSerializationContext(),
                 new FileSetSerializationContext(),
                 new FileSetLimitsSerializationContext(),
-                new FileWarningSerializationContext(),
                 new FotoSerializationContext(),
                 new FrontendDeeplinksSerializationContext(),
                 new FunderingDataBronSerializationContext(),
@@ -228,6 +229,7 @@ namespace Calcasa.Api.Client
                 new OnderhoudStaatSerializationContext(),
                 new OpnamedataSerializationContext(),
                 new OutboundFileSetSerializationContext(),
+                new OutboundFileSetInvalidStateProblemDetailsSerializationContext(),
                 new OutboundFileSetStateSerializationContext(),
                 new OutboundFileSetWebhookPayloadSerializationContext(),
                 new PermissionsDeniedProblemDetailsSerializationContext(),

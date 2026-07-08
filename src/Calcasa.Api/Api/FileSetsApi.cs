@@ -55,7 +55,7 @@ namespace Calcasa.Api.Api
         /// Confirm an inbound file set after it has been fully uploaded.
         /// </summary>
         /// <remarks>
-        /// Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the status is updated, the callback will be triggered with the new status. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the state is updated, the callback will be triggered with the new state. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="inboundFileSetId"></param>
@@ -67,7 +67,7 @@ namespace Calcasa.Api.Api
         /// Confirm an inbound file set after it has been fully uploaded.
         /// </summary>
         /// <remarks>
-        /// Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the status is updated, the callback will be triggered with the new status. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the state is updated, the callback will be triggered with the new state. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
         /// </remarks>
         /// <param name="inboundFileSetId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -471,7 +471,7 @@ namespace Calcasa.Api.Api
     /// <summary>
     /// The <see cref="IGetOutboundFileByIndexApiResponse"/>
     /// </summary>
-    public interface IGetOutboundFileByIndexApiResponse : Calcasa.Api.Client.IApiResponse, IOk<System.IO.Stream?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, INotFound<Calcasa.Api.Model.NotFoundProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
+    public interface IGetOutboundFileByIndexApiResponse : Calcasa.Api.Client.IApiResponse, IOk<System.IO.Stream?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, INotFound<Calcasa.Api.Model.NotFoundProblemDetails?>, IUnprocessableContent<Calcasa.Api.Model.OutboundFileSetInvalidStateProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 200 Ok
@@ -490,6 +490,12 @@ namespace Calcasa.Api.Api
         /// </summary>
         /// <returns></returns>
         bool IsNotFound { get; }
+
+        /// <summary>
+        /// Returns true if the response is 422 UnprocessableContent
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnprocessableContent { get; }
 
         /// <summary>
         /// Returns true if the response is the default response type
@@ -902,7 +908,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorConfirmInboundFileSetById(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid inboundFileSetId);
 
         /// <summary>
-        /// Confirm an inbound file set after it has been fully uploaded. Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the status is updated, the callback will be triggered with the new status. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Confirm an inbound file set after it has been fully uploaded. Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the state is updated, the callback will be triggered with the new state. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
         /// </summary>
         /// <param name="inboundFileSetId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -920,7 +926,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Confirm an inbound file set after it has been fully uploaded. Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the status is updated, the callback will be triggered with the new status. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Confirm an inbound file set after it has been fully uploaded. Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the state is updated, the callback will be triggered with the new state. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="inboundFileSetId"></param>
@@ -3370,10 +3376,49 @@ namespace Calcasa.Api.Api
             }
 
             /// <summary>
+            /// Returns true if the response is 422 UnprocessableContent
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnprocessableContent => 422 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 422 UnprocessableContent
+            /// </summary>
+            /// <returns></returns>
+            public Calcasa.Api.Model.OutboundFileSetInvalidStateProblemDetails? UnprocessableContent()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsUnprocessableContent
+                    ? System.Text.Json.JsonSerializer.Deserialize<Calcasa.Api.Model.OutboundFileSetInvalidStateProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 422 UnprocessableContent and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnprocessableContent([NotNullWhen(true)] out Calcasa.Api.Model.OutboundFileSetInvalidStateProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = UnprocessableContent();
+                }
+                catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)422);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
             /// Returns true if the response is the default response type
             /// </summary>
             /// <returns></returns>
-            public bool IsDefault => !IsOk && !IsUnauthorized && !IsNotFound;
+            public bool IsDefault => !IsOk && !IsUnauthorized && !IsNotFound && !IsUnprocessableContent;
 
             /// <summary>
             /// Deserializes the response if the response is 0 Default

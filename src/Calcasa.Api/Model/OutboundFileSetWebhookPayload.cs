@@ -51,47 +51,47 @@ namespace Calcasa.Api.Model
         /// <param name="eventId">Uniek Id voor deze callback.</param>
         /// <param name="timestamp">Het tijdstip van het event, in UTC.</param>
         /// <param name="outboundFileSetId">The ID of the file set to which this callback pertains.</param>
-        /// <param name="oldStatus">oldStatus</param>
-        /// <param name="newStatus">newStatus</param>
+        /// <param name="oldState">oldState</param>
+        /// <param name="newState">newState</param>
         [JsonConstructor]
-        public OutboundFileSetWebhookPayload(string callbackName, Guid eventId, DateTime timestamp, Option<Guid?> outboundFileSetId = default, Option<OutboundFileSetState?> oldStatus = default, Option<OutboundFileSetState?> newStatus = default)
+        public OutboundFileSetWebhookPayload(string callbackName, Guid eventId, DateTime timestamp, Option<Guid?> outboundFileSetId = default, Option<OutboundFileSetState?> oldState = default, Option<OutboundFileSetState?> newState = default)
         {
             CallbackName = callbackName;
             EventId = eventId;
             Timestamp = timestamp;
             OutboundFileSetIdOption = outboundFileSetId;
-            OldStatusOption = oldStatus;
-            NewStatusOption = newStatus;
+            OldStateOption = oldState;
+            NewStateOption = newState;
             OnCreated();
         }
 
         partial void OnCreated();
 
         /// <summary>
-        /// Used to track the state of OldStatus
+        /// Used to track the state of OldState
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<OutboundFileSetState?> OldStatusOption { get; private set; }
+        public Option<OutboundFileSetState?> OldStateOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets OldStatus
+        /// Gets or Sets OldState
         /// </summary>
-        [JsonPropertyName("oldStatus")]
-        public OutboundFileSetState? OldStatus { get { return this.OldStatusOption.Value; } set { this.OldStatusOption = new(value); } }
+        [JsonPropertyName("oldState")]
+        public OutboundFileSetState? OldState { get { return this.OldStateOption.Value; } set { this.OldStateOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of NewStatus
+        /// Used to track the state of NewState
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<OutboundFileSetState?> NewStatusOption { get; private set; }
+        public Option<OutboundFileSetState?> NewStateOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets NewStatus
+        /// Gets or Sets NewState
         /// </summary>
-        [JsonPropertyName("newStatus")]
-        public OutboundFileSetState? NewStatus { get { return this.NewStatusOption.Value; } set { this.NewStatusOption = new(value); } }
+        [JsonPropertyName("newState")]
+        public OutboundFileSetState? NewState { get { return this.NewStateOption.Value; } set { this.NewStateOption = new(value); } }
 
         /// <summary>
         /// Gets or Sets CallbackName
@@ -146,8 +146,8 @@ namespace Calcasa.Api.Model
             sb.Append("  EventId: ").Append(EventId).Append("\n");
             sb.Append("  Timestamp: ").Append(Timestamp).Append("\n");
             sb.Append("  OutboundFileSetId: ").Append(OutboundFileSetId).Append("\n");
-            sb.Append("  OldStatus: ").Append(OldStatus).Append("\n");
-            sb.Append("  NewStatus: ").Append(NewStatus).Append("\n");
+            sb.Append("  OldState: ").Append(OldState).Append("\n");
+            sb.Append("  NewState: ").Append(NewState).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -185,8 +185,8 @@ namespace Calcasa.Api.Model
             Option<Guid?> eventId = default;
             Option<DateTime?> timestamp = default;
             Option<Guid?> outboundFileSetId = default;
-            Option<OutboundFileSetState?> oldStatus = default;
-            Option<OutboundFileSetState?> newStatus = default;
+            Option<OutboundFileSetState?> oldState = default;
+            Option<OutboundFileSetState?> newState = default;
 
             while (utf8JsonReader.Read())
             {
@@ -215,15 +215,15 @@ namespace Calcasa.Api.Model
                         case "outboundFileSetId":
                             outboundFileSetId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
-                        case "oldStatus":
-                            string? oldStatusRawValue = utf8JsonReader.GetString();
-                            if (oldStatusRawValue != null)
-                                oldStatus = new Option<OutboundFileSetState?>(OutboundFileSetStateValueConverter.FromStringOrDefault(oldStatusRawValue));
+                        case "oldState":
+                            string? oldStateRawValue = utf8JsonReader.GetString();
+                            if (oldStateRawValue != null)
+                                oldState = new Option<OutboundFileSetState?>(OutboundFileSetStateValueConverter.FromStringOrDefault(oldStateRawValue));
                             break;
-                        case "newStatus":
-                            string? newStatusRawValue = utf8JsonReader.GetString();
-                            if (newStatusRawValue != null)
-                                newStatus = new Option<OutboundFileSetState?>(OutboundFileSetStateValueConverter.FromStringOrDefault(newStatusRawValue));
+                        case "newState":
+                            string? newStateRawValue = utf8JsonReader.GetString();
+                            if (newStateRawValue != null)
+                                newState = new Option<OutboundFileSetState?>(OutboundFileSetStateValueConverter.FromStringOrDefault(newStateRawValue));
                             break;
                         default:
                             break;
@@ -252,13 +252,13 @@ namespace Calcasa.Api.Model
             if (outboundFileSetId.IsSet && outboundFileSetId.Value == null)
                 throw new ArgumentNullException(nameof(outboundFileSetId), "Property is not nullable for class OutboundFileSetWebhookPayload.");
 
-            if (oldStatus.IsSet && oldStatus.Value == null)
-                throw new ArgumentNullException(nameof(oldStatus), "Property is not nullable for class OutboundFileSetWebhookPayload.");
+            if (oldState.IsSet && oldState.Value == null)
+                throw new ArgumentNullException(nameof(oldState), "Property is not nullable for class OutboundFileSetWebhookPayload.");
 
-            if (newStatus.IsSet && newStatus.Value == null)
-                throw new ArgumentNullException(nameof(newStatus), "Property is not nullable for class OutboundFileSetWebhookPayload.");
+            if (newState.IsSet && newState.Value == null)
+                throw new ArgumentNullException(nameof(newState), "Property is not nullable for class OutboundFileSetWebhookPayload.");
 
-            return new OutboundFileSetWebhookPayload(callbackName.Value!, eventId.Value!.Value!, timestamp.Value!.Value!, outboundFileSetId, oldStatus, newStatus);
+            return new OutboundFileSetWebhookPayload(callbackName.Value!, eventId.Value!.Value!, timestamp.Value!.Value!, outboundFileSetId, oldState, newState);
         }
 
         /// <summary>
@@ -297,15 +297,15 @@ namespace Calcasa.Api.Model
             if (outboundFileSetWebhookPayload.OutboundFileSetIdOption.IsSet)
                 writer.WriteString("outboundFileSetId", outboundFileSetWebhookPayload.OutboundFileSetIdOption.Value!.Value);
 
-            if (outboundFileSetWebhookPayload.OldStatusOption.IsSet)
+            if (outboundFileSetWebhookPayload.OldStateOption.IsSet)
             {
-                var oldStatusRawValue = OutboundFileSetStateValueConverter.ToJsonValue(outboundFileSetWebhookPayload.OldStatus!.Value);
-                writer.WriteString("oldStatus", oldStatusRawValue);
+                var oldStateRawValue = OutboundFileSetStateValueConverter.ToJsonValue(outboundFileSetWebhookPayload.OldState!.Value);
+                writer.WriteString("oldState", oldStateRawValue);
             }
-            if (outboundFileSetWebhookPayload.NewStatusOption.IsSet)
+            if (outboundFileSetWebhookPayload.NewStateOption.IsSet)
             {
-                var newStatusRawValue = OutboundFileSetStateValueConverter.ToJsonValue(outboundFileSetWebhookPayload.NewStatus!.Value);
-                writer.WriteString("newStatus", newStatusRawValue);
+                var newStateRawValue = OutboundFileSetStateValueConverter.ToJsonValue(outboundFileSetWebhookPayload.NewState!.Value);
+                writer.WriteString("newState", newStateRawValue);
             }
         }
     }

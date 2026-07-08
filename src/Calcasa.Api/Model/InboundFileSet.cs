@@ -52,14 +52,15 @@ namespace Calcasa.Api.Model
         /// <param name="modifiedOn">modifiedOn</param>
         /// <param name="type">The type of the file set. This value should be constant for a given type of file set and should be agreed upon with Calcasa before use. It is used to ensure that the correct processing logic is applied to the file set based on its intended purpose.  The tuple type, revision and period should always be unique.</param>
         /// <param name="revision">A revision number for the file set that is incremented for every retry or redelivery. The tuple type, revision and period should always be unique.</param>
-        /// <param name="state">The current state of the inbound file set. This indicates the processing status of the file set.</param>
+        /// <param name="state">The current state of the inbound file set. This indicates the processing state of the file set.</param>
         /// <param name="expiresAfter">If specified, the file set will expire after this date and time. If no appropriate action is taken before this date and time, the file set and all its contents will be deleted.</param>
         /// <param name="period">The period of the inbound file set. This is a string that represents the time period for which the file set is relevant. It is used to categorize and identify the time frame of the data contained in the file set. The first day of the period is used when the period is a year, quarter or month. For example use the first of April for Q2. The period is represented in the format YYYY-MM-DD, where YYYY is the year, MM is the month, and DD is the day. If the period is not applicable, it can be set to null, only do this after consulting with Calcasa. The tuple type, revision and period should always be unique.</param>
         /// <param name="files">The files associated with the file set.</param>
-        /// <param name="errors">Errors that occurred during the processing of the inbound file set. This is an array of FileError objects that provide details about each error, including the index of the file within the file set, the name of the file, the expected and actual SHA256 hash values, and the expected and actual file sizes.</param>
-        /// <param name="warnings">Warnings that occurred during the processing of the inbound file set. This is an array of FileWarning objects that provide details about each warning, including the index of the file within the file set, the name of the file.</param>
+        /// <param name="contentErrors">Errors that occurred during the initial processing of the inbound file set. This is an array of FileContentError objects that provide details about each error, including the index of the file within the file set, the name of the file, the expected and actual SHA256 hash values, and the expected and actual file sizes.</param>
+        /// <param name="errors">Warnings that occurred during the processing of the inbound file set. This is an array of FileNotice objects that provide details about each warning, including the index of the file within the file set, the name of the file.</param>
+        /// <param name="warnings">Warnings that occurred during the processing of the inbound file set. This is an array of FileNotice objects that provide details about each warning, including the index of the file within the file set, the name of the file.</param>
         [JsonConstructor]
-        public InboundFileSet(Guid id, DateTime createdOn, DateTime modifiedOn, string type, int revision, InboundFileSetState state, Option<DateTime?> expiresAfter = default, Option<DateOnly?> period = default, Option<List<InboundFileInfo>?> files = default, Option<List<FileError>?> errors = default, Option<List<FileWarning>?> warnings = default)
+        public InboundFileSet(Guid id, DateTime createdOn, DateTime modifiedOn, string type, int revision, InboundFileSetState state, Option<DateTime?> expiresAfter = default, Option<DateOnly?> period = default, Option<List<InboundFileInfo>?> files = default, Option<List<FileContentError>?> contentErrors = default, Option<List<FileNotice>?> errors = default, Option<List<FileNotice>?> warnings = default)
         {
             Id = id;
             CreatedOn = createdOn;
@@ -70,6 +71,7 @@ namespace Calcasa.Api.Model
             ExpiresAfterOption = expiresAfter;
             PeriodOption = period;
             FilesOption = files;
+            ContentErrorsOption = contentErrors;
             ErrorsOption = errors;
             WarningsOption = warnings;
             OnCreated();
@@ -78,9 +80,9 @@ namespace Calcasa.Api.Model
         partial void OnCreated();
 
         /// <summary>
-        /// The current state of the inbound file set. This indicates the processing status of the file set.
+        /// The current state of the inbound file set. This indicates the processing state of the file set.
         /// </summary>
-        /// <value>The current state of the inbound file set. This indicates the processing status of the file set.</value>
+        /// <value>The current state of the inbound file set. This indicates the processing state of the file set.</value>
         [JsonPropertyName("state")]
         public InboundFileSetState State { get; }
 
@@ -164,32 +166,46 @@ namespace Calcasa.Api.Model
         public List<InboundFileInfo>? Files { get { return this.FilesOption.Value; } set { this.FilesOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of ContentErrors
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<List<FileContentError>?> ContentErrorsOption { get; }
+
+        /// <summary>
+        /// Errors that occurred during the initial processing of the inbound file set. This is an array of FileContentError objects that provide details about each error, including the index of the file within the file set, the name of the file, the expected and actual SHA256 hash values, and the expected and actual file sizes.
+        /// </summary>
+        /// <value>Errors that occurred during the initial processing of the inbound file set. This is an array of FileContentError objects that provide details about each error, including the index of the file within the file set, the name of the file, the expected and actual SHA256 hash values, and the expected and actual file sizes.</value>
+        [JsonPropertyName("contentErrors")]
+        public List<FileContentError>? ContentErrors { get { return this.ContentErrorsOption.Value; } }
+
+        /// <summary>
         /// Used to track the state of Errors
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<List<FileError>?> ErrorsOption { get; }
+        public Option<List<FileNotice>?> ErrorsOption { get; }
 
         /// <summary>
-        /// Errors that occurred during the processing of the inbound file set. This is an array of FileError objects that provide details about each error, including the index of the file within the file set, the name of the file, the expected and actual SHA256 hash values, and the expected and actual file sizes.
+        /// Warnings that occurred during the processing of the inbound file set. This is an array of FileNotice objects that provide details about each warning, including the index of the file within the file set, the name of the file.
         /// </summary>
-        /// <value>Errors that occurred during the processing of the inbound file set. This is an array of FileError objects that provide details about each error, including the index of the file within the file set, the name of the file, the expected and actual SHA256 hash values, and the expected and actual file sizes.</value>
+        /// <value>Warnings that occurred during the processing of the inbound file set. This is an array of FileNotice objects that provide details about each warning, including the index of the file within the file set, the name of the file.</value>
         [JsonPropertyName("errors")]
-        public List<FileError>? Errors { get { return this.ErrorsOption.Value; } }
+        public List<FileNotice>? Errors { get { return this.ErrorsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of Warnings
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<List<FileWarning>?> WarningsOption { get; }
+        public Option<List<FileNotice>?> WarningsOption { get; }
 
         /// <summary>
-        /// Warnings that occurred during the processing of the inbound file set. This is an array of FileWarning objects that provide details about each warning, including the index of the file within the file set, the name of the file.
+        /// Warnings that occurred during the processing of the inbound file set. This is an array of FileNotice objects that provide details about each warning, including the index of the file within the file set, the name of the file.
         /// </summary>
-        /// <value>Warnings that occurred during the processing of the inbound file set. This is an array of FileWarning objects that provide details about each warning, including the index of the file within the file set, the name of the file.</value>
+        /// <value>Warnings that occurred during the processing of the inbound file set. This is an array of FileNotice objects that provide details about each warning, including the index of the file within the file set, the name of the file.</value>
         [JsonPropertyName("warnings")]
-        public List<FileWarning>? Warnings { get { return this.WarningsOption.Value; } }
+        public List<FileNotice>? Warnings { get { return this.WarningsOption.Value; } }
 
         /// <summary>
         /// Gets or Sets additional properties
@@ -214,6 +230,7 @@ namespace Calcasa.Api.Model
             sb.Append("  ExpiresAfter: ").Append(ExpiresAfter).Append("\n");
             sb.Append("  Period: ").Append(Period).Append("\n");
             sb.Append("  Files: ").Append(Files).Append("\n");
+            sb.Append("  ContentErrors: ").Append(ContentErrors).Append("\n");
             sb.Append("  Errors: ").Append(Errors).Append("\n");
             sb.Append("  Warnings: ").Append(Warnings).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
@@ -273,8 +290,9 @@ namespace Calcasa.Api.Model
             Option<DateTime?> expiresAfter = default;
             Option<DateOnly?> period = default;
             Option<List<InboundFileInfo>?> files = default;
-            Option<List<FileError>?> errors = default;
-            Option<List<FileWarning>?> warnings = default;
+            Option<List<FileContentError>?> contentErrors = default;
+            Option<List<FileNotice>?> errors = default;
+            Option<List<FileNotice>?> warnings = default;
 
             while (utf8JsonReader.Read())
             {
@@ -320,11 +338,14 @@ namespace Calcasa.Api.Model
                         case "files":
                             files = new Option<List<InboundFileInfo>?>(JsonSerializer.Deserialize<List<InboundFileInfo>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
+                        case "contentErrors":
+                            contentErrors = new Option<List<FileContentError>?>(JsonSerializer.Deserialize<List<FileContentError>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            break;
                         case "errors":
-                            errors = new Option<List<FileError>?>(JsonSerializer.Deserialize<List<FileError>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            errors = new Option<List<FileNotice>?>(JsonSerializer.Deserialize<List<FileNotice>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "warnings":
-                            warnings = new Option<List<FileWarning>?>(JsonSerializer.Deserialize<List<FileWarning>>(ref utf8JsonReader, jsonSerializerOptions));
+                            warnings = new Option<List<FileNotice>?>(JsonSerializer.Deserialize<List<FileNotice>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;
@@ -368,10 +389,10 @@ namespace Calcasa.Api.Model
             if (state.IsSet && state.Value == null)
                 throw new ArgumentNullException(nameof(state), "Property is not nullable for class InboundFileSet.");
 
-            if (errors.IsSet && errors.Value == null)
-                throw new ArgumentNullException(nameof(errors), "Property is not nullable for class InboundFileSet.");
+            if (contentErrors.IsSet && contentErrors.Value == null)
+                throw new ArgumentNullException(nameof(contentErrors), "Property is not nullable for class InboundFileSet.");
 
-            return new InboundFileSet(id.Value!.Value!, createdOn.Value!.Value!, modifiedOn.Value!.Value!, type.Value!, revision.Value!.Value!, state.Value!.Value!, expiresAfter, period, files, errors, warnings);
+            return new InboundFileSet(id.Value!.Value!, createdOn.Value!.Value!, modifiedOn.Value!.Value!, type.Value!, revision.Value!.Value!, state.Value!.Value!, expiresAfter, period, files, contentErrors, errors, warnings);
         }
 
         /// <summary>
@@ -401,8 +422,8 @@ namespace Calcasa.Api.Model
             if (inboundFileSet.Type == null)
                 throw new ArgumentNullException(nameof(inboundFileSet.Type), "Property is required for class InboundFileSet.");
 
-            if (inboundFileSet.ErrorsOption.IsSet && inboundFileSet.Errors == null)
-                throw new ArgumentNullException(nameof(inboundFileSet.Errors), "Property is required for class InboundFileSet.");
+            if (inboundFileSet.ContentErrorsOption.IsSet && inboundFileSet.ContentErrors == null)
+                throw new ArgumentNullException(nameof(inboundFileSet.ContentErrors), "Property is required for class InboundFileSet.");
 
             writer.WriteString("id", inboundFileSet.Id);
 
@@ -437,11 +458,19 @@ namespace Calcasa.Api.Model
                 }
                 else
                     writer.WriteNull("files");
-            if (inboundFileSet.ErrorsOption.IsSet)
+            if (inboundFileSet.ContentErrorsOption.IsSet)
             {
-                writer.WritePropertyName("errors");
-                JsonSerializer.Serialize(writer, inboundFileSet.Errors, jsonSerializerOptions);
+                writer.WritePropertyName("contentErrors");
+                JsonSerializer.Serialize(writer, inboundFileSet.ContentErrors, jsonSerializerOptions);
             }
+            if (inboundFileSet.ErrorsOption.IsSet)
+                if (inboundFileSet.ErrorsOption.Value != null)
+                {
+                    writer.WritePropertyName("errors");
+                    JsonSerializer.Serialize(writer, inboundFileSet.Errors, jsonSerializerOptions);
+                }
+                else
+                    writer.WriteNull("errors");
             if (inboundFileSet.WarningsOption.IsSet)
                 if (inboundFileSet.WarningsOption.Value != null)
                 {
