@@ -72,6 +72,8 @@ namespace Calcasa.Api.Client
             _jsonOptions.Converters.Add(new CallbackAuthenticationJsonConverter());
             _jsonOptions.Converters.Add(new CallbackInschrijvingJsonConverter());
             _jsonOptions.Converters.Add(new CbsIndelingJsonConverter());
+            _jsonOptions.Converters.Add(new CompressionTypeJsonConverter());
+            _jsonOptions.Converters.Add(new CompressionTypeNullableJsonConverter());
             _jsonOptions.Converters.Add(new ContentTooLargeProblemDetailsJsonConverter());
             _jsonOptions.Converters.Add(new CreateInboundFileSetRequestJsonConverter());
             _jsonOptions.Converters.Add(new DeelWaarderingWebhookPayloadJsonConverter());
@@ -106,6 +108,7 @@ namespace Calcasa.Api.Client
             _jsonOptions.Converters.Add(new FunderingsrisicoNullableJsonConverter());
             _jsonOptions.Converters.Add(new GebiedsdataJsonConverter());
             _jsonOptions.Converters.Add(new GeldverstrekkerJsonConverter());
+            _jsonOptions.Converters.Add(new InboundFileInfoJsonConverter());
             _jsonOptions.Converters.Add(new InboundFileSetJsonConverter());
             _jsonOptions.Converters.Add(new InboundFileSetAlreadyExistsProblemDetailsJsonConverter());
             _jsonOptions.Converters.Add(new InboundFileSetInvalidStateProblemDetailsJsonConverter());
@@ -178,6 +181,7 @@ namespace Calcasa.Api.Client
                 new CallbackAuthenticationSerializationContext(),
                 new CallbackInschrijvingSerializationContext(),
                 new CbsIndelingSerializationContext(),
+                new CompressionTypeSerializationContext(),
                 new ContentTooLargeProblemDetailsSerializationContext(),
                 new CreateInboundFileSetRequestSerializationContext(),
                 new DeelWaarderingWebhookPayloadSerializationContext(),
@@ -204,6 +208,7 @@ namespace Calcasa.Api.Client
                 new FunderingsrisicoSerializationContext(),
                 new GebiedsdataSerializationContext(),
                 new GeldverstrekkerSerializationContext(),
+                new InboundFileInfoSerializationContext(),
                 new InboundFileSetSerializationContext(),
                 new InboundFileSetAlreadyExistsProblemDetailsSerializationContext(),
                 new InboundFileSetInvalidStateProblemDetailsSerializationContext(),

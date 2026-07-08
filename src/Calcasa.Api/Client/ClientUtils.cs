@@ -132,6 +132,8 @@ namespace Calcasa.Api.Client
                 return BodemStatusTypeValueConverter.ToJsonValue(bodemStatusType);
             if (obj is BusinessRulesCode businessRulesCode)
                 return BusinessRulesCodeValueConverter.ToJsonValue(businessRulesCode);
+            if (obj is CompressionType compressionType)
+                return CompressionTypeValueConverter.ToJsonValue(compressionType);
             if (obj is Energielabel energielabel)
                 return EnergielabelValueConverter.ToJsonValue(energielabel);
             if (obj is FunderingDataBron funderingDataBron)

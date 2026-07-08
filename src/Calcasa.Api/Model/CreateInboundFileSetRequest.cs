@@ -47,21 +47,28 @@ namespace Calcasa.Api.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateInboundFileSetRequest" /> class.
         /// </summary>
+        /// <param name="files">The files associated with the file set.</param>
         /// <param name="type">The type of the file set. This value should be constant for a given type of file set and should be agreed upon with Calcasa before use. It is used to ensure that the correct processing logic is applied to the file set based on its intended purpose.  The tuple type, revision and period should always be unique.</param>
         /// <param name="revision">A revision number for the file set that is incremented for every retry or redelivery. The tuple type, revision and period should always be unique.</param>
-        /// <param name="files">The files associated with the file set.</param>
         /// <param name="period">The period of the inbound file set. This is a string that represents the time period for which the file set is relevant. It is used to categorize and identify the time frame of the data contained in the file set. The first day of the period is used when the period is a year, quarter or month. For example use the first of April for Q2. The period is represented in the format YYYY-MM-DD, where YYYY is the year, MM is the month, and DD is the day. If the period is not applicable, it can be set to null, only do this after consulting with Calcasa. The tuple type, revision and period should always be unique.</param>
         [JsonConstructor]
-        public CreateInboundFileSetRequest(string type, int revision, Option<List<FileInfo>?> files = default, Option<DateOnly?> period = default)
+        public CreateInboundFileSetRequest(List<InboundFileInfo> files, string type, int revision, Option<DateOnly?> period = default)
         {
+            Files = files;
             Type = type;
             Revision = revision;
-            FilesOption = files;
             PeriodOption = period;
             OnCreated();
         }
 
         partial void OnCreated();
+
+        /// <summary>
+        /// The files associated with the file set.
+        /// </summary>
+        /// <value>The files associated with the file set.</value>
+        [JsonPropertyName("files")]
+        public List<InboundFileInfo> Files { get; set; }
 
         /// <summary>
         /// The type of the file set. This value should be constant for a given type of file set and should be agreed upon with Calcasa before use. It is used to ensure that the correct processing logic is applied to the file set based on its intended purpose.  The tuple type, revision and period should always be unique.
@@ -76,20 +83,6 @@ namespace Calcasa.Api.Model
         /// <value>A revision number for the file set that is incremented for every retry or redelivery. The tuple type, revision and period should always be unique.</value>
         [JsonPropertyName("revision")]
         public int Revision { get; set; }
-
-        /// <summary>
-        /// Used to track the state of Files
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<List<FileInfo>?> FilesOption { get; private set; }
-
-        /// <summary>
-        /// The files associated with the file set.
-        /// </summary>
-        /// <value>The files associated with the file set.</value>
-        [JsonPropertyName("files")]
-        public List<FileInfo>? Files { get { return this.FilesOption.Value; } set { this.FilesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Period
@@ -120,9 +113,9 @@ namespace Calcasa.Api.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateInboundFileSetRequest {\n");
+            sb.Append("  Files: ").Append(Files).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Revision: ").Append(Revision).Append("\n");
-            sb.Append("  Files: ").Append(Files).Append("\n");
             sb.Append("  Period: ").Append(Period).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
@@ -157,9 +150,9 @@ namespace Calcasa.Api.Model
 
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
+            Option<List<InboundFileInfo>?> files = default;
             Option<string?> type = default;
             Option<int?> revision = default;
-            Option<List<FileInfo>?> files = default;
             Option<DateOnly?> period = default;
 
             while (utf8JsonReader.Read())
@@ -177,14 +170,14 @@ namespace Calcasa.Api.Model
 
                     switch (localVarJsonPropertyName)
                     {
+                        case "files":
+                            files = new Option<List<InboundFileInfo>?>(JsonSerializer.Deserialize<List<InboundFileInfo>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            break;
                         case "type":
                             type = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "revision":
                             revision = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
-                            break;
-                        case "files":
-                            files = new Option<List<FileInfo>?>(JsonSerializer.Deserialize<List<FileInfo>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "period":
                             period = new Option<DateOnly?>(JsonSerializer.Deserialize<DateOnly?>(ref utf8JsonReader, jsonSerializerOptions));
@@ -195,11 +188,17 @@ namespace Calcasa.Api.Model
                 }
             }
 
+            if (!files.IsSet)
+                throw new ArgumentException("Property is required for class CreateInboundFileSetRequest.", nameof(files));
+
             if (!type.IsSet)
                 throw new ArgumentException("Property is required for class CreateInboundFileSetRequest.", nameof(type));
 
             if (!revision.IsSet)
                 throw new ArgumentException("Property is required for class CreateInboundFileSetRequest.", nameof(revision));
+
+            if (files.IsSet && files.Value == null)
+                throw new ArgumentNullException(nameof(files), "Property is not nullable for class CreateInboundFileSetRequest.");
 
             if (type.IsSet && type.Value == null)
                 throw new ArgumentNullException(nameof(type), "Property is not nullable for class CreateInboundFileSetRequest.");
@@ -207,7 +206,7 @@ namespace Calcasa.Api.Model
             if (revision.IsSet && revision.Value == null)
                 throw new ArgumentNullException(nameof(revision), "Property is not nullable for class CreateInboundFileSetRequest.");
 
-            return new CreateInboundFileSetRequest(type.Value!, revision.Value!.Value!, files, period);
+            return new CreateInboundFileSetRequest(files.Value!, type.Value!, revision.Value!.Value!, period);
         }
 
         /// <summary>
@@ -234,21 +233,18 @@ namespace Calcasa.Api.Model
         /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CreateInboundFileSetRequest createInboundFileSetRequest, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (createInboundFileSetRequest.Files == null)
+                throw new ArgumentNullException(nameof(createInboundFileSetRequest.Files), "Property is required for class CreateInboundFileSetRequest.");
+
             if (createInboundFileSetRequest.Type == null)
                 throw new ArgumentNullException(nameof(createInboundFileSetRequest.Type), "Property is required for class CreateInboundFileSetRequest.");
 
+            writer.WritePropertyName("files");
+            JsonSerializer.Serialize(writer, createInboundFileSetRequest.Files, jsonSerializerOptions);
             writer.WriteString("type", createInboundFileSetRequest.Type);
 
             writer.WriteNumber("revision", createInboundFileSetRequest.Revision);
 
-            if (createInboundFileSetRequest.FilesOption.IsSet)
-                if (createInboundFileSetRequest.FilesOption.Value != null)
-                {
-                    writer.WritePropertyName("files");
-                    JsonSerializer.Serialize(writer, createInboundFileSetRequest.Files, jsonSerializerOptions);
-                }
-                else
-                    writer.WriteNull("files");
             if (createInboundFileSetRequest.PeriodOption.IsSet)
                 if (createInboundFileSetRequest.PeriodOption.Value != null)
                     writer.WriteString("period", createInboundFileSetRequest.PeriodOption.Value!.Value.ToString(PeriodFormat));

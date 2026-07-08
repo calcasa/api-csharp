@@ -52,18 +52,16 @@ namespace Calcasa.Api.Model
         /// <param name="modifiedOn">modifiedOn</param>
         /// <param name="type">The type of the file set. This value should be constant for a given type of file set and should be agreed upon with Calcasa before use. It is used to ensure that the correct processing logic is applied to the file set based on its intended purpose.  The tuple type, revision and period should always be unique.</param>
         /// <param name="revision">A revision number for the file set that is incremented for every retry or redelivery. The tuple type, revision and period should always be unique.</param>
-        /// <param name="files">The files associated with the file set.</param>
         /// <param name="expiresAfter">If specified, the file set will expire after this date and time. If no appropriate action is taken before this date and time, the file set and all its contents will be deleted.</param>
         /// <param name="period">The period of the inbound file set. This is a string that represents the time period for which the file set is relevant. It is used to categorize and identify the time frame of the data contained in the file set. The first day of the period is used when the period is a year, quarter or month. For example use the first of April for Q2. The period is represented in the format YYYY-MM-DD, where YYYY is the year, MM is the month, and DD is the day. If the period is not applicable, it can be set to null, only do this after consulting with Calcasa. The tuple type, revision and period should always be unique.</param>
         [JsonConstructor]
-        public FileSet(Guid id, DateTime createdOn, DateTime modifiedOn, string type, int revision, Option<List<FileInfo>?> files = default, Option<DateTime?> expiresAfter = default, Option<DateOnly?> period = default)
+        public FileSet(Guid id, DateTime createdOn, DateTime modifiedOn, string type, int revision, Option<DateTime?> expiresAfter = default, Option<DateOnly?> period = default)
         {
             Id = id;
             CreatedOn = createdOn;
             ModifiedOn = modifiedOn;
             Type = type;
             Revision = revision;
-            FilesOption = files;
             ExpiresAfterOption = expiresAfter;
             PeriodOption = period;
             OnCreated();
@@ -105,20 +103,6 @@ namespace Calcasa.Api.Model
         /// <value>A revision number for the file set that is incremented for every retry or redelivery. The tuple type, revision and period should always be unique.</value>
         [JsonPropertyName("revision")]
         public int Revision { get; set; }
-
-        /// <summary>
-        /// Used to track the state of Files
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<List<FileInfo>?> FilesOption { get; private set; }
-
-        /// <summary>
-        /// The files associated with the file set.
-        /// </summary>
-        /// <value>The files associated with the file set.</value>
-        [JsonPropertyName("files")]
-        public List<FileInfo>? Files { get { return this.FilesOption.Value; } set { this.FilesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ExpiresAfter
@@ -169,7 +153,6 @@ namespace Calcasa.Api.Model
             sb.Append("  ModifiedOn: ").Append(ModifiedOn).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Revision: ").Append(Revision).Append("\n");
-            sb.Append("  Files: ").Append(Files).Append("\n");
             sb.Append("  ExpiresAfter: ").Append(ExpiresAfter).Append("\n");
             sb.Append("  Period: ").Append(Period).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
@@ -225,7 +208,6 @@ namespace Calcasa.Api.Model
             Option<DateTime?> modifiedOn = default;
             Option<string?> type = default;
             Option<int?> revision = default;
-            Option<List<FileInfo>?> files = default;
             Option<DateTime?> expiresAfter = default;
             Option<DateOnly?> period = default;
 
@@ -258,9 +240,6 @@ namespace Calcasa.Api.Model
                             break;
                         case "revision":
                             revision = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
-                            break;
-                        case "files":
-                            files = new Option<List<FileInfo>?>(JsonSerializer.Deserialize<List<FileInfo>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "expiresAfter":
                             expiresAfter = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime?>(ref utf8JsonReader, jsonSerializerOptions));
@@ -304,7 +283,7 @@ namespace Calcasa.Api.Model
             if (revision.IsSet && revision.Value == null)
                 throw new ArgumentNullException(nameof(revision), "Property is not nullable for class FileSet.");
 
-            return new FileSet(id.Value!.Value!, createdOn.Value!.Value!, modifiedOn.Value!.Value!, type.Value!, revision.Value!.Value!, files, expiresAfter, period);
+            return new FileSet(id.Value!.Value!, createdOn.Value!.Value!, modifiedOn.Value!.Value!, type.Value!, revision.Value!.Value!, expiresAfter, period);
         }
 
         /// <summary>
@@ -344,14 +323,6 @@ namespace Calcasa.Api.Model
 
             writer.WriteNumber("revision", fileSet.Revision);
 
-            if (fileSet.FilesOption.IsSet)
-                if (fileSet.FilesOption.Value != null)
-                {
-                    writer.WritePropertyName("files");
-                    JsonSerializer.Serialize(writer, fileSet.Files, jsonSerializerOptions);
-                }
-                else
-                    writer.WriteNull("files");
             if (fileSet.ExpiresAfterOption.IsSet)
                 if (fileSet.ExpiresAfterOption.Value != null)
                     writer.WriteString("expiresAfter", fileSet.ExpiresAfterOption.Value!.Value.ToString(ExpiresAfterFormat));

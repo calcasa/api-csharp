@@ -262,30 +262,30 @@ namespace Calcasa.Api.Api
         /// Upload a specific file chunk for an inbound file set.
         /// </summary>
         /// <remarks>
-        /// Upload a specific file chunk for an inbound file set. All chunks must be uploaded in order, if the file is small enough, it can be uploaded in a single request. Total size must not exceed reported file size in the file set.
+        /// Upload a specific file chunk for an inbound file set. All chunks must be uploaded with consecutive chunk indices, if the file is small enough, it can be uploaded in a single request. Total size must not exceed reported file size in the file set.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="inboundFileSetId"></param>
         /// <param name="fileIndex"></param>
+        /// <param name="chunkIndex"></param>
         /// <param name="body"></param>
-        /// <param name="contentEncoding"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPutFileChunkApiResponse"/>&gt;</returns>
-        Task<IPutFileChunkApiResponse> PutFileChunkAsync(Guid inboundFileSetId, int fileIndex, Calcasa.Api.Client.FileParameter body, Option<string> contentEncoding = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IPutFileChunkApiResponse> PutFileChunkAsync(Guid inboundFileSetId, int fileIndex, int chunkIndex, Calcasa.Api.Client.FileParameter body, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Upload a specific file chunk for an inbound file set.
         /// </summary>
         /// <remarks>
-        /// Upload a specific file chunk for an inbound file set. All chunks must be uploaded in order, if the file is small enough, it can be uploaded in a single request. Total size must not exceed reported file size in the file set.
+        /// Upload a specific file chunk for an inbound file set. All chunks must be uploaded with consecutive chunk indices, if the file is small enough, it can be uploaded in a single request. Total size must not exceed reported file size in the file set.
         /// </remarks>
         /// <param name="inboundFileSetId"></param>
         /// <param name="fileIndex"></param>
+        /// <param name="chunkIndex"></param>
         /// <param name="body"></param>
-        /// <param name="contentEncoding"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPutFileChunkApiResponse"/>?&gt;</returns>
-        Task<IPutFileChunkApiResponse?> PutFileChunkOrDefaultAsync(Guid inboundFileSetId, int fileIndex, Calcasa.Api.Client.FileParameter body, Option<string> contentEncoding = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IPutFileChunkApiResponse?> PutFileChunkOrDefaultAsync(Guid inboundFileSetId, int fileIndex, int chunkIndex, Calcasa.Api.Client.FileParameter body, System.Threading.CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -4091,21 +4091,17 @@ namespace Calcasa.Api.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatPutFileChunk(ref Guid inboundFileSetId, ref int fileIndex, ref Calcasa.Api.Client.FileParameter body, ref Option<string> contentEncoding);
+        partial void FormatPutFileChunk(ref Guid inboundFileSetId, ref int fileIndex, ref int chunkIndex, ref Calcasa.Api.Client.FileParameter body);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="body"></param>
-        /// <param name="contentEncoding"></param>
         /// <returns></returns>
-        private void ValidatePutFileChunk(Calcasa.Api.Client.FileParameter body, Option<string> contentEncoding)
+        private void ValidatePutFileChunk(Calcasa.Api.Client.FileParameter body)
         {
             if (body == null)
                 throw new ArgumentNullException(nameof(body));
-
-            if (contentEncoding.IsSet && contentEncoding.Value == null)
-                throw new ArgumentNullException(nameof(contentEncoding));
         }
 
         /// <summary>
@@ -4114,12 +4110,12 @@ namespace Calcasa.Api.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="inboundFileSetId"></param>
         /// <param name="fileIndex"></param>
+        /// <param name="chunkIndex"></param>
         /// <param name="body"></param>
-        /// <param name="contentEncoding"></param>
-        private void AfterPutFileChunkDefaultImplementation(IPutFileChunkApiResponse apiResponseLocalVar, Guid inboundFileSetId, int fileIndex, Calcasa.Api.Client.FileParameter body, Option<string> contentEncoding)
+        private void AfterPutFileChunkDefaultImplementation(IPutFileChunkApiResponse apiResponseLocalVar, Guid inboundFileSetId, int fileIndex, int chunkIndex, Calcasa.Api.Client.FileParameter body)
         {
             bool suppressDefaultLog = false;
-            AfterPutFileChunk(ref suppressDefaultLog, apiResponseLocalVar, inboundFileSetId, fileIndex, body, contentEncoding);
+            AfterPutFileChunk(ref suppressDefaultLog, apiResponseLocalVar, inboundFileSetId, fileIndex, chunkIndex, body);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -4131,9 +4127,9 @@ namespace Calcasa.Api.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="inboundFileSetId"></param>
         /// <param name="fileIndex"></param>
+        /// <param name="chunkIndex"></param>
         /// <param name="body"></param>
-        /// <param name="contentEncoding"></param>
-        partial void AfterPutFileChunk(ref bool suppressDefaultLog, IPutFileChunkApiResponse apiResponseLocalVar, Guid inboundFileSetId, int fileIndex, Calcasa.Api.Client.FileParameter body, Option<string> contentEncoding);
+        partial void AfterPutFileChunk(ref bool suppressDefaultLog, IPutFileChunkApiResponse apiResponseLocalVar, Guid inboundFileSetId, int fileIndex, int chunkIndex, Calcasa.Api.Client.FileParameter body);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -4143,12 +4139,12 @@ namespace Calcasa.Api.Api
         /// <param name="pathLocalVar"></param>
         /// <param name="inboundFileSetId"></param>
         /// <param name="fileIndex"></param>
+        /// <param name="chunkIndex"></param>
         /// <param name="body"></param>
-        /// <param name="contentEncoding"></param>
-        private void OnErrorPutFileChunkDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid inboundFileSetId, int fileIndex, Calcasa.Api.Client.FileParameter body, Option<string> contentEncoding)
+        private void OnErrorPutFileChunkDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid inboundFileSetId, int fileIndex, int chunkIndex, Calcasa.Api.Client.FileParameter body)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorPutFileChunk(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, inboundFileSetId, fileIndex, body, contentEncoding);
+            OnErrorPutFileChunk(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, inboundFileSetId, fileIndex, chunkIndex, body);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -4162,24 +4158,24 @@ namespace Calcasa.Api.Api
         /// <param name="pathLocalVar"></param>
         /// <param name="inboundFileSetId"></param>
         /// <param name="fileIndex"></param>
+        /// <param name="chunkIndex"></param>
         /// <param name="body"></param>
-        /// <param name="contentEncoding"></param>
-        partial void OnErrorPutFileChunk(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid inboundFileSetId, int fileIndex, Calcasa.Api.Client.FileParameter body, Option<string> contentEncoding);
+        partial void OnErrorPutFileChunk(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid inboundFileSetId, int fileIndex, int chunkIndex, Calcasa.Api.Client.FileParameter body);
 
         /// <summary>
-        /// Upload a specific file chunk for an inbound file set. Upload a specific file chunk for an inbound file set. All chunks must be uploaded in order, if the file is small enough, it can be uploaded in a single request. Total size must not exceed reported file size in the file set.
+        /// Upload a specific file chunk for an inbound file set. Upload a specific file chunk for an inbound file set. All chunks must be uploaded with consecutive chunk indices, if the file is small enough, it can be uploaded in a single request. Total size must not exceed reported file size in the file set.
         /// </summary>
         /// <param name="inboundFileSetId"></param>
         /// <param name="fileIndex"></param>
+        /// <param name="chunkIndex"></param>
         /// <param name="body"></param>
-        /// <param name="contentEncoding"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPutFileChunkApiResponse"/>&gt;</returns>
-        public async Task<IPutFileChunkApiResponse?> PutFileChunkOrDefaultAsync(Guid inboundFileSetId, int fileIndex, Calcasa.Api.Client.FileParameter body, Option<string> contentEncoding = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IPutFileChunkApiResponse?> PutFileChunkOrDefaultAsync(Guid inboundFileSetId, int fileIndex, int chunkIndex, Calcasa.Api.Client.FileParameter body, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await PutFileChunkAsync(inboundFileSetId, fileIndex, body, contentEncoding, cancellationToken).ConfigureAwait(false);
+                return await PutFileChunkAsync(inboundFileSetId, fileIndex, chunkIndex, body, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -4188,24 +4184,24 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Upload a specific file chunk for an inbound file set. Upload a specific file chunk for an inbound file set. All chunks must be uploaded in order, if the file is small enough, it can be uploaded in a single request. Total size must not exceed reported file size in the file set.
+        /// Upload a specific file chunk for an inbound file set. Upload a specific file chunk for an inbound file set. All chunks must be uploaded with consecutive chunk indices, if the file is small enough, it can be uploaded in a single request. Total size must not exceed reported file size in the file set.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="inboundFileSetId"></param>
         /// <param name="fileIndex"></param>
+        /// <param name="chunkIndex"></param>
         /// <param name="body"></param>
-        /// <param name="contentEncoding"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPutFileChunkApiResponse"/>&gt;</returns>
-        public async Task<IPutFileChunkApiResponse> PutFileChunkAsync(Guid inboundFileSetId, int fileIndex, Calcasa.Api.Client.FileParameter body, Option<string> contentEncoding = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IPutFileChunkApiResponse> PutFileChunkAsync(Guid inboundFileSetId, int fileIndex, int chunkIndex, Calcasa.Api.Client.FileParameter body, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidatePutFileChunk(body, contentEncoding);
+                ValidatePutFileChunk(body);
 
-                FormatPutFileChunk(ref inboundFileSetId, ref fileIndex, ref body, ref contentEncoding);
+                FormatPutFileChunk(ref inboundFileSetId, ref fileIndex, ref chunkIndex, ref body);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -4213,27 +4209,15 @@ namespace Calcasa.Api.Api
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
                     uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/file-sets/inbound/{inboundFileSetId}/{fileIndex}"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/file-sets/inbound/{inboundFileSetId}/{fileIndex}");
+                        ? "/file-sets/inbound/{inboundFileSetId}/{fileIndex}/{chunkIndex}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/file-sets/inbound/{inboundFileSetId}/{fileIndex}/{chunkIndex}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinboundFileSetId%7D", Uri.EscapeDataString(inboundFileSetId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BfileIndex%7D", Uri.EscapeDataString(fileIndex.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BchunkIndex%7D", Uri.EscapeDataString(chunkIndex.ToString()));
 
                     httpRequestMessageLocalVar.Content = (body as object) is Calcasa.Api.Client.FileParameter fileParameterLocalVar
                         ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
                         : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(body, _jsonSerializerOptions));
-
-                    if (contentEncoding.IsSet)
-                    {
-                        // Set client side default value of Header Param "content-encoding".                    
-                        if (ClientUtils.IsContentHeader("content-encoding"))
-                        {
-                            httpRequestMessageLocalVar.Content?.Headers.Add("content-encoding", ClientUtils.ParameterToString(contentEncoding.Value));
-                        }
-                        else
-                        {
-                            httpRequestMessageLocalVar.Headers.Add("content-encoding", ClientUtils.ParameterToString(contentEncoding.Value));
-                        }
-                    }
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -4276,13 +4260,13 @@ namespace Calcasa.Api.Api
                             default:
                                 {
                                     string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                    apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/file-sets/inbound/{inboundFileSetId}/{fileIndex}", requestedAtLocalVar, _jsonSerializerOptions);
+                                    apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/file-sets/inbound/{inboundFileSetId}/{fileIndex}/{chunkIndex}", requestedAtLocalVar, _jsonSerializerOptions);
 
                                     break;
                                 }
                         }
 
-                        AfterPutFileChunkDefaultImplementation(apiResponseLocalVar, inboundFileSetId, fileIndex, body, contentEncoding);
+                        AfterPutFileChunkDefaultImplementation(apiResponseLocalVar, inboundFileSetId, fileIndex, chunkIndex, body);
 
                         Events.ExecuteOnPutFileChunk(apiResponseLocalVar);
 
@@ -4296,7 +4280,7 @@ namespace Calcasa.Api.Api
             }
             catch (Exception e)
             {
-                OnErrorPutFileChunkDefaultImplementation(e, "/file-sets/inbound/{inboundFileSetId}/{fileIndex}", uriBuilderLocalVar.Path, inboundFileSetId, fileIndex, body, contentEncoding);
+                OnErrorPutFileChunkDefaultImplementation(e, "/file-sets/inbound/{inboundFileSetId}/{fileIndex}/{chunkIndex}", uriBuilderLocalVar.Path, inboundFileSetId, fileIndex, chunkIndex, body);
                 Events.ExecuteOnErrorPutFileChunk(e);
                 throw;
             }

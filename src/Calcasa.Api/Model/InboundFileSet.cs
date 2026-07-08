@@ -53,13 +53,13 @@ namespace Calcasa.Api.Model
         /// <param name="type">The type of the file set. This value should be constant for a given type of file set and should be agreed upon with Calcasa before use. It is used to ensure that the correct processing logic is applied to the file set based on its intended purpose.  The tuple type, revision and period should always be unique.</param>
         /// <param name="revision">A revision number for the file set that is incremented for every retry or redelivery. The tuple type, revision and period should always be unique.</param>
         /// <param name="state">The current state of the inbound file set. This indicates the processing status of the file set.</param>
-        /// <param name="files">The files associated with the file set.</param>
         /// <param name="expiresAfter">If specified, the file set will expire after this date and time. If no appropriate action is taken before this date and time, the file set and all its contents will be deleted.</param>
         /// <param name="period">The period of the inbound file set. This is a string that represents the time period for which the file set is relevant. It is used to categorize and identify the time frame of the data contained in the file set. The first day of the period is used when the period is a year, quarter or month. For example use the first of April for Q2. The period is represented in the format YYYY-MM-DD, where YYYY is the year, MM is the month, and DD is the day. If the period is not applicable, it can be set to null, only do this after consulting with Calcasa. The tuple type, revision and period should always be unique.</param>
+        /// <param name="files">The files associated with the file set.</param>
         /// <param name="errors">Errors that occurred during the processing of the inbound file set. This is an array of FileError objects that provide details about each error, including the index of the file within the file set, the name of the file, the expected and actual SHA256 hash values, and the expected and actual file sizes.</param>
         /// <param name="warnings">Warnings that occurred during the processing of the inbound file set. This is an array of FileWarning objects that provide details about each warning, including the index of the file within the file set, the name of the file.</param>
         [JsonConstructor]
-        public InboundFileSet(Guid id, DateTime createdOn, DateTime modifiedOn, string type, int revision, InboundFileSetState state, Option<List<FileInfo>?> files = default, Option<DateTime?> expiresAfter = default, Option<DateOnly?> period = default, Option<List<FileError>?> errors = default, Option<List<FileWarning>?> warnings = default)
+        public InboundFileSet(Guid id, DateTime createdOn, DateTime modifiedOn, string type, int revision, InboundFileSetState state, Option<DateTime?> expiresAfter = default, Option<DateOnly?> period = default, Option<List<InboundFileInfo>?> files = default, Option<List<FileError>?> errors = default, Option<List<FileWarning>?> warnings = default)
         {
             Id = id;
             CreatedOn = createdOn;
@@ -67,9 +67,9 @@ namespace Calcasa.Api.Model
             Type = type;
             Revision = revision;
             State = state;
-            FilesOption = files;
             ExpiresAfterOption = expiresAfter;
             PeriodOption = period;
+            FilesOption = files;
             ErrorsOption = errors;
             WarningsOption = warnings;
             OnCreated();
@@ -120,20 +120,6 @@ namespace Calcasa.Api.Model
         public int Revision { get; set; }
 
         /// <summary>
-        /// Used to track the state of Files
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<List<FileInfo>?> FilesOption { get; private set; }
-
-        /// <summary>
-        /// The files associated with the file set.
-        /// </summary>
-        /// <value>The files associated with the file set.</value>
-        [JsonPropertyName("files")]
-        public List<FileInfo>? Files { get { return this.FilesOption.Value; } set { this.FilesOption = new(value); } }
-
-        /// <summary>
         /// Used to track the state of ExpiresAfter
         /// </summary>
         [JsonIgnore]
@@ -162,6 +148,20 @@ namespace Calcasa.Api.Model
         /* <example>Wed Apr 28 00:00:00 UTC 2021</example> */
         [JsonPropertyName("period")]
         public DateOnly? Period { get { return this.PeriodOption.Value; } set { this.PeriodOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of Files
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<List<InboundFileInfo>?> FilesOption { get; private set; }
+
+        /// <summary>
+        /// The files associated with the file set.
+        /// </summary>
+        /// <value>The files associated with the file set.</value>
+        [JsonPropertyName("files")]
+        public List<InboundFileInfo>? Files { get { return this.FilesOption.Value; } set { this.FilesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Errors
@@ -211,9 +211,9 @@ namespace Calcasa.Api.Model
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Revision: ").Append(Revision).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  Files: ").Append(Files).Append("\n");
             sb.Append("  ExpiresAfter: ").Append(ExpiresAfter).Append("\n");
             sb.Append("  Period: ").Append(Period).Append("\n");
+            sb.Append("  Files: ").Append(Files).Append("\n");
             sb.Append("  Errors: ").Append(Errors).Append("\n");
             sb.Append("  Warnings: ").Append(Warnings).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
@@ -270,9 +270,9 @@ namespace Calcasa.Api.Model
             Option<string?> type = default;
             Option<int?> revision = default;
             Option<InboundFileSetState?> state = default;
-            Option<List<FileInfo>?> files = default;
             Option<DateTime?> expiresAfter = default;
             Option<DateOnly?> period = default;
+            Option<List<InboundFileInfo>?> files = default;
             Option<List<FileError>?> errors = default;
             Option<List<FileWarning>?> warnings = default;
 
@@ -311,14 +311,14 @@ namespace Calcasa.Api.Model
                             if (stateRawValue != null)
                                 state = new Option<InboundFileSetState?>(InboundFileSetStateValueConverter.FromStringOrDefault(stateRawValue));
                             break;
-                        case "files":
-                            files = new Option<List<FileInfo>?>(JsonSerializer.Deserialize<List<FileInfo>>(ref utf8JsonReader, jsonSerializerOptions));
-                            break;
                         case "expiresAfter":
                             expiresAfter = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime?>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "period":
                             period = new Option<DateOnly?>(JsonSerializer.Deserialize<DateOnly?>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
+                        case "files":
+                            files = new Option<List<InboundFileInfo>?>(JsonSerializer.Deserialize<List<InboundFileInfo>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "errors":
                             errors = new Option<List<FileError>?>(JsonSerializer.Deserialize<List<FileError>>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -371,7 +371,7 @@ namespace Calcasa.Api.Model
             if (errors.IsSet && errors.Value == null)
                 throw new ArgumentNullException(nameof(errors), "Property is not nullable for class InboundFileSet.");
 
-            return new InboundFileSet(id.Value!.Value!, createdOn.Value!.Value!, modifiedOn.Value!.Value!, type.Value!, revision.Value!.Value!, state.Value!.Value!, files, expiresAfter, period, errors, warnings);
+            return new InboundFileSet(id.Value!.Value!, createdOn.Value!.Value!, modifiedOn.Value!.Value!, type.Value!, revision.Value!.Value!, state.Value!.Value!, expiresAfter, period, files, errors, warnings);
         }
 
         /// <summary>
@@ -417,14 +417,6 @@ namespace Calcasa.Api.Model
             var stateRawValue = InboundFileSetStateValueConverter.ToJsonValue(inboundFileSet.State);
             writer.WriteString("state", stateRawValue);
 
-            if (inboundFileSet.FilesOption.IsSet)
-                if (inboundFileSet.FilesOption.Value != null)
-                {
-                    writer.WritePropertyName("files");
-                    JsonSerializer.Serialize(writer, inboundFileSet.Files, jsonSerializerOptions);
-                }
-                else
-                    writer.WriteNull("files");
             if (inboundFileSet.ExpiresAfterOption.IsSet)
                 if (inboundFileSet.ExpiresAfterOption.Value != null)
                     writer.WriteString("expiresAfter", inboundFileSet.ExpiresAfterOption.Value!.Value.ToString(ExpiresAfterFormat));
@@ -437,6 +429,14 @@ namespace Calcasa.Api.Model
                 else
                     writer.WriteNull("period");
 
+            if (inboundFileSet.FilesOption.IsSet)
+                if (inboundFileSet.FilesOption.Value != null)
+                {
+                    writer.WritePropertyName("files");
+                    JsonSerializer.Serialize(writer, inboundFileSet.Files, jsonSerializerOptions);
+                }
+                else
+                    writer.WriteNull("files");
             if (inboundFileSet.ErrorsOption.IsSet)
             {
                 writer.WritePropertyName("errors");

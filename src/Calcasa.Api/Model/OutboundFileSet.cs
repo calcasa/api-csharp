@@ -54,11 +54,11 @@ namespace Calcasa.Api.Model
         /// <param name="revision">A revision number for the file set that is incremented for every retry or redelivery. The tuple type, revision and period should always be unique.</param>
         /// <param name="inboundFileSetId">The id of the inbound file set from which this outbound file set originated. This is used to track the relationship between inbound and outbound file sets. The tuple inboundFileSetId, type, revision and period should always be unique.</param>
         /// <param name="state">state</param>
-        /// <param name="files">The files associated with the file set.</param>
         /// <param name="expiresAfter">If specified, the file set will expire after this date and time. If no appropriate action is taken before this date and time, the file set and all its contents will be deleted.</param>
         /// <param name="period">The period of the inbound file set. This is a string that represents the time period for which the file set is relevant. It is used to categorize and identify the time frame of the data contained in the file set. The first day of the period is used when the period is a year, quarter or month. For example use the first of April for Q2. The period is represented in the format YYYY-MM-DD, where YYYY is the year, MM is the month, and DD is the day. If the period is not applicable, it can be set to null, only do this after consulting with Calcasa. The tuple type, revision and period should always be unique.</param>
+        /// <param name="files">The files associated with the file set.</param>
         [JsonConstructor]
-        public OutboundFileSet(Guid id, DateTime createdOn, DateTime modifiedOn, string type, int revision, Guid inboundFileSetId, OutboundFileSetState state, Option<List<FileInfo>?> files = default, Option<DateTime?> expiresAfter = default, Option<DateOnly?> period = default)
+        public OutboundFileSet(Guid id, DateTime createdOn, DateTime modifiedOn, string type, int revision, Guid inboundFileSetId, OutboundFileSetState state, Option<DateTime?> expiresAfter = default, Option<DateOnly?> period = default, Option<List<FileInfo>?> files = default)
         {
             Id = id;
             CreatedOn = createdOn;
@@ -67,9 +67,9 @@ namespace Calcasa.Api.Model
             Revision = revision;
             InboundFileSetId = inboundFileSetId;
             State = state;
-            FilesOption = files;
             ExpiresAfterOption = expiresAfter;
             PeriodOption = period;
+            FilesOption = files;
             OnCreated();
         }
 
@@ -124,20 +124,6 @@ namespace Calcasa.Api.Model
         public Guid InboundFileSetId { get; set; }
 
         /// <summary>
-        /// Used to track the state of Files
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<List<FileInfo>?> FilesOption { get; private set; }
-
-        /// <summary>
-        /// The files associated with the file set.
-        /// </summary>
-        /// <value>The files associated with the file set.</value>
-        [JsonPropertyName("files")]
-        public List<FileInfo>? Files { get { return this.FilesOption.Value; } set { this.FilesOption = new(value); } }
-
-        /// <summary>
         /// Used to track the state of ExpiresAfter
         /// </summary>
         [JsonIgnore]
@@ -168,6 +154,20 @@ namespace Calcasa.Api.Model
         public DateOnly? Period { get { return this.PeriodOption.Value; } set { this.PeriodOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of Files
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<List<FileInfo>?> FilesOption { get; private set; }
+
+        /// <summary>
+        /// The files associated with the file set.
+        /// </summary>
+        /// <value>The files associated with the file set.</value>
+        [JsonPropertyName("files")]
+        public List<FileInfo>? Files { get { return this.FilesOption.Value; } set { this.FilesOption = new(value); } }
+
+        /// <summary>
         /// Gets or Sets additional properties
         /// </summary>
         [JsonExtensionData]
@@ -188,9 +188,9 @@ namespace Calcasa.Api.Model
             sb.Append("  Revision: ").Append(Revision).Append("\n");
             sb.Append("  InboundFileSetId: ").Append(InboundFileSetId).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  Files: ").Append(Files).Append("\n");
             sb.Append("  ExpiresAfter: ").Append(ExpiresAfter).Append("\n");
             sb.Append("  Period: ").Append(Period).Append("\n");
+            sb.Append("  Files: ").Append(Files).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -246,9 +246,9 @@ namespace Calcasa.Api.Model
             Option<int?> revision = default;
             Option<Guid?> inboundFileSetId = default;
             Option<OutboundFileSetState?> state = default;
-            Option<List<FileInfo>?> files = default;
             Option<DateTime?> expiresAfter = default;
             Option<DateOnly?> period = default;
+            Option<List<FileInfo>?> files = default;
 
             while (utf8JsonReader.Read())
             {
@@ -288,14 +288,14 @@ namespace Calcasa.Api.Model
                             if (stateRawValue != null)
                                 state = new Option<OutboundFileSetState?>(OutboundFileSetStateValueConverter.FromStringOrDefault(stateRawValue));
                             break;
-                        case "files":
-                            files = new Option<List<FileInfo>?>(JsonSerializer.Deserialize<List<FileInfo>>(ref utf8JsonReader, jsonSerializerOptions));
-                            break;
                         case "expiresAfter":
                             expiresAfter = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime?>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "period":
                             period = new Option<DateOnly?>(JsonSerializer.Deserialize<DateOnly?>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
+                        case "files":
+                            files = new Option<List<FileInfo>?>(JsonSerializer.Deserialize<List<FileInfo>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;
@@ -345,7 +345,7 @@ namespace Calcasa.Api.Model
             if (state.IsSet && state.Value == null)
                 throw new ArgumentNullException(nameof(state), "Property is not nullable for class OutboundFileSet.");
 
-            return new OutboundFileSet(id.Value!.Value!, createdOn.Value!.Value!, modifiedOn.Value!.Value!, type.Value!, revision.Value!.Value!, inboundFileSetId.Value!.Value!, state.Value!.Value!, files, expiresAfter, period);
+            return new OutboundFileSet(id.Value!.Value!, createdOn.Value!.Value!, modifiedOn.Value!.Value!, type.Value!, revision.Value!.Value!, inboundFileSetId.Value!.Value!, state.Value!.Value!, expiresAfter, period, files);
         }
 
         /// <summary>
@@ -390,14 +390,6 @@ namespace Calcasa.Api.Model
             var stateRawValue = OutboundFileSetStateValueConverter.ToJsonValue(outboundFileSet.State);
             writer.WriteString("state", stateRawValue);
 
-            if (outboundFileSet.FilesOption.IsSet)
-                if (outboundFileSet.FilesOption.Value != null)
-                {
-                    writer.WritePropertyName("files");
-                    JsonSerializer.Serialize(writer, outboundFileSet.Files, jsonSerializerOptions);
-                }
-                else
-                    writer.WriteNull("files");
             if (outboundFileSet.ExpiresAfterOption.IsSet)
                 if (outboundFileSet.ExpiresAfterOption.Value != null)
                     writer.WriteString("expiresAfter", outboundFileSet.ExpiresAfterOption.Value!.Value.ToString(ExpiresAfterFormat));
@@ -409,6 +401,15 @@ namespace Calcasa.Api.Model
                     writer.WriteString("period", outboundFileSet.PeriodOption.Value!.Value.ToString(PeriodFormat));
                 else
                     writer.WriteNull("period");
+
+            if (outboundFileSet.FilesOption.IsSet)
+                if (outboundFileSet.FilesOption.Value != null)
+                {
+                    writer.WritePropertyName("files");
+                    JsonSerializer.Serialize(writer, outboundFileSet.Files, jsonSerializerOptions);
+                }
+                else
+                    writer.WriteNull("files");
         }
     }
 
