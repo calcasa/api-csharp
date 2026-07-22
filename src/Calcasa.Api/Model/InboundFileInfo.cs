@@ -48,7 +48,7 @@ namespace Calcasa.Api.Model
         /// Initializes a new instance of the <see cref="InboundFileInfo" /> class.
         /// </summary>
         /// <param name="index">The index of the file within the file set. Zero-based.</param>
-        /// <param name="name">The name of the file, including its extension. This needs to be unique within the file set.</param>
+        /// <param name="name">The name of the file, including its extension. This needs to be unique within the file set.  This can contain &#39;/&#39; as the directory separator, but the file name cannot start or end with a &#39;/&#39; and cannot contain consecutive &#39;/&#39; characters. Can contain A-Z, a-z, 0-9, a space and &#39;-./{}[]()&#39; characters. The maximum length is 128 characters.</param>
         /// <param name="contentHash">The SHA256 hash of the file contents, represented as an uppercase hexadecimal string. For the outbound file sets this is the expected hash, for inbound file sets this is the actual hash of the file contents.</param>
         /// <param name="size">The file size in bytes. For the outbound file sets this is the expected size, for inbound file sets this is the actual size of the file contents.</param>
         /// <param name="contentType">The content type of the file, which indicates the media type of the file contents. This is used to determine how to handle and process the file. For example, \&quot;application/pdf\&quot; for PDF files, \&quot;image/jpeg\&quot; for JPEG images, etc. Refer to [IANA Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml) for possible values.</param>
@@ -89,9 +89,9 @@ namespace Calcasa.Api.Model
         public int Index { get; set; }
 
         /// <summary>
-        /// The name of the file, including its extension. This needs to be unique within the file set.
+        /// The name of the file, including its extension. This needs to be unique within the file set.  This can contain &#39;/&#39; as the directory separator, but the file name cannot start or end with a &#39;/&#39; and cannot contain consecutive &#39;/&#39; characters. Can contain A-Z, a-z, 0-9, a space and &#39;-./{}[]()&#39; characters. The maximum length is 128 characters.
         /// </summary>
-        /// <value>The name of the file, including its extension. This needs to be unique within the file set.</value>
+        /// <value>The name of the file, including its extension. This needs to be unique within the file set.  This can contain &#39;/&#39; as the directory separator, but the file name cannot start or end with a &#39;/&#39; and cannot contain consecutive &#39;/&#39; characters. Can contain A-Z, a-z, 0-9, a space and &#39;-./{}[]()&#39; characters. The maximum length is 128 characters.</value>
         /* <example>data.csv</example> */
         [JsonPropertyName("name")]
         public string Name { get; set; }

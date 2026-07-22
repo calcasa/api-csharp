@@ -471,13 +471,19 @@ namespace Calcasa.Api.Api
     /// <summary>
     /// The <see cref="IGetOutboundFileByIndexApiResponse"/>
     /// </summary>
-    public interface IGetOutboundFileByIndexApiResponse : Calcasa.Api.Client.IApiResponse, IOk<System.IO.Stream?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, INotFound<Calcasa.Api.Model.NotFoundProblemDetails?>, IUnprocessableContent<Calcasa.Api.Model.OutboundFileSetInvalidStateProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
+    public interface IGetOutboundFileByIndexApiResponse : Calcasa.Api.Client.IApiResponse, IOk<System.IO.Stream?>, IPartialContent<System.IO.Stream?>, IUnauthorized<Calcasa.Api.Model.UnauthorizedProblemDetails?>, INotFound<Calcasa.Api.Model.NotFoundProblemDetails?>, IUnprocessableContent<Calcasa.Api.Model.OutboundFileSetInvalidStateProblemDetails?>, IDefault<Microsoft.AspNetCore.Mvc.ProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 200 Ok
         /// </summary>
         /// <returns></returns>
         bool IsOk { get; }
+
+        /// <summary>
+        /// Returns true if the response is 206 PartialContent
+        /// </summary>
+        /// <returns></returns>
+        bool IsPartialContent { get; }
 
         /// <summary>
         /// Returns true if the response is 401 Unauthorized
@@ -490,6 +496,12 @@ namespace Calcasa.Api.Api
         /// </summary>
         /// <returns></returns>
         bool IsNotFound { get; }
+
+        /// <summary>
+        /// Returns true if the response is 416 RangeNotSatisfiable
+        /// </summary>
+        /// <returns></returns>
+        bool IsRangeNotSatisfiable { get; }
 
         /// <summary>
         /// Returns true if the response is 422 UnprocessableContent
@@ -3178,6 +3190,7 @@ namespace Calcasa.Api.Api
                         switch ((int)httpResponseMessageLocalVar.StatusCode)
                         {
                             case (200):
+                            case (206):
                                 {
                                     byte[] responseBytesArrayLocalVar = await httpResponseMessageLocalVar.Content.ReadAsByteArrayAsync(cancellationToken).ConfigureAwait(false);
                                     System.IO.Stream responseContentStreamLocalVar = new System.IO.MemoryStream(responseBytesArrayLocalVar);
@@ -3298,6 +3311,45 @@ namespace Calcasa.Api.Api
             }
 
             /// <summary>
+            /// Returns true if the response is 206 PartialContent
+            /// </summary>
+            /// <returns></returns>
+            public bool IsPartialContent => 206 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 206 PartialContent
+            /// </summary>
+            /// <returns></returns>
+            public System.IO.Stream? PartialContent()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsPartialContent
+                    ? ContentStream
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 206 PartialContent and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryPartialContent([NotNullWhen(true)] out System.IO.Stream? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = PartialContent();
+                }
+                catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)206);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
             /// Returns true if the response is 401 Unauthorized
             /// </summary>
             /// <returns></returns>
@@ -3376,6 +3428,12 @@ namespace Calcasa.Api.Api
             }
 
             /// <summary>
+            /// Returns true if the response is 416 RangeNotSatisfiable
+            /// </summary>
+            /// <returns></returns>
+            public bool IsRangeNotSatisfiable => 416 == (int)StatusCode;
+
+            /// <summary>
             /// Returns true if the response is 422 UnprocessableContent
             /// </summary>
             /// <returns></returns>
@@ -3418,7 +3476,7 @@ namespace Calcasa.Api.Api
             /// Returns true if the response is the default response type
             /// </summary>
             /// <returns></returns>
-            public bool IsDefault => !IsOk && !IsUnauthorized && !IsNotFound && !IsUnprocessableContent;
+            public bool IsDefault => !IsOk && !IsPartialContent && !IsUnauthorized && !IsNotFound && !IsRangeNotSatisfiable && !IsUnprocessableContent;
 
             /// <summary>
             /// Deserializes the response if the response is 0 Default

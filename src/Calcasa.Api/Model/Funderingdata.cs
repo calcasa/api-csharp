@@ -54,10 +54,11 @@ namespace Calcasa.Api.Model
         /// <param name="optrekkendVochtRisico">optrekkendVochtRisico</param>
         /// <param name="bioInfectieRisico">bioInfectieRisico</param>
         /// <param name="herstelkosten">Indicatieve herstelkosten van de fundering. Voor consumenten doeleinden ronden gebruiken we de volgende regels om tot een orijsrange te komen: &lt; 5_000: \&quot;Minder dan 5000\&quot; &lt; 50_000: \&quot;afronden op 5000, min: floor, max: ceil\&quot; else: min: x * 0.9, max: x * 1.1, beiden afgerond op 5000</param>
-        /// <param name="bron">bron</param>
+        /// <param name="bron">De bron van de funderingsdata, dit is eigenlijk altijd &#x60;fundermaps&#x60; voor nieuwe aanvragen.</param>
+        /// <param name="risicobron">Een afgeleide waarde van de losse risico bronnen.</param>
         /// <param name="risicolabel">risicolabel</param>
         [JsonConstructor]
-        public Funderingdata(Option<FunderingTypering?> typering = default, Option<FunderingHerstelType?> herstelType = default, Option<FunderingTechnischHerstelType?> technischHerstelType = default, Option<FunderingRisico?> droogstandRisico = default, Option<FunderingRisico?> optrekkendVochtRisico = default, Option<FunderingRisico?> bioInfectieRisico = default, Option<double?> herstelkosten = default, Option<FunderingDataBron?> bron = default, Option<Funderingsrisico?> risicolabel = default)
+        public Funderingdata(Option<FunderingTypering?> typering = default, Option<FunderingHerstelType?> herstelType = default, Option<FunderingTechnischHerstelType?> technischHerstelType = default, Option<FunderingRisico?> droogstandRisico = default, Option<FunderingRisico?> optrekkendVochtRisico = default, Option<FunderingRisico?> bioInfectieRisico = default, Option<double?> herstelkosten = default, Option<FunderingDataBron?> bron = default, Option<FunderingSoortBron?> risicobron = default, Option<Funderingsrisico?> risicolabel = default)
         {
             TyperingOption = typering;
             HerstelTypeOption = herstelType;
@@ -67,6 +68,7 @@ namespace Calcasa.Api.Model
             BioInfectieRisicoOption = bioInfectieRisico;
             HerstelkostenOption = herstelkosten;
             BronOption = bron;
+            RisicobronOption = risicobron;
             RisicolabelOption = risicolabel;
             OnCreated();
         }
@@ -108,10 +110,25 @@ namespace Calcasa.Api.Model
         public Option<FunderingDataBron?> BronOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Bron
+        /// De bron van de funderingsdata, dit is eigenlijk altijd &#x60;fundermaps&#x60; voor nieuwe aanvragen.
         /// </summary>
+        /// <value>De bron van de funderingsdata, dit is eigenlijk altijd &#x60;fundermaps&#x60; voor nieuwe aanvragen.</value>
         [JsonPropertyName("bron")]
         public FunderingDataBron? Bron { get { return this.BronOption.Value; } set { this.BronOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of Risicobron
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<FunderingSoortBron?> RisicobronOption { get; private set; }
+
+        /// <summary>
+        /// Een afgeleide waarde van de losse risico bronnen.
+        /// </summary>
+        /// <value>Een afgeleide waarde van de losse risico bronnen.</value>
+        [JsonPropertyName("risicobron")]
+        public FunderingSoortBron? Risicobron { get { return this.RisicobronOption.Value; } set { this.RisicobronOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Risicolabel
@@ -214,6 +231,7 @@ namespace Calcasa.Api.Model
             sb.Append("  BioInfectieRisico: ").Append(BioInfectieRisico).Append("\n");
             sb.Append("  Herstelkosten: ").Append(Herstelkosten).Append("\n");
             sb.Append("  Bron: ").Append(Bron).Append("\n");
+            sb.Append("  Risicobron: ").Append(Risicobron).Append("\n");
             sb.Append("  Risicolabel: ").Append(Risicolabel).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
@@ -251,6 +269,7 @@ namespace Calcasa.Api.Model
             Option<FunderingRisico?> bioInfectieRisico = default;
             Option<double?> herstelkosten = default;
             Option<FunderingDataBron?> bron = default;
+            Option<FunderingSoortBron?> risicobron = default;
             Option<Funderingsrisico?> risicolabel = default;
 
             while (utf8JsonReader.Read())
@@ -298,6 +317,11 @@ namespace Calcasa.Api.Model
                             if (bronRawValue != null)
                                 bron = new Option<FunderingDataBron?>(FunderingDataBronValueConverter.FromStringOrDefault(bronRawValue));
                             break;
+                        case "risicobron":
+                            string? risicobronRawValue = utf8JsonReader.GetString();
+                            if (risicobronRawValue != null)
+                                risicobron = new Option<FunderingSoortBron?>(FunderingSoortBronValueConverter.FromStringOrDefault(risicobronRawValue));
+                            break;
                         case "risicolabel":
                             string? risicolabelRawValue = utf8JsonReader.GetString();
                             if (risicolabelRawValue != null)
@@ -330,10 +354,13 @@ namespace Calcasa.Api.Model
             if (bron.IsSet && bron.Value == null)
                 throw new ArgumentNullException(nameof(bron), "Property is not nullable for class Funderingdata.");
 
+            if (risicobron.IsSet && risicobron.Value == null)
+                throw new ArgumentNullException(nameof(risicobron), "Property is not nullable for class Funderingdata.");
+
             if (risicolabel.IsSet && risicolabel.Value == null)
                 throw new ArgumentNullException(nameof(risicolabel), "Property is not nullable for class Funderingdata.");
 
-            return new Funderingdata(typering, herstelType, technischHerstelType, droogstandRisico, optrekkendVochtRisico, bioInfectieRisico, herstelkosten, bron, risicolabel);
+            return new Funderingdata(typering, herstelType, technischHerstelType, droogstandRisico, optrekkendVochtRisico, bioInfectieRisico, herstelkosten, bron, risicobron, risicolabel);
         }
 
         /// <summary>
@@ -412,6 +439,11 @@ namespace Calcasa.Api.Model
             {
                 var bronRawValue = FunderingDataBronValueConverter.ToJsonValue(funderingdata.Bron!.Value);
                 writer.WriteString("bron", bronRawValue);
+            }
+            if (funderingdata.RisicobronOption.IsSet)
+            {
+                var risicobronRawValue = FunderingSoortBronValueConverter.ToJsonValue(funderingdata.Risicobron!.Value);
+                writer.WriteString("risicobron", risicobronRawValue);
             }
             if (funderingdata.RisicolabelOption.IsSet)
             {
