@@ -51,7 +51,7 @@ namespace Calcasa.Api.Model
         /// <param name="createdOn">createdOn</param>
         /// <param name="modifiedOn">modifiedOn</param>
         /// <param name="type">The type of the file set. This value should be constant for a given type of file set and should be agreed upon with Calcasa before use. It is used to ensure that the correct processing logic is applied to the file set based on its intended purpose.  The tuple type, revision and period should always be unique.</param>
-        /// <param name="revision">A revision number for the file set that is incremented for every retry or redelivery. The tuple type, revision and period should always be unique.</param>
+        /// <param name="revision">A revision number for the file set that is incremented for every retry or redelivery. The tuple type, revision and period should always be unique. Starts at 1.</param>
         /// <param name="inboundFileSetId">The id of the inbound file set from which this outbound file set originated. This is used to track the relationship between inbound and outbound file sets. The tuple inboundFileSetId, type, revision and period should always be unique.</param>
         /// <param name="state">state</param>
         /// <param name="expiresAfter">If specified, the file set will expire after this date and time. If no appropriate action is taken before this date and time, the file set and all its contents will be deleted.</param>
@@ -110,9 +110,9 @@ namespace Calcasa.Api.Model
         public string Type { get; set; }
 
         /// <summary>
-        /// A revision number for the file set that is incremented for every retry or redelivery. The tuple type, revision and period should always be unique.
+        /// A revision number for the file set that is incremented for every retry or redelivery. The tuple type, revision and period should always be unique. Starts at 1.
         /// </summary>
-        /// <value>A revision number for the file set that is incremented for every retry or redelivery. The tuple type, revision and period should always be unique.</value>
+        /// <value>A revision number for the file set that is incremented for every retry or redelivery. The tuple type, revision and period should always be unique. Starts at 1.</value>
         [JsonPropertyName("revision")]
         public int Revision { get; set; }
 
