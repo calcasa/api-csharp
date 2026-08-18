@@ -40,9 +40,9 @@ using Calcasa.Api.Client;
 namespace Calcasa.Api.Model
 {
     /// <summary>
-    /// Het producttype voor een waardering. Deze moeten handmatig aangezet worden voor de gebruikte credentials. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Geen geldige invoer. Onbekend product type. | | &#x60;modelwaardeCalcasa&#x60; | Niet beschikbaar op dit moment.&lt;br&gt;            Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport. | | &#x60;desktopTaxatieHerwaardering&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport voor herwaarderingen. | | &#x60;desktopTaxatiePlus&#x60; | Desktop taxatie plus aanvraag met Desktop Taxatie Plus rapport. |
+    /// Het producttype voor een waardering. Deze moeten handmatig aangezet worden voor de gebruikte credentials. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Geen geldige invoer. Onbekend product type. | | &#x60;modelwaardeCalcasa&#x60; | Niet beschikbaar op dit moment.&lt;br&gt;            Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeOnePage&#x60; | Modelwaarde aanvraag met Calcasa One Page rapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport. | | &#x60;desktopTaxatieHerwaardering&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport voor herwaarderingen. | | &#x60;desktopTaxatiePlus&#x60; | Desktop taxatie plus aanvraag met Desktop Taxatie Plus rapport. |
     /// </summary>
-    /// <value>Het producttype voor een waardering. Deze moeten handmatig aangezet worden voor de gebruikte credentials. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Geen geldige invoer. Onbekend product type. | | &#x60;modelwaardeCalcasa&#x60; | Niet beschikbaar op dit moment.&lt;br&gt;            Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport. | | &#x60;desktopTaxatieHerwaardering&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport voor herwaarderingen. | | &#x60;desktopTaxatiePlus&#x60; | Desktop taxatie plus aanvraag met Desktop Taxatie Plus rapport. |</value>
+    /// <value>Het producttype voor een waardering. Deze moeten handmatig aangezet worden voor de gebruikte credentials. | Waarde | Omschrijving | | - -- | - -- | | &#x60;onbekend&#x60; | Geen geldige invoer. Onbekend product type. | | &#x60;modelwaardeCalcasa&#x60; | Niet beschikbaar op dit moment.&lt;br&gt;            Modelwaarde aanvraag met Calcasa Waardebepalingrapport. | | &#x60;modelwaardeOnePage&#x60; | Modelwaarde aanvraag met Calcasa One Page rapport. | | &#x60;modelwaardeRisico&#x60; | Modelwaarde aanvraag met risicorapport. | | &#x60;modelwaardeDesktopTaxatie&#x60; | Modelwaarde aanvraag met Desktop Taxatie Beknoptwaarderapport. | | &#x60;desktopTaxatie&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport. | | &#x60;desktopTaxatieHerwaardering&#x60; | Desktop taxatie aanvraag met Desktop Taxatie rapport voor herwaarderingen. | | &#x60;desktopTaxatiePlus&#x60; | Desktop taxatie plus aanvraag met Desktop Taxatie Plus rapport. |</value>
     public enum ProductType
     {
         /// <summary>
@@ -54,6 +54,11 @@ namespace Calcasa.Api.Model
         /// Enum ModelwaardeCalcasa for value: modelwaardeCalcasa
         /// </summary>
         ModelwaardeCalcasa,
+
+        /// <summary>
+        /// Enum ModelwaardeOnePage for value: modelwaardeOnePage
+        /// </summary>
+        ModelwaardeOnePage,
 
         /// <summary>
         /// Enum ModelwaardeRisico for value: modelwaardeRisico
@@ -99,6 +104,9 @@ namespace Calcasa.Api.Model
             if (value.Equals("modelwaardeCalcasa"))
                 return ProductType.ModelwaardeCalcasa;
 
+            if (value.Equals("modelwaardeOnePage"))
+                return ProductType.ModelwaardeOnePage;
+
             if (value.Equals("modelwaardeRisico"))
                 return ProductType.ModelwaardeRisico;
 
@@ -129,6 +137,9 @@ namespace Calcasa.Api.Model
 
             if (value.Equals("modelwaardeCalcasa"))
                 return ProductType.ModelwaardeCalcasa;
+
+            if (value.Equals("modelwaardeOnePage"))
+                return ProductType.ModelwaardeOnePage;
 
             if (value.Equals("modelwaardeRisico"))
                 return ProductType.ModelwaardeRisico;
@@ -161,6 +172,9 @@ namespace Calcasa.Api.Model
 
             if (value == ProductType.ModelwaardeCalcasa)
                 return "modelwaardeCalcasa";
+
+            if (value == ProductType.ModelwaardeOnePage)
+                return "modelwaardeOnePage";
 
             if (value == ProductType.ModelwaardeRisico)
                 return "modelwaardeRisico";
