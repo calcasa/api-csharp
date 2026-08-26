@@ -55,7 +55,7 @@ namespace Calcasa.Api.Api
         /// Confirm an inbound file set after it has been fully uploaded.
         /// </summary>
         /// <remarks>
-        /// Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the state is updated, the callback will be triggered with the new state. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the state is updated, the callback will be triggered with the new state. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](#models/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](#models/OutboundFileSetWebhookPayload) |
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="inboundFileSetId"></param>
@@ -67,7 +67,7 @@ namespace Calcasa.Api.Api
         /// Confirm an inbound file set after it has been fully uploaded.
         /// </summary>
         /// <remarks>
-        /// Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the state is updated, the callback will be triggered with the new state. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the state is updated, the callback will be triggered with the new state. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](#models/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](#models/OutboundFileSetWebhookPayload) |
         /// </remarks>
         /// <param name="inboundFileSetId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -78,7 +78,7 @@ namespace Calcasa.Api.Api
         /// Create a new inbound file set.
         /// </summary>
         /// <remarks>
-        /// Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, an InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, an InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](#models/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](#models/OutboundFileSetWebhookPayload) |
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="createInboundFileSetRequest"></param>
@@ -90,7 +90,7 @@ namespace Calcasa.Api.Api
         /// Create a new inbound file set.
         /// </summary>
         /// <remarks>
-        /// Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, an InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, an InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](#models/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](#models/OutboundFileSetWebhookPayload) |
         /// </remarks>
         /// <param name="createInboundFileSetRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -920,7 +920,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorConfirmInboundFileSetById(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid inboundFileSetId);
 
         /// <summary>
-        /// Confirm an inbound file set after it has been fully uploaded. Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the state is updated, the callback will be triggered with the new state. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Confirm an inbound file set after it has been fully uploaded. Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the state is updated, the callback will be triggered with the new state. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](#models/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](#models/OutboundFileSetWebhookPayload) |
         /// </summary>
         /// <param name="inboundFileSetId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -938,7 +938,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Confirm an inbound file set after it has been fully uploaded. Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the state is updated, the callback will be triggered with the new state. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Confirm an inbound file set after it has been fully uploaded. Confirm an inbound file set after it has been fully uploaded. This will start verification of the file set. When the state is updated, the callback will be triggered with the new state. When validation fails, a new file set must be created. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](#models/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](#models/OutboundFileSetWebhookPayload) |
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="inboundFileSetId"></param>
@@ -1331,7 +1331,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorCreateInboundFileSet(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, CreateInboundFileSetRequest createInboundFileSetRequest);
 
         /// <summary>
-        /// Create a new inbound file set. Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, an InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Create a new inbound file set. Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, an InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](#models/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](#models/OutboundFileSetWebhookPayload) |
         /// </summary>
         /// <param name="createInboundFileSetRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1349,7 +1349,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Create a new inbound file set. Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, an InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](/api/v1/reference/schemas/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](/api/v1/reference/schemas/OutboundFileSetWebhookPayload) |
+        /// Create a new inbound file set. Create a new inbound file set and all its included files. If the type, period, and revision combination already exists, an InboundFileSetAlreadyExistsProblemDetails will be returned. If the file set is not confirmed within 24 hours, it will expire and all its uploaded contents will be deleted.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | inbound-file-set | {configuredWebhookUrl}inbound-file-set | [InboundFileSetWebhookPayload](#models/InboundFileSetWebhookPayload) | | outbound-file-set | {configuredWebhookUrl}outbound-file-set | [OutboundFileSetWebhookPayload](#models/OutboundFileSetWebhookPayload) |
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="createInboundFileSetRequest"></param>
