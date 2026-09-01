@@ -131,13 +131,17 @@ namespace Calcasa.Api.Client
             _jsonOptions.Converters.Add(new OmgevingsdataJsonConverter());
             _jsonOptions.Converters.Add(new OnderhoudStaatJsonConverter());
             _jsonOptions.Converters.Add(new OnderhoudStaatNullableJsonConverter());
+            _jsonOptions.Converters.Add(new OpnameJsonConverter());
             _jsonOptions.Converters.Add(new OpnamedataJsonConverter());
+            _jsonOptions.Converters.Add(new OpnemerJsonConverter());
             _jsonOptions.Converters.Add(new OutboundFileSetJsonConverter());
             _jsonOptions.Converters.Add(new OutboundFileSetInvalidStateProblemDetailsJsonConverter());
             _jsonOptions.Converters.Add(new OutboundFileSetStateJsonConverter());
             _jsonOptions.Converters.Add(new OutboundFileSetStateNullableJsonConverter());
             _jsonOptions.Converters.Add(new OutboundFileSetWebhookPayloadJsonConverter());
             _jsonOptions.Converters.Add(new PermissionsDeniedProblemDetailsJsonConverter());
+            _jsonOptions.Converters.Add(new PlanningInfoJsonConverter());
+            _jsonOptions.Converters.Add(new PointJsonConverter());
             _jsonOptions.Converters.Add(new ProductCheckJsonConverter());
             _jsonOptions.Converters.Add(new ProductCheckItemJsonConverter());
             _jsonOptions.Converters.Add(new ProductCheckParametersJsonConverter());
@@ -227,12 +231,16 @@ namespace Calcasa.Api.Client
                 new ObjectdataSerializationContext(),
                 new OmgevingsdataSerializationContext(),
                 new OnderhoudStaatSerializationContext(),
+                new OpnameSerializationContext(),
                 new OpnamedataSerializationContext(),
+                new OpnemerSerializationContext(),
                 new OutboundFileSetSerializationContext(),
                 new OutboundFileSetInvalidStateProblemDetailsSerializationContext(),
                 new OutboundFileSetStateSerializationContext(),
                 new OutboundFileSetWebhookPayloadSerializationContext(),
                 new PermissionsDeniedProblemDetailsSerializationContext(),
+                new PlanningInfoSerializationContext(),
+                new PointSerializationContext(),
                 new ProductCheckSerializationContext(),
                 new ProductCheckItemSerializationContext(),
                 new ProductCheckParametersSerializationContext(),
@@ -270,6 +278,7 @@ namespace Calcasa.Api.Client
             _services.AddSingleton<FotosApiEvents>();
             _services.AddSingleton<FunderingenApiEvents>();
             _services.AddSingleton<GeldverstrekkersApiEvents>();
+            _services.AddSingleton<PlanningApiEvents>();
             _services.AddSingleton<RapportenApiEvents>();
             _services.AddSingleton<WaarderingenApiEvents>();
         }
@@ -327,6 +336,7 @@ namespace Calcasa.Api.Client
             builders.Add(_services.AddHttpClient<IFotosApi, FotosApi>("Calcasa.Api.Api.IFotosApi", client));
             builders.Add(_services.AddHttpClient<IFunderingenApi, FunderingenApi>("Calcasa.Api.Api.IFunderingenApi", client));
             builders.Add(_services.AddHttpClient<IGeldverstrekkersApi, GeldverstrekkersApi>("Calcasa.Api.Api.IGeldverstrekkersApi", client));
+            builders.Add(_services.AddHttpClient<IPlanningApi, PlanningApi>("Calcasa.Api.Api.IPlanningApi", client));
             builders.Add(_services.AddHttpClient<IRapportenApi, RapportenApi>("Calcasa.Api.Api.IRapportenApi", client));
             builders.Add(_services.AddHttpClient<IWaarderingenApi, WaarderingenApi>("Calcasa.Api.Api.IWaarderingenApi", client));
 
