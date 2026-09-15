@@ -53,9 +53,10 @@ namespace Calcasa.Api.Model
         /// <param name="deadline">deadline</param>
         /// <param name="batchCode">batchCode</param>
         /// <param name="product">product</param>
+        /// <param name="woningType">woningType</param>
         /// <param name="planning">planning</param>
         [JsonConstructor]
-        public Opname(Guid id, Adres adres, Point coordinaten, DateTime deadline, string batchCode, ProductType product, Option<PlanningInfo?> planning = default)
+        public Opname(Guid id, Adres adres, Point coordinaten, DateTime deadline, string batchCode, ProductType product, WoningType woningType, Option<PlanningInfo?> planning = default)
         {
             Id = id;
             Adres = adres;
@@ -63,6 +64,7 @@ namespace Calcasa.Api.Model
             Deadline = deadline;
             BatchCode = batchCode;
             Product = product;
+            WoningType = woningType;
             PlanningOption = planning;
             OnCreated();
         }
@@ -74,6 +76,12 @@ namespace Calcasa.Api.Model
         /// </summary>
         [JsonPropertyName("product")]
         public ProductType Product { get; set; }
+
+        /// <summary>
+        /// Gets or Sets WoningType
+        /// </summary>
+        [JsonPropertyName("woningType")]
+        public WoningType WoningType { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
@@ -139,6 +147,7 @@ namespace Calcasa.Api.Model
             sb.Append("  Deadline: ").Append(Deadline).Append("\n");
             sb.Append("  BatchCode: ").Append(BatchCode).Append("\n");
             sb.Append("  Product: ").Append(Product).Append("\n");
+            sb.Append("  WoningType: ").Append(WoningType).Append("\n");
             sb.Append("  Planning: ").Append(Planning).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
@@ -179,6 +188,7 @@ namespace Calcasa.Api.Model
             Option<DateTime?> deadline = default;
             Option<string?> batchCode = default;
             Option<ProductType?> product = default;
+            Option<WoningType?> woningType = default;
             Option<PlanningInfo?> planning = default;
 
             while (utf8JsonReader.Read())
@@ -216,6 +226,11 @@ namespace Calcasa.Api.Model
                             if (productRawValue != null)
                                 product = new Option<ProductType?>(ProductTypeValueConverter.FromStringOrDefault(productRawValue));
                             break;
+                        case "woningType":
+                            string? woningTypeRawValue = utf8JsonReader.GetString();
+                            if (woningTypeRawValue != null)
+                                woningType = new Option<WoningType?>(WoningTypeValueConverter.FromStringOrDefault(woningTypeRawValue));
+                            break;
                         case "planning":
                             planning = new Option<PlanningInfo?>(JsonSerializer.Deserialize<PlanningInfo>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
@@ -243,6 +258,9 @@ namespace Calcasa.Api.Model
             if (!product.IsSet)
                 throw new ArgumentException("Property is required for class Opname.", nameof(product));
 
+            if (!woningType.IsSet)
+                throw new ArgumentException("Property is required for class Opname.", nameof(woningType));
+
             if (id.IsSet && id.Value == null)
                 throw new ArgumentNullException(nameof(id), "Property is not nullable for class Opname.");
 
@@ -261,7 +279,10 @@ namespace Calcasa.Api.Model
             if (product.IsSet && product.Value == null)
                 throw new ArgumentNullException(nameof(product), "Property is not nullable for class Opname.");
 
-            return new Opname(id.Value!.Value!, adres.Value!, coordinaten.Value!, deadline.Value!.Value!, batchCode.Value!, product.Value!.Value!, planning);
+            if (woningType.IsSet && woningType.Value == null)
+                throw new ArgumentNullException(nameof(woningType), "Property is not nullable for class Opname.");
+
+            return new Opname(id.Value!.Value!, adres.Value!, coordinaten.Value!, deadline.Value!.Value!, batchCode.Value!, product.Value!.Value!, woningType.Value!.Value!, planning);
         }
 
         /// <summary>
@@ -309,6 +330,9 @@ namespace Calcasa.Api.Model
 
             var productRawValue = ProductTypeValueConverter.ToJsonValue(opname.Product);
             writer.WriteString("product", productRawValue);
+
+            var woningTypeRawValue = WoningTypeValueConverter.ToJsonValue(opname.WoningType);
+            writer.WriteString("woningType", woningTypeRawValue);
 
             if (opname.PlanningOption.IsSet)
                 if (opname.PlanningOption.Value != null)
