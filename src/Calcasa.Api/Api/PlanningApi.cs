@@ -52,10 +52,10 @@ namespace Calcasa.Api.Api
         PlanningApiEvents Events { get; }
 
         /// <summary>
-        /// Assign opnemer to opname.
+        /// Assign an opnemer.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Wijst een opnemer toe aan een opname.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="opnameId"></param>
@@ -65,10 +65,10 @@ namespace Calcasa.Api.Api
         Task<IAssignOpnemerApiResponse> AssignOpnemerAsync(Guid opnameId, PlanningInfo planningInfo, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Assign opnemer to opname.
+        /// Assign an opnemer.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Wijst een opnemer toe aan een opname.
         /// </remarks>
         /// <param name="opnameId"></param>
         /// <param name="planningInfo"></param>
@@ -77,10 +77,10 @@ namespace Calcasa.Api.Api
         Task<IAssignOpnemerApiResponse?> AssignOpnemerOrDefaultAsync(Guid opnameId, PlanningInfo planningInfo, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Delete the planning for an opname.
+        /// Delete an opname planning.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Verwijdert de planning voor een opname.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="opnameId"></param>
@@ -89,10 +89,10 @@ namespace Calcasa.Api.Api
         Task<IDeletePlanningForOpnameApiResponse> DeletePlanningForOpnameAsync(Guid opnameId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Delete the planning for an opname.
+        /// Delete an opname planning.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Verwijdert de planning voor een opname.
         /// </remarks>
         /// <param name="opnameId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -100,10 +100,10 @@ namespace Calcasa.Api.Api
         Task<IDeletePlanningForOpnameApiResponse?> DeletePlanningForOpnameOrDefaultAsync(Guid opnameId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Get the list of opnames.
+        /// List opnames.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Geeft de lijst met opnames terug. Gebruik include_planned om ook geplande opnames op te nemen.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="includePlanned"> (optional, default to false)</param>
@@ -112,10 +112,10 @@ namespace Calcasa.Api.Api
         Task<IGetOpnamesApiResponse> GetOpnamesAsync(Option<bool> includePlanned = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Get the list of opnames.
+        /// List opnames.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Geeft de lijst met opnames terug. Gebruik include_planned om ook geplande opnames op te nemen.
         /// </remarks>
         /// <param name="includePlanned"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -123,10 +123,10 @@ namespace Calcasa.Api.Api
         Task<IGetOpnamesApiResponse?> GetOpnamesOrDefaultAsync(Option<bool> includePlanned = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Get the list of opnemers.
+        /// List opnemers.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Geeft de lijst met opnemers terug.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -134,10 +134,10 @@ namespace Calcasa.Api.Api
         Task<IGetOpnemersApiResponse> GetOpnemersAsync(System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Get the list of opnemers.
+        /// List opnemers.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Geeft de lijst met opnemers terug.
         /// </remarks>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetOpnemersApiResponse"/>?&gt;</returns>
@@ -449,7 +449,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorAssignOpnemer(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid opnameId, PlanningInfo planningInfo);
 
         /// <summary>
-        /// Assign opnemer to opname. 
+        /// Assign an opnemer. Wijst een opnemer toe aan een opname.
         /// </summary>
         /// <param name="opnameId"></param>
         /// <param name="planningInfo"></param>
@@ -468,7 +468,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Assign opnemer to opname. 
+        /// Assign an opnemer. Wijst een opnemer toe aan een opname.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="opnameId"></param>
@@ -827,7 +827,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorDeletePlanningForOpname(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid opnameId);
 
         /// <summary>
-        /// Delete the planning for an opname. 
+        /// Delete an opname planning. Verwijdert de planning voor een opname.
         /// </summary>
         /// <param name="opnameId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -845,7 +845,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Delete the planning for an opname. 
+        /// Delete an opname planning. Verwijdert de planning voor een opname.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="opnameId"></param>
@@ -1154,7 +1154,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorGetOpnames(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Option<bool> includePlanned);
 
         /// <summary>
-        /// Get the list of opnames. 
+        /// List opnames. Geeft de lijst met opnames terug. Gebruik include_planned om ook geplande opnames op te nemen.
         /// </summary>
         /// <param name="includePlanned"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1172,7 +1172,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Get the list of opnames. 
+        /// List opnames. Geeft de lijst met opnames terug. Gebruik include_planned om ook geplande opnames op te nemen.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="includePlanned"> (optional, default to false)</param>
@@ -1476,7 +1476,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorGetOpnemers(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar);
 
         /// <summary>
-        /// Get the list of opnemers. 
+        /// List opnemers. Geeft de lijst met opnemers terug.
         /// </summary>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetOpnemersApiResponse"/>&gt;</returns>
@@ -1493,7 +1493,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Get the list of opnemers. 
+        /// List opnemers. Geeft de lijst met opnemers terug.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>

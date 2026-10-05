@@ -52,10 +52,10 @@ namespace Calcasa.Api.Api
         GeldverstrekkersApiEvents Events { get; }
 
         /// <summary>
-        /// Alle geldverstrekkers die te gebruiken zijn voor aanvragen.
+        /// Haal geldverstrekkers op.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Geeft alle geldverstrekkers terug die voor aanvragen kunnen worden gebruikt.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="productType">Een parameter om de lijst te filteren op ondersteunde producttypen.</param>
@@ -64,10 +64,10 @@ namespace Calcasa.Api.Api
         Task<IGetGeldverstrekkersApiResponse> GetGeldverstrekkersAsync(ProductType productType, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Alle geldverstrekkers die te gebruiken zijn voor aanvragen.
+        /// Haal geldverstrekkers op.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Geeft alle geldverstrekkers terug die voor aanvragen kunnen worden gebruikt.
         /// </remarks>
         /// <param name="productType">Een parameter om de lijst te filteren op ondersteunde producttypen.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -227,7 +227,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorGetGeldverstrekkers(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, ProductType productType);
 
         /// <summary>
-        /// Alle geldverstrekkers die te gebruiken zijn voor aanvragen. 
+        /// Haal geldverstrekkers op. Geeft alle geldverstrekkers terug die voor aanvragen kunnen worden gebruikt.
         /// </summary>
         /// <param name="productType">Een parameter om de lijst te filteren op ondersteunde producttypen.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -245,7 +245,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Alle geldverstrekkers die te gebruiken zijn voor aanvragen. 
+        /// Haal geldverstrekkers op. Geeft alle geldverstrekkers terug die voor aanvragen kunnen worden gebruikt.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="productType">Een parameter om de lijst te filteren op ondersteunde producttypen.</param>

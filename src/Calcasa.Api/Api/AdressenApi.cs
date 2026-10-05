@@ -52,7 +52,7 @@ namespace Calcasa.Api.Api
         AdressenApiEvents Events { get; }
 
         /// <summary>
-        /// Adres info op basis van BAG Nummeraanduiding Id.
+        /// Haal adresinformatie op.
         /// </summary>
         /// <remarks>
         /// De Notities zullen leeg blijven voor dit endpoint. Het adresobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
@@ -64,7 +64,7 @@ namespace Calcasa.Api.Api
         Task<IGetAdresApiResponse> GetAdresAsync(long bagNummeraanduidingId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Adres info op basis van BAG Nummeraanduiding Id.
+        /// Haal adresinformatie op.
         /// </summary>
         /// <remarks>
         /// De Notities zullen leeg blijven voor dit endpoint. Het adresobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
@@ -75,7 +75,7 @@ namespace Calcasa.Api.Api
         Task<IGetAdresApiResponse?> GetAdresOrDefaultAsync(long bagNummeraanduidingId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Zoek adresinformatie op basis van het opgegeven adres.
+        /// Zoek adresinformatie.
         /// </summary>
         /// <remarks>
         /// De notities geven aan of de input al dan niet gewijzigd of onbekend is. De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummertoevoeging.
@@ -87,7 +87,7 @@ namespace Calcasa.Api.Api
         Task<ISearchAdresApiResponse> SearchAdresAsync(Adres adres, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Zoek adresinformatie op basis van het opgegeven adres.
+        /// Zoek adresinformatie.
         /// </summary>
         /// <remarks>
         /// De notities geven aan of de input al dan niet gewijzigd of onbekend is. De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummertoevoeging.
@@ -312,7 +312,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorGetAdres(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, long bagNummeraanduidingId);
 
         /// <summary>
-        /// Adres info op basis van BAG Nummeraanduiding Id. De Notities zullen leeg blijven voor dit endpoint. Het adresobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
+        /// Haal adresinformatie op. De Notities zullen leeg blijven voor dit endpoint. Het adresobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -330,7 +330,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Adres info op basis van BAG Nummeraanduiding Id. De Notities zullen leeg blijven voor dit endpoint. Het adresobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
+        /// Haal adresinformatie op. De Notities zullen leeg blijven voor dit endpoint. Het adresobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
@@ -723,7 +723,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorSearchAdres(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Adres adres);
 
         /// <summary>
-        /// Zoek adresinformatie op basis van het opgegeven adres. De notities geven aan of de input al dan niet gewijzigd of onbekend is. De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummertoevoeging.
+        /// Zoek adresinformatie. De notities geven aan of de input al dan niet gewijzigd of onbekend is. De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummertoevoeging.
         /// </summary>
         /// <param name="adres">Het adresobject dat gebruikt wordt om naar adresinformatie te zoeken.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -741,7 +741,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Zoek adresinformatie op basis van het opgegeven adres. De notities geven aan of de input al dan niet gewijzigd of onbekend is. De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummertoevoeging.
+        /// Zoek adresinformatie. De notities geven aan of de input al dan niet gewijzigd of onbekend is. De enige velden die echt nodig zijn voor een compleet resultaat zijn de postcode, het huisnummer en de huisnummertoevoeging.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="adres">Het adresobject dat gebruikt wordt om naar adresinformatie te zoeken.</param>

@@ -52,10 +52,10 @@ namespace Calcasa.Api.Api
         RapportenApiEvents Events { get; }
 
         /// <summary>
-        /// Rapport op basis van waardering Id.
+        /// Haal een rapport op.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Geeft het PDF-rapport terug voor een waardering.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">De Id van een waardering.</param>
@@ -64,10 +64,10 @@ namespace Calcasa.Api.Api
         Task<IGetRapportApiResponse> GetRapportAsync(Guid id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Rapport op basis van waardering Id.
+        /// Haal een rapport op.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Geeft het PDF-rapport terug voor een waardering.
         /// </remarks>
         /// <param name="id">De Id van een waardering.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -233,7 +233,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorGetRapport(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid id);
 
         /// <summary>
-        /// Rapport op basis van waardering Id. 
+        /// Haal een rapport op. Geeft het PDF-rapport terug voor een waardering.
         /// </summary>
         /// <param name="id">De Id van een waardering.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -251,7 +251,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Rapport op basis van waardering Id. 
+        /// Haal een rapport op. Geeft het PDF-rapport terug voor een waardering.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">De Id van een waardering.</param>

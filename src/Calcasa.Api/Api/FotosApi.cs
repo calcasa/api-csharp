@@ -52,10 +52,10 @@ namespace Calcasa.Api.Api
         FotosApiEvents Events { get; }
 
         /// <summary>
-        /// Foto op basis van een foto Id.
+        /// Haal een foto op.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Geeft een foto terug die onder andere bij waarderingen en referenties wordt gebruikt.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">De Id van een foto, welke onder andere bij waarderingen en referenties teruggestuurd worden.</param>
@@ -64,10 +64,10 @@ namespace Calcasa.Api.Api
         Task<IGetFotoApiResponse> GetFotoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Foto op basis van een foto Id.
+        /// Haal een foto op.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Geeft een foto terug die onder andere bij waarderingen en referenties wordt gebruikt.
         /// </remarks>
         /// <param name="id">De Id van een foto, welke onder andere bij waarderingen en referenties teruggestuurd worden.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -233,7 +233,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorGetFoto(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid id);
 
         /// <summary>
-        /// Foto op basis van een foto Id. 
+        /// Haal een foto op. Geeft een foto terug die onder andere bij waarderingen en referenties wordt gebruikt.
         /// </summary>
         /// <param name="id">De Id van een foto, welke onder andere bij waarderingen en referenties teruggestuurd worden.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -251,7 +251,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Foto op basis van een foto Id. 
+        /// Haal een foto op. Geeft een foto terug die onder andere bij waarderingen en referenties wordt gebruikt.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">De Id van een foto, welke onder andere bij waarderingen en referenties teruggestuurd worden.</param>

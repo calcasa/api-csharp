@@ -52,10 +52,10 @@ namespace Calcasa.Api.Api
         FacturenApiEvents Events { get; }
 
         /// <summary>
-        /// Factuur op basis van een waardering Id.
+        /// Haal een factuur op.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Geeft de PDF-factuur terug voor een waardering.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">De Id van een waardering.</param>
@@ -64,10 +64,10 @@ namespace Calcasa.Api.Api
         Task<IGetFactuurApiResponse> GetFactuurAsync(Guid id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Factuur op basis van een waardering Id.
+        /// Haal een factuur op.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Geeft de PDF-factuur terug voor een waardering.
         /// </remarks>
         /// <param name="id">De Id van een waardering.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -233,7 +233,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorGetFactuur(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid id);
 
         /// <summary>
-        /// Factuur op basis van een waardering Id. 
+        /// Haal een factuur op. Geeft de PDF-factuur terug voor een waardering.
         /// </summary>
         /// <param name="id">De Id van een waardering.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -251,7 +251,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Factuur op basis van een waardering Id. 
+        /// Haal een factuur op. Geeft de PDF-factuur terug voor een waardering.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">De Id van een waardering.</param>

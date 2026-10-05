@@ -52,7 +52,7 @@ namespace Calcasa.Api.Api
         WaarderingenApiEvents Events { get; }
 
         /// <summary>
-        /// Controleert mogelijke producten.
+        /// Controleer mogelijke producten.
         /// </summary>
         /// <remarks>
         /// Geeft de mogelijke en afgekeurde producten terug voor een waardering op basis van de input parameters. Het BagNummeraanduidingId veld is (ten minste) verplicht. Als er geen enkel product geconfigureerd komt er een exception terug.
@@ -64,7 +64,7 @@ namespace Calcasa.Api.Api
         Task<ICheckProductenApiResponse> CheckProductenAsync(ProductCheckParameters productCheckParameters, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Controleert mogelijke producten.
+        /// Controleer mogelijke producten.
         /// </summary>
         /// <remarks>
         /// Geeft de mogelijke en afgekeurde producten terug voor een waardering op basis van de input parameters. Het BagNummeraanduidingId veld is (ten minste) verplicht. Als er geen enkel product geconfigureerd komt er een exception terug.
@@ -75,7 +75,7 @@ namespace Calcasa.Api.Api
         Task<ICheckProductenApiResponse?> CheckProductenOrDefaultAsync(ProductCheckParameters productCheckParameters, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Maak een waardering aan.
+        /// Maak een waardering.
         /// </summary>
         /// <remarks>
         /// Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie. Nadat de waardering aangemaakt is zal deze bevestigd moeten worden. De BagNummeraanduidingId en ProductType velden zijn (ten minste) verplicht.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | waardering | {configuredWebhookUrl}waardering | [WaarderingWebhookPayload](#models/WaarderingWebhookPayload) | | deel-waardering | {configuredWebhookUrl}deel-waardering | [DeelWaarderingWebhookPayload](#models/DeelWaarderingWebhookPayload) |
@@ -87,7 +87,7 @@ namespace Calcasa.Api.Api
         Task<ICreateWaarderingApiResponse> CreateWaarderingAsync(WaarderingInputParameters waarderingInputParameters, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Maak een waardering aan.
+        /// Maak een waardering.
         /// </summary>
         /// <remarks>
         /// Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie. Nadat de waardering aangemaakt is zal deze bevestigd moeten worden. De BagNummeraanduidingId en ProductType velden zijn (ten minste) verplicht.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | waardering | {configuredWebhookUrl}waardering | [WaarderingWebhookPayload](#models/WaarderingWebhookPayload) | | deel-waardering | {configuredWebhookUrl}deel-waardering | [DeelWaarderingWebhookPayload](#models/DeelWaarderingWebhookPayload) |
@@ -98,10 +98,10 @@ namespace Calcasa.Api.Api
         Task<ICreateWaarderingApiResponse?> CreateWaarderingOrDefaultAsync(WaarderingInputParameters waarderingInputParameters, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Waardering op basis van Id.
+        /// Haal een waardering op.
         /// </summary>
         /// <remarks>
-        /// Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
+        /// Geeft een waardering terug op basis van de ID. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">De waardering Id in de vorm van een UUID.</param>
@@ -110,10 +110,10 @@ namespace Calcasa.Api.Api
         Task<IGetWaarderingApiResponse> GetWaarderingAsync(Guid id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Waardering op basis van Id.
+        /// Haal een waardering op.
         /// </summary>
         /// <remarks>
-        /// Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
+        /// Geeft een waardering terug op basis van de ID. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <param name="id">De waardering Id in de vorm van een UUID.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -121,10 +121,10 @@ namespace Calcasa.Api.Api
         Task<IGetWaarderingApiResponse?> GetWaarderingOrDefaultAsync(Guid id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Waardering op basis van upper-case hex SHA-256 hash van een PDF rapport. Als er een collision is wordt de nieuwste waardering teruggegeven.
+        /// Zoek op rapport-hash.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Zoekt een waardering op basis van de upper-case hexadecimal SHA-256-hash van een PDF-rapport. Bij een hashcollision wordt de nieuwste waardering teruggegeven.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash">De SHA-256 hash van het bestand, in upper-case hex.</param>
@@ -133,10 +133,10 @@ namespace Calcasa.Api.Api
         Task<IGetWaarderingByReportHashApiResponse> GetWaarderingByReportHashAsync(string hash, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Waardering op basis van upper-case hex SHA-256 hash van een PDF rapport. Als er een collision is wordt de nieuwste waardering teruggegeven.
+        /// Zoek op rapport-hash.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Zoekt een waardering op basis van de upper-case hexadecimal SHA-256-hash van een PDF-rapport. Bij een hashcollision wordt de nieuwste waardering teruggegeven.
         /// </remarks>
         /// <param name="hash">De SHA-256 hash van het bestand, in upper-case hex.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -144,10 +144,10 @@ namespace Calcasa.Api.Api
         Task<IGetWaarderingByReportHashApiResponse?> GetWaarderingByReportHashOrDefaultAsync(string hash, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Waardering ontwikkeling op basis van waardering Id.
+        /// Haal waarderingsontwikkeling op.
         /// </summary>
         /// <remarks>
-        /// Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
+        /// Geeft de ontwikkeling van een waardering terug. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">De waardering Id in de vorm van een UUID.</param>
@@ -156,10 +156,10 @@ namespace Calcasa.Api.Api
         Task<IGetWaarderingOntwikkelingApiResponse> GetWaarderingOntwikkelingAsync(Guid id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Waardering ontwikkeling op basis van waardering Id.
+        /// Haal waarderingsontwikkeling op.
         /// </summary>
         /// <remarks>
-        /// Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
+        /// Geeft de ontwikkeling van een waardering terug. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <param name="id">De waardering Id in de vorm van een UUID.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -167,7 +167,7 @@ namespace Calcasa.Api.Api
         Task<IGetWaarderingOntwikkelingApiResponse?> GetWaarderingOntwikkelingOrDefaultAsync(Guid id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Patcht een waardering.
+        /// Werk een waardering bij.
         /// </summary>
         /// <remarks>
         /// Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.  Op dit moment kan alleen de waarderingsstatus gepatcht worden. Dit endpoint kan gebruikt worden om een waarderingsinitialisatie te bevestigen.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | waardering | {configuredWebhookUrl}waardering | [WaarderingWebhookPayload](#models/WaarderingWebhookPayload) | | deel-waardering | {configuredWebhookUrl}deel-waardering | [DeelWaarderingWebhookPayload](#models/DeelWaarderingWebhookPayload) |
@@ -180,7 +180,7 @@ namespace Calcasa.Api.Api
         Task<IPatchWaarderingenApiResponse> PatchWaarderingenAsync(Guid id, List<Microsoft.AspNetCore.JsonPatch.Operations.Operation> listMicrosoftAspNetCoreJsonPatchOperationsOperation, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Patcht een waardering.
+        /// Werk een waardering bij.
         /// </summary>
         /// <remarks>
         /// Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.  Op dit moment kan alleen de waarderingsstatus gepatcht worden. Dit endpoint kan gebruikt worden om een waarderingsinitialisatie te bevestigen.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | waardering | {configuredWebhookUrl}waardering | [WaarderingWebhookPayload](#models/WaarderingWebhookPayload) | | deel-waardering | {configuredWebhookUrl}deel-waardering | [DeelWaarderingWebhookPayload](#models/DeelWaarderingWebhookPayload) |
@@ -192,7 +192,7 @@ namespace Calcasa.Api.Api
         Task<IPatchWaarderingenApiResponse?> PatchWaarderingenOrDefaultAsync(Guid id, List<Microsoft.AspNetCore.JsonPatch.Operations.Operation> listMicrosoftAspNetCoreJsonPatchOperationsOperation, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Zoek waardering op basis van input parameters.
+        /// Zoek waarderingen.
         /// </summary>
         /// <remarks>
         /// Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie. Alle items kunnen gebruikt worden voor het zoeken, ProductType en BagNummeraanduidingId zijn verplicht.  
@@ -204,7 +204,7 @@ namespace Calcasa.Api.Api
         Task<ISearchWaarderingenApiResponse> SearchWaarderingenAsync(WaarderingZoekParameters waarderingZoekParameters, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Zoek waardering op basis van input parameters.
+        /// Zoek waarderingen.
         /// </summary>
         /// <remarks>
         /// Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie. Alle items kunnen gebruikt worden voor het zoeken, ProductType en BagNummeraanduidingId zijn verplicht.  
@@ -792,7 +792,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorCheckProducten(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, ProductCheckParameters productCheckParameters);
 
         /// <summary>
-        /// Controleert mogelijke producten. Geeft de mogelijke en afgekeurde producten terug voor een waardering op basis van de input parameters. Het BagNummeraanduidingId veld is (ten minste) verplicht. Als er geen enkel product geconfigureerd komt er een exception terug.
+        /// Controleer mogelijke producten. Geeft de mogelijke en afgekeurde producten terug voor een waardering op basis van de input parameters. Het BagNummeraanduidingId veld is (ten minste) verplicht. Als er geen enkel product geconfigureerd komt er een exception terug.
         /// </summary>
         /// <param name="productCheckParameters"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -810,7 +810,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Controleert mogelijke producten. Geeft de mogelijke en afgekeurde producten terug voor een waardering op basis van de input parameters. Het BagNummeraanduidingId veld is (ten minste) verplicht. Als er geen enkel product geconfigureerd komt er een exception terug.
+        /// Controleer mogelijke producten. Geeft de mogelijke en afgekeurde producten terug voor een waardering op basis van de input parameters. Het BagNummeraanduidingId veld is (ten minste) verplicht. Als er geen enkel product geconfigureerd komt er een exception terug.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="productCheckParameters"></param>
@@ -1256,7 +1256,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorCreateWaardering(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, WaarderingInputParameters waarderingInputParameters);
 
         /// <summary>
-        /// Maak een waardering aan. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie. Nadat de waardering aangemaakt is zal deze bevestigd moeten worden. De BagNummeraanduidingId en ProductType velden zijn (ten minste) verplicht.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | waardering | {configuredWebhookUrl}waardering | [WaarderingWebhookPayload](#models/WaarderingWebhookPayload) | | deel-waardering | {configuredWebhookUrl}deel-waardering | [DeelWaarderingWebhookPayload](#models/DeelWaarderingWebhookPayload) |
+        /// Maak een waardering. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie. Nadat de waardering aangemaakt is zal deze bevestigd moeten worden. De BagNummeraanduidingId en ProductType velden zijn (ten minste) verplicht.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | waardering | {configuredWebhookUrl}waardering | [WaarderingWebhookPayload](#models/WaarderingWebhookPayload) | | deel-waardering | {configuredWebhookUrl}deel-waardering | [DeelWaarderingWebhookPayload](#models/DeelWaarderingWebhookPayload) |
         /// </summary>
         /// <param name="waarderingInputParameters"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1274,7 +1274,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Maak een waardering aan. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie. Nadat de waardering aangemaakt is zal deze bevestigd moeten worden. De BagNummeraanduidingId en ProductType velden zijn (ten minste) verplicht.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | waardering | {configuredWebhookUrl}waardering | [WaarderingWebhookPayload](#models/WaarderingWebhookPayload) | | deel-waardering | {configuredWebhookUrl}deel-waardering | [DeelWaarderingWebhookPayload](#models/DeelWaarderingWebhookPayload) |
+        /// Maak een waardering. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie. Nadat de waardering aangemaakt is zal deze bevestigd moeten worden. De BagNummeraanduidingId en ProductType velden zijn (ten minste) verplicht.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | waardering | {configuredWebhookUrl}waardering | [WaarderingWebhookPayload](#models/WaarderingWebhookPayload) | | deel-waardering | {configuredWebhookUrl}deel-waardering | [DeelWaarderingWebhookPayload](#models/DeelWaarderingWebhookPayload) |
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="waarderingInputParameters"></param>
@@ -1748,7 +1748,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorGetWaardering(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid id);
 
         /// <summary>
-        /// Waardering op basis van Id. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
+        /// Haal een waardering op. Geeft een waardering terug op basis van de ID. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <param name="id">De waardering Id in de vorm van een UUID.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1766,7 +1766,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Waardering op basis van Id. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
+        /// Haal een waardering op. Geeft een waardering terug op basis van de ID. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">De waardering Id in de vorm van een UUID.</param>
@@ -2237,7 +2237,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorGetWaarderingByReportHash(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string hash);
 
         /// <summary>
-        /// Waardering op basis van upper-case hex SHA-256 hash van een PDF rapport. Als er een collision is wordt de nieuwste waardering teruggegeven. 
+        /// Zoek op rapport-hash. Zoekt een waardering op basis van de upper-case hexadecimal SHA-256-hash van een PDF-rapport. Bij een hashcollision wordt de nieuwste waardering teruggegeven.
         /// </summary>
         /// <param name="hash">De SHA-256 hash van het bestand, in upper-case hex.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -2255,7 +2255,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Waardering op basis van upper-case hex SHA-256 hash van een PDF rapport. Als er een collision is wordt de nieuwste waardering teruggegeven. 
+        /// Zoek op rapport-hash. Zoekt een waardering op basis van de upper-case hexadecimal SHA-256-hash van een PDF-rapport. Bij een hashcollision wordt de nieuwste waardering teruggegeven.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash">De SHA-256 hash van het bestand, in upper-case hex.</param>
@@ -2717,7 +2717,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorGetWaarderingOntwikkeling(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid id);
 
         /// <summary>
-        /// Waardering ontwikkeling op basis van waardering Id. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
+        /// Haal waarderingsontwikkeling op. Geeft de ontwikkeling van een waardering terug. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <param name="id">De waardering Id in de vorm van een UUID.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -2735,7 +2735,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Waardering ontwikkeling op basis van waardering Id. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
+        /// Haal waarderingsontwikkeling op. Geeft de ontwikkeling van een waardering terug. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">De waardering Id in de vorm van een UUID.</param>
@@ -3171,7 +3171,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorPatchWaarderingen(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid id, List<Microsoft.AspNetCore.JsonPatch.Operations.Operation> listMicrosoftAspNetCoreJsonPatchOperationsOperation);
 
         /// <summary>
-        /// Patcht een waardering. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.  Op dit moment kan alleen de waarderingsstatus gepatcht worden. Dit endpoint kan gebruikt worden om een waarderingsinitialisatie te bevestigen.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | waardering | {configuredWebhookUrl}waardering | [WaarderingWebhookPayload](#models/WaarderingWebhookPayload) | | deel-waardering | {configuredWebhookUrl}deel-waardering | [DeelWaarderingWebhookPayload](#models/DeelWaarderingWebhookPayload) |
+        /// Werk een waardering bij. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.  Op dit moment kan alleen de waarderingsstatus gepatcht worden. Dit endpoint kan gebruikt worden om een waarderingsinitialisatie te bevestigen.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | waardering | {configuredWebhookUrl}waardering | [WaarderingWebhookPayload](#models/WaarderingWebhookPayload) | | deel-waardering | {configuredWebhookUrl}deel-waardering | [DeelWaarderingWebhookPayload](#models/DeelWaarderingWebhookPayload) |
         /// </summary>
         /// <param name="id">De waardering Id in de vorm van een UUID.</param>
         /// <param name="listMicrosoftAspNetCoreJsonPatchOperationsOperation"></param>
@@ -3190,7 +3190,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Patcht een waardering. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.  Op dit moment kan alleen de waarderingsstatus gepatcht worden. Dit endpoint kan gebruikt worden om een waarderingsinitialisatie te bevestigen.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | waardering | {configuredWebhookUrl}waardering | [WaarderingWebhookPayload](#models/WaarderingWebhookPayload) | | deel-waardering | {configuredWebhookUrl}deel-waardering | [DeelWaarderingWebhookPayload](#models/DeelWaarderingWebhookPayload) |
+        /// Werk een waardering bij. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.  Op dit moment kan alleen de waarderingsstatus gepatcht worden. Dit endpoint kan gebruikt worden om een waarderingsinitialisatie te bevestigen.  ### Callbacks | Name | Url | Schema | | - -- | - -- | - -- | | waardering | {configuredWebhookUrl}waardering | [WaarderingWebhookPayload](#models/WaarderingWebhookPayload) | | deel-waardering | {configuredWebhookUrl}deel-waardering | [DeelWaarderingWebhookPayload](#models/DeelWaarderingWebhookPayload) |
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">De waardering Id in de vorm van een UUID.</param>
@@ -3716,7 +3716,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorSearchWaarderingen(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, WaarderingZoekParameters waarderingZoekParameters);
 
         /// <summary>
-        /// Zoek waardering op basis van input parameters. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie. Alle items kunnen gebruikt worden voor het zoeken, ProductType en BagNummeraanduidingId zijn verplicht.  
+        /// Zoek waarderingen. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie. Alle items kunnen gebruikt worden voor het zoeken, ProductType en BagNummeraanduidingId zijn verplicht.  
         /// </summary>
         /// <param name="waarderingZoekParameters"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -3734,7 +3734,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Zoek waardering op basis van input parameters. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie. Alle items kunnen gebruikt worden voor het zoeken, ProductType en BagNummeraanduidingId zijn verplicht.  
+        /// Zoek waarderingen. Het waarderingsobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie. Alle items kunnen gebruikt worden voor het zoeken, ProductType en BagNummeraanduidingId zijn verplicht.  
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="waarderingZoekParameters"></param>

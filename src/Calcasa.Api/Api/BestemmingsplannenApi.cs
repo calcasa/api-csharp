@@ -52,10 +52,10 @@ namespace Calcasa.Api.Api
         BestemmingsplannenApiEvents Events { get; }
 
         /// <summary>
-        /// Gegevens over de bestemmingsplannen op de locatie van een adres (BAG Nummeraanduiding ID).
+        /// Haal bestemmingsplannen op.
         /// </summary>
         /// <remarks>
-        /// Het bestemmingsplanobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
+        /// Geeft de bestemmingsplannen terug voor de locatie van een adres (BAG Nummeraanduiding ID). Het bestemmingsplanobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
@@ -64,10 +64,10 @@ namespace Calcasa.Api.Api
         Task<IGetBestemmingByIdApiResponse> GetBestemmingByIdAsync(long bagNummeraanduidingId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Gegevens over de bestemmingsplannen op de locatie van een adres (BAG Nummeraanduiding ID).
+        /// Haal bestemmingsplannen op.
         /// </summary>
         /// <remarks>
-        /// Het bestemmingsplanobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
+        /// Geeft de bestemmingsplannen terug voor de locatie van een adres (BAG Nummeraanduiding ID). Het bestemmingsplanobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </remarks>
         /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -233,7 +233,7 @@ namespace Calcasa.Api.Api
         partial void OnErrorGetBestemmingById(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, long bagNummeraanduidingId);
 
         /// <summary>
-        /// Gegevens over de bestemmingsplannen op de locatie van een adres (BAG Nummeraanduiding ID). Het bestemmingsplanobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
+        /// Haal bestemmingsplannen op. Geeft de bestemmingsplannen terug voor de locatie van een adres (BAG Nummeraanduiding ID). Het bestemmingsplanobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -251,7 +251,7 @@ namespace Calcasa.Api.Api
         }
 
         /// <summary>
-        /// Gegevens over de bestemmingsplannen op de locatie van een adres (BAG Nummeraanduiding ID). Het bestemmingsplanobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
+        /// Haal bestemmingsplannen op. Geeft de bestemmingsplannen terug voor de locatie van een adres (BAG Nummeraanduiding ID). Het bestemmingsplanobject zal gefilterd terugkomen, afhankelijk van het client_id dat gebruikt is voor de authenticatie.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="bagNummeraanduidingId">Een BAG Nummeraanduiding ID om een adres te specificeren.</param>
